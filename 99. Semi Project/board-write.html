@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> 문화 커넥터 </title>
+    <!--지도 맵 링크-->
+    <link href="assets/css/map-style.css"  rel="stylesheet" type="text/css"/>
+    <script src="assets\js\jquery.min.js"></script>
+    <script src="assets\js\map-config.js"></script>
+    <script src="assets\js\map-interact.js"></script>
+    <!-- Meta Tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+   
+    
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
+    />
+
+    <!-- Plugins CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/font-awesome/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/tiny-slider/tiny-slider.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/glightbox/css/glightbox.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/flatpickr/css/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/choices/css/choices.min.css"
+    />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  </head>
+
+  <body>
+ 
+<!-- Header START -->
+<header class="navbar-light header-sticky" style="font-weight: bold;">
+  <!-- Logo Nav START -->
+  <nav class="navbar navbar-expand-xl">
+      <div class="container">
+          <!-- Logo START -->
+          <a class="navbar-brand" href="main.html">
+            <img style="height: 100px" class="light-mode-item navbar-brand-item" src="assets/images/logo-culture-light.png" alt="logo">
+		    		<img style="height: 100px" class="dark-mode-item navbar-brand-item" src="assets/images/logo-culture.png" alt="logo">
+
+          </a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+        <span class="d-none d-sm-inline-block small">Menu</span>
+			</button>
+
+			<!-- Responsive category toggler -->
+			<button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse" aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span class="d-none d-sm-inline-block small">Category</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+
+					<!-- Nav item 홈  -->
+					<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="main.html">홈</a>
+          </li>
+
+					<!-- Nav item 문화 테마 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
+							<li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
+							<li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
+							<li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
+
+						</ul>
+					</li>
+
+          <!-- Nav item 음식 투어  -->
+					<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
+          </li>
+
+          <!-- Nav item 문화 소식 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
+							<li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
+
+						</ul>
+					</li>
+
+          <!-- Nav item 리뷰(수다톡) -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
+
+						</ul>
+					</li>
+
+          <!-- Nav item 문화(여행) 지도  -->
+					<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
+          </li>
+
+
+
+          <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
+          <li class="nav-item" id="login">
+            <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
+          </li>
+
+					<!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원 정보</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
+
+						</ul>
+					</li>
+
+					
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+                <!-- Toggler button and stay button -->
+                <div class="d-flex align-items-center justify-content-end">
+                  <!-- Responsive navbar toggler -->
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-animation">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <span class="d-none d-sm-inline-block small">Menu</span>
+                  </button>
+
+             
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Logo Nav END -->
+    </header>
+    <!-- Header END -->
+   
+  
+    <style>
+      /* 페인트 보이 스타일 */
+      .relative-container {
+        position: relative;
+        }
+
+        .relative-item {
+        position: absolute;
+        bottom: 5px;
+        right: 1px;
+        }
+    </style>
+
+
+
+<!-- 글쓰기 시작-->
+<div class="container col-10 align-items-center mb-9">
+    <div class="col-10 align-items-center">
+        <div class="card bg-light p-4 align-items-center">
+            <!-- Svg decoration -->
+            <figure class="position-absolute end-0 bottom-0 mb-n4 me-n2">
+                <svg class="fill-orange" width="104.2px" height="95.2px">
+                    <circle cx="2.6" cy="92.6" r="2.6"></circle>
+                    <circle cx="2.6" cy="77.6" r="2.6"></circle>
+                    <circle cx="2.6" cy="62.6" r="2.6"></circle>
+                    <circle cx="2.6" cy="47.6" r="2.6"></circle>
+                    <circle cx="2.6" cy="32.6" r="2.6"></circle>
+                    <circle cx="2.6" cy="17.6" r="2.6"></circle>
+                    <circle cx="2.6" cy="2.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="92.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="77.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="62.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="47.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="32.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="17.6" r="2.6"></circle>
+                    <circle cx="22.4" cy="2.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="92.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="77.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="62.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="47.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="32.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="17.6" r="2.6"></circle>
+                    <circle cx="42.2" cy="2.6" r="2.6"></circle>
+                    <circle cx="62" cy="92.6" r="2.6"></circle>
+                    <circle cx="62" cy="77.6" r="2.6"></circle>
+                    <circle cx="62" cy="62.6" r="2.6"></circle>
+                    <circle cx="62" cy="47.6" r="2.6"></circle>
+                    <circle cx="62" cy="32.6" r="2.6"></circle>
+                    <circle cx="62" cy="17.6" r="2.6"></circle>
+                    <circle cx="62" cy="2.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="92.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="77.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="62.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="47.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="32.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="17.6" r="2.6"></circle>
+                    <circle cx="81.8" cy="2.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="92.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="77.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="62.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="47.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="32.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="17.6" r="2.6"></circle>
+                    <circle cx="101.7" cy="2.6" r="2.6"></circle>
+                </svg>
+            </figure>
+
+            <!-- Card header -->
+            <div class="card-header bg-light p-0 pb-3">
+                <h3 class="mb-0">리뷰 작성 하기</h3>
+            </div>
+
+            <!-- Card body START -->
+            <div class="card-body p-0">
+                <form class="row g-4">
+                    <!-- Name -->
+                    <div class="col-12">
+                        <label class="form-label"><h5>제목</h5></label>
+                        <input type="text" class="form-control">
+                    </div>
+                   
+                    <!-- Mobile number -->
+                    <div class="col-12">
+                       
+                        <div class="mb-3">
+                          <label class="form-label">첨부파일</label>
+                          <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <!-- Message -->
+                    <div class="col-12">
+                       
+                        <!-- <textarea class="form-control" rows="25"></textarea> -->
+                        <div id="summernote"></div>
+                    </div>
+                   
+                    <!-- Button -->
+                    <div class="col-12 text-center">
+                        <a href="./review-talk1.html"><button class="btn btn-success mb-0 align-content-center col-4" type="button">글 작성</button></a>
+                    </div>	
+                </form>
+            </div>
+            <!-- Card body END -->
+        </div>
+    </div>
+</div>
+<!-- 글쓰기 끝-->
+
+<!-- 페인트 보이-->
+<div class="relative-container col-10">
+  <div class="relative-item">
+    <img src="./assets/images/paintColor.png" width="200">
+  </div>
+</div>
+
+
+
+
+
+
+<!--  썸머노트 스크립트 -->
+<script>
+  $('#summernote').summernote({
+    placeholder: '내용을 작성해주세요',
+    tabsize: 2,
+    height: 800
+  });
+</script>
+<!-- =======================
+Footer START -->
+<footer class="bg-dark pt-5">
+  <div class="container">
+      <!-- Row START -->
+      <div class="row g-4">
+          <!-- Widget 1 START -->
+          <div class="col-lg-3">
+              <!-- logo -->
+              <a href="index.html">
+                  <img class="h-40px" src="assets/images/logo-culture-light.png" alt="로고">
+              </a>
+              <p class="my-3 text-body-secondary">
+                  문화커넥터와 함께 떠나는 문화여행
+              </p>
+             
+          </div>
+          <!-- Widget 1 END -->
+
+          <!-- Widget 2 START -->
+          <div class="col-lg-8 ms-auto">
+              <div class="row g-4">
+                  <!-- Link block -->
+                  <div class="col-6 col-md-3">
+                      <h5 class="text-white mb-2 mb-md-4">페이지</h5>
+                      <ul class="nav flex-column text-primary-hover">
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="main.html"
+                              >홈</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cluture-theme1.html"
+                              >문화 테마</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cuisine-tour.html"
+                              >음식 투어</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cluture-news1.html"
+                              >문화 소식</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="review-talk1.html"
+                              >리뷰(수다톡)</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cluture-tour-map.html"
+                              >문화(여행) 지도</a
+                              >
+                          </li>
+                      </ul>
+                  </div>
+
+                  <!-- Link block -->
+                  <div class="col-6 col-md-3">
+                      <h5 class="text-white mb-2 mb-md-4">회원정보</h5>
+                      <ul class="nav flex-column text-primary-hover">
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="#">가입하기</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="sign-in.html">로그인</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="#"
+                              >내정보</a
+                              >
+                          </li>
+                         
+                      </ul>
+                  </div>
+                  
+
+              
+           
+          </div>
+          <!-- Widget 2 END -->
+      </div>
+      <!-- Row END -->
+
+     
+  </div>
+     <!-- Bottom footer -->
+  <div class="row">
+    <div class="container">
+      <div
+        class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start"
+      >
+        <!-- copyright text -->
+        <div class="text-body-secondary text-primary-hover">
+          저작권 ©2024 멀티캠퍼스 문화커넥터
+       
+        </div>
+     
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
+<!-- Footer END -->
+
+
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+<script src="assets/vendor/choices/js/choices.min.js"></script>
+<script src="assets/vendor/jarallax/jarallax.min.js"></script>
+<script src="assets/vendor/jarallax/jarallax-video.min.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="assets/js/functions.js"></script>
+</body>
+</html>
+
