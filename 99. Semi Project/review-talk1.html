@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 수다톡 - 리뷰 게시판 html입니다.</title>
+    <!-- 부트스트랩 스크립트 시작-->
+    <script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+     <style>
+        .rounded-box {
+          background-color: #ffffff; 
+          border-radius: 10px;
+          padding: 20px; 
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+
+
+
+
+        .relative-container {
+        position: relative;
+        }
+
+        .relative-item {
+        position: absolute;
+        bottom: 5px;
+        right: 1px;
+    }
+
+
+      </style>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/logo-culture-light.png">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/css/flatpickr.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+
+    <!-- 네비게이션!!! 시작-->
+<!-- Header START -->
+<header class="navbar-light header-sticky" style="font-weight: bold;">
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-xl">
+        <div class="container">
+            <!-- Logo START -->
+            <a class="navbar-brand" href="main.html">
+              <img style="height: 100px" class="light-mode-item navbar-brand-item" src="assets/images/logo-culture-light.png" alt="logo">
+                      <img style="height: 100px" class="dark-mode-item navbar-brand-item" src="assets/images/logo-culture.png" alt="logo">
+  
+            </a>
+              <!-- Logo END -->
+  
+              <!-- Responsive navbar toggler -->
+              <button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-animation">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </span>
+          <span class="d-none d-sm-inline-block small">Menu</span>
+              </button>
+  
+              <!-- Responsive category toggler -->
+              <button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse" aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span class="d-none d-sm-inline-block small">Category</span>
+              </button>
+  
+              <!-- Main navbar START -->
+              <div class="navbar-collapse collapse" id="navbarCollapse">
+                  <ul class="navbar-nav navbar-nav-scroll me-auto">
+  
+                      <!-- Nav item 홈  -->
+                      <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="main.html">홈</a>
+            </li>
+  
+                      <!-- Nav item 문화 테마 -->
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
+                          <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+  
+                              <li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
+                              <li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
+                              <li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
+                              <li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
+  
+                          </ul>
+                      </li>
+  
+            <!-- Nav item 음식 투어  -->
+                      <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
+            </li>
+  
+            <!-- Nav item 문화 소식 -->
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
+                          <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+  
+                              <li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
+                              <li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
+                              <li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
+  
+                          </ul>
+                      </li>
+  
+            <!-- Nav item 리뷰(수다톡) -->
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
+                          <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+  
+                              <li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
+                              <li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
+  
+                          </ul>
+                      </li>
+  
+            <!-- Nav item 문화(여행) 지도  -->
+                      <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
+            </li>
+  
+  
+  
+            <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
+            <li class="nav-item" id="login">
+              <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
+            </li>
+  
+                      <!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원 정보</a>
+                          <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+  
+                              <li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
+                              <li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
+                              <li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
+                              <li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
+                              <li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
+  
+                          </ul>
+                      </li>
+  
+                      
+                  </ul>
+              </div>
+              <!-- Main navbar END -->
+  
+                  <!-- Toggler button and stay button -->
+                  <div class="d-flex align-items-center justify-content-end">
+                    <!-- Responsive navbar toggler -->
+                    <button
+                      class="navbar-toggler"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarCollapse"
+                      aria-controls="navbarCollapse"
+                      aria-expanded="false"
+                      aria-label="Toggle navigation"
+                    >
+                      <span class="navbar-toggler-animation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                      <span class="d-none d-sm-inline-block small">Menu</span>
+                    </button>
+  
+               
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- Logo Nav END -->
+      </header>
+      <!-- Header END -->
+    <!-- 네이게이션 끝!!!!-->
+
+    <!-- 배경 -->
+    <div class="rounded-3 p-4 p-sm-5" style="background-image: url(./assets/images/grass.jpg); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 400px; position: relative; overflow: hidden;">
+
+        <!-- 배너 제목 -->
+        <div class="row justify-content-between pt-0 pb-5"> 
+            <div class="col-md-7 col-lg-8 col-xxl-7 pb-5 mb-0 mb-lg-5"> 
+                <h1 class="text-black">Community</h1>
+                
+                <p class="text-black mb-0">여행을 계획 중이신가요? 최고의 목적지로 오세요!</p>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- 배경 끝 -->
+
+    <!-- 검색창 시작-->
+    <div class="row mt-n7">
+        <div class="col-9 mx-auto z-index-1 rounded-box" style="height: 100px;">
+            <!-- <div class="bg-blur bg-white bg-opacity-10 border border-light border-opacity-0 rounded-3 p-4 mt-5"> -->
+                <!-- Form START -->
+                <form class="row g-3 justify-content-center align-items-center">
+                    <div class="col-2">
+                        <!-- Input -->
+                        <div class="form-input-dropdown position-relative">
+                            <input class="form-control form-control-lg me-1 ps-5" type="text" data-bs-toggle="dropdown" placeholder="제목" aria-expanded="false">
+                            <!-- dropdown button -->
+                            <ul class="dropdown-menu input-dropdown shadow rounded-0 rounded-bottom w-50" style="width: 50px;">
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-book"></i>    제목</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i>   작성자</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i>   제목 + 글쓴이</a></li>
+                                
+                            </ul>
+                            <!-- Icon -->
+                            <span class="position-absolute top-50 start-0 translate-middle ps-5"><i class="bi bi-search fs-5"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col-8">
+                        <!-- Choices -->
+                        <div class="form-mix-icon-input form-size-lg">
+                            <input class="form-control" type="text" placeholder="검색해주세요" aria-label="default input example">
+                        </div>
+                    </div>
+
+                    <div class="col-2 d-grid">
+                        <!-- Search -->
+                        <a class="btn btn-lg btn-info mb-0" href="#">검색</a>
+                    </div>
+                </form>
+                <!-- Form END -->
+            <!-- </div> -->
+            
+        </div>
+    </div>
+
+    <!-- 검색창 끝 -->
+
+    <!-- 인기 글 시작-->
+    
+    <section>
+        <div class="container">
+    
+            <!-- Title -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h4 class="mb-0" style="text-align: center;">인기 리뷰</h4>
+                </div>
+            </div>
+    
+            <div class="row g-4">
+                <!-- Card item -->
+                <div class="col-4 col-lg-4 col-xl-4">
+                    <div class="card bg-success bg-opacity-10 h-100 p-4">
+                        <!-- Image -->
+                        <img src="assets/images/client/07.svg" class="w-75" alt="">
+                        <!-- Card body START -->
+                        <div class="card-body mt-2 p-0">
+                            <h3 class="mb-1" style="text-align: center;">독도</h3>
+                            <h5 class="fw-normal" style="text-align: center;">펄럭!</h5>
+    
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                 <a href="#" class="btn btn-lg btn-white btn-round mb-0"><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- Card body END -->
+                    </div>
+                </div>
+    
+                <!-- Card item -->
+                <div class="col-4 col-lg-4 col-xl-4">
+                    <div class="card bg-danger bg-opacity-10 h-100 p-4">
+                        <!-- Image -->
+                        <img src="assets/images/client/08.svg" class="w-75" alt="">
+                        <!-- Card body START -->
+                        <div class="card-body mt-2 p-0">
+                          <h3 class="mb-1" style="text-align: center;">롯데월드</h3>
+                            <h5 class="fw-normal" style="text-align: center;">놀이기구 무서워</h5>
+    
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                 <a href="#" class="btn btn-lg btn-white btn-round mb-0"><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- Card body END -->
+                    </div>
+                </div>
+    
+                <!-- Card item -->
+                <div class="col-4 col-lg-4 col-xl-4">
+                    <div class="card bg-info bg-opacity-10 h-100 p-4">
+                        <!-- Image -->
+                        <img src="assets/images/client/09.svg" class="w-75" alt="">
+                        <!-- Card body START -->
+                        <div class="card-body mt-2 p-0">
+                          <h3 class="mb-1" style="text-align: center;">북한산 정말 좋아!</h3>
+                            <h5 class="fw-normal" style="text-align: center;">여기 정말 좋음</h5>
+    
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                 <a href="#" class="btn btn-lg btn-white btn-round mb-0"><i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- Card body END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- 인기 글 끝-->
+
+    <!-- 게시판 시작-->
+    <section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="mb-5 col-10">
+              
+              <div class="mb-3">
+                  <table class="table table-hover">
+                    <h2 style="text-align: center;">전체 후기 게시판<br></h2>
+                      <thead class="text-white">
+                          <tr class="border-0 text-center">
+                              <th class="center col-2">번호</th>
+                              <th class="col-5">게시글 제목</th>
+                              <th class="col-2">작성자</th>
+                              <th class="col-1">사진</th>
+                              <th class="col-1">조회수</th>
+                              <th class="col-1">작성일</th>
+                          </tr>
+                      </thead>
+                      <tbody class="text-sm">
+                          <tr>
+                              <td class="text-center">10</td>
+                              <td class="">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                      마지막 게시글
+                                  </a>
+                              </td>
+                              <td class="text-center">홍길동</td>
+                              <td class="text-center"></td>
+                              <td class="">10</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">9</td>
+                              <td>
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                     파일에플 맛있지
+                                  </a>
+                              </td>
+                              <td class="text-center">파인애플</td>
+                              <td class="text-center"><i class="bi bi-image"></i></td>
+                              <td class="">10</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">8</td>
+                              <td >
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                      오랜만에 글 남깁니다...
+                                  </a>
+                              </td>
+                              <td class="text-center">세종대왕</td>
+                              <td class="text-center"><i class="bi bi-image"></i></td>
+                              <td class="">10</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">7</td>
+        
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                      여행사 상품 가격 적당한지 봐주세요
+                                  </a>
+                              </td>
+                              <td class="text-center">장수풍뎅이</td>
+                              <td class="text-center"></td>
+                              <td class="">10</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">6</td>
+        
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                  불국사 다녀왔습니다.
+                                  </a>
+                              </td>
+                              <td class="text-center">개똥벌레</td>
+                              <td class="text-center"><i class="bi bi-image"></i></td>
+                              <td class="">5</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">5</td>
+        
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                  제주 한라산에서 한라봉 먹었습니다.
+                                  </a>
+                              </td>
+                              <td class="text-center">레츠고</td>
+                              <td class="text-center"></td>
+                              <td class="">17</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">4</td>
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                  북한산 좋습니다.
+                                  </a>
+                              </td>
+                              <td class="text-center">봉준호</td>
+                              <td class="text-center"></td>
+                              <td class="">7</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">3</td>
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                 여행지 소개합니다.
+                                  </a>
+                              </td>
+                              <td class="text-center">페이커</td>
+                              <td class="text-center"><i class="bi bi-image"></i></td>
+                              <td class="">10</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">2</td>
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                  날이 너무 추워졌어요 
+                                  </a>
+                              </td>
+                              <td class="text-center">손흥민</td>
+                              <td class="text-center"></td>
+                              <td class="">10</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                          <tr>
+                              <td class="text-center">1</td>
+                              <td class="fw-bold">
+                                  <a href="#" class="fw-bold text-black text-decoration-none ">
+                                  겨울엔 너무 추워
+                                  </a>
+                              </td>
+                              <td class="text-center">박재범</td>
+                              <td class="text-center"><i class="bi bi-image"></i></td>
+                              <td class="">12</td>
+                              <td class="">2024.01.09</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <div style="text-align: right;">
+                    <button type="button" class="btn btn-success col-2">글쓰기</button>
+                  </div>
+
+
+                  <div class="row mx-9">
+                    <div class="col-12">
+                        <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+                            <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                                <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
+                                <li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
+                                <li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
+                                <li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                
+
+              </div>
+        </div>
+    </div>
+
+    <!-- 게시판 끝-->
+
+    
+    
+
+
+    
+
+
+  </div>
+
+
+
+
+
+
+
+    
+
+
+
+    <div class="relative-container col-10">
+      <div class="relative-item">
+        <img src="./assets/images/paintColor.png" width="200">
+      </div>
+    </div>
+
+
+  </section>
+
+    
+<!-- =======================
+Footer START -->
+<footer class="bg-dark pt-5">
+  <div class="container">
+      <!-- Row START -->
+      <div class="row g-4">
+          <!-- Widget 1 START -->
+          <div class="col-lg-3">
+              <!-- logo -->
+              <a href="index.html">
+                  <img class="h-40px" src="assets/images/logo-culture-light.png" alt="로고">
+              </a>
+              <p class="my-3 text-body-secondary">
+                  문화커넥터와 함께 떠나는 문화여행
+              </p>
+             
+          </div>
+          <!-- Widget 1 END -->
+
+          <!-- Widget 2 START -->
+          <div class="col-lg-8 ms-auto">
+              <div class="row g-4">
+                  <!-- Link block -->
+                  <div class="col-6 col-md-3">
+                      <h5 class="text-white mb-2 mb-md-4">페이지</h5>
+                      <ul class="nav flex-column text-primary-hover">
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="main.html"
+                              >홈</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cluture-theme1.html"
+                              >문화 테마</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cuisine-tour.html"
+                              >음식 투어</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cluture-news1.html"
+                              >문화 소식</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="review-talk1.html"
+                              >리뷰(수다톡)</a
+                              >
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="cluture-tour-map.html"
+                              >문화(여행) 지도</a
+                              >
+                          </li>
+                      </ul>
+                  </div>
+
+                  <!-- Link block -->
+                  <div class="col-6 col-md-3">
+                      <h5 class="text-white mb-2 mb-md-4">회원정보</h5>
+                      <ul class="nav flex-column text-primary-hover">
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="#">가입하기</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="sign-in.html">로그인</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-body-secondary" href="#"
+                              >내정보</a
+                              >
+                          </li>
+                         
+                      </ul>
+                  </div>
+                  
+
+              
+           
+          </div>
+          <!-- Widget 2 END -->
+      </div>
+      <!-- Row END -->
+
+     
+  </div>
+     <!-- Bottom footer -->
+  <div class="row">
+    <div class="container">
+      <div
+        class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start"
+      >
+        <!-- copyright text -->
+        <div class="text-body-secondary text-primary-hover">
+          저작권 ©2024 멀티캠퍼스 문화커넥터
+       
+        </div>
+     
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
+<!-- Footer END -->
+
+
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+<script src="assets/vendor/choices/js/choices.min.js"></script>
+<script src="assets/vendor/jarallax/jarallax.min.js"></script>
+<script src="assets/vendor/jarallax/jarallax-video.min.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="assets/js/functions.js"></script>
+</body>
+</html>

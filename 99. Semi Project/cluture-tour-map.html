@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>문화(여행) 지도 html입니다.</title>
+
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <meta name="author" content="Webestica.com" />
+    <meta
+      name="description"
+      content="Booking - Multipurpose Online Booking Theme"
+    />
+
+    <!-- Dark mode -->
+    <script>
+      const storedTheme = localStorage.getItem("theme");
+
+      const getPreferredTheme = () => {
+        if (storedTheme) {
+          return storedTheme;
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+
+      const setTheme = function (theme) {
+        if (
+          theme === "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-bs-theme", theme);
+        }
+      };
+
+      setTheme(getPreferredTheme());
+
+      window.addEventListener("DOMContentLoaded", () => {
+        var el = document.querySelector(".theme-icon-active");
+        if (el != "undefined" && el != null) {
+          const showActiveTheme = (theme) => {
+            const activeThemeIcon = document.querySelector(
+              ".theme-icon-active use"
+            );
+            const btnToActive = document.querySelector(
+              `[data-bs-theme-value="${theme}"]`
+            );
+            const svgOfActiveBtn = btnToActive
+              .querySelector(".mode-switch use")
+              .getAttribute("href");
+
+            document
+              .querySelectorAll("[data-bs-theme-value]")
+              .forEach((element) => {
+                element.classList.remove("active");
+              });
+
+            btnToActive.classList.add("active");
+            activeThemeIcon.setAttribute("href", svgOfActiveBtn);
+          };
+
+          window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", () => {
+              if (storedTheme !== "light" || storedTheme !== "dark") {
+                setTheme(getPreferredTheme());
+              }
+            });
+
+          showActiveTheme(getPreferredTheme());
+
+          document
+            .querySelectorAll("[data-bs-theme-value]")
+            .forEach((toggle) => {
+              toggle.addEventListener("click", () => {
+                const theme = toggle.getAttribute("data-bs-theme-value");
+                localStorage.setItem("theme", theme);
+                setTheme(theme);
+                showActiveTheme(theme);
+              });
+            });
+        }
+      });
+    </script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
+    />
+
+    <!-- Plugins CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/font-awesome/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/tiny-slider/tiny-slider.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/glightbox/css/glightbox.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/flatpickr/css/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/choices/css/choices.min.css"
+    />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  </head>
+
+  <body>
+ 
+<!-- Header START -->
+<header class="navbar-light header-sticky" style="font-weight: bold;">
+  <!-- Logo Nav START -->
+  <nav class="navbar navbar-expand-xl">
+      <div class="container">
+          <!-- Logo START -->
+          <a class="navbar-brand" href="main.html">
+            <img style="height: 100px" class="light-mode-item navbar-brand-item" src="assets/images/logo-culture-light.png" alt="logo">
+		    		<img style="height: 100px" class="dark-mode-item navbar-brand-item" src="assets/images/logo-culture.png" alt="logo">
+
+          </a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+        <span class="d-none d-sm-inline-block small">Menu</span>
+			</button>
+
+			<!-- Responsive category toggler -->
+			<button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse" aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span class="d-none d-sm-inline-block small">Category</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+
+					<!-- Nav item 홈  -->
+					<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="main.html">홈</a>
+          </li>
+
+					<!-- Nav item 문화 테마 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
+							<li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
+							<li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
+							<li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
+
+						</ul>
+					</li>
+
+          <!-- Nav item 음식 투어  -->
+					<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
+          </li>
+
+          <!-- Nav item 문화 소식 -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
+							<li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
+
+						</ul>
+					</li>
+
+          <!-- Nav item 리뷰(수다톡) -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
+
+						</ul>
+					</li>
+
+          <!-- Nav item 문화(여행) 지도  -->
+					<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
+          </li>
+
+
+
+          <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
+          <li class="nav-item" id="login">
+            <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
+          </li>
+
+					<!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원 정보</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+							<li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
+
+						</ul>
+					</li>
+
+					
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+                <!-- Toggler button and stay button -->
+                <div class="d-flex align-items-center justify-content-end">
+                  <!-- Responsive navbar toggler -->
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-animation">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <span class="d-none d-sm-inline-block small">Menu</span>
+                  </button>
+
+             
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Logo Nav END -->
+    </header>
+    <!-- Header END -->
+
+
+
+
+
+
+
+
+    <!-- 지도 관련 시작 -->
+
+    <!-- http://127.0.0.1:5500/99.%20Semi%20Project/cluture-tour-map.html -->
+    <!-- http://localhost:5500
+    http://127.0.0.1:5500 이 주소 이후로 들어가져야 보입니다. -->
+    <!-- javascript API -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b2d1bc78bbd29da37fd712f84243426&libraries=services,clusterer"></script>
+
+    <style>
+      #mapwrap{position:relative;overflow:hidden;}
+      .category, .category *{margin:0;padding:0;color:#000;}   
+      .category {position:absolute;overflow:hidden;top:10px;left:10px;width:150px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+      .category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
+      .category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
+      .category .ico_comm {display:block;margin:0 auto 2px;width:22px;height:26px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png') no-repeat;} 
+      .category .ico_coffee {background-position:-10px 0;}  
+      .category .ico_store {background-position:-10px -36px;}   
+      .category .ico_carpark {background-position:-10px -72px;} 
+      </style>
+
+    <!-- 지도를 담을 영역 -->
+    <div id="mapwrap"> 
+      <!-- 지도가 표시될 div -->
+      <div id="map" style="width:95%;height:700px;"></div>
+      <!-- 지도 위에 표시될 마커 카테고리 -->
+      <div class="category">
+          <ul>
+              <li id="coffeeMenu" onclick="changeMarker('coffee')">
+                  <span class="ico_comm ico_coffee"></span>
+                  커피숍
+              </li>
+              <li id="storeMenu" onclick="changeMarker('store')">
+                  <span class="ico_comm ico_store"></span>
+                  편의점
+              </li>
+              <li id="carparkMenu" onclick="changeMarker('carpark')">
+                  <span class="ico_comm ico_carpark"></span>
+                  주차장
+              </li>
+          </ul>
+      </div>
+    </div>
+
+
+      <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.498004414546934, 127.02770621963765), // 지도의 중심좌표 
+                level: 3 // 지도의 확대 레벨 
+            }; 
+        
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+        var zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+        // 지도 마커 관련 시작
+        // 커피숍 마커가 표시될 좌표 배열입니다
+var coffeePositions = [ 
+    new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
+    new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
+    new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
+    new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
+    new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
+    new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
+    new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
+];
+
+// 편의점 마커가 표시될 좌표 배열입니다
+var storePositions = [
+    new kakao.maps.LatLng(37.497535461505684, 127.02948149502778),
+    new kakao.maps.LatLng(37.49671536281186, 127.03020491448352),
+    new kakao.maps.LatLng(37.496201943633714, 127.02959405469642),
+    new kakao.maps.LatLng(37.49640072567703, 127.02726459882308),
+    new kakao.maps.LatLng(37.49640098874988, 127.02609983175294),
+    new kakao.maps.LatLng(37.49932849491523, 127.02935780247945),
+    new kakao.maps.LatLng(37.49996818951873, 127.02943721562295)
+];
+
+// 주차장 마커가 표시될 좌표 배열입니다
+var carparkPositions = [
+    new kakao.maps.LatLng(37.49966168796031, 127.03007039430118),
+    new kakao.maps.LatLng(37.499463762912974, 127.0288828824399),
+    new kakao.maps.LatLng(37.49896834100913, 127.02833986892401),
+    new kakao.maps.LatLng(37.49893267508434, 127.02673400572665),
+    new kakao.maps.LatLng(37.49872543597439, 127.02676785815386),
+    new kakao.maps.LatLng(37.49813096097184, 127.02591949495914),
+    new kakao.maps.LatLng(37.497680616783086, 127.02518427952202)                       
+];    
+
+var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+    coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+    storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+    carparkMarkers = []; // 주차장 마커 객체를 가지고 있을 배열입니다
+
+    
+createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+createCarparkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배열에 추가합니다
+
+changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+
+
+// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
+function createMarkerImage(src, size, options) {
+    var markerImage = new kakao.maps.MarkerImage(src, size, options);
+    return markerImage;            
+}
+
+// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+function createMarker(position, image) {
+    var marker = new kakao.maps.Marker({
+        position: position,
+        image: image
+    });
+    
+    return marker;  
+}   
+   
+// 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
+function createCoffeeMarkers() {
+    
+    for (var i = 0; i < coffeePositions.length; i++) {  
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+            imageOptions = {  
+                spriteOrigin: new kakao.maps.Point(10, 0),    
+                spriteSize: new kakao.maps.Size(36, 98)  
+            };     
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(coffeePositions[i], markerImage);  
+        
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+        coffeeMarkers.push(marker);
+    }     
+}
+
+// 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setCoffeeMarkers(map) {        
+    for (var i = 0; i < coffeeMarkers.length; i++) {  
+        coffeeMarkers[i].setMap(map);
+    }        
+}
+
+// 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
+function createStoreMarkers() {
+    for (var i = 0; i < storePositions.length; i++) {
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+            imageOptions = {   
+                spriteOrigin: new kakao.maps.Point(10, 36),    
+                spriteSize: new kakao.maps.Size(36, 98)  
+            };       
+     
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(storePositions[i], markerImage);  
+
+        // 생성된 마커를 편의점 마커 배열에 추가합니다
+        storeMarkers.push(marker);    
+    }        
+}
+
+// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setStoreMarkers(map) {        
+    for (var i = 0; i < storeMarkers.length; i++) {  
+        storeMarkers[i].setMap(map);
+    }        
+}
+
+// 주차장 마커를 생성하고 주차장 마커 배열에 추가하는 함수입니다
+function createCarparkMarkers() {
+    for (var i = 0; i < carparkPositions.length; i++) {
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+            imageOptions = {   
+                spriteOrigin: new kakao.maps.Point(10, 72),    
+                spriteSize: new kakao.maps.Size(36, 98)  
+            };       
+     
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(carparkPositions[i], markerImage);  
+
+        // 생성된 마커를 주차장 마커 배열에 추가합니다
+        carparkMarkers.push(marker);        
+    }                
+}
+
+// 주차장 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setCarparkMarkers(map) {        
+    for (var i = 0; i < carparkMarkers.length; i++) {  
+        carparkMarkers[i].setMap(map);
+    }        
+}
+
+// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
+function changeMarker(type){
+    
+    var coffeeMenu = document.getElementById('coffeeMenu');
+    var storeMenu = document.getElementById('storeMenu');
+    var carparkMenu = document.getElementById('carparkMenu');
+    
+    // 커피숍 카테고리가 클릭됐을 때
+    if (type === 'coffee') {
+    
+        // 커피숍 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = 'menu_selected';
+        
+        // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
+        storeMenu.className = '';
+        carparkMenu.className = '';
+        
+        // 커피숍 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(map);
+        setStoreMarkers(null);
+        setCarparkMarkers(null);
+        
+    } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+    
+        // 편의점 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = '';
+        storeMenu.className = 'menu_selected';
+        carparkMenu.className = '';
+        
+        // 편의점 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(null);
+        setStoreMarkers(map);
+        setCarparkMarkers(null);
+        
+    } else if (type === 'carpark') { // 주차장 카테고리가 클릭됐을 때
+     
+        // 주차장 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = '';
+        storeMenu.className = '';
+        carparkMenu.className = 'menu_selected';
+        
+        // 주차장 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(null);
+        setStoreMarkers(null);
+        setCarparkMarkers(map);  
+    }    
+} 
+        // 지도 마커 관련 끝
+
+
+      </script>
+
+<!-- 지도 관련 끝 -->
+
+
+
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark pt-5">
+	<div class="container">
+		<!-- Row START -->
+		<div class="row g-4">
+			<!-- Widget 1 START -->
+			<div class="col-lg-3">
+				<!-- logo -->
+				<a href="index.html">
+					<img class="h-40px" src="assets/images/logo-culture-light.png" alt="로고">
+				</a>
+				<p class="my-3 text-body-secondary">
+					문화커넥터와 함께 떠나는 문화여행
+				</p>
+			   
+			</div>
+			<!-- Widget 1 END -->
+  
+			<!-- Widget 2 START -->
+			<div class="col-lg-8 ms-auto">
+				<div class="row g-4">
+					<!-- Link block -->
+					<div class="col-6 col-md-3">
+						<h5 class="text-white mb-2 mb-md-4">페이지</h5>
+						<ul class="nav flex-column text-primary-hover">
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="main.html"
+								>홈</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="cluture-theme1.html"
+								>문화 테마</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="cuisine-tour.html"
+								>음식 투어</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="cluture-news1.html"
+								>문화 소식</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="review-talk1.html"
+								>리뷰(수다톡)</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="cluture-tour-map.html"
+								>문화(여행) 지도</a
+								>
+							</li>
+						</ul>
+					</div>
+  
+					<!-- Link block -->
+					<div class="col-6 col-md-3">
+						<h5 class="text-white mb-2 mb-md-4">회원정보</h5>
+						<ul class="nav flex-column text-primary-hover">
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="#">가입하기</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="sign-in.html">로그인</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-body-secondary" href="#"
+								>내정보</a
+								>
+							</li>
+						   
+						</ul>
+					</div>
+					
+  
+				
+			 
+			</div>
+			<!-- Widget 2 END -->
+		</div>
+		<!-- Row END -->
+  
+	   
+	</div>
+	   <!-- Bottom footer -->
+	<div class="row">
+	  <div class="container">
+		<div
+		  class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start"
+		>
+		  <!-- copyright text -->
+		  <div class="text-body-secondary text-primary-hover">
+			저작권 ©2024 멀티캠퍼스 문화커넥터
+		 
+		  </div>
+	   
+		</div>
+	  </div>
+	</div>
+  </div>
+  </footer>
+  <!-- Footer END -->
+  
+  
+  
+  <!-- Back to top -->
+  <div class="back-top"></div>
+  
+  <!-- Bootstrap JS -->
+  <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Vendors -->
+  <script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+  <script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.js"></script>
+  <script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+  <script src="assets/vendor/choices/js/choices.min.js"></script>
+  <script src="assets/vendor/jarallax/jarallax.min.js"></script>
+  <script src="assets/vendor/jarallax/jarallax-video.min.js"></script>
+  
+  <!-- ThemeFunctions -->
+  <script src="assets/js/functions.js"></script>
+  </body>
+  </html>
