@@ -231,20 +231,20 @@
 
 <!--서치바-->
 <div class="container">
+  <form action="https://www.google.com/search" method="GET">
+		<div class="mx-auto search_ex mt-5 mb-3"
+			style="font-family: 'SUIT-Medium'">
+			<h4>
+				<b>떠나고 싶은 지역을 검색하세요.</b>
+			</h4>
+		</div>
+	
+		<div class="mx-auto mt-5 search-bar input-group mb-3"
+			style="font-family: 'SUIT-Medium'" id="search">
+			<input onkeyup="filter()" id="serchinput" type="text" name="query" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등"> 
+		</div>
+	</form>
 
-  <div class="row height d-flex justify-content-center align-items-center">
-
-    <div class="col-md-8">
-
-      <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="키워드를 입력하세요">
-        <button class="btn btn-primary">검색</button>
-      </div>
-      
-    </div>
-    
-  </div>
 </div>
 <!--서치바 끝-->
 
