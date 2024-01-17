@@ -48,6 +48,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		log.info("{} 의 말이 잘들리십니까 2","고재목");
 		
 		log.info("home 요청");
 		return "home";

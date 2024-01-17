@@ -10,6 +10,7 @@
 
 <section id="content">
 	<h3>Spring 기반의 MVC2 패턴을 활용한 Web Application 입니다.</h3>
+	<h3>고재목의 말이 잘들리십니까</h3>
 </section>
 
 
