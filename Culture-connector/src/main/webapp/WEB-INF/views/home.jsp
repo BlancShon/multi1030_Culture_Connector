@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-nC2f8Zk5bN1GLtDKnSEajhAuJHBOhEvw3FkYx3ysOi5z1WxkK+AABf6T8r7z5Ua3FjNRl9Q+Or4eGbLSNc0bPg==" crossorigin="anonymous" />
 
     <title>메인 사이트</title>
 
@@ -21,9 +23,27 @@
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
 />	
-    <!-- 사용자 정의 CSS -->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/font/bootstrap-icons.css" />
 
+<!-- Tiny Slider -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.3/dist/tiny-slider.css" />
+
+<!-- GLightbox -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox@1.0.0/dist/css/glightbox.css" />
+
+<!-- Flatpickr -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css" />
+
+<!-- Choices -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/choices@10.3.0/public/assets/styles/choices.min.css" />
+
+    <!-- 사용자 정의 CSS -->
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
+ 
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-rbs5vr9i87q4ys1q2ny46u1p7e3c9h5o1u8e4onq18ebL5uFi06e7Jk7b57lPtw" crossorigin="anonymous" />
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
@@ -524,60 +544,62 @@ Stories END-->
         <p>
           현재 위치를 기반으로 맛집, 카페 및 다양한 정보를 제공해 드려요
         </p>
-        <!-- Button -->
-        <a href="cluture-tour-map.html" class="btn btn-dark mb-4">더보기</a>
-        <!-- Services -->
-        <div class="row g-sm-4">
-          <div class="col-sm-6">
-            <ul class="list-group list-group-borderless mt-2 mb-0">
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-store fa-fw text-primary me-2"></i>편의점
-                </h5>
-              </li>
+      <!-- Button -->
+<a href="cluture-tour-map.html" class="btn btn-dark mb-4">더보기</a>
 
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-person-shelter fa-fw text-primary me-2"></i>카페
-                </h5>
-              </li>
+<!-- Services -->
+<div class="row g-sm-4">
+  <div class="col-sm-6">
+    <ul class="list-group list-group-borderless mt-2 mb-0">
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-store fa-fw text-primary me-2"></i>편의점
+        </h5>
+      </li>
 
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-utensils fa-fw text-primary me-2"></i>식당
-                </h5>
-              </li>
-            </ul>
-          </div>
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-person-shelter fa-fw text-primary me-2"></i>카페
+        </h5>
+      </li>
 
-          <div class="col-sm-6">
-            <ul class="list-group list-group-borderless">
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-bolt fa-fw text-primary me-2"></i>주유소
-                </h5>
-              </li>
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-utensils fa-fw text-primary me-2"></i>식당
+        </h5>
+      </li>
+    </ul>
+  </div>
 
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-dumbbell fa-fw text-primary me-2"></i>체육관
-                </h5>
-              </li>
+  <div class="col-sm-6">
+    <ul class="list-group list-group-borderless">
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-bolt fa-fw text-primary me-2"></i>주유소
+        </h5>
+      </li>
 
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-parking fa-fw text-primary me-2"></i>주차장
-                </h5>
-              </li>
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-dumbbell fa-fw text-primary me-2"></i>체육관
+        </h5>
+      </li>
 
-              <li class="list-group-item">
-                <h5 class="fw-normal mb-0">
-                  <i class="fa-solid fa-ellipsis fa-fw text-primary me-2"></i>다른 서비스 등
-                </h5>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-parking fa-fw text-primary me-2"></i>주차장
+        </h5>
+      </li>
+
+      <li class="list-group-item">
+        <h5 class="fw-normal mb-0">
+          <i class="fas fa-ellipsis fa-fw text-primary me-2"></i>다른 서비스 등
+        </h5>
+      </li>
+    </ul>
+  </div>
+</div>
+      
       </div>
 <!-- MAP SVG 부분-->
 <div class="col-lg-5">
@@ -651,11 +673,214 @@ Stories END-->
 Services END -->
 
 
+<!-- =======================
+Special offer START -->
+<section>
+  <div class="container">
+    <!-- Title -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h5 class="mb-0">문화 커넥터가 준비한 2024년 쿠폰<span style="color: rgb(240, 130, 80);"> (회원 혜택)</span> </h4>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Card item -->
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="card bg-success bg-opacity-10 h-100 p-4">
+          <!-- Image -->
+          <img src="assets/images/client/07.svg" class="w-75" alt="" />
+          <!-- Card body START -->
+          <div class="card-body mt-4 p-0">
+            <span class="mb-1">2024/01~</span>
+            <h4 class="mb-1">5000원 쿠폰</h4>
+            <h6 class="fw-normal">한국 관광공사 면세점</h6>
+
+            <div
+              class="d-flex justify-content-between align-items-center mt-4"
+            >
+              <div
+                class="bg-primary bg-opacity-10 border border-2 border-primary border-dashed rounded-2 px-3 py-2"
+              >
+                <h5 class="fw-normal user-select-all mb-0">LOG125F</h5>
+              </div>
+              <a href="cluture-news2.html" class="btn btn-lg btn-white btn-round mb-0"
+                ><i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Card body END -->
+        </div>
+      </div>
+
+      <!-- Card item -->
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="card bg-danger bg-opacity-10 h-100 p-4">
+          <!-- Image -->
+          <img src="assets/images/client/08.svg" class="w-75" alt="" />
+          <!-- Card body START -->
+          <div class="card-body mt-4 p-0">
+            <span class="mb-1">2023/11/22~</span>
+            <h4 class="mb-1">10% 할인</h4>
+            <h6 class="fw-normal">신라호텔</h6>
+
+            <div
+              class="d-flex justify-content-between align-items-center mt-4"
+            >
+              <div
+                class="bg-primary bg-opacity-10 border border-2 border-primary border-dashed rounded-2 px-3 py-2"
+              >
+                <h5 class="fw-normal user-select-all mb-0">LOG125F</h5>
+              </div>
+              <a href="cluture-news2.html" class="btn btn-lg btn-white btn-round mb-0"
+                ><i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Card body END -->
+        </div>
+      </div>
+
+      <!-- Card item -->
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        <div class="card bg-info bg-opacity-10 h-100 p-4">
+          <!-- Image -->
+          <img src="assets/images/client/09.svg" class="w-75" alt="" />
+          <!-- Card body START -->
+          <div class="card-body mt-4 p-0">
+            <span class="mb-1">2023/11/01~</span>
+            <h4 class="mb-1">KTX 티켓 할인권</h4>
+            <h6 class="fw-normal">KTX</h6>
+
+            <div
+              class="d-flex justify-content-between align-items-center mt-4"
+            >
+              <div
+                class="bg-primary bg-opacity-10 border border-2 border-primary border-dashed rounded-2 px-3 py-2"
+              >
+                <h5 class="fw-normal user-select-all mb-0">LOG125F</h5>
+              </div>
+              <a href="cluture-news2.html" class="btn btn-lg btn-white btn-round mb-0"
+                ><i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Card body END -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 쿠폰 section끝 -->
+<!-- =======================
+Blog START-->
+<section class="pt-md-0" style="background-color: #fff3f8; padding: 0; margin-bottom: 0;">
+  <div class="container">
+    <!-- 타이틀 시작 -->
+    <div class="row mb-3 mb-sm-4">
+      <div class="col-12 text-center">
+        <h4 class="mb-4" style="margin-top: 20px;"><a href="review-talk1.html">여행후기 ></a></h4>
+      </div>
+    </div>
+
+    <div class="row g-4 g-xl-5 justify-content-between">
+      <div class="col-md-6">
+        <!-- Card START -->
+        <div class="card bg-transparent">
+          <!-- Image -->
+          <img src="${pageContext.request.contextPath}/resources/images/category/main/18.jpg" class="card-img" alt="" />
+
+          <!-- Card body -->
+          <div class="card-body px-3">
+            <h4>
+              <a href="review-talk1.html" class="stretched-link"
+                >'서울에서 즐기는 아이스 스케이트장'</a
+              >
+            </h4><br>
+            <p>작성자 'kimje11'님</p>
+          </div>
+        </div>
+        <!-- Card END -->
+      </div>
+
+      <div class="col-md-6">
+        <!-- Card START -->
+        <div class="card bg-transparent mb-4 mb-md-5">
+          <div class="row align-items-center">
+            <!-- Images -->
+            <div class="col-sm-4">
+              <img
+                src="${pageContext.request.contextPath}/resources/images/category/main/20.jpg"
+                class="card-img"
+                alt=""
+              />
+            </div>
+            <div class="col-sm-8">
+              <!-- card body -->
+              <div class="card-body p-sm-0">
+                <h5 class="card-title">
+                  <a href="review-talk1.html" class="stretched-link"
+                    >'이태원에서 즐기는 재즈바'</a
+                  >
+                </h5><br>
+                <p>작성자 'itaewon20'님</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card END -->
+
+        <!-- Card START -->
+        <div class="card bg-transparent mb-4 mb-md-5">
+          <div class="row align-items-center">
+            <!-- Images -->
+            <div class="col-sm-4">
+              <img
+                src="${pageContext.request.contextPath}/resources/images/category/main/22.jpg"
+                class="card-img"
+                alt=""
+              />
+            </div>
+            <div class="col-sm-8">
+              <!-- card body -->
+              <div class="card-body p-sm-0">
+                <h5 class="card-title">
+                  <a href="review-talk1.html" class="stretched-link"
+                    >'가을에 떠난 경복궁 여행'</a
+                  >
+                </h5><br>
+                <p>작성자 'seoulTour'님</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card END -->
+
+
+</section>
+
+</main>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+	<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-rbs5vr9i87q4ys1q2ny46u1p7e3c9h5o1u8e4onq18ebL5uFi06e7Jk7b57lPtw" crossorigin="anonymous"></script>
+
+<!-- Vendors -->
+<script src="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.3/dist/tiny-slider.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/purecounterjs@1.1.1/dist/purecounter_vanilla.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox@1.0.0/dist/js/glightbox.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/choices@10.3.0/public/assets/scripts/choices.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jarallax@1.11.0/dist/jarallax.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jarallax@1.11.0/dist/jarallax-video.min.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="${pageContext.request.contextPath}/resources/js/functions.js"></script>
+	
 </body>
 </html>
