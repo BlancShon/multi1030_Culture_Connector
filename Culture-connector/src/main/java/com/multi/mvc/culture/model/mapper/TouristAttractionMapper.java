@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.multi.mvc.culture.model.vo.TouristAttraction;
 
-//@Mapper    에러 제거후 여기 주석 푸셔야합니다!!!!
+@Mapper   
 public interface TouristAttractionMapper {
 
     void insertTouristAttractions(List<TouristAttraction> list);
