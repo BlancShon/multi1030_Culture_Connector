@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- Dao를 Mapper Interface로 대체 할 예정, namespace=Class의 풀네임 선언 필요 -->
+<mapper namespace="com.multi.mvc.culture.model.mapper.TouristAttractionMapper">
+	<resultMap type="TouristAttraction" id="TouristAttractionResultMap">
+		<result property="contentid" column="CONTENTID"/> 
+		<result property="contenttypeid" column="CONTENTTYPEID"/> 
+		<result property="homepage" column="HOMEPAGE"/> 
+		<result property="tel" column="TEL"/> 
+		<result property="title" column="TITLE"/>
+		<result property="firstimage" column="FIRSTIMAGE"/> 
+		<result property="firstimage2" column="FIRSTIMAGE2"/> 
+		<result property="areacode" column="AREACODE"/> 
+		<result property="sigungucode" column="SIGUNGUCODE"/> 
+		<result property="cat1" column="CAT1"/> 
+		<result property="cat2" column="CAT2"/> 
+		<result property="cat3" column="CAT3"/> 
+		<result property="addr1" column="ADDR1"/> 
+		<result property="addr2" column="ADDR2"/> 
+		<result property="zipcode" column="ZIPCODE"/> 
+		<result property="mapx" column="MAPX"/> 
+		<result property="mapy" column="MAPY"/> 
+		<result property="overview" column="OVERVIEW"/> 
+		<result property="mlevel" column="MLEVEL"/> 
+		<result property= "accomcount" column="ACCOMCOUNT"/> 
+		<result property="chkcreditcardFood" column="CHKCREDITCARDFOOD"/> 
+		<result property="chkpet" column="CHKPET"/> 
+		<result property="expagerange" column="EXPAGERANGE"/> 
+		<result property="expguide" column="EXPGUIDE"/> 
+		<result property="heritage1" column="HERITAGE1"/> 
+		<result property="heritage2" column="HERITAGE2"/> 
+		<result property="heritage3" column="HERITAGE3"/> 
+		<result property="infocenterculture" column="INFOCENTERCULTURE"/> 
+		<result property="opendate" column="OPENDATE"/> 
+		<result property="parking" column="PARKING"/> 
+		<result property="restdate" column="RESTDATE"/> 
+		<result property="useseason" column="USESEASON"/> 
+		<result property="usetime" column="USETIME"/> 
+	</resultMap>
+	
+	<select id="selectTouristAttractionCount" resultType="int">
+		SELECT * FROM TOURIST_ATTRACTION
+	</select>
+	
+	<insert id="insertTouristAttractions" parameterType="TouristAttraction">
+		INSERT INTO TOURIST_ATTRACTION
+		(CONTENTID, CONTENTTYPEID, HOMEPAGE, TEL, TITLE, FIRSTIMAGE, FIRSTIMAGE2, 
+		 AREACODE, SIGUNGUCODE, CAT1, CAT2, CAT3, ADDR1, ADDR2, ZIPCODE, MAPX, MAPY, 
+		 OVERVIEW, MLEVEL, ACCOMCOUNT, CHKBABYCARRIAGE, CHKCREDITCARD, CHKPET, EXPAGERANGE,
+		 EXPGUIDE, HERITAGE1, HERITAGE2, HERITAGE3, INFOCENTERCULTURE, OPENDATE, PARKING, 
+		 RESTDATE, USESEASON, USETIME
+		)
+		VALUES
+		<foreach collection="list" index="index" item="item" separator=",">
+			(#{item.contentid}, #{item.contenttypeid}, #{item.homepage}, #{item.tel}, #{item.title},
+			 #{item.firstimage}, #{item.firstimage2}, #{item.areacode}, #{item.sigungucode}, #{item.cat1},
+			 #{item.cat2}, #{item.cat3}, #{item.addr1}, #{item.addr2}, #{item.zipcode},
+			 #{item.mapx}, #{item.mapy}, #{item.overview}, #{item.mlevel}, #{item.accomcount},
+			 #{item.chkbabycarriage}, #{item.chkcreditcard}, #{item.chkpet}, #{item.expagerange},
+			 #{item.expguide}, #{item.heritage1}, #{item.heritage2}, #{item.heritage3}, #{item.infocenterculture},
+			 #{item.opendate}, #{item.parking}, #{item.restdate}, #{item.useseason}, #{item.usetime}
+			)
+		</foreach>
+	</insert>
+</mapper>
