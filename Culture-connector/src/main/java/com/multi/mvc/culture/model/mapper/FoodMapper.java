@@ -9,7 +9,7 @@ import com.multi.mvc.culture.model.vo.Food;
 @Mapper
 public interface FoodMapper {
 	
-	void insertFood(List<Food> list);
+	void insertFood(List<Food> list);	
 	
 	int selectFoodCount();
 
