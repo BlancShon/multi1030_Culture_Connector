@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.multi.mvc.api.OpenApiManagerForXml_TouristAttraction;
 import com.multi.mvc.culture.model.mapper.TouristAttractionMapper;
 
-//@Service    에러 제거후 여기 주석 푸셔야합니다!!!!
+@Service    
 public class TouristAttractionService {
 
     @Autowired
