@@ -44,7 +44,7 @@ public class FestivalController {
 		
 		System.out.println(list.getClass());
 		System.out.println(list);
-		return "festival/list";
+		return "culture/festivalList";
 	}
 	
 }

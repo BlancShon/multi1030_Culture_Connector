@@ -128,7 +128,7 @@ public class OpenApiManagerForXml_TouristAttraction {
                                 restdate, useseason, usetime
                         );                      
 
-//                        System.out.println(touristAttraction);
+                        System.out.println(touristAttraction);
                         list.add(touristAttraction);
                     } catch (Exception e) {
                         System.out.println("데이터가 잘못되었습니다!");

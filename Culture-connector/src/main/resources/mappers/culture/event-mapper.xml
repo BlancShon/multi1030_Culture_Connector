@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- Dao를 Mapper Interface로 대체 할 예정, namespace=Class의 풀네임 선언 필요 -->
+<mapper namespace="com.multi.mvc.culture.model.mapper.EventMapper">
+
+	<resultMap type="Event" id="eventResultMap">
+
+		<result property="eno" column="ENO"/>
+		<result property="addr1" column="ADDR1"/>
+		<result property="addr2" column="ADDR2"/>
+		<result property="areacode" column="AREACODE"/>
+		<result property="booktour" column="BOOKTOUR"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat3" column="CAT3"/>
+		<result property="contentid" column="CONTENTID"/>
+		<result property="contenttypeid" column="CONTENTTYPEID"/>
+		<result property="createdtime" column="CREATEDTIME"/>
+		<result property="firstimage" column="FIRSTIMAGE"/>
+		<result property="firstimage2" column="FIRSTIMAGE2"/>
+		<result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+		<result property="mapx" column="MAPX"/>
+		<result property="mapy" column="MAPY"/>
+		<result property="mlevel" column="MLEVEL"/>
+		<result property="modifiedtime" column="MODIFIEDTIME"/>
+		<result property="sigungucode" column="SIGUNGUCODE"/>
+		<result property="tel" column="TEL"/>
+		<result property="title" column="TITLE"/>
+		<result property="zipcode" column="ZIPCODE"/>
+
+	</resultMap>
+
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM EVENT;
+	</select>
+
+
+	<delete id="deleteTableEvent">
+		<!-- DELETE FROM FESTIVAL; -->
+		DROP TABLE IF EXISTS EVENT;
+	</delete>
+
+	<insert id="createTableEvent">
+
+		CREATE TABLE IF NOT EXISTS EVENT (
+			ENO INT AUTO_INCREMENT,
+			ADDR1 VARCHAR(100),
+			ADDR2 VARCHAR(100),
+			AREACODE INT,
+			BOOKTOUR INT,
+			CAT1 VARCHAR(100),
+			CAT2 VARCHAR(100),
+			CAT3 VARCHAR(100),
+			CONTENTID INT,
+			CONTENTTYPEID INT,
+			CREATEDTIME DATE,
+			FIRSTIMAGE VARCHAR(100),
+			FIRSTIMAGE2 VARCHAR(100),
+			CPYRHTDIVCD VARCHAR(100),
+			MAPX VARCHAR(100),
+			MAPY VARCHAR(100),
+			MLEVEL INT,
+			MODIFIEDTIME DATE,
+			SIGUNGUCODE INT,
+			TEL VARCHAR(100),
+			TITLE VARCHAR(100),
+			ZIPCODE VARCHAR(100),
+	
+			PRIMARY KEY (ENO)
+		);
+
+	</insert>
+
+
+
+	<insert id="initEvent" parameterType="java.util.List">
+	
+	
+		INSERT INTO EVENT(
+			ENO, ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
+			CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
+			FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
+			SIGUNGUCODE, TEL, TITLE, ZIPCODE
+		) VALUES
+		<foreach collection="list" index="index" item="item" separator=",">
+			(
+				0, #{item.addr1}, #{item.addr2}, #{item.areacode}, #{item.booktour},
+				#{item.cat1}, #{item.cat2},
+				#{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime},
+				#{item.firstimage},
+				#{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx}, #{item.mapy}, #{item.mlevel},
+				#{item.modifiedtime}, #{item.sigungucode}, #{item.tel},
+				#{item.title}, #{item.zipcode}
+			)
+		</foreach>
+	</insert>
+
+
+
+
+</mapper>
