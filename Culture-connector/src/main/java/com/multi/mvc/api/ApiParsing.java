@@ -12,8 +12,6 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.multi.mvc.event.model.vo.Event;
-import com.multi.mvc.festival.model.vo.Festival;
 
 import lombok.extern.slf4j.Slf4j;
 
