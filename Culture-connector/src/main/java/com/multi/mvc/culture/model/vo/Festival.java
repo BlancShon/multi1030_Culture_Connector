@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Food {
+public class Festival {
 	
 	private int contentid;
 	private int contenttyped;
@@ -31,21 +31,21 @@ public class Food {
 	private String overview;
 	private String mlevel;
 	
-	private String chkcreditcardfood;
-	private String discountinfofood;
-	private String firstmenu;
-	private String infocenterfood;
-	private String kidsfacility;
-	private String opendatefood;
-	private String opentimefood;
-	private String packing;
-	private String parkingfood;
-	private String reservationfood;
-	private String restdatefood;
-	private String scalefood;
-	private String seat;
-	private String smoking;
-	private String treatmenu;
-	private String lcnsno;
+	private String bookingplace;
+	private String discountinforfestival;
+	private Date eventenddate;
+	private String eventhomepage;
+	private String eventplace;
+	private Date eventstartdate;
+	private String festivalgrade;
+	private String playtime;
+	private String program;
+	private String spendtitmefestival;
+	private String sponsor1;
+	private String sponsor1tel;
+	private String sponsor2;
+	private String sponsor2tel;
+	private String subevent;
+	private int usetimefestival;
 
 }
