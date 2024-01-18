@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.multi.mvc.festival.model.mapper.FestivalMapper">
+	<resultMap type="Festival" id="festivalResultMap">
+	
+		<result property="fno" column="FNO"/>
+		<result property="addr1" column="ADDR1"/>
+		<result property="addr2" column="ADDR2"/>
+		<result property="booktour" column="BOOKTOUR"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat3" column="CAT3"/>
+		<result property="contentid" column="CONTENTID"/>
+		<result property="contenttypeid" column="CONTENTTYPEID"/>
+		<result property="createdtime" column="CREATEDTIME"/>
+		<result property="eventstartdate" column="EVENTSTARTDATE"/>
+		<result property="eventenddate" column="EVENTENDDATE"/>
+		<result property="firstimage" column="FIRSTIMAGE"/>
+		<result property="firstimage2" column="FIRSTIMAGE2"/>
+		<result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+		<result property="mapx" column="MAPX"/>
+		<result property="mapy" column="MAPY"/>
+		<result property="mlevel" column="MLEVEL"/>
+		<result property="modifiedtime" column="MODIFIEDTIME"/>
+		<result property="areacode" column="AREACODE"/>
+		<result property="sigungucode" column="SIGUNGUCODE"/>
+		<result property="tel" column="TEL"/>
+		<result property="title" column="TITLE"/>
+		
+	</resultMap>
+	
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM FESTIVAL;
+	</select>
+	
+	
+	<delete id="initDeleteFestival">
+		<!--  DELETE FROM FESTIVAL; -->
+		 DROP TABLE IF EXISTS FESTIVAL;
+	</delete>
+	
+	<insert id="createTableFestival">
+		CREATE TABLE FESTIVAL(
+		    FNO INT AUTO_INCREMENT,
+		    ADDR1 VARCHAR(100),
+		    ADDR2 VARCHAR(100),
+		    BOOKTOUR INT,
+		    CAT1 VARCHAR(100),
+		    CAT2 VARCHAR(100),
+		    CAT3 VARCHAR(100),
+		    CONTENTID INT,
+		    CONTENTTYPEID INT,
+		    CREATEDTIME DATE,
+		    EVENTSTARTDATE DATE,
+		    EVENTENDDATE DATE,
+		    FIRSTIMAGE VARCHAR(100),
+		    FIRSTIMAGE2 VARCHAR(100),
+		    CPYRHTDIVCD VARCHAR(100),
+		    MAPX VARCHAR(100),
+		    MAPY VARCHAR(100),
+		    MLEVEL INT,
+		    MODIFIEDTIME DATE,
+		    AREACODE INT,
+		    SIGUNGUCODE INT,
+		    TEL VARCHAR(100),
+		    TITLE VARCHAR(100),
+		    
+		    PRIMARY KEY (FNO)
+		);
+	</insert>
+	
+	
+	<insert id="initFestival" parameterType="java.util.List">
+		
+		
+	
+	    INSERT INTO FESTIVAL(
+	        FNO, ADDR1, ADDR2, BOOKTOUR, CAT1, CAT2,
+	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, EVENTSTARTDATE,
+	        EVENTENDDATE, FIRSTIMAGE, FIRSTIMAGE2, CPYRHTDIVCD, MAPX,
+	        MAPY, MLEVEL, MODIFIEDTIME, AREACODE, SIGUNGUCODE,
+	        TEL, TITLE
+	    ) VALUES
+	    <foreach collection="list" index="index" item="item" separator=",">
+	        (
+	            0, #{item.addr1}, #{item.addr2}, #{item.booktour}, #{item.cat1}, #{item.cat2},
+	            #{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime}, #{item.eventstartdate},
+	            #{item.eventenddate}, #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx},
+	            #{item.mapy}, #{item.mlevel}, #{item.modifiedtime}, #{item.areacode}, #{item.sigungucode},
+	            #{item.tel}, #{item.title}
+	        )
+	    </foreach>
+	</insert>
+	
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
