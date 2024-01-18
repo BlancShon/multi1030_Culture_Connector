@@ -65,6 +65,7 @@
 				<li class="board"><a href="${path}/board/list?types=NBOARD">공지사항</a></li>
 				<li class="board"><a href="${path}/board/list">게시판</a></li>
 				<li class="culture"><a href="${path}/culture/list">문화시설</a></li>
+				<li class="culture"><a href="${path}/food/list">음식점</a></li>
 				<!-- 관리자 전용기능 -->
 				<c:if test="${loginMember.role == 'ROLE_ADMIN'}">
 					<li class="admin-member"><a href="${path}/admin/member">회원관리</a></li>

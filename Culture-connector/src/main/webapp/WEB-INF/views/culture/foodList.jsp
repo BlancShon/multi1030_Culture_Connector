@@ -28,62 +28,68 @@
 		<form name="foodList" action="${path}/food/list" method="get">
 		<table id="tbl-board">
 			<tr>
-				<th>번호</th>
-				<th>주소1</th>
-				<th>주소2</th>
+				<th>컨텐츠아이디</th>
+				<th>컨텐츠 구분</th>
+				<th>홈페이지</th>
+				<th>연락처</th>
+				<th>음식점이름</th>
+				<th>대표이미지</th>
+				<th>썸네일</th>
 				<th>지역코드</th>
-				<th>예약여부</th>
-				<th>cat1</th>
-				<th>cat2</th>
-				<th>cat3</th>
-				<th>contentid</th>
-				<th>contenttypeid</th>
-				<th>createdtime</th>
-				<th>firstimage</th>
-				<th>firstimage2</th>
-				<th>cpyrhtDivCd</th>
-				<th>mapx</th>
-				<th>mapy</th>
-				<th>mlevel</th>
-				<th>modifiedtime</th>
-				<th>sigungucode</th>
-				<th>tel</th>
-				<th>title</th>
-				<th>zipcode</th>
+				<th>시군구코드</th>
+				<th>카테고리1</th>
+				<th>카테고리2</th>
+				<th>카테고리3</th>
+				<th>주소</th>
+				<th>주소2</th>
+				<th>우편번호</th>
+				<th>좌표X</th>
+				<th>좌표Y</th>
+				<th>업장 소개</th>
+				<th>mLevel</th>
+				<th>신용카드 정보</th>
+				<th>할인 음식</th>
+				<th>대표메뉴</th>
+				<th>문의 안내</th>
+				<th>어린이시설</th>
+				<th>개업일</th>
+				<th>그뒤는 아무것도 없음</th>
 			</tr>
 			
-			<c:if test="${empty list}">
+			<c:if test="${empty FoodList}">
 				<tr>
-					<td colspan="6">조회된 글이 없습니다.</td>
+					<td colspan="26">조회된 글이 없습니다.</td>
 				</tr>
 			</c:if>
 			
-			<c:if test="${not empty list}">
-				<c:forEach var="item" items="${list}">
+			<c:if test="${not empty FoodList}">	
+				<c:forEach var="item" items="${FoodList}">
 					<tr>
-						<td><c:out value="${item.cno}"/></td>
-						
-						<td><c:out value="${item.addr1}"/></td>
-						<td><c:out value="${item.addr2}"/></td>
-						<td><c:out value="${item.areacode}"/></td>
-					<td><c:out value="${item.booktour}"/></td>
+						<td><c:out value="${item.contentId}"/></td>
+						<td><c:out value="${item.contentTypeId}"/></td>
+						<td><c:out value="${item.homePage}}"/></td>
+						<td><c:out value="${item.tel}"/></td>
+						<td><c:out value="${item.title}"/></td>
+						<td><c:out value="${item.firstImage}"/></td>
+						<td><c:out value="${item.firstImage2}"/></td>
+						<td><c:out value="${item.areaCode}"/></td>
+						<td><c:out value="${item.siGunGuCode}"/></td>
 						<td><c:out value="${item.cat1}"/></td>
 						<td><c:out value="${item.cat2}"/></td>
 						<td><c:out value="${item.cat3}"/></td>
-						<td><c:out value="${item.contentid}"/></td>
-						<td><c:out value="${item.contenttypeid}"/></td>
-						<td><fmt:formatDate type="date" value="${item.createdtime}"/></td>
-						<td><c:out value="${item.firstimage}"/></td>
-						<td><c:out value="${item.firstimage2}"/></td>
-						<td><c:out value="${item.cpyrhtDivCd}"/></td>
-						<td><c:out value="${item.mapx}"/></td>
-						<td><c:out value="${item.mapy}"/></td>
-						<td><fmt:formatDate type="date" value="${item.modifiedtime}"/></td>
-						<td><c:out value="${item.sigungucode}"/></td>
-						<td><c:out value="${item.tel}"/></td>
-						<td><c:out value="${item.title}"/></td>
-						<td><c:out value="${item.zipcode}"/></td>
-						
+						<td><c:out value="${item.addr1}"/></td>
+						<td><c:out value="${item.addr2}"/></td>
+						<td><c:out value="${item.zipCode}"/></td>
+						<td><c:out value="${item.mapX}"/></td>
+						<td><c:out value="${item.mapY}"/></td>
+						<td><c:out value="${item.overView}"/></td>
+						<td><c:out value="${item.mlevel}"/></td>
+						<td><c:out value="${item.chkcreditcardFood}"/></td>
+						<td><c:out value="${item.discountinfoFood}"/></td>
+						<td><c:out value="${item.firstMenu}"/></td>
+						<td><c:out value="${item.infocenterFood}"/></td>
+						<td><c:out value="${item.kidsFacility}"/></td>
+						<td><fmt:formatDate type="date" value="${item.opendateFood}"/></td>
 						
 					
 					</tr>

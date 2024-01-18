@@ -23,7 +23,7 @@ public class FoodController {
 	@Autowired
 	private FoodService service;
 	
-	List<Food> list = OpenApiManagerForXml_food.parse();
+	List<Food> FoodList = OpenApiManagerForXml_food.parse();
 	
 	private static Culture food;
 	
@@ -43,7 +43,7 @@ public class FoodController {
 		
 		//service.count();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("FoodList", FoodList);
 		return "culture/foodList";
 	}
 	
