@@ -3,7 +3,6 @@ package com.multi.mvc.api;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +15,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.multi.mvc.culture.model.vo.*;
+import com.multi.mvc.culture.model.vo.Culture;
+import com.multi.mvc.culture.model.vo.Food;
 
 public class OpenApiManagerForXml_food {
 
@@ -30,9 +30,9 @@ public class OpenApiManagerForXml_food {
 	}
 	
 	
-	public static List<Culture> parse() {
+	public static List<Food> parse() {
 		//url 가공
-		List<Culture> list = new ArrayList<>();
+		List<Food> list = new ArrayList<>();
  
 		StringBuilder urlBuffer = new StringBuilder(KoreaRestaurantLists_XML_URL);
 		urlBuffer.append("?" + "numOfRows=" + "1000");
@@ -96,34 +96,47 @@ public class OpenApiManagerForXml_food {
 						//System.out.println("V_MAX :  " + getTimeData(eElement, "V_MAX") );
 						//System.out.println("SVCOPNBGNDT: " + getDateData(eElement, "SVCOPNBGNDT"));
 						
-						String addr1 = getStrData(eElement, "addr1");
-						String addr2 = getStrData(eElement, "addr2");
-						int areacode = getIntData(eElement, "areacode");
-						int booktour = getIntData(eElement, "booktour");
+						int contentid = getIntData(eElement, "contentid");
+						int contenttyped = getIntData(eElement, "contenttyped");
+						String homepage = getStrData(eElement, "homepage");
+						String tel = getStrData(eElement, "title");
+						String firstimage = getStrData(eElement, "firstimage");
+						String firstimage2 = getStrData(eElement, "firstimage2");
+						String areacode = getStrData(eElement, "areacode");
+						String sigungucode = getStrData(eElement, "sigungucode");
 						String cat1 = getStrData(eElement, "cat1");
 						String cat2 = getStrData(eElement, "cat2");
 						String cat3 = getStrData(eElement, "cat3");
-						int contentid = getIntData(eElement, "contentid");
-						String contenttypeid = getStrData(eElement, "contenttypeid");
-						Date createdtime = getDateData(eElement, "createdtime");
-						String firstimage = getStrData(eElement, "firstimage");
-						String firstimage2 = getStrData(eElement, "firstimage2");
-						String cpyrhtDivCd = getStrData(eElement, "cpyrhtDivCd");
+						String addr1 = getStrData(eElement, "addr1");
+						String addr2 = getStrData(eElement, "addr2");
+						String zipcode = getStrData(eElement, "zipcode");
 						String mapx = getStrData(eElement, "mapx");
 						String mapy = getStrData(eElement, "mapy");
-						int mlevel = getIntData(eElement, "mlevel");
-						Date modifiedtime = getDateData(eElement, "modifiedtime");
-						int sigungucode = getIntData(eElement, "sigungucode");
-						String tel = getStrData(eElement, "tel");
-						String title = getStrData(eElement, "title");
-						String zipcode = getStrData(eElement, "zipcode");
+						String overview = getStrData(eElement, "overview");
+						String mlevel = getStrData(eElement, "mlevel");
+						String chkcreditcardfood = getStrData(eElement, "chkcreditcardfood");
+						String discountinfofood = getStrData(eElement, "discountinfofood");
+						String firstmenu = getStrData(eElement, "firstmenu");
+						String infocenterfood = getStrData(eElement, "infocenterfood");
+						String kidsfacility = getStrData(eElement, "kidsfacility");
+						Date opendatefood = getDateData(eElement, "opendatefood");
+						String opentimefood = getStrData(eElement, "opentimefood");
+						String packing = getStrData(eElement, "packing");
+						String parkingfood = getStrData(eElement, "parkingfood");
+						String reservationfood = getStrData(eElement, "reservationfood");
+						String restdatefood = getStrData(eElement, "restdatefood");
+						String scalefood = getStrData(eElement, "scalefood");
+						String seat = getStrData(eElement, "seat");
+						String smoking = getStrData(eElement, "smoking");
+						String treatmenu = getStrData(eElement, "treatmenu");
+						String lcnsno = getStrData(eElement, "lcnsno");
 						
+						Food food = new Food(contentid, contenttyped, homepage, tel, tel, firstimage, firstimage2, areacode, sigungucode, cat1, cat2, cat3, addr1, addr2, zipcode, mapx, mapy, overview, mlevel, chkcreditcardfood, discountinfofood, firstmenu, infocenterfood, kidsfacility, opendatefood, opentimefood, packing, parkingfood, reservationfood, restdatefood, scalefood, seat, smoking, treatmenu, lcnsno);
 						
-						Culture culture = new Culture(0,addr1, addr2, areacode, booktour, cat1, cat2, cat3, contentid, contenttypeid, createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime, sigungucode, tel, title, zipcode); 
 						
 					
-						System.out.println(culture);
-						list.add(culture);
+						System.out.println(food);
+						list.add(food);
 					} catch (Exception e) {
 						System.out.println("데이터가 잘못되었습니다!");
 					}

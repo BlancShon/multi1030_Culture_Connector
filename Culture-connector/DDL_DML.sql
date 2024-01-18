@@ -1,4 +1,4 @@
--- DROP SCHEMA SPRING; 
+DROP SCHEMA SPRING; 
 CREATE SCHEMA SPRING;
 USE SPRING;
 
@@ -270,7 +270,7 @@ SELECT * FROM REPLY;
 
 CREATE TABLE TOURIST_ATTRACTION (
     CONTENTID INT,
-    CONTENTTYPED INT,
+    CONTENTTYPEID INT,
     HOMEPAGE VARCHAR(600),
     TEL VARCHAR(100),
     TITLE VARCHAR(200),
@@ -307,7 +307,7 @@ CREATE TABLE TOURIST_ATTRACTION (
 );
 
 INSERT INTO TOURIST_ATTRACTION (
-	CONTENTID, CONTENTTYPED, HOMEPAGE, TEL, TITLE,
+	CONTENTID, CONTENTTYPEID, HOMEPAGE, TEL, TITLE,
     FIRSTIMAGE, FIRSTIMAGE2, AREACODE, SIGUNGUCODE, CAT1,
     CAT2, CAT3, ADDR1, ADDR2, ZIPCODE,
     MAPX, MAPY, OVERVIEW, MLEVEL, ACCOMCOUNT,
@@ -442,7 +442,7 @@ CREATE TABLE FOOD (
     FIRSTMENU VARCHAR(100),
     INFOCENTERFOOD VARCHAR(100),
     KIDSFACILITY VARCHAR(100),
-    OPENDATEFOOD VARCHAR(100),
+    OPENDATEFOOD DATE,
     OPENTIMEFOOD VARCHAR(100),
     PACKING VARCHAR(100),
     PARKINGFOOD VARCHAR(100),
@@ -535,6 +535,44 @@ INSERT INTO CULTURE_CONTENT (
 COMMIT;
 
 SELECT * FROM CULTURE_CONTENT;
+
+CREATE TABLE CULTURE(
+    CNO             INT AUTO_INCREMENT, 
+	ADDR1   VARCHAR(100),	      
+	ADDR2	 VARCHAR(100),	        
+	areacode		INT,	       
+	booktour	INT,	
+	cat1			VARCHAR(100),	
+	cat2			VARCHAR(100),	
+	cat3			VARCHAR(100),	       
+	contentid		INT,	       
+	contenttypeid		VARCHAR(100),	       
+	createdtime		DATE,	        
+	firstimage		VARCHAR(100),	       
+	firstimage2		VARCHAR(100),	        
+	cpyrhtDivCd			VARCHAR(100),	        
+	mapx		VARCHAR(100),	      
+	mapy		VARCHAR(100),	       
+	mlevel			INT,	       
+	modifiedtime			DATE,	     
+	sigungucode			INT,	       
+    tel	VARCHAR(100),	
+	title		VARCHAR(100),	
+	zipcode	VARCHAR(100),	
+   
+    
+    PRIMARY KEY (CNO)
+);
+
+INSERT INTO CULTURE (CNO, ADDR1, ADDR2, areacode, booktour, cat1, cat2, 
+					cat3, contentid, contenttypeid, createdtime, firstimage, 
+                    firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime, sigungucode, tel, title, zipcode) 
+                    
+                    VALUES(0, null, "345", 12, 1, "dfd", "dfd", "dfd", 45,"rt",'20111215', "fgfg","fgfg",
+							"cpyrhtDivCd", "mapx", "mapy", "1", '20111215',1,"4543545", "title", "zipcode");
+
+
+select * from culture;
 
 ----------------------------------- DDL 끝-------------------------------------------
 
