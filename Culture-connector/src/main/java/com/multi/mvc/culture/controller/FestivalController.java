@@ -31,8 +31,6 @@ public class FestivalController {
 	public void init() {
 		log.debug("Controller init 확인");
 		
-//		service.tableDropAndCreate();
-		service.dropTable();
 		service.createTable();
 		if(service.count() == 0) {
 			service.initFestival();

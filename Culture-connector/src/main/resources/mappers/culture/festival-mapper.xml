@@ -41,7 +41,8 @@
 	</delete>
 	
 	<insert id="createTableFestival">
-		CREATE TABLE FESTIVAL(
+	CREATE TABLE IF NOT EXISTS festival (
+		<!-- CREATE TABLE FESTIVAL( -->
 		    FNO INT AUTO_INCREMENT,
 		    ADDR1 VARCHAR(100),
 		    ADDR2 VARCHAR(100),
