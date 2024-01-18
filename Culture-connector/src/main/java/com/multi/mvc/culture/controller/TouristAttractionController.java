@@ -15,7 +15,7 @@ import com.multi.mvc.culture.model.vo.TouristAttraction;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller
+//@Controller   에러 제거후 여기 주석 푸셔야합니다!!!!
 public class TouristAttractionController {
 
     @Autowired
