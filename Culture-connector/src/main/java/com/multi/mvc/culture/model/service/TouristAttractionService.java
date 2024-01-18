@@ -22,4 +22,8 @@ public class TouristAttractionService {
     public int count() {
         return mapper.selectTouristAttractionCount();
     }
+    
+    public void createTable() {
+    	mapper.createTableTourist();
+    }
 }

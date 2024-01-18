@@ -12,5 +12,8 @@ public interface FoodMapper {
 	void insertFood(List<Food> list);	
 	
 	int selectFoodCount();
+	
+	void createTableFood();
+
 
 }

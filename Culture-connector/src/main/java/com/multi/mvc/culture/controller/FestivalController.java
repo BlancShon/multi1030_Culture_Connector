@@ -27,9 +27,9 @@ public class FestivalController {
 	
 	
 	
-	@Bean(initMethod = "init")
-	public void init() {
-		log.debug("Controller init 확인");
+	@Bean(initMethod = "init1")
+	public void init1() {
+		log.debug("Festival Controller init 확인");
 		
 		service.createTable();
 		if(service.count() == 0) {

@@ -85,8 +85,6 @@ public class ApiParsing {
 //		System.out.println(ApiSearchInfo.getEventURL());
 //		System.out.println("==============================");
 //		System.out.println(urlMap.get("Event"));
-//		System.out.println("==============================");
-//		System.out.println(parseAndExportToTheList(Festival.class));
 	}
 	
 
