@@ -4941,10 +4941,12 @@ fieldset:disabled .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  font-size: 20px;
 }
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
   color: var(--bs-navbar-active-color);
+
 }
 .navbar-nav .dropdown-menu {
   position: static;
