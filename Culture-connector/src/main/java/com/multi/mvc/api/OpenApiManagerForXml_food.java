@@ -20,44 +20,49 @@ import com.multi.mvc.culture.model.vo.*;
 
 public class OpenApiManagerForXml_food {
 
+	public static final String KEY = "p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
+	public static final String KoreaRestaurantLists_XML_URL = "https://apis.data.go.kr/B551011/KorService1/areaBasedList1";
+
 	public static void main(String[] args) {
 
 		parse();
 		// 1227
 	}
-	//http://openAPI.seoul.go.kr:8088/66416e586f776c733438734444734d/xml/ListPublicReservationDetail/1/5/S230308134434618219/
-	public static final String KEY = "Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
-	public static final String SeoulPulbicServiceBooking_XML_URL = "https://apis.data.go.kr/B551011/KorService1/areaBasedList1";
 	
 	
 	public static List<Culture> parse() {
-
+		//url 가공
 		List<Culture> list = new ArrayList<>();
-
-		StringBuffer urlBuffer = new StringBuffer();
-		urlBuffer.append(SeoulPulbicServiceBooking_XML_URL);
+ 
+		StringBuilder urlBuffer = new StringBuilder(KoreaRestaurantLists_XML_URL);
 		urlBuffer.append("?" + "numOfRows=" + "1000");
 		urlBuffer.append("&" + "pageNo=" + "1");
 		urlBuffer.append("&" + "MobileOS=" + "ETC");
-		urlBuffer.append("&" + "MobileApp=" + "DFDF");
+		urlBuffer.append("&" + "MobileApp=" + "AppTest");
 		urlBuffer.append("&" + "serviceKey=" + KEY);
 		urlBuffer.append("&" + "listYN=" + "Y");
 		urlBuffer.append("&" + "arrange=" + "A");
-		urlBuffer.append("&" + "contentTypeId=" + "14");
-		urlBuffer.append("&" + "areaCode=" + "1");
+		urlBuffer.append("&" + "contentTypeId=" + "39");
+		urlBuffer.append("&" + "areaCode=" + "");
 		urlBuffer.append("&" + "sigunguCode=" + "");
-		urlBuffer.append("&" + "cat1=" + "");
+		urlBuffer.append("&" + "cat1=" + "A05");
 		urlBuffer.append("&" + "cat2=" + "");
 		urlBuffer.append("&" + "cat3=" + "");
 
 		System.out.println(urlBuffer);
 
+		//url을 통해 http 요청 코드
 		try {
-			URL url = new URL(urlBuffer.toString());
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
+			URL url = new URL(urlBuffer.toString());  // url 객체 생성
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // url 통해서 http 연결 요청
+			conn.setRequestMethod("GET"); // get 방식 요청을 알리는 코드
+			
+			// api마다 요청에 대한 프로퍼티 (속성) 셋팅이 달라지는 코드
 			conn.setRequestProperty("Accept", "application/xml");
-			int code = conn.getResponseCode(); // 실제 호출하는 부
+//			conn.setRequestProperty("Accept", "application/json");
+//			conn.setRequestProperty("content-type", "application/xml");
+//			conn.setRequestProperty("content-type", "application/json");
+			int code = conn.getResponseCode(); // 실제 호출하는 부 url로부터 페이징 요청
 			System.out.println("ResponseCode : " + code);
 
 			if (code < 200 || code > 300) {
@@ -70,7 +75,6 @@ public class OpenApiManagerForXml_food {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			Document doc = db.parse(conn.getInputStream()); // xml 부를 파싱하여 객체화
-
 			doc.getDocumentElement().normalize();
 
 			//System.out.println("Root Element : " + doc.getDocumentElement().getNodeName());

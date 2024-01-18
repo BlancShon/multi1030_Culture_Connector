@@ -31,7 +31,6 @@ public class OpenApiManagerForXml {
 	
 	
 	public static List<Culture> parse() {
-
 		List<Culture> list = new ArrayList<>();
 
 		StringBuffer urlBuffer = new StringBuffer();
@@ -43,8 +42,8 @@ public class OpenApiManagerForXml {
 		urlBuffer.append("&" + "serviceKey=" + KEY);
 		urlBuffer.append("&" + "listYN=" + "Y");
 		urlBuffer.append("&" + "arrange=" + "A");
-		urlBuffer.append("&" + "contentTypeId=" + "14");
-		urlBuffer.append("&" + "areaCode=" + "1");
+		urlBuffer.append("&" + "contentTypeId=" + "39");
+		urlBuffer.append("&" + "areaCode=" + "");
 		urlBuffer.append("&" + "sigunguCode=" + "");
 		urlBuffer.append("&" + "cat1=" + "");
 		urlBuffer.append("&" + "cat2=" + "");
