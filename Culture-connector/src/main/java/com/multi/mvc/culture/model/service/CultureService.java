@@ -41,4 +41,11 @@ public class CultureService {
 		
 		
 	}
+	
+	public void createTable() {
+		
+		mapper.createTableCulture();
+		
+	}
+
 }

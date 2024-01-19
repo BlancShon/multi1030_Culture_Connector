@@ -31,9 +31,41 @@
 		
 	</resultMap>
 	
-		<select id="selectCount" resultType="int">
+	<select id="selectCount" resultType="int">
 		SELECT COUNT(*) FROM CULTURE
 	</select>
+	
+	<insert id="createTableCulture">
+
+		CREATE TABLE IF NOT EXISTS CULTURE (
+			CNO INT AUTO_INCREMENT,
+			ADDR1 VARCHAR(100),
+			ADDR2 VARCHAR(100),
+			AREACODE INT,
+			BOOKTOUR INT,
+			CAT1 VARCHAR(100),
+			CAT2 VARCHAR(100),
+			CAT3 VARCHAR(100),
+			CONTENTID INT,
+			CONTENTTYPEID INT,
+			CREATEDTIME DATE,
+			FIRSTIMAGE VARCHAR(100),
+			FIRSTIMAGE2 VARCHAR(100),
+			CPYRHTDIVCD VARCHAR(100),
+			MAPX VARCHAR(100),
+			MAPY VARCHAR(100),
+			MLEVEL INT,
+			MODIFIEDTIME DATE,
+			SIGUNGUCODE INT,
+			TEL VARCHAR(100),
+			TITLE VARCHAR(100),
+			ZIPCODE VARCHAR(100),
+	
+			PRIMARY KEY (CNO)
+		);
+
+	</insert>
+	
 	
 	<insert id="insertCulture" parameterType="java.util.List">
     INSERT INTO CULTURE

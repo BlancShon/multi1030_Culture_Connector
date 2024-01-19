@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.multi.mvc.culture.model.vo.Event;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -326,8 +327,7 @@ public class ApiParsing {
 //		System.out.println(parseAndExportToTheList(Festival.class, "1"));
 //		System.out.println("==========================");
 //		System.out.println(parseAndExportToTheList(Event.class, "1", "16"));
-//		
-		
+		System.out.println(ApiSearchInfo.getEventURL());
 	}
 	
 

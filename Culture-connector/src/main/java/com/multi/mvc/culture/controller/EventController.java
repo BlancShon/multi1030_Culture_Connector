@@ -28,8 +28,8 @@ public class EventController {
 //	public static List<Event> list = ApiParsing.listBySigunguGroups(Event.class);
 	
 	
-	@Bean(initMethod = "init2")
-	public void init2() {
+	@Bean(initMethod = "init4")
+	public void init4() {
 		log.debug("Event Controller 확인");
 		
 		service.createTable();
