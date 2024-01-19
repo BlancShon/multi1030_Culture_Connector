@@ -33,7 +33,9 @@ public class CultureController {
 	
 	@Bean(initMethod = "init")
 	public void init() {
-		service.save();
+		if(service.count() == 0) {
+			service.save();
+		}
 	
 	}
 	

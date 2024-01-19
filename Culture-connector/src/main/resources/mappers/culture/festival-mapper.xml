@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.multi.mvc.festival.model.mapper.FestivalMapper">
+<mapper namespace="com.multi.mvc.culture.model.mapper.FestivalMapper">
 	<resultMap type="Festival" id="festivalResultMap">
 	
 		<result property="fno" column="FNO"/>
@@ -41,7 +41,8 @@
 	</delete>
 	
 	<insert id="createTableFestival">
-		CREATE TABLE FESTIVAL(
+	CREATE TABLE IF NOT EXISTS festival (
+		<!-- CREATE TABLE FESTIVAL( -->
 		    FNO INT AUTO_INCREMENT,
 		    ADDR1 VARCHAR(100),
 		    ADDR2 VARCHAR(100),

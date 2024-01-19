@@ -13,5 +13,5 @@ public interface TouristAttractionMapper {
 
     int selectTouristAttractionCount();
     
-    
+    void createTableTourist();
 }

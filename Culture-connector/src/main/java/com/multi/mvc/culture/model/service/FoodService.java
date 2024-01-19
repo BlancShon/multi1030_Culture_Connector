@@ -37,4 +37,8 @@ public class FoodService {
 		
 		
 	}
+	
+	public void createTable() {
+		mapper.createTableFood();
+	}
 }

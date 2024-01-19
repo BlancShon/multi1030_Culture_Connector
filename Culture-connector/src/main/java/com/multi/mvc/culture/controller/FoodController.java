@@ -27,10 +27,12 @@ public class FoodController {
 	
 	private static Culture food;
 	
-	@Bean(initMethod = "init")
-	public void init() {
-		service.save();
-	
+	@Bean(initMethod = "init2")
+	public void init2() {
+		service.createTable();
+		if(service.count() == 0) {
+			service.save();
+		}
 	}
 	
 	@GetMapping("/food/list")

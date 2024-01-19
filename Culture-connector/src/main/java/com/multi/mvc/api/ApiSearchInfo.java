@@ -13,11 +13,15 @@ public class ApiSearchInfo {
 	
 	// 페스티벌 기본 url 입니다
 	public static final String FESTIVAL_URL = "https://apis.data.go.kr/B551011/KorService1/searchFestival1?";
-	// 
+	// 관광정보 동기화 목록 조회 기본 url 입니다.
 	public static final String AREA_BASED_URL = "https://apis.data.go.kr/B551011/KorService1/areaBasedSyncList1?";
+	// 지역 코드 조회 기본 url 입니다.
+	public static final String AREA_CODE_URL = "https://apis.data.go.kr/B551011/KorService1/areaCode1?numOfRows=100&MobileOS=etc&MobileApp=test&_type=json";
+	
+	
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=5";
+	public static String numOfRows = "numOfRows=10";
 	// json 원하지 않으신다면 지워버리시면 됩니다.
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
@@ -44,6 +48,13 @@ public class ApiSearchInfo {
 		return sb.append(arrange()).append(contentTypeId("15")).toString();
 	}
 
+	public static String getAreaCodeURL() {
+		return AREA_CODE_URL + "&serviceKey="+ SERVICE_KEY;
+	}
+	
+	public static String getSigunguCodeURL(String areaCode) {
+		return getAreaCodeURL() + areaCode(areaCode);
+	}
 	
 	
 	public static String eventStartDate() {
