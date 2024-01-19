@@ -44,7 +44,7 @@ public class OpenApiManagerForXml_TouristAttraction {
         urlBuffer.append("&" + "contentTypeId=" + "12"); 
         urlBuffer.append("&" + "areaCode=" + "");
 		urlBuffer.append("&" + "sigunguCode=" + "");
-        urlBuffer.append("&" + "cat1=" + "A01"); 
+        urlBuffer.append("&" + "cat1=" + ""); //"" ->전체 조회, cat1=A01은 자연 카테고리, B02=문화
         urlBuffer.append("&" + "cat2=" + "");
         urlBuffer.append("&" + "cat3=" + ""); 
 
