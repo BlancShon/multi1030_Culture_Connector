@@ -80,7 +80,7 @@
 	</insert>
 	
 	<select id="selectTouristAttractionCount" resultType="int">
-		SELECT COUNT(*) FROM TOURIST_ATTRACTION
+		SELECT COUNT(*) FROM TOURIST_ATTRACTION;
 	</select>
 	
 	<insert id="insertTouristAttractions" parameterType="TouristAttraction">

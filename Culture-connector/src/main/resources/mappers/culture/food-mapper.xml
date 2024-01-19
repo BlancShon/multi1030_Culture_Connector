@@ -91,7 +91,7 @@
 	
 	
 	<select id="selectFoodCount" resultType="int">
-		SELECT COUNT(*) FROM FOOD
+		SELECT COUNT(*) FROM FOOD;
 	</select>
 	
 	<select id="selectFoodAll" resultMap="FoodResultMap">
