@@ -33,10 +33,13 @@ public class CultureController {
 	
 	@Bean(initMethod = "init")
 	public void init() {
+		log.debug("culture init 호출 확인");
+		service.createTable();
+		log.debug("culture createTable 성공 호출 확인");
+		log.debug("service count is {}", service.count());
 		if(service.count() == 0) {
 			service.save();
 		}
-	
 	}
 	
 	@GetMapping("/culture/list")

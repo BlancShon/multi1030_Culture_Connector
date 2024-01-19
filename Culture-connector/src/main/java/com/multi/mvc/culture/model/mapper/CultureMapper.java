@@ -12,5 +12,8 @@ public interface CultureMapper {
 	void insertCulture(List<Culture> list);
 	
 	int selectCount();
+	
+	void createTableCulture();
+
 
 }

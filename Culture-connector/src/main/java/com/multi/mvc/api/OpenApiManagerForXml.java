@@ -57,7 +57,7 @@ public class OpenApiManagerForXml {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/xml");
 			int code = conn.getResponseCode(); // 실제 호출하는 부
-			System.out.println("ResponseCode : " + code);
+//			System.out.println("ResponseCode : " + code);
 
 			if (code < 200 || code > 300) {
 				System.out.println("페이지가 잘못되었습니다.");
@@ -73,12 +73,12 @@ public class OpenApiManagerForXml {
 			doc.getDocumentElement().normalize();
 
 			//System.out.println("Root Element : " + doc.getDocumentElement().getNodeName());
-			System.out.println("======================================================");
+//			System.out.println("======================================================");
 
 			NodeList nList = doc.getElementsByTagName("item");
 			for (int i = 0; i < nList.getLength(); i++) {
 				Node node = nList.item(i);
-				System.out.println("\nCurrent Element : " + node.getNodeName());
+//				System.out.println("\nCurrent Element : " + node.getNodeName());
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					try {
 						Element eElement = (Element) node;
@@ -117,7 +117,7 @@ public class OpenApiManagerForXml {
 						Culture culture = new Culture(0,addr1, addr2, areacode, booktour, cat1, cat2, cat3, contentid, contenttypeid, createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime, sigungucode, tel, title, zipcode); 
 						
 					
-						System.out.println(culture);
+//						System.out.println(culture);
 						list.add(culture);
 					} catch (Exception e) {
 						System.out.println("데이터가 잘못되었습니다!");

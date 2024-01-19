@@ -80,7 +80,7 @@ public class OpenApiManagerForXml_TouristAttraction {
 			NodeList nList = doc.getElementsByTagName("item");
 			for (int i = 0; i < nList.getLength(); i++) {
 				Node node = nList.item(i);
-				System.out.println("\nCurrent Element : " + node.getNodeName());
+//				System.out.println("\nCurrent Element : " + node.getNodeName());
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					try {
 						Element eElement = (Element) node;
@@ -128,7 +128,7 @@ public class OpenApiManagerForXml_TouristAttraction {
                                 restdate, useseason, usetime
                         );                      
 
-                        System.out.println(touristAttraction);
+//                        System.out.println(touristAttraction);
                         list.add(touristAttraction);
                     } catch (Exception e) {
                         System.out.println("데이터가 잘못되었습니다!");

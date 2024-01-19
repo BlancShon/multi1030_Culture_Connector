@@ -83,7 +83,7 @@ public class OpenApiManagerForXml_food {
 			NodeList nList = doc.getElementsByTagName("item");
 			for (int i = 0; i < nList.getLength(); i++) {
 				Node node = nList.item(i);
-				System.out.println("\nCurrent Element : " + node.getNodeName());
+//				System.out.println("\nCurrent Element : " + node.getNodeName());
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					try {
 						Element eElement = (Element) node;
@@ -136,7 +136,7 @@ public class OpenApiManagerForXml_food {
 						
 						
 					
-						System.out.println(food);
+//						System.out.println(food);
 						list.add(food);
 					} catch (Exception e) {
 						System.out.println("데이터가 잘못되었습니다!");
