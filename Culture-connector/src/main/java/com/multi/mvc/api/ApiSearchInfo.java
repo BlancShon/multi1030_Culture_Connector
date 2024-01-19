@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class ApiSearchInfo {
 
 	// 공공데이터 포털 서비스 키값 안되면 하나씩 주석풀고 해결해보기 or 본인 서비스키 입력해보기
-	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew==";
-//	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
+//	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew==";
+	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
 //	public static final String SERVICE_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
 	
 	
@@ -17,6 +17,7 @@ public class ApiSearchInfo {
 	public static final String AREA_BASED_URL = "https://apis.data.go.kr/B551011/KorService1/areaBasedSyncList1?";
 	// 지역 코드 조회 기본 url 입니다.
 	public static final String AREA_CODE_URL = "https://apis.data.go.kr/B551011/KorService1/areaCode1?numOfRows=100&MobileOS=etc&MobileApp=test&_type=json";
+	
 	
 	
 	
@@ -34,6 +35,12 @@ public class ApiSearchInfo {
 		StringBuffer sb = new StringBuffer(basicUrl);
 		return sb.append(numOfRows).append(mobileOs).append(mobileApp)
 				.append(type).append(getServiceKey());
+	}
+	
+	// 여행코스 필수 url
+	public static String getCourseURL() {
+		StringBuffer sb = requiredValueURL(AREA_BASED_URL);
+		return sb.append(arrange()).append(contentTypeId("25")).toString();
 	}
 	
 	// 페스티발 필수 url 

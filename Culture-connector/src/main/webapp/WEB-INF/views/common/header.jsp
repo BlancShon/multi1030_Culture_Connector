@@ -68,6 +68,7 @@
 				<li class="culture"><a href="${path}/food/list">음식점</a></li>
 				<li class="culture"><a href="${path}/festival/list">문화기사</a></li>
 				<li class="culture"><a href="${path}/event/list">공연행사</a></li>
+				<li class="culture"><a href="${path}/course/list">여행코스</a></li>
 				<!-- 관리자 전용기능 -->
 				<c:if test="${loginMember.role == 'ROLE_ADMIN'}">
 					<li class="admin-member"><a href="${path}/admin/member">회원관리</a></li>
