@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +23,7 @@
     
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{pageContext.request.contextPath}/resources/images/logo-culture-light.png" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" />
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,36 +37,36 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="assets/vendor/font-awesome/css/all.min.css"
+      href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/all.min.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      href="${pageContext.request.contextPath}/resources/vendor/bootstrap-icons/bootstrap-icons.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="assets/vendor/tiny-slider/tiny-slider.css"
+      href="${pageContext.request.contextPath}/resources/vendor/tiny-slider/tiny-slider.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="assets/vendor/glightbox/css/glightbox.css"
+      href="${pageContext.request.contextPath}/resources/vendor/glightbox/css/glightbox.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="assets/vendor/flatpickr/css/flatpickr.min.css"
+      href="${pageContext.request.contextPath}/resources/vendor/flatpickr/css/flatpickr.min.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="assets/vendor/choices/css/choices.min.css"
+      href="${pageContext.request.contextPath}/resources/vendor/choices/css/choices.min.css"
     />
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css" />
   </head>
 
   <body>
@@ -77,8 +78,8 @@
       <div class="container">
           <!-- Logo START -->
           <a class="navbar-brand" href="main.html">
-            <img style="height: 100px" class="light-mode-item navbar-brand-item" src="assets/images/logo-culture-light.png" alt="logo">
-		    		<img style="height: 100px" class="dark-mode-item navbar-brand-item" src="assets/images/logo-culture.png" alt="logo">
+            <img style="height: 100px" class="light-mode-item navbar-brand-item" src="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" alt="logo">
+		    		<img style="height: 100px" class="dark-mode-item navbar-brand-item" src="${pageContext.request.contextPath}/resources/images/logo-culture.png" alt="logo">
 
           </a>
 			<!-- Logo END -->
@@ -122,7 +123,7 @@
 
           <!-- Nav item 음식 투어  -->
 					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
+            <a class="nav-link active" aria-current="page" href="${path}/food.jsp">음식 투어</a>	
           </li>
 
           <!-- Nav item 문화 소식 -->
