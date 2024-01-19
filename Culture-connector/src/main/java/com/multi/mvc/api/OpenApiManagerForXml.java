@@ -57,7 +57,7 @@ public class OpenApiManagerForXml {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/xml");
 			int code = conn.getResponseCode(); // 실제 호출하는 부
-			System.out.println("ResponseCode : " + code);
+//			System.out.println("ResponseCode : " + code);
 
 			if (code < 200 || code > 300) {
 				System.out.println("페이지가 잘못되었습니다.");
@@ -73,7 +73,7 @@ public class OpenApiManagerForXml {
 			doc.getDocumentElement().normalize();
 
 			//System.out.println("Root Element : " + doc.getDocumentElement().getNodeName());
-			System.out.println("======================================================");
+//			System.out.println("======================================================");
 
 			NodeList nList = doc.getElementsByTagName("item");
 			for (int i = 0; i < nList.getLength(); i++) {

@@ -37,9 +37,10 @@ public class ApiParsing {
 		String targetUrl = urlMap.get(targetClass.getSimpleName());
 		List<T> list = new ArrayList<>();
 		
+		HttpURLConnection conn = null;
 		try {
-			URL url = new URL(targetUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    URL url = new URL(targetUrl);
+		    conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
 	        conn.setRequestProperty("Content-type", "application/json");
@@ -78,7 +79,12 @@ public class ApiParsing {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        conn.disconnect(); // 리소스 닫기
+		    }
 		}
+		
 		return list;
 	}
 	
@@ -88,9 +94,10 @@ public class ApiParsing {
 		String targetUrl = basicUrl + ApiSearchInfo.areaCode(areaCode);
 		List<T> list = new ArrayList<>();
 		
+		HttpURLConnection conn = null;
 		try {
-			URL url = new URL(targetUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    URL url = new URL(targetUrl);
+		    conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
 			conn.setRequestProperty("Content-type", "application/json");
@@ -129,7 +136,12 @@ public class ApiParsing {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        conn.disconnect(); // 리소스 닫기
+		    }
 		}
+		
 		return list;
 	}
 	
@@ -141,9 +153,10 @@ public class ApiParsing {
 		System.out.println("TARGETURL IS HERE " + targetUrl);
 		List<T> list = new ArrayList<>();
 		
+		HttpURLConnection conn = null;
 		try {
-			URL url = new URL(targetUrl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    URL url = new URL(targetUrl);
+		    conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			
 			conn.setRequestProperty("Content-type", "application/json");
@@ -182,6 +195,10 @@ public class ApiParsing {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    if (conn != null) {
+		        conn.disconnect(); // 리소스 닫기
+		    }
 		}
 		return list;
 	}
@@ -327,7 +344,7 @@ public class ApiParsing {
 //		System.out.println(parseAndExportToTheList(Festival.class, "1"));
 //		System.out.println("==========================");
 //		System.out.println(parseAndExportToTheList(Event.class, "1", "16"));
-		System.out.println(ApiSearchInfo.getEventURL());
+//		System.out.println(ApiSearchInfo.getEventURL());
 	}
 	
 

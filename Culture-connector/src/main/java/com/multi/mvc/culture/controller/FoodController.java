@@ -29,6 +29,7 @@ public class FoodController {
 	
 	@Bean(initMethod = "init2")
 	public void init2() {
+		log.debug("food controller 확인");
 		service.createTable();
 		if(service.count() == 0) {
 			service.save();
