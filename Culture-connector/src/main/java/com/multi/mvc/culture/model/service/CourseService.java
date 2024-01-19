@@ -4,26 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.mvc.api.ApiParsing;
-import com.multi.mvc.culture.model.mapper.EventMapper;
-import com.multi.mvc.culture.model.vo.Event;
+import com.multi.mvc.culture.model.mapper.CourseMapper;
+import com.multi.mvc.culture.model.vo.Course;
 
 @Service
-public class EventService {
+public class CourseService {
 
 	
+	
 	@Autowired
-	private EventMapper mapper;
+	private CourseMapper mapper;
 	
 	public void dropTable() {
-		mapper.deleteTableFestival();
+		mapper.deleteTableCourse();
 	}
 	
 	public void createTable() {
-		mapper.createTableEvent();
+		mapper.createTableCourse();
 	}
 	
-	public void initEvent() {
-		mapper.initEvent(ApiParsing.listBySidoGroups(Event.class));
+	public void initCourse() {
+		mapper.initCourse(ApiParsing.listBySidoGroups(Course.class));
 	}
 	
 	public int count() {

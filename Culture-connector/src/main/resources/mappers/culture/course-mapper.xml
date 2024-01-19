@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- Dao를 Mapper Interface로 대체 할 예정, namespace=Class의 풀네임 선언 필요 -->
+<mapper namespace="com.multi.mvc.culture.model.mapper.CourseMapper">
+
+	<resultMap type="Course" id="courseResultMap">
+
+		<result property="courseNo" column="COURSE_NO"/>
+		<result property="areacode" column="AREACODE"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat3" column="CAT3"/>
+		<result property="contentid" column="CONTENTID"/>
+		<result property="contenttypeid" column="CONTENTTYPEID"/>
+		<result property="createdtime" column="CREATEDTIME"/>
+		<result property="firstimage" column="FIRSTIMAGE"/>
+		<result property="firstimage2" column="FIRSTIMAGE2"/>
+		<result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+		<result property="mapx" column="MAPX"/>
+		<result property="mapy" column="MAPY"/>
+		<result property="mlevel" column="MLEVEL"/>
+		<result property="modifiedtime" column="MODIFIEDTIME"/>
+		<result property="sigungucode" column="SIGUNGUCODE"/>
+		<result property="title" column="TITLE"/>
+
+	</resultMap>
+
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM COURSE;
+	</select>
+
+
+	<delete id="deleteTableCourse">
+		<!-- DELETE FROM FESTIVAL; -->
+		DROP TABLE IF EXISTS COURSE;
+	</delete>
+
+	<insert id="createTableCourse">
+
+		CREATE TABLE IF NOT EXISTS COURSE (
+			COURSE_NO INT AUTO_INCREMENT,
+			AREACODE INT,
+			CAT1 VARCHAR(100),
+			CAT2 VARCHAR(100),
+			CAT3 VARCHAR(100),
+			CONTENTID INT,
+			CONTENTTYPEID INT,
+			CREATEDTIME DATE,
+			FIRSTIMAGE VARCHAR(100),
+			FIRSTIMAGE2 VARCHAR(100),
+			CPYRHTDIVCD VARCHAR(100),
+			MAPX VARCHAR(100),
+			MAPY VARCHAR(100),
+			MLEVEL INT,
+			MODIFIEDTIME DATE,
+			SIGUNGUCODE INT,
+			TITLE VARCHAR(100),
+	
+			PRIMARY KEY (COURSE_NO)
+		);
+
+	</insert>
+
+
+
+	<insert id="initCourse" parameterType="java.util.List">
+	
+	
+		INSERT INTO COURSE(
+			COURSE_NO, AREACODE, CAT1, CAT2,
+			CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
+			FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
+			SIGUNGUCODE, TITLE 
+		) VALUES
+		<foreach collection="list" index="index" item="item" separator=",">
+			(
+				0, #{item.areacode}, 
+				#{item.cat1}, #{item.cat2},
+				#{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime},
+				#{item.firstimage},
+				#{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx}, #{item.mapy}, #{item.mlevel},
+				#{item.modifiedtime}, #{item.sigungucode}, 
+				#{item.title}
+			)
+		</foreach>
+	</insert>
+
+
+
+
+</mapper>
