@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>음식 투어 html입니다.</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+		crossorigin="anonymous"></script>
+	<meta name="author" content="Webestica.com" />
+	<meta name="description" content="Booking - Multipurpose Online Booking Theme" />
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem("theme");
+
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme;
+			}
+			return window.matchMedia("(prefers-color-scheme: dark)").matches
+				? "dark"
+				: "light";
+		};
+
+		const setTheme = function (theme) {
+			if (
+				theme === "auto" &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches
+			) {
+				document.documentElement.setAttribute("data-bs-theme", "dark");
+			} else {
+				document.documentElement.setAttribute("data-bs-theme", theme);
+			}
+		};
+
+		setTheme(getPreferredTheme());
+
+		window.addEventListener("DOMContentLoaded", () => {
+			var el = document.querySelector(".theme-icon-active");
+			if (el != "undefined" && el != null) {
+				const showActiveTheme = (theme) => {
+					const activeThemeIcon = document.querySelector(
+						".theme-icon-active use"
+					);
+					const btnToActive = document.querySelector(
+						`[data-bs-theme-value="${theme}"]`
+					);
+					const svgOfActiveBtn = btnToActive
+						.querySelector(".mode-switch use")
+						.getAttribute("href");
+
+					document
+						.querySelectorAll("[data-bs-theme-value]")
+						.forEach((element) => {
+							element.classList.remove("active");
+						});
+
+					btnToActive.classList.add("active");
+					activeThemeIcon.setAttribute("href", svgOfActiveBtn);
+				};
+
+				window
+					.matchMedia("(prefers-color-scheme: dark)")
+					.addEventListener("change", () => {
+						if (storedTheme !== "light" || storedTheme !== "dark") {
+							setTheme(getPreferredTheme());
+						}
+					});
+
+				showActiveTheme(getPreferredTheme());
+
+				document
+					.querySelectorAll("[data-bs-theme-value]")
+					.forEach((toggle) => {
+						toggle.addEventListener("click", () => {
+							const theme = toggle.getAttribute("data-bs-theme-value");
+							localStorage.setItem("theme", theme);
+							setTheme(theme);
+							showActiveTheme(theme);
+						});
+					});
+			}
+		});
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" />
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" />
+	<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css" />
+	<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css" />
+	<link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/css/flatpickr.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css" />
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+</head>
+
+<body>
+
+	<!-- Header START -->
+	<header class="navbar-light header-sticky" style="font-weight: bold;">
+		<!-- Logo Nav START -->
+		<nav class="navbar navbar-expand-xl">
+			<div class="container">
+				<!-- Logo START -->
+				<a class="navbar-brand" href="main.html">
+					<img style="height: 100px" class="light-mode-item navbar-brand-item"
+						src="assets/images/logo-culture-light.png" alt="logo">
+					<img style="height: 100px" class="dark-mode-item navbar-brand-item"
+						src="assets/images/logo-culture.png" alt="logo">
+
+				</a>
+				<!-- Logo END -->
+
+				<!-- Responsive navbar toggler -->
+				<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-animation">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+					<span class="d-none d-sm-inline-block small">Menu</span>
+				</button>
+
+				<!-- Responsive category toggler -->
+				<button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse"
+					aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span
+						class="d-none d-sm-inline-block small">Category</span>
+				</button>
+
+				<!-- Main navbar START -->
+				<div class="navbar-collapse collapse" id="navbarCollapse">
+					<ul class="navbar-nav navbar-nav-scroll me-auto">
+
+						<!-- Nav item 홈  -->
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="main.html">홈</a>
+						</li>
+
+						<!-- Nav item 문화 테마 -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">문화 테마</a>
+							<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+								<li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
+								<li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
+								<li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
+								<li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
+
+							</ul>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="main.html">홈</a>
+						</li>aria-haspopup="true" aria-expanded="false" -->
+						<!-- Nav item 음식 투어  -->
+						<li class="nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="cuisine-tour.html" id="pagesMenu" data-bs-toggle="dropdown" >음식투어</a>
+						  <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+			  
+							  <li> <a class="dropdown-item" href="cuisine-search.html">맛집 검색</a></li>
+			  
+						  </ul>
+						</li>
+
+						<!-- Nav item 문화 소식 -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">문화 소식</a>
+							<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+								<li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
+								<li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
+								<li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
+
+							</ul>
+						</li>
+
+						<!-- Nav item 리뷰(수다톡) -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
+							<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+								<li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
+								<li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
+
+							</ul>
+						</li>
+
+						<!-- Nav item 문화(여행) 지도  -->
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
+						</li>
+
+
+
+						<!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
+						<li class="nav-item" id="login">
+							<a class="nav-link active" aria-current="page" href="login.html">로그인</a>
+						</li>
+
+						<!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">회원 정보</a>
+							<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+								<li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
+								<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
+								<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
+								<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
+								<li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
+
+							</ul>
+						</li>
+
+
+					</ul>
+				</div>
+				<!-- Main navbar END -->
+
+				<!-- Toggler button and stay button -->
+				<div class="d-flex align-items-center justify-content-end">
+					<!-- Responsive navbar toggler -->
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-animation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+						<span class="d-none d-sm-inline-block small">Menu</span>
+					</button>
+
+
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>
+		</nav>
+		<!-- Logo Nav END -->
+	</header>
+	<!-- Header END -->
+
+	<!-- **************** MAIN CONTENT START **************** -->
+	<main>
+		<!-- =======================
+Main Banner START -->
+		<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active c-item">
+					<img src="https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_1672836e8a1d0e0fe500d33e553a8242f95be9631.jpeg?width=750&format=jpeg&optimize=medium.jpg"
+						class="d-block w-100 c-img" alt="Slide 1">
+					<div class="carousel-caption top-0 mt-4 left-align">
+
+						<p class="text-uppercase fs-2 mt-8"><span style="color: rgb(253, 253, 253);"><b>전국 팔도의 맛집</span><br>
+							<span style="color: rgba(243, 198, 198, 0.941);">그리고</span>
+							<br><span style="color: rgba(148, 244, 209, 0.923);">여유로운 커피 한잔</span></p></b>
+						<!-- <a href="#" class="btn btn-link text-light text-decoration-none fs-6 mt-5 d-block" style="border-bottom: 1px solid transparent; transition: border-bottom 0.3sease; text-align: left;">자세히 보기</a> -->
+					</div>
+				</div>
+			</div>
+			
+			<!--서치바-->
+			<div div class="container mt-5">
+				<div class="row height d-flex justify-content-center align-items-center">
+					<div class="col-md-10 ">
+						<h5 class="fw-normal mb-">
+							<i class="fa-solid fa-person-shelter fa-fw text-primary me-2"></i>
+							<i class="fa-solid fa-utensils fa-fw text-primary me-2"></i>
+							<i class="fa-solid fa-store fa-fw text-primary me-2"></i>
+							<i class="fa-solid bi bi-cup-straw text-primary me-2"></i>
+							<i class="fa-solid bi bi-cup-hot-fill text-primary me-2" ></i>
+						  </h5>
+						<h4 class="text-primary mt-2"><span style="color: rgb(5, 5, 5);">가보고 싶은 맛집을 검색하세요!</span></h4>
+						<div class="search">
+							<i class="fa fa-search"></i>
+							<input type="text" class="form-control" style="font-size: large" placeholder="맛집 이름을 검색하세요.">
+							<button class="btn btn-primary" style="font-size: x-large;">검색</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--서치바 끝-->
+
+
+
+			<section class="pb-0">
+				<div class="container">
+					<!-- Title -->
+					<div class="row mb-4">
+						<div class="col-12 text-center">
+							<span class="mb-0">
+								<h2>당신을 위한 맛집 추천 <span style="color: lightcoral;">BEST</span></h2>
+							</span>
+						</div>
+					</div>
+					<br><br>
+
+
+					<!-- Slider START -->
+					<div class="tiny-slider arrow-round arrow-blur arrow-hover">
+						<div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2"
+							data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
+
+							<!-- Offer card START -->
+							<div>
+								<div class="card">
+									<img src="assets/images/R고기.png" class="card-img" alt="">
+									<!-- Card body -->
+									<div class="position-absolute top-100 start-50 translate-middle w-100">
+										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+											<h6 class="card-title mb-1"><a href="#"
+													style="text-align: center;">R고기</a><br>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+											</h6>
+											<medium style="color: black;">강남구 청담동</medium><br>
+											<small>인기 메뉴 : 등심(100g), 안심(100g)</small><br>
+
+											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Offer card END -->
+
+							<!-- Offer card START -->
+
+							<div>
+								<div class="card">
+									<img src="assets/images/보르트메종.png" class="card-img" alt="">
+									<!-- Card body -->
+									<div class="position-absolute top-100 start-50 translate-middle w-100">
+										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+											<h6 class="card-title mb-1"><a href="#"
+													style="text-align: center;">보르트메종</a><br>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+											</h6>
+											<medium style="color: black;">대구 동구</medium><br>
+											<small>인기 메뉴 : 런치 시그니처 코스</small><br>
+
+											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div class="card">
+									<img src="assets/images/스시마츠모토.png" class="card-img" alt="">
+									<!-- Card body -->
+									<div class="position-absolute top-100 start-50 translate-middle w-100">
+										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+											<h6 class="card-title mb-1"><a href="#"
+													style="text-align: center;">스시마츠모토</a><br>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+											</h6>
+											<medium style="color: black;">인천 중구</medium><br>
+											<small>인기 메뉴 : 런치 오마카세</small><br>
+
+											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Offer card END -->
+							<div>
+								<div class="card">
+									<img src="assets/images/세야스시.png" class="card-img" alt="">
+									<!-- Card body -->
+									<div class="position-absolute top-100 start-50 translate-middle w-100">
+										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+											<h6 class="card-title mb-1"><a href="#"
+													style="text-align: center;">세야스시</a><br>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i
+														class="fa-solid fa-star text-warning"></i></li>
+											</h6>
+											<medium style="color: black;">송파구 석촌동</medium><br>
+											<small>인기 메뉴 : 런치 시그니처 코스</small><br>
+
+											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- Slider END -->
+				</div>
+			</section>
+			<!-- =======================추천 맛집  END -->
+
+			<!-- =======================Near by START -->
+			<section>
+				<div class="container">
+					<!-- Title -->
+					<div class="row mb-4">
+							<h2 class="mb-0" style="color: rgba(2, 2, 2, 0.632);">전국 지역별 보기</h2>
+						<div class="col-12 text-center">
+
+
+
+						</div>
+					</div>
+
+					<div class="row g-4 g-md-5">
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/main/11.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">서울</a></h5>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/gyunggi.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">경기</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/main/14.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">인천</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/daejeon.jpeg" class="rounded-circle"
+									alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">대전</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/main/15.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">대구</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/main/12.jpg" class="rounded-circle" alt="" />
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title">
+										<a href="#" class="stretched-link">전북</a>
+									</h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/gyungbuk.jpeg" class="rounded-circle"
+									alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">경북</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/chungbuk.jpeg" class="rounded-circle"
+									alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">충북</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/jeonnam.jpeg" class="rounded-circle"
+									alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">전남</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/main/16.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">경남</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/chungnam.jpg" class="rounded-circle"
+									alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">충남</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/gangwon.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">강원</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/ulsan.png" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">울산</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/locationIMG/busan.jpeg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">부산</a></h5>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+						<!-- Card item START -->
+						<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+							<div class="card bg-transparent text-center p-1 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/main/13.jpg" class="rounded-circle" alt="">
+
+								<div class="card-body p-0 pt-3">
+									<h5 class="card-title"><a href="#" class="stretched-link">제주</a></h5>
+								</div>
+							</div>
+						</div>
+						<br><br>
+
+						<div class="row g-4 g-md-5">
+							<!-- Card item START -->
+							<div class="col-12 text-center">
+								<h2 class="mb-0" style="color: rgba(2, 2, 2, 0.632); text-align: left;">음식별 보기</h2>
+							</div>
+							<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+								<div class="card bg-transparent text-center p-1 h-100">
+									<!-- Image -->
+									<img src="assets/images/category/locationIMG/korean.jpeg" class="rounded-circle"
+										alt="">
+
+									<div class="card-body p-0 pt-3">
+										<h5 class="card-title"><a href="cuisine-search.html" class="stretched-link">한식</a></h5>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card item START -->
+							<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+								<div class="card bg-transparent text-center p-1 h-100">
+									<!-- Image -->
+									<img src="assets/images/category/locationIMG/chinese.jpg" class="rounded-circle"
+										alt="">
+
+									<div class="card-body p-0 pt-3">
+										<h5 class="card-title"><a href="#" class="stretched-link">중식</a></h5>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card item START -->
+							<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+								<div class="card bg-transparent text-center p-1 h-100">
+									<!-- Image -->
+									<img src="assets/images/category/locationIMG/japanese.jpeg" class="rounded-circle"
+										alt="">
+
+									<div class="card-body p-0 pt-3">
+										<h5 class="card-title"><a href="#" class="stretched-link">일식</a></h5>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card item START -->
+							<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+								<div class="card bg-transparent text-center p-1 h-100">
+									<!-- Image -->
+									<img src="assets/images/category/locationIMG/america.jpg" class="rounded-circle"
+										alt="">
+
+									<div class="card-body p-0 pt-3">
+										<h5 class="card-title"><a href="#" class="stretched-link">양식</a></h5>
+									</div>
+								</div>
+							</div>
+
+							<!-- Card item START -->
+							<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+								<div class="card bg-transparent text-center p-1 h-100">
+									<!-- Image -->
+									<img src="assets/images/category/locationIMG/coffee.jpeg" class="rounded-circle"
+										alt="">
+
+									<div class="card-body p-0 pt-3">
+										<h5 class="card-title"><a href="#" class="stretched-link">커피</a></h5>
+									</div>
+								</div>
+							</div>
+							<!-- Card item END -->
+						</div> <!-- Row END -->
+					</div>
+			</section>
+			<!-- =======================
+Near by END -->
+
+			<!-- =======================
+Services START -->
+			<section class="pt-0 pt-lg-5">
+				<div class="container">
+					<div class="row g-6 align-items-center">
+						<div class="col-lg-10">
+							<!-- Title -->
+							<h2 style="color: rgba(2, 2, 2, 0.632);;">음식 투어 리스트</h2><br>
+
+							<h5 style="color: rgb(13, 10, 7);" style="font-size: medium;"><i class="fa-solid bi bi-list-check text-primary me-2"></i><b>많은 고객들이 찾아간 맛집 목록입니다.</b></h5>
+
+						</div> <!-- Row END -->
+					</div>
+			</section>
+			<!-- =======================
+ =======================
+Title and Tabs END -->
+
+			<!-- =======================
+Hotel grid START -->
+			<section class="pt-0">
+				<div class="container">
+					<div class="row g-4">
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Overlay item -->
+								<div class="position-absolute top-0 start-0 z-index-1 m-4">
+									<!-- <div class="badge bg-danger text-white">30% Off</div> -->
+								</div>
+
+								<!-- 음식점 검색 결과 화면 (슬라이더 기능) -->
+								<div class="tiny-slider arrow-round arrow-xs arrow-dark rounded-2 overflow-hidden">
+									<div class="tiny-slider-inner" data-autoplay="false" data-arrow="true"
+										data-dots="false" data-items="1">
+										<!-- Image item -->
+										<div><img src="assets/images/category/foodShop/rest1.jpeg" alt="Card image">
+										</div>
+
+									</div>
+								</div>
+								<!-- Slider END -->
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- 음식 조회 결과 화면의 텍스트 수정 -  상세페이지 이동 링크 수정 필요 -->
+									<h5 class="card-title"><a href="hotel-detail.html">울산 농수산물 도매시장</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"
+												style="align-items: last baseline;"></i></a>
+									</h5>
+
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">울산 남구</li>
+										<li class="nav-item">농수산 도매 시장</li>
+										<li class="nav-item">13452.3km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$750</h5>
+								<span class="mb-0 me-2">/day</span>
+								<span class="text-decoration-line-through">$1000</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0 z-index-2">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/rest2.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">대구 생수정 식당 </a>
+										<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"
+												style="align-items: last baseline;"></i></a>
+									</h5>
+
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 달성군</li>
+										<li class="nav-item">닭 숯불구이 전문</li>
+										<li class="nav-item">13565.32km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$1200</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0 z-index-2">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/rest3.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">대구 팔공 산맥</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i
+												class="bi fa-fw bi-bookmark-fill text-danger"
+												style="align-items: last baseline;"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 북구</li>
+										<li class="nav-item">양념 돼지 갈비</li>
+										<li class="nav-item">13369.0km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$980</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0 z-index-2">
+											<a href="hotel-detail.html" class="btn btn-sm btn-primary-soft mb-0 w-100">
+												자세히 보기<i class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/rest4.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+									<!-- Rating and cart -->
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">오늘 잡은 소 대구 칠곡점</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i
+												class="bi fa-fw bi-bookmark-fill text-danger"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 북구</li>
+										<li class="nav-item">한우 맛집</li>
+										<li class="nav-item">13370.2km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$1400</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/rest5.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">칠성동 할매 콩국수 </a>
+										<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대전 북구</li>
+										<li class="nav-item">고소한 콩국수</li>
+										<li class="nav-item">13373.5km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$680</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/rest6.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">중앙 떡볶이</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 중구</li>
+										<li class="nav-item">동서로 떡볶이 맛집</li>
+										<li class="nav-item">13375.7km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$740</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/cafe1.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">곳 카페</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 동구</li>
+										<li class="nav-item">프라이빗한 카페</li>
+										<li class="nav-item">13376.2km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$570</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt- mt-sm-0">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/rest7.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">후꾸스시</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i
+												class="bi fa-fw bi-bookmark-fill text-danger"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 수성구</li>
+										<li class="nav-item">한적한 골목, 스시</li>
+										<li class="nav-item">13379.8km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$896</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+						<!-- Card item START -->
+						<div class="col-md-6 col-xl-4">
+							<div class="card shadow p-2 pb-0 h-100">
+								<!-- Image -->
+								<img src="assets/images/category/foodShop/cafe2.jpeg" class="rounded-2"
+									alt="Card image">
+
+								<!-- Card body START -->
+								<div class="card-body px-3 pb-0">
+
+									<!-- Title -->
+									<h5 class="card-title"><a href="hotel-detail.html">팜테이블 수성못점</a>
+										<a href="#" class="h6 mb-0 z-index-2"><i class="bi fa-fw bi-bookmark"></i></a>
+									</h5>
+
+									<!-- List -->
+									<ul class="nav nav-divider mb-2 mb-sm-3">
+										<li class="nav-item">대구 수성구</li>
+										<li class="nav-item">팬케이크 맛집</li>
+										<li class="nav-item">13379.9km</li>
+									</ul>
+								</div>
+								<!-- Card body END -->
+
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<!-- Price -->
+										<!-- <div class="d-flex align-items-center">
+								<h5 class="fw-normal text-success mb-0 me-1">$475</h5>
+								<span class="mb-0 me-2">/day</span>
+							</div> -->
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0">
+											<a href="hotel-detail.html"
+												class="btn btn-sm btn-primary-soft mb-0 w-100">자세히 보기<i
+													class="bi bi-arrow-right ms-2"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card item END -->
+
+					</div> <!-- Row END -->
+
+					<!-- Pagination -->
+					<div class="row">
+						<div class="col-12">
+							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+								<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+									<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i
+												class="fa-solid fa-angle-left"></i></a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+									<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#"><i
+												class="fa-solid fa-angle-right"></i></a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- =======================
+Hotel grid END -->
+
+	</main>
+	<!-- **************** MAIN CONTENT END **************** -->
+
+	<!-- =======================
+Footer START -->
+	<footer class="bg-dark pt-5">
+		<div class="container">
+			<!-- Row START -->
+			<div class="row g-4">
+				<!-- Widget 1 START -->
+				<div class="col-lg-3">
+					<!-- logo -->
+					<a href="index.html">
+						<img class="h-40px" src="assets/images/logo-culture-light.png" alt="로고">
+					</a>
+					<p class="my-3 text-body-secondary">
+						문화커넥터와 함께 떠나는 문화여행
+					</p>
+
+				</div>
+				<!-- Widget 1 END -->
+
+				<!-- Widget 2 START -->
+				<div class="col-lg-8 ms-auto">
+					<div class="row g-4">
+						<!-- Link block -->
+						<div class="col-6 col-md-3">
+							<h5 class="text-white mb-2 mb-md-4">페이지</h5>
+							<ul class="nav flex-column text-primary-hover">
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="main.html">홈</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="cluture-theme1.html">문화 테마</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="cuisine-tour.html">음식 투어</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="cluture-news1.html">문화 소식</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="review-talk1.html">리뷰(수다톡)</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="cluture-tour-map.html">문화(여행) 지도</a>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Link block -->
+						<div class="col-6 col-md-3">
+							<h5 class="text-white mb-2 mb-md-4">회원정보</h5>
+							<ul class="nav flex-column text-primary-hover">
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="#">가입하기</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="sign-in.html">로그인</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-body-secondary" href="#">내정보</a>
+								</li>
+
+							</ul>
+						</div>
+
+
+
+
+					</div>
+					<!-- Widget 2 END -->
+				</div>
+				<!-- Row END -->
+
+
+			</div>
+			<!-- Bottom footer -->
+			<div class="row">
+				<div class="container">
+					<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
+						<!-- copyright text -->
+						<div class="text-body-secondary text-primary-hover">
+							저작권 ©2024 멀티캠퍼스 문화커넥터
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer END -->
+
+
+
+	<!-- Back to top -->
+	<div class="back-top"></div>
+
+	<!-- Bootstrap JS -->
+	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Vendors -->
+	<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+	<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+	<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+	<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+	<script src="assets/vendor/choices/js/choices.min.js"></script>
+	<script src="assets/vendor/jarallax/jarallax.min.js"></script>
+	<script src="assets/vendor/jarallax/jarallax-video.min.js"></script>
+
+	<!-- ThemeFunctions -->
+	<script src="assets/js/functions.js"></script>
+</body>
+
+</html>
