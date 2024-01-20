@@ -90,4 +90,84 @@
     </foreach> 
 	</insert>
 	
+	
+	<select id="selectCultureList" parameterType="CultureParam" resultMap="cultureResultMap">
+		SELECT  TITLE, ADDR1, firstimage, firstimage2
+		FROM CULTURE
+		 
+			
+			<if test="searchType == 'title'">
+			    where TITLE LIKE '%${searchValue}%' 
+			</if>
+			<if test="searchType == 'address'">
+			   where AND ADDR1 LIKE '%${searchValue}%' 
+			</if>
+			<if test="checkBox == 'seoul'">
+			    where ADDR1 LIKE '%서울%' 
+			</if>
+			<if test="checkBox == 'gyeonggi'">
+			    where ADDR1 LIKE '%경기%' 
+			</if>
+			<if test="checkBox == 'chungnam'">
+			    where ADDR1 LIKE '%충남%' 
+			</if>
+			<if test="checkBox == 'chugbuk'">
+			    where ADDR1 LIKE '%충북%' 
+			</if>
+			<if test="checkBox == 'kangwon'">
+			    where ADDR1 LIKE '%강원%' 
+			</if>
+			<if test="checkBox == 'Jeonbuk'">
+			    where ADDR1 LIKE '%전북%' 
+			</if>
+			<if test="checkBox == 'Jeonnam'">
+			    where ADDR1 LIKE '%전남%' 
+			</if>
+			<if test="checkBox == 'jeju'">
+			    where ADDR1 LIKE '%제주%' 
+			</if>
+			
+		ORDER BY CNO LIMIT ${limit} OFFSET ${offset};
+	</select>
+	
+	<select id="selectCultureCount" parameterType="CultureParam" resultType="int">
+		SELECT COUNT(*)
+		FROM CULTURE 
+
+			<if test="searchType == 'title'">
+			    where TITLE LIKE '%${searchValue}%' 
+			</if>
+			<if test="searchType == 'address'">
+			    where ADDR1 LIKE '%${searchValue}%' 
+			</if>
+			
+			<if test="checkBox == 'seoul'">
+			    where ADDR1 LIKE '%서울%' 
+			</if>
+			<if test="checkBox == 'gyeonggi'">
+			    where ADDR1 LIKE '%경기%' 
+			</if>
+			<if test="checkBox == 'chungnam'">
+			    where ADDR1 LIKE '%충남%' 
+			</if>
+			<if test="checkBox == 'chugbuk'">
+			    where ADDR1 LIKE '%충북%' 
+			</if>
+			<if test="checkBox == 'kangwon'">
+			    where ADDR1 LIKE '%강원%' 
+			</if>
+			<if test="checkBox == 'Jeonbuk'">
+			    where ADDR1 LIKE '%전북%' 
+			</if>
+			<if test="checkBox == 'Jeonnam'">
+			    where ADDR1 LIKE '%전남%' 
+			</if>
+			<if test="checkBox == 'jeju'">
+			    where ADDR1 LIKE '%제주%' 
+			</if>
+	</select>
+	
+
+	
+	
 </mapper>

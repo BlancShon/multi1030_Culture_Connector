@@ -298,7 +298,10 @@ INSERT INTO CULTURE (CNO, ADDR1, ADDR2, areacode, booktour, cat1, cat2,
 							"cpyrhtDivCd", "mapx", "mapy", "1", '20111215',1,"4543545", "title", "zipcode");
 
 
+
 select * from culture;
+
+
 
 ----------------------------------- DDL 끝-------------------------------------------
 

@@ -169,203 +169,431 @@
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 	
-<!-- =======================
-Main Banner START -->
-<section class="pt-4">
-	<div class="container position-relative">
-		<!-- Title and button START -->
-		<div class="row">
-			<div class="col-12">
-				<!-- Meta -->
-				<div class="d-flex justify-content-between align-items-lg-center">
-			
-
-					<!-- Buttons -->
-					<div class="ms-3">
-						<!-- Share button -->
-						<a href="#" class="btn btn-sm btn-light px-2 mb-0" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="fa-solid fa-fw fa-share-alt">
-                               
-                            </i>
+	<!--Main banner START -->
+	<section class="py-0">
+		<div class="container-fluid px-0">
+			<!-- Slider START -->
+			<div class="tiny-slider arrow-round arrow-blur">
+				<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-gutter="0" data-edge="0" data-dots="false" data-items="3" data-items-md="2" data-items-xs="1">
+					<!-- Slider item -->
+					<div>
+						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library.jpg">
+							<div class="card card-element-hover card-overlay-hover rounded-0 overflow-hidden">
+								<!-- Image -->
+								<img src="assets/images/library.jpg" class="" alt="">
+								<!-- Full screen button -->
+								<div class="hover-element w-100 h-100">
+									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+								</div>
+							</div>
 						</a>
-						<!-- dropdown button -->
-						<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare">
-							<li><a class="dropdown-item" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"> 
-                                    <path d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3zm5.907 8.06l1.47-1.424a.472.472 0 0 0-.656-.678l-1.928 1.866V9.282a.472.472 0 0 0-.944 0v2.557a.471.471 0 0 0 0 .222V13.5a.472.472 0 0 0 .944 0v-1.363l.427-.413 1.428 2.033a.472.472 0 1 0 .773-.543l-1.514-2.155zm-2.958 1.924h-1.46V9.297a.472.472 0 0 0-.943 0v4.159c0 .26.21.472.471.472h1.932a.472.472 0 1 0 0-.944zm-5.857-1.092l.696-1.707.638 1.707H9.092zm2.523.488l.002-.016a.469.469 0 0 0-.127-.32l-1.046-2.8a.69.69 0 0 0-.627-.474.696.696 0 0 0-.653.447l-1.661 4.075a.472.472 0 0 0 .874.357l.33-.813h2.07l.299.8a.472.472 0 1 0 .884-.33l-.345-.926zM8.293 9.302a.472.472 0 0 0-.471-.472H4.577a.472.472 0 1 0 0 .944h1.16v3.736a.472.472 0 0 0 .944 0V9.774h1.14c.261 0 .472-.212.472-.472z"/>
-                                </svg>
-                                kakaotalk</a>
-                            </li>
-							<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
-							<li><a class="dropdown-item" href="#"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-                              </svg> whatsapp</a></li>
-							<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
-						</ul>
+					</div>
+	
+					<!-- Slider item -->
+					<div>
+						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library2.jpeg">
+							<div class="card card-element-hover card-overlay-hover rounded-0 overflow-hidden">
+								<!-- Image -->
+								<img src="assets/images/library2.jpeg"  class="" alt="">
+								<!-- Full screen button -->
+								<div class="hover-element w-100 h-100">
+									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+								</div>
+							</div>
+						</a>
+					</div>
+	
+					<!-- Slider item -->
+					<div>
+						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library3.jpeg">
+							<div class="card card-element-hover card-overlay-hover rounded-0 overflow-hidden">
+								<!-- Image -->
+								<img src="assets/images/library3.jpeg" style="width: 500px; height: 480px;" class="" alt="">
+								<!-- Full screen button -->
+								<div class="hover-element w-100 h-100">
+									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+								</div>
+							</div>
+						</a>
+					</div>
+	
+					<!-- Slider item -->
+					<div>
+						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library4.jpeg">
+							<div class="card card-element-hover card-overlay-hover rounded-0 overflow-hidden">
+								<!-- Image -->
+								<img src="assets/images/library4.jpeg" class="" style=" height: 480px;" alt="">
+								<!-- Full screen button -->
+								<div class="hover-element w-100 h-100">
+									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+								</div>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
+			<!-- Slider START -->
 		</div>
-		<!-- Title and button END -->
-	</div>
-</section>
-<!-- =======================
-Main Banner END -->
+	</section>
+	<!-- =======================
+	<!-- Main banner END -->
 
-<!-- =======================
-Main Content START -->
-<section class="pt-0">
-	<div class="container" data-sticky-container>
-		<div class="row g-4">
-
-			<!-- Main content START -->
-			<div class="col-xl-8">
-				<div class="vstack gap-5">
-
-					<!-- Main cab list START -->
-					<div class="card border p-4">
-						<!-- Card body START -->
-						<div class="card-body p-0">
-							<div class="row g-4 align-items-center">
-								<!-- Image -->
-								<div class="col-md-4">
-									<div class="">
-										<img src="assets/images/library.jpg" alt="">
-									</div>
-								</div>
-
-								<!-- card body -->
-								<div class="col-md-8">
-									<!-- Title and rating -->
-									<div class="d-sm-flex justify-content-sm-between">
-										<!-- Card title -->
-										<div>
-											<h4 class="card-title mb-2">구립구산동도서관</h4>
-											<ul class="nav nav-divider h6 fw-normal mb-2">
-												<li class="nav-item">서울 은평구</li>
-												<li class="nav-item">#</li>
-												
-											</ul>
-										</div>
-										<!-- Rating Star -->
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-									</div>
-
-								
-								</div>
-							</div>
-						</div>	
-						<!-- Card body END -->
-
-						<!-- Card footer -->
-						<div class="card-footer p-0 pt-4">
-						
-						</div>
-					</div>
-					<!-- Main cab list END -->
-
-					<!-- Trip Details START -->
-					<div class="">
-						<!-- Card header -->
-						<div class="">
-							<h4 class="mb-0">상세정보</h4>
-							<br>
-							<br>
-						</div>
-						
-						<!-- Card body START -->
+<!-- Title and tabs START -->
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="card bg-light p-0 pb-0">
+					<!-- Card body -->
+					<div class="card-body d-flex justify-content-between flex-wrap">
+						<!-- Title and badge -->
 						<div>
-							<!-- Form START -->
-							<form class="row g-4">
-                                
-								인천공항 터미널과 가까워 영종도 인근에서 숙박하고 싶어 하는 여행객들에게 인기가 좋은 호텔이다. 해외 출발 새벽 비행기를 안전하게 타기 위해 영종도 호텔을 이용하지 않더라도 영종도 인근 관광과 호텔 숙박지로도 좋은 장소이다. 지상 3층에서 지상 10층 1개동 규모의 객실 330개와 취사가 가능한 220개의 레지던스 객실을 갖추고 있어 가족 여행객들이 머물기 좋다. 각종 세미나, 워크숍, 성공적인 비즈니스의 장을 위한 시설이 마련되어 있으며, 레스토랑과 옥상 정원을 자랑한다. 주변 관광지로는 세계평화의 숲, 스카이72 골프클럽, 을왕리해수욕장, 영종 씨사이드 레일바이크가 있다. 지하철 공항철도 운서역에서 도보로 3분거리에 위치해 있다.
-								<br>
-                                <div id="map" style="width:100%;height:350px; border-style: dashed;"></div>
-                                <script>
-									
-                                   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                                        mapOption = {
-                                            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                                            level: 1 // 지도의 확대 레벨
-                                        };  
-
-                                    // 지도를 생성합니다    
-                                    var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-                                    // 주소-좌표 변환 객체를 생성합니다
-                                    var geocoder = new kakao.maps.services.Geocoder();
-
-                                    // 주소로 좌표를 검색합니다
-                                    geocoder.addressSearch('서울 은평구 연서로13길 29-23 구산동도서관마을', function(result, status) {
-
-                                        // 정상적으로 검색이 완료됐으면 
-                                        if (status === kakao.maps.services.Status.OK) {
-
-                                            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                                            // 결과값으로 받은 위치를 마커로 표시합니다
-                                            var marker = new kakao.maps.Marker({
-                                                map: map,
-                                                position: coords
-                                            });
-
-                                            // 인포윈도우로 장소에 대한 설명을 표시합니다
-                                            var infowindow = new kakao.maps.InfoWindow({
-                                                content: '<div style="width:150px;text-align:center;padding:6px 0;">구산동도서관마을</div>'
-                                            });
-                                            infowindow.open(map, marker);
-
-                                            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                                            map.setCenter(coords);
-                                        } 
-                                    });    
-                                </script>
-								<div>
-								<div style="float: left;">
-								<ul>
-									<li class="nav-item" style="text-align: left;"><span style="font-weight: bold; color: black;">문의 및 안내</span>&nbsp;&nbsp;032-232-2000</li>
-									<li class="nav-item" style="text-align: left;"><span style="font-weight: bold; color: black;">주소</span>&nbsp;&nbsp; 서울 은평구 연서로13길 29-23 구산동도서관마을</li>
-									<li class="nav-item" style="text-align: left;"><span style="font-weight: bold; color: black;">예약안내</span></li>
-									<li class="nav-item" style="text-align: left;"><span style="font-weight: bold; color: black;">홈페이지</span></li>
-									<li class="nav-item" style="text-align: left;"><span style="font-weight: bold; color: black;">전화번호</span></li>
-									
-								</ul>
-								</div>
-
-								<div style="float: right;">
-								<ul>
-									<li class="nav-item" style="text-align: left;">문의 및 안내</li>
-									<li class="nav-item" style="text-align: left;">주소</li>
-									<li class="nav-item" style="text-align: left;">예약안내</li>
-									<li class="nav-item" style="text-align: left;">홈페이지</li>
-									<li class="nav-item" style="text-align: left;">전화번호</li>
-									
-								</ul>
-								</div>
-							</div>
-                            </form>
-							<!-- Form END -->
+							<!-- Badge -->
+							<div class="badge text-bg-dark"><i class="fa-solid fa-building fa-fw text-warning"></i> 문화시설</div>
+							<div class="badge text-bg-dark"><i class="bi bi-book fa-fw text-warning"></i> 도서관</div>
+							<div class="badge text-bg-dark"><i class="fas fa-star fa-fw text-warning"></i> 4.5</div>
+							
+							<!-- Title -->
+							<h1 class="h3 mt-2 mb-1">구립구산동도서관마을</h1>
+							<p class="mb-2 mb-sm-0"><i class="bi bi-geo-alt me-1 text-primary"></i>서울특별시 은평구 연서로13길 29-23</p>
 						</div>
-						<!-- Card body END -->
+						<!-- Buttons -->
+						<ul class="list-inline mb-0">
+							<!-- wishlist -->
+							<li class="list-inline-item">
+								<a href="#" class="btn btn-sm btn-white px-2"><i class="fa-solid fa-fw fa-heart"></i></a>
+							</li>
+							<!-- Share -->
+							<li class="list-inline-item dropdown">
+								<!-- Share button -->
+								<a href="#" class="btn btn-sm btn-white px-2" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="fa-solid fa-fw fa-share-alt"></i>
+								</a>
+								<!-- dropdown button -->
+								<ul class="dropdown-menu min-w-auto shadow rounded" aria-labelledby="dropdownShare">
+									<li><a class="dropdown-item" href="#"><i class="fab fa-whatsapp me-2"></i>whatsapp</a></li>
+									<li><a class="dropdown-item" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"> 
+										<path d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 
+												2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3zm5.907 
+												8.06l1.47-1.424a.472.472 0 0 0-.656-.678l-1.928 1.866V9.282a.472.472 0 0 0-.944 0v2.557a.471.471 0 0 0 0 .222V13.5a.472.472 0 0 
+												0 .944 0v-1.363l.427-.413 1.428 2.033a.472.472 0 1 0 .773-.543l-1.514-2.155zm-2.958 1.924h-1.46V9.297a.472.472 0 0 
+												0-.943 0v4.159c0 .26.21.472.471.472h1.932a.472.472 0 1 0 0-.944zm-5.857-1.092l.696-1.707.638 1.707H9.092zm2.523.488l.002-.016a.469.469 0 0 
+												0-.127-.32l-1.046-2.8a.69.69 0 0 0-.627-.474.696.696 0 0 0-.653.447l-1.661 4.075a.472.472 0 0 0 .874.357l.33-.813h2.07l.299.8a.472.472 0 1 
+												0 .884-.33l-.345-.926zM8.293 9.302a.472.472 0 0 0-.471-.472H4.577a.472.472 0 1 0 0 .944h1.16v3.736a.472.472 0 0 0 .944 0V9.774h1.14c.261 0 .472-.212.472-.472z"/>
+									</svg> kakaotalk</a></li>
+									<li><a class="dropdown-item" href="#"><i class="fab fa-facebook me-2"></i>Twitter</a></li>
+									<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
+									<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
+								</ul>
+							</li>
+							<!-- Report -->
+							<li class="list-inline-item">
+								<a href="#" class="btn btn-sm btn-white px-2"><i class="bi bi-exclamation-triangle-fill fa-fw"></i></a>
+							</li>
+						</ul>
 					</div>
-					<!-- Trip Details END -->
-
-					<!-- Driver and cab detail START -->
-					
-                    
-			
+					<!-- Card footer -->
+				
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
 <!-- =======================
-Main Content END -->
+Title and tabs END -->
+
+<!-- =======================
+Content START -->
+<section class="pt-0">
+	<div class="container">
+		<!-- Tabs contents START -->
+		<div class="tab-content mb-0" id="tour-pills-tabContent">
+
+			<!-- Content item START -->
+			<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+				<div class="row g-4 g-lg-5">
+					<!-- Left side START -->
+					<div class="col-lg-7 col-xl-8">
+						<!-- Card START -->
+						<div class="card bg-transparent mb-4">
+							<!-- Card header -->
+							<div class="card-header bg-transparent border-bottom px-0 pt-0">
+								<h4 class="mb-0">상세정보</h4>
+							</div>
+							<!-- Card body -->
+							<div class="card-body px-0 pb-0">
+								<p class="mb-3">서울시 은평구 구산동 주택가 한복판에 자리한 구산동도서관마을은 외관부터 특이하다. 크고 번듯한 하나의 건물이 아니라, 서로 다른 모양과 색깔의 건물 여럿이 모여 도서관을 이루고 있다. 여러 집이 모여 하나의 마을을 이루는 것처럼. 지금은 도서관이 된 건물들도 이전에는 사람들이 살던 집이었다. 낡은 연립주택 세 동을 리모델링한 후 도서관 하나를 만든 것이다. 
+
+ 
+
+									구산동도서관마을의 공간 구성은 아주 독특하다. 원래 골목길이었던 도서관 로비부터가 그렇다. 붉은 벽돌로 지어진 옛 건물과 새로 지은 건물이 독특하게 어우러진 로비를 지나면, 다른 도서관처럼 거대한 열람공간 대신 기존의 방들을 최대한 살려 누구나 편안하게 책을 볼 수 있는 아늑한 공간들이 나온다. 5층짜리 도서관에는 55개나 되는 크고 작은 방에 분야별로 나뉜 서가와 여러 가지 시설이 자리 잡았다. 이런 공간은 마치 미로처럼 이어진다. 길 중간에 뜻밖의 계단이 나타나고, 층계를 오르다 보면 콘크리트 벽이 붉은 벽돌로 바뀌는 식이다. 계단 벽에는 주요 공간들의 옛날과 현재 사진이 비교 전시되어 공간의 역사를 느낄 수 있다. </p>
+
+								<p class="mb-0">마을 주민들이 직접 도서관을 운영하니, 지역 맞춤, 주민 맞춤형 프로그램이 가득하다. 작년에는 주민참여예산을 지원받아 ‘도서관 마을학교’를 진행했다. 장장 7개월 동안 진행된 프로그램에 참여한 주민들은 후속모임을 거쳐 독서 동아리를 구성하고 구산동도서관마을 독사활동가로 활동하고 있다. 은평구뿐 아니라 이웃 지역의 기관, 단체 등과 다양한 연계 프로그램도 진행 중이다. </p>
+							</div>
+						</div>
+						<!-- Card END -->
+
+						<!-- Card START -->
+						<div class="card bg-transparent">
+							<!-- Card header -->
+							<div class="card-header bg-transparent border-bottom px-0">
+								<h4 class="mb-0">Image Gallery</h4>
+							</div>
+							<!-- Card body -->
+							<div class="card-body px-0 pb-0">
+								<div class="row g-4">
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library.jpg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/library.jpg" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library2.jpeg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/library2.jpeg" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library3.jpeg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/library3.jpeg" style="height: 180px;" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library4.jpeg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/library4.jpeg" style="height: 180px;" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/directory/10.jpg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/category/directory/10.jpg" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/directory/08.jpg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/category/directory/08.jpg" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+
+									<div class="col-md-4">
+										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/directory/07.jpg">
+											<div class="card card-element-hover card-overlay-hover overflow-hidden">
+												<!-- Image -->
+												<img src="assets/images/category/directory/07.jpg" class="card-img" alt="">
+												<!-- Full screen button -->
+												<div class="hover-element w-100 h-100">
+													<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Card END -->
+					</div>
+					<!-- Left side END -->
+
+					<!-- Right side START -->
+					<div class="col-lg-5 col-xl-4">
+						<!-- Direction START -->
+						<div class="card shadow mb-4">
+							<!-- Card header -->
+							<div class="card-header border-bottom">
+								<h5 class="mb-0">위치 정보</h5>
+							</div>
+
+							<!-- Card body -->
+							<div class="card-body">
+								<!-- Map START -->
+								
+								<div id="map" style="width:100%;height:270px;"></div>
+								<script>
+
+								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+									mapOption = {
+										center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+										level: 1 // 지도의 확대 레벨
+									};  
+
+								// 지도를 생성합니다    
+								var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+								// 주소-좌표 변환 객체를 생성합니다
+								var geocoder = new kakao.maps.services.Geocoder();
+
+								// 주소로 좌표를 검색합니다
+								geocoder.addressSearch('서울 은평구 연서로13길 29-23 구산동도서관마을', function(result, status) {
+
+									// 정상적으로 검색이 완료됐으면 
+									if (status === kakao.maps.services.Status.OK) {
+
+										var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+										// 결과값으로 받은 위치를 마커로 표시합니다
+										var marker = new kakao.maps.Marker({
+											map: map,
+											position: coords
+										});
+
+										// 인포윈도우로 장소에 대한 설명을 표시합니다
+										var infowindow = new kakao.maps.InfoWindow({
+											content: '<div style="width:150px;text-align:center;padding:6px 0;">구산동도서관마을</div>'
+										});
+										infowindow.open(map, marker);
+
+										// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+										map.setCenter(coords);
+									} 
+								});    
+								</script>
+								<!-- Info -->
+								<ul class="list-group list-group-borderless my-3">
+									<!-- Address -->
+									<li class="list-group-item">
+										<a href="#" class="h6 fw-normal mb-0">
+											<i class="bi fa-fw bi-geo-alt me-2"></i>서울특별시 은평구 연서로13길 29-23
+										</a>
+									</li>
+									<!-- Call no -->
+									<li class="list-group-item">
+										<a href="#" class="h6 fw-normal mb-0">
+											<i class="bi fa-fw bi-telephone-forward me-2"></i>+82 02-357-0100
+										</a>
+									</li>
+									<!-- Email -->
+									<li class="list-group-item">
+										<a href="#" class="h6 fw-normal mb-0">
+											<i class="bi fa-fw bi-envelope me-2"></i>example@gmail.com
+										</a>
+									</li>
+								</ul>
+								<!-- Social button -->
+								<ul class="list-inline mb-0 mt-3">
+									<li class="list-inline-item">Follow us on: </li>
+									<li class="list-inline-item"> <a class="btn btn-sm px-2 bg-facebook mb-0" href="https://www.facebook.com/gsvlib/?locale=ko_KR"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+									<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-instagram mb-0" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
+									<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-twitter mb-0" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+									<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-linkedin mb-0" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+								</ul>
+							</div>
+						</div>
+						<!-- Direction END -->
+
+						<!-- Time table START -->
+						<div class="card shadow">
+							<!-- Card header -->
+							<div class="card-header border-bottom">
+								<h5 class="mb-0">Working Hours</h5>
+							</div>
+
+							<!-- Card body -->
+							<div class="card-body">
+								<ul class="list-group list-group-borderless mb-0">
+									<li class="list-group-item d-flex justify-content-between">
+										<span>월요일</span>
+										<span>09:00~22:00</span>
+									</li>
+
+									<li class="list-group-item py-0"><hr class="my-1"></li>
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>화요일</span>
+										<span>09:00~22:00</span>
+									</li>
+
+									<li class="list-group-item py-0"><hr class="my-1"></li>
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>수요일</span>
+										<span>09:00~22:00</span>
+									</li>
+
+									<li class="list-group-item py-0"><hr class="my-1"></li>
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>목요일</span>
+										<span>09:00~22:00</span>
+									</li>
+
+									<li class="list-group-item py-0"><hr class="my-1"></li> 
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>금요일</span>
+										<span>09:00~22:00</span>
+									</li>
+
+									<li class="list-group-item py-0"><hr class="my-1"></li> 
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>토요일</span>
+										<span>09:00~18:00</span>
+									</li>
+
+									<li class="list-group-item py-0"><hr class="my-1"></li> 
+
+									<li class="list-group-item d-flex justify-content-between">
+										<span>일요일</span>
+										<span>09:00~18:00</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- Time table END -->
+					</div>
+					<!-- Right side END -->
+				</div>
+			</div>
+			<!-- Content item END -->
+
+			
+
+			
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->

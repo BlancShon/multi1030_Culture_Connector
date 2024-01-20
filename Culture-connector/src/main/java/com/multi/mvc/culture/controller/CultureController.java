@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.mvc.api.OpenApiManagerForXml;
 import com.multi.mvc.board.controller.BoardController;
+import com.multi.mvc.board.model.vo.Board;
 import com.multi.mvc.board.model.vo.BoardCategory;
+import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.mapper.CultureMapper;
 //import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.CultureService;
 import com.multi.mvc.culture.model.vo.Culture;
+import com.multi.mvc.culture.model.vo.CultureParam;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,16 +46,33 @@ public class CultureController {
 	}
 	
 	@GetMapping("/culture/list")
-	public String list(Model model, Culture culture) {
+	public String list(Model model, CultureParam param) {
+		int cultureCount = service.getCultureCount(param);
+//		PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 6, cultureCount, 8); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		param.setLimit(pageInfo.getListLimit());
+		param.setOffset(pageInfo.getStartList() - 1);
+		List<Culture> list = service.getCultureList(param);
 		
 		
+		//System.out.println(categoryList);
 		
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("list", list);
+		// model.addAttribute("categoryList", categoryList);
+		// model.addAttribute("typeMap", typeMap);
+		model.addAttribute("param", param);
+		model.addAttribute("typeList", param.getTypeList());
 		
-		
+		// 공지사항 분류하는 법
+//		if(param.getTypeList() != null && param.getTypeList().size() == 1 && param.getTypeList().get(0).equals("NBOARD")) {
+//			return "/culture/List";
+//		}
+	
 		
 		//service.count();
 		
-		model.addAttribute("list", list);
+//		model.addAttribute("list", list);
 		return "culture/cultureList";
 	}
 	
