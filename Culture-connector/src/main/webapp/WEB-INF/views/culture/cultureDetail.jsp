@@ -177,41 +177,9 @@
 	
 	<!--Main banner START -->
 	<section class="py-0">
-		<div class="container-fluid px-0">
-			<!-- Slider START -->
-			<div class="tiny-slider arrow-round arrow-blur">
-				<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-gutter="0" data-edge="0" data-dots="false" data-items="3" data-items-md="2" data-items-xs="1">
-					<!-- Slider item -->
-					<div>
-						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library.jpg">
-						
-						</a>
-					</div>
-	
-					<!-- Slider item -->
-					<div>
-						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library2.jpeg">
-						
-						</a>
-					</div>
-	
-					<!-- Slider item -->
-					<div>
-						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library3.jpeg">
-						
-						</a>
-					</div>
-	
-					<!-- Slider item -->
-					<div>
-						<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library4.jpeg">
-						
-						</a>
-					</div>
-				</div>
-			
-			</div>
-			<!-- Slider START -->
+		<div class="container-fluid px-0" style="text-align: center; width: 1500px; height: 500px;">
+			<img src ="${pageContext.request.contextPath}/resources/images/library.jpg" style="width: 700px">
+
 		</div>
 	</section>
 	<!-- =======================
@@ -229,7 +197,7 @@
 						<div><img src="">
 							<!-- Badge -->
 							<div class="badge text-bg-dark"><i class="fas fa-building fa-fw text-warning"></i> 문화시설</div>
-							<div class="badge text-bg-dark"><img src="${pageContext.request.contextPath}/resources/images/book.svg" style="background-color: orange;"> 도서관</div>
+							
 							<div class="badge text-bg-dark"><i class="fas fa-star fa-fw text-warning"></i> 4.5</div>
 							
 							<!-- Title -->
@@ -308,33 +276,23 @@ Content START -->
 							<div class="card-body px-0 pb-0">
 								<div class="row g-4">
 									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library.jpg">
-										
-										</a>
+									<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
 									</div>
 
 									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library2.jpeg">
-										
-										</a>
+									<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
 									</div>
 
 									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library3.jpeg">
-										
-										</a>
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
 									</div>
 
 									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/library4.jpeg">
-											
-										</a>
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
 									</div>
 
 									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/directory/10.jpg">
-										
-										</a>
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">	
 									</div>
 
 									<div class="col-md-4">
