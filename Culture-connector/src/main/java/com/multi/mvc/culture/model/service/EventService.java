@@ -1,5 +1,7 @@
 package com.multi.mvc.culture.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +16,19 @@ public class EventService {
 	@Autowired
 	private EventMapper mapper;
 	
-	public void dropTable() {
-		mapper.deleteTableFestival();
-	}
-	
 	public void createTable() {
 		mapper.createTableEvent();
 	}
 	
 	public void initEvent() {
-		mapper.initEvent(ApiParsing.listBySidoGroups(Event.class));
+		mapper.initEvent(ApiParsing.eventParseAndExportToTheList(Event.class));
 	}
 	
 	public int count() {
 		return mapper.selectCount();
+	}
+	
+	public List<Event> showEventTable() {
+		return mapper.eventList();
 	}
 }

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.service.EventService;
 import com.multi.mvc.culture.model.vo.Event;
 
@@ -24,12 +23,14 @@ public class EventController {
 	private EventService service;
 	
 //	public static List<Event> list = ApiParsing.parseAndExportToTheList(Event.class);
-	public static List<Event> list = ApiParsing.listBySidoGroups(Event.class);
+//	public static List<Event> list = ApiParsing.listBySidoGroups(Event.class);
 //	public static List<Event> list = ApiParsing.listBySigunguGroups(Event.class);
+//	public static List<Event> list = ApiParsing.eventParseAndExportToTheList(Event.class);
 	
 	
-	@Bean(initMethod = "init4")
-	public void init4() {
+	
+	@Bean(initMethod = "init2")
+	public void init2() {
 		log.debug("Event Controller 확인");
 		
 		service.createTable();
@@ -41,6 +42,7 @@ public class EventController {
 	@GetMapping("/list")
 	public String eventList(Model model) {
 		log.debug("Event Controller list 확인");
+		List<Event> list = service.showEventTable();
 		model.addAttribute("eventList", list);
 		
 		return "culture/eventList";

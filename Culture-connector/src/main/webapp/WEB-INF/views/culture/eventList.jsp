@@ -19,86 +19,111 @@
 </style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="문화시설 목록" name="title"/>
+	<jsp:param value="공연 행사 목록" name="title"/>
 </jsp:include>
 
-
-
 		
-		<form name="eventList" action="${path}/event/list" method="get">
-		<table id="tbl-board">
-			<tr>
-				<th>번호</th>
-				<th>주소1</th>
-				<th>주소2</th>
-				<th>지역코드</th>
-				<th>예약여부</th>
-				<th>cat1</th>
-				<th>cat2</th>
-				<th>cat3</th>
-				<th>contentid</th>
-				<th>contenttypeid</th>
-				<th>createdtime</th>
-				<th>firstimage</th>
-				<th>firstimage2</th>
-				<th>cpyrhtDivCd</th>
-				<th>mapx</th>
-				<th>mapy</th>
-				<th>mlevel</th>
-				<th>modifiedtime</th>
-				<th>sigungucode</th>
-				<th>tel</th>
-				<th>title</th>
-				<th>zipcode</th>
-			</tr>
-			
-			<c:if test="${empty eventList}">
-				<tr>
-					<td colspan="6">조회된 글이 없습니다.</td>
-				</tr>
-			</c:if>
-			
-			<c:if test="${not empty eventList}">
-				<c:forEach var="item" items="${eventList}">
-					<tr>
-						<td><c:out value="${item.eno}"/></td>
-						
-						<td><c:out value="${item.addr1}"/></td>
-						<td><c:out value="${item.addr2}"/></td>
-						<td><c:out value="${item.areacode}"/></td>
-					<td><c:out value="${item.booktour}"/></td>
-						<td><c:out value="${item.cat1}"/></td>
-						<td><c:out value="${item.cat2}"/></td>
-						<td><c:out value="${item.cat3}"/></td>
-						<td><c:out value="${item.contentid}"/></td>
-						<td><c:out value="${item.contenttypeid}"/></td>
-						<td><fmt:formatDate type="date" value="${item.createdtime}"/></td>
-						<td><c:out value="${item.firstimage}"/></td>
-						<td><c:out value="${item.firstimage2}"/></td>
-						<td><c:out value="${item.cpyrhtDivCd}"/></td>
-						<td><c:out value="${item.mapx}"/></td>
-						<td><c:out value="${item.mapy}"/></td>
-						<td><fmt:formatDate type="date" value="${item.modifiedtime}"/></td>
-						<td><c:out value="${item.sigungucode}"/></td>
-						<td><c:out value="${item.tel}"/></td>
-						<td><c:out value="${item.title}"/></td>
-						<td><c:out value="${item.zipcode}"/></td>
-						
-						
-					
-					</tr>
-				</c:forEach>
-			</c:if>
+		<table border="1">
+		    <thead>
+		        <tr>
+		            <th>번호</th>
+		            <th>주소1</th>
+		            <th>주소2</th>
+		            <th>예약여부</th>
+		            <th>카테고리1</th>
+		            <th>카테고리2</th>
+		            <th>카테고리3</th>
+		            <th>컨텐츠 ID</th>
+		            <th>컨텐츠 타입 ID</th>
+		            <th>생성 시간</th>
+		            <th>이벤트 시작 일자</th>
+		            <th>이벤트 종료 일자</th>
+		            <th>첫 번째 이미지</th>
+		            <th>두 번째 이미지</th>
+		            <th>저작권 구분 코드</th>
+		            <th>지도 X 좌표</th>
+		            <th>지도 Y 좌표</th>
+		            <th>M 레벨</th>
+		            <th>수정 시간</th>
+		            <th>지역 코드</th>
+		            <th>시군구 코드</th>
+		            <th>전화번호</th>
+		            <th>제목</th>
+		            <th>우편번호</th>
+		            <th>주최기관1</th>
+		            <th>주최기관1 전화번호</th>
+		            <th>주최기관2</th>
+		            <th>주최기관2 전화번호</th>
+		            <th>이벤트 종료 일자</th>
+		            <th>플레이타임</th>
+		            <th>이벤트 장소</th>
+		            <th>이벤트 홈페이지</th>
+		            <th>연령 제한</th>
+		            <th>예매처</th>
+		            <th>장소 정보</th>
+		            <th>서브 이벤트</th>
+		            <th>프로그램</th>
+		            <th>이벤트 시작 일자</th>
+		            <th>이용 시간 페스티벌</th>
+		            <th>할인 정보 페스티벌</th>
+		            <th>지출 시간 페스티벌</th>
+		            <th>페스티벌 등급</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <c:forEach var="item" items="${eventList}">
+		            <tr>
+		                <td>${item.eno}</td>
+		                <td>${item.addr1}</td>
+		                <td>${item.addr2}</td>
+		                <td>${item.booktour}</td>
+		                <td>${item.cat1}</td>
+		                <td>${item.cat2}</td>
+		                <td>${item.cat3}</td>
+		                <td>${item.contentid}</td>
+		                <td>${item.contenttypeid}</td>
+		                <td><fmt:formatDate type="date" value="${item.createdtime}"/></td>
+		                <td>${item.eventStartDate}</td>
+		                <td>${item.eventEndDate}</td>
+		                <td>${item.firstimage}</td>
+		                <td>${item.firstimage2}</td>
+		                <td>${item.cpyrhtDivCd}</td>
+		                <td>${item.mapx}</td>
+		                <td>${item.mapy}</td>
+		                <td>${item.mlevel}</td>
+		                <td><fmt:formatDate type="date" value="${item.modifiedtime}"/></td>
+		                <td>${item.areacode}</td>
+		                <td>${item.sigungucode}</td>
+		                <td>${item.tel}</td>
+		                <td>${item.title}</td>
+		                <td>${item.zipcode}</td>
+		                <td>${item.sponsor1}</td>
+		                <td>${item.sponsor1tel}</td>
+		                <td>${item.sponsor2}</td>
+		                <td>${item.sponsor2tel}</td>
+		                <td>${item.eventEndDate}</td>
+		                <td>${item.playtime}</td>
+		                <td>${item.eventPlace}</td>
+		                <td>${item.eventHomepage}</td>
+		                <td>${item.agelimit}</td>
+		                <td>${item.bookingplace}</td>
+		                <td>${item.placeinfo}</td>
+		                <td>${item.subevent}</td>
+		                <td>${item.program}</td>
+		                <td>${item.eventStartDate}</td>
+		                <td>${item.usetimefestival}</td>
+		                <td>${item.discountinfofestival}</td>
+		                <td>${item.spendtimefestival}</td>
+		                <td>${item.festivalgrade}</td>
+		            </tr>
+		        </c:forEach>
+		    </tbody>
 		</table>
-		</form>
 		
 	
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
-
-
 
 
 
