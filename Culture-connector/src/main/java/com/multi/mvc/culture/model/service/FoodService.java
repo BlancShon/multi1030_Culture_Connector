@@ -23,9 +23,6 @@ public class FoodService {
 		mapper.insertFood(OpenApiManagerForXml_food.parse());
 		return result;
 		
-		
-		
-		
 			
 	}
 	

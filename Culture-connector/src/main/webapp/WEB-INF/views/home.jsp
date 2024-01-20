@@ -1,78 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-nC2f8Zk5bN1GLtDKnSEajhAuJHBOhEvw3FkYx3ysOi5z1WxkK+AABf6T8r7z5Ua3FjNRl9Q+Or4eGbLSNc0bPg==" crossorigin="anonymous" />
 
-    <title>메인 사이트</title>
+<jsp:include page="/WEB-INF/views/common/culutreheader.jsp">
+	<jsp:param value="Culture Connector" name="title"/>
+</jsp:include>
 
-    <!-- 부트스트랩 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-          crossorigin="anonymous">
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!-- <head> -->
+<!--     <meta charset="UTF-8"> -->
+<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<!--  	<!-- Font Awesome --> 
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-nC2f8Zk5bN1GLtDKnSEajhAuJHBOhEvw3FkYx3ysOi5z1WxkK+AABf6T8r7z5Ua3FjNRl9Q+Or4eGbLSNc0bPg==" crossorigin="anonymous" /> -->
 
-<!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
-/>	
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/font/bootstrap-icons.css" />
+<!--     <title>메인 사이트</title> -->
 
-<!-- Tiny Slider -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.3/dist/tiny-slider.css" />
+<!--     부트스트랩 5 -->
+<!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" -->
+<!--           rel="stylesheet" -->
+<!--           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" -->
+<!--           crossorigin="anonymous"> -->
 
-<!-- GLightbox -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox@1.0.0/dist/css/glightbox.css" />
+<!-- <!-- Google Font --> 
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+<!-- <link -->
+<!--   rel="stylesheet" -->
+<!--   href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" -->
+<!-- />	 -->
+<!-- <!-- Bootstrap Icons --> 
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/font/bootstrap-icons.css" /> -->
 
-<!-- Flatpickr -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css" />
+<!-- <!-- Tiny Slider --> 
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.3/dist/tiny-slider.css" /> -->
 
-<!-- Choices -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/choices@10.3.0/public/assets/styles/choices.min.css" />
+<!-- <!-- GLightbox -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox@1.0.0/dist/css/glightbox.css" /> -->
 
-    <!-- 사용자 정의 CSS -->
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
+<!-- <!-- Flatpickr -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css" /> -->
+
+<!-- <!-- Choices --> 
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/choices@10.3.0/public/assets/styles/choices.min.css" /> -->
+
+<!--     사용자 정의 CSS -->
+<%--  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"> --%>
  
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-rbs5vr9i87q4ys1q2ny46u1p7e3c9h5o1u8e4onq18ebL5uFi06e7Jk7b57lPtw" crossorigin="anonymous" />
+<!-- <!-- Bootstrap CSS --> 
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-rbs5vr9i87q4ys1q2ny46u1p7e3c9h5o1u8e4onq18ebL5uFi06e7Jk7b57lPtw" crossorigin="anonymous" /> -->
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha256-oP6HI/tZ1ZlR5nAMvVv1PZl+y6PZDsUeF7gW6C1/5aI="
-            crossorigin="anonymous"></script>
+<!--     jQuery -->
+<!--     <script src="https://code.jquery.com/jquery-3.6.4.min.js" -->
+<!--             integrity="sha256-oP6HI/tZ1ZlR5nAMvVv1PZl+y6PZDsUeF7gW6C1/5aI=" -->
+<!--             crossorigin="anonymous"></script> -->
 
-    <!-- 부트스트랩 5 스크립트 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-qZjSMU9PeqFbgLViGgjdtH4EFeF+/a09SJAgpbIxIEdDWE+rAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+<!--     부트스트랩 5 스크립트 -->
+<!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" -->
+<!--             integrity="sha384-qZjSMU9PeqFbgLViGgjdtH4EFeF+/a09SJAgpbIxIEdDWE+rAyjUar5+76PVCmYl" -->
+<!--             crossorigin="anonymous"></script> -->
 
-    <!-- 지도 맵 링크 -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/map-config.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/map-interact.js"></script>
+<!--     지도 맵 링크 -->
+<%--     <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath}/resources/js/map-config.js"></script> --%>
+<%-- 	<script src="${pageContext.request.contextPath}/resources/js/map-interact.js"></script> --%>
     
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/map-style.css">
+<%--     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/map-style.css"> --%>
    
-     <script src="${pageContext.request.contextPath}/resources/js/functions.js"></script>
+<%--      <script src="${pageContext.request.contextPath}/resources/js/functions.js"></script> --%>
      
  
     
-</head>
+<!-- </head> -->
 
 <body>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-    <jsp:param value="Spring 홈페이지" name="title"/>
-</jsp:include>
+<%-- <jsp:include page="/WEB-INF/views/common/header.jsp"> --%>
+<%--     <jsp:param value="Spring 홈페이지" name="title"/> --%>
+<%-- </jsp:include> --%>
 
 <!-- carousel 시작 -->
 <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
@@ -864,6 +869,7 @@ Blog START-->
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
 <!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

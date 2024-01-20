@@ -35,6 +35,24 @@ public class Event {
 	private int sigungucode;                      
 	private String tel;                           
 	private String title;                         
-	private String zipcode;           
+	private String zipcode;       
+	private String sponsor1;
+    private String sponsor1tel;
+    private String sponsor2;
+    private String sponsor2tel;
+    private Date eventEndDate;
+    private String playtime;
+    private String eventPlace;
+    private String eventHomepage;
+    private String agelimit;
+    private String bookingplace;
+    private String placeinfo;
+    private String subevent;
+    private String program;
+    private Date eventStartDate;
+    private String usetimefestival;
+    private String discountinfofestival;
+    private String spendtimefestival;
+    private String festivalgrade;
                                       
 }

@@ -1,11 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문화 테마 - 문화 예술 공연 html입니다.</title>
-</head>
-<body>
+    <title>문화 / 예술 / 공연</title>
+
+<!-- Meta Tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Webestica.com">
+<meta name="description" content="Booking - Multipurpose Online Booking Theme">
+
+<!-- Dark mode -->
+<script>
+    const storedTheme = localStorage.getItem('theme')
+
+    const getPreferredTheme = () => {
+        if (storedTheme) {
+            return storedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = function (theme) {
+        if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+    }
+
+    setTheme(getPreferredTheme())
+
+    window.addEventListener('DOMContentLoaded', () => {
+        var el = document.querySelector('.theme-icon-active');
+        if(el != 'undefined' && el != null) {
+            const showActiveTheme = theme => {
+            const activeThemeIcon = document.querySelector('.theme-icon-active use')
+            const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+            const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+            document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                element.classList.remove('active')
+            })
+
+            btnToActive.classList.add('active')
+            activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (storedTheme !== 'light' || storedTheme !== 'dark') {
+                setTheme(getPreferredTheme())
+            }
+        })
+
+        showActiveTheme(getPreferredTheme())
+
+        document.querySelectorAll('[data-bs-theme-value]')
+            .forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const theme = toggle.getAttribute('data-bs-theme-value')
+                    localStorage.setItem('theme', theme)
+                    setTheme(theme)
+                    showActiveTheme(theme)
+                })
+            })
+
+        }
+    })
     
+</script>
+
+<!-- Logo -->
+<link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap">
+
+<!-- Plugins CSS -->
+<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">
+<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+<link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/css/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="navbar-light header-sticky" style="font-weight: bold;">
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <!-- Logo START -->
+        <a class="navbar-brand " href="main.html" style="padding-top: 15px; padding-bottom: 15px;">
+          <img style="height: 70px" class="light-mode-item navbar-brand-item" src="assets/images/logo-culture-light.png"
+            alt="logo">
+          <img style="height: 70px" class="dark-mode-item navbar-brand-item" src="assets/images/logo-culture.png"
+            alt="logo">
+        </a>
+        <!-- Logo END -->
+
+        <!-- Responsive navbar toggler -->
+        <button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="d-none d-sm-inline-block small">Menu</span>
+        </button>
+
+        <!-- Responsive category toggler -->
+        <button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarCategoryCollapse" aria-controls="navbarCategoryCollapse" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span class="d-none d-sm-inline-block small">Category</span>
+        </button>
+
+        <!-- Main navbar START -->
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+
+            <!-- Nav item 홈  -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="main.html">홈</a>
+            </li>
+
+            <!-- Nav item 문화 테마 -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">문화 테마</a>
+              <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+                <li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
+                <li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
+                <li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
+                <li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
+
+              </ul>
+            </li>
+
+            <!-- Nav item 음식 투어  -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
+            </li>
+
+            <!-- Nav item 문화 소식 -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">문화 소식</a>
+              <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+                <li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
+                <li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
+                <li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
+
+              </ul>
+            </li>
+
+            <!-- Nav item 리뷰(수다톡) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">리뷰(수다톡)</a>
+              <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+                <li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
+                <li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
+
+              </ul>
+            </li>
+
+            <!-- Nav item 문화(여행) 지도  -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
+            </li>
+
+
+
+            <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
+            <li class="nav-item" id="login">
+              <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
+            </li>
+
+            <!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">회원 정보</a>
+              <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+
+                <li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
+                <li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
+                <li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
+                <li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
+                <li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
+
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+        <!-- Main navbar END -->
+
+        <!-- Toggler button and stay button -->
+        <div class="d-flex align-items-center justify-content-end">
+          <!-- Responsive navbar toggler -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-animation">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="d-none d-sm-inline-block small">Menu</span>
+          </button>
+
+
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </nav>
+    <!-- Logo Nav END -->
+  </header>
+  <!-- Header END -->
+
+
+  
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main Banner START -->
+<section class="py-0">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-11 mx-auto">
+            <!-- Slider START -->
+            <div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
+                <div class="tiny-slider-inner" data-gutter="0" data-arrow="true" data-dots="false" data-items="1" data-autoplaytime="5000">
+                    <!-- Card item START -->
+                    <div class="card overflow-hidden h-400px h-sm-400px rounded-0" style="background-image:url(assets/images/category/culture-theme/festival.jpg); background-position: center left; background-size: cover;">
+                        <!-- Background dark overlay -->
+                        <div class="bg-overlay bg-dark opacity-3"></div>
+                        <!-- Card image overlay -->
+                        <div class="card-img-overlay d-flex align-items-center"> 
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-11 col-lg-7">
+                                        <h6 class="text-white fw-normal mb-0"> 💖 도시의 함성을 느껴보세요</h6>
+                                        <!-- Title -->
+                                        <h1 class="text-white display-6">문화 예술 공연의 콜라보</h1>
+                                        <!-- Subtitle or Description -->
+                                        <p class="text-white">여러 아티스트들의 소울을 느끼며 나도 참여</p>
+                                        <a href="#" class="btn btn-primary mb-0">자세히</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card item END -->
+
+                    <!-- Card item START -->
+                    <div class="card overflow-hidden h-400px h-sm-400px bg-parallax text-center rounded-0"  data-jarallax-video="https://www.youtube.com/watch?v=y8iV3CW_E6w">
+                        <!-- Background dark overlay -->
+                        <div class="bg-overlay bg-dark opacity-3"></div>
+                        <!-- Card image overlay -->
+                        <div class="card-img-overlay d-flex align-items-center"> 
+                            <div class="container w-100 my-auto">
+                                <div class="row justify-content-center">
+                                    <div>
+                                        <!-- Introduction or Teaser -->
+                                        <p class="text-white">사로잡힐 준비 되셨나요?</p>
+                                        <!-- Description -->
+                                        <h2 class="text-white display-6">열정 넘치는 살아있는 공연</h2>
+                                        <p class="text-white">함께 환상적인 경험을 같이 하시죠.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card item END -->
+                </div>
+            </div>
+            <!-- Slider END -->
+        </div>
+    </div>
+</div>
+</section>
+<!-- =======================
+Main Banner END -->
+
+<!-- =======================
+Special offer START -->
+<section class="pb-0">
+<div class="container">
+    <!-- Title -->
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h3 class="mb-0">최신 공연 바로 보기</h3>
+        </div>
+    </div>
+
+    <!-- Slider START -->
+    <div class="tiny-slider arrow-round arrow-blur arrow-hover">
+        <div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
+            
+            <!-- Offer card START -->
+            <div>
+                <div class="card">
+                    <img src="http://tong.visitkorea.or.kr/cms/resource/70/2952070_image2_1.jpg" class="card-img" alt="">
+                    <!-- Card body -->
+                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                            <h6 class="card-title mb-1"><a href="#">가평 에덴벚꽃길 벚꽃축제</a></h6>
+                            <small>20231021</small>
+                            <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer card END -->
+            
+            <!-- Offer card START -->
+            <div>
+                <div class="card">
+                    <img src="https://tong.visitkorea.or.kr/cms/resource/07/3021807_image2_1.jpg" class="card-img" alt="">
+                    <!-- Card body -->
+                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                            <h6 class="card-title mb-1"><a href="#">가을 , 명동으로</a></h6>
+                            <small>20231021</small>
+                            <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer card END -->
+
+            <!-- Offer card START -->
+            <div>
+                <div class="card">
+                    <img src="http://tong.visitkorea.or.kr/cms/resource/67/2997767_image2_1.png" class="card-img" alt="">
+                    <!-- Card body -->
+                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                            <h6 class="card-title mb-1"><a href="#">강원 콘텐츠 페스타</a></h6>
+                            <small>20230908</small>
+                            <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer card END -->
+            
+            <!-- Offer card START -->
+            <div>
+                <div class="card">
+                    <img src="http://tong.visitkorea.or.kr/cms/resource/70/2952070_image2_1.jpg" class="card-img" alt="">
+                    <!-- Card body -->
+                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                            <h6 class="card-title mb-1"><a href="#">가평 에덴벚꽃길 벚꽃축제</a></h6>
+                            <small>20231021</small>
+                            <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer card END -->
+            
+            <!-- Offer card START -->
+            <div>
+                <div class="card">
+                    <img src="https://tong.visitkorea.or.kr/cms/resource/07/3021807_image2_1.jpg" class="card-img" alt="">
+                    <!-- Card body -->
+                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                            <h6 class="card-title mb-1"><a href="#">가을 , 명동으로</a></h6>
+                            <small>20231021</small>
+                            <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer card END -->
+
+            <!-- Offer card START -->
+            <div>
+                <div class="card">
+                    <img src="http://tong.visitkorea.or.kr/cms/resource/67/2997767_image2_1.png" class="card-img" alt="">
+                    <!-- Card body -->
+                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                            <h6 class="card-title mb-1"><a href="#">강원 콘텐츠 페스타</a></h6>
+                            <small>20230908</small>
+                            <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer card END -->
+
+        </div>	
+    </div>
+    <!-- Slider END -->
+</div>
+</section>
+<!-- =======================
+Special offer END -->
+
+<!-- =======================
+About START -->
+<section class="py-0 py-lg-7">
+<div class="container">
+    <!-- Title -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>우리 동네에 무슨일이 있을가?</h2>
+            <p class="mb-0">우리 동네 근처에서 열리는 행사 보기</p>
+        </div>
+    </div>
+
+    <!-- 지역 이름 선택 -->
+    <div class="row g-4 g-md-5">
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/01.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">서울</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/02.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">경기</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/03.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">인천</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/04.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">대전</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/05.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">대구</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/06.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">전북</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/07.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">경북</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/08.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">충북</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/09.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">전남</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/10.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">경남</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/11.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">충남</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/01.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">울산</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/01.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">부산</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/01.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">제주</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
+        <!-- Card item START -->
+        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <div class="card bg-transparent text-center p-1 h-100">
+                <!-- Image -->
+                <img src="assets/images/category/hotel/nearby/01.jpg" class="rounded-circle" alt="">
+
+                <div class="card-body p-0 pt-3">
+                    <h5 class="card-title"><a href="#" class="stretched-link">강원</a></h5>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+        <!-- 기능 구현 안되면  체크 박스로 대신 누르면 지역 이름 기반으로 최신 공연 가져오기-->
+    </div> <!-- Row END -->
+
+
+</div>
+</section>
+<!-- =======================
+Near by END -->
+
+<!-- =======================
+Services START -->
+<section class="pt-0 pt-lg-5">
+<div class="container">
+    <div class="row g-4 align-items-top">
+        <div class="col-lg-6">
+            <br><br><br><br>
+            <!-- Title -->
+            <h2>동네 근처 행사</h2>
+            <p>근처에서 열리는 행사에 관한 정보를 누구보다 빠르게 확인하고 어서 참여하세요!</p>
+            <!-- Services -->
+                <div>
+                    <ul class="list-group list-group-borderless mt-2 mb-0">
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-arrow-right fa-fw text-primary me-2"></i>공연 이름 : 가을, 명동으로</h6>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-map fa-fw text-primary me-2"></i>행사 장소 : 명동역 상상광장 ,재미랑3호 김청기 기념관 동심</h6>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-stopwatch fa-fw text-primary me-2"></i>열리는 시간 : 12:20~16:55</h6>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-calendar fa-fw text-primary me-2"></i>행사 날짜 : 20231021 ~ 20231022</h6>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-money-bill fa-fw text-primary me-2"></i>요금 : 무료</h6>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-building fa-fw text-primary me-2"></i>주관사 : 남산골 상인회 , 서울 중구청</h6>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h6 class="fw-normal mb-0" style="font-size: 25px;"><i class="fa-solid fa-phone fa-fw text-primary me-2"></i>전화번호 : 02-6084-7079</h6>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <img src="https://tong.visitkorea.or.kr/cms/resource/07/3021807_image2_1.jpg" class="card-img" alt="">
+                <!-- Card body -->
+                <div class="position-absolute top-100 start-50 translate-middle w-100">
+                    <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                        <h6 class="card-title mb-1"><a href="#">가을 , 명동으로</a></h6>
+                        <small>20231021</small>
+                        <div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- Row END -->
+</div>
+</section>
+<!-- =======================
+Services END -->
+
+
+<!-- =======================
+Gallery START -->
+<section>
+<div class="container-fluid">
+    <!-- Title -->
+    <div class="row mb-md-4">
+        <div class="col-12 mx-auto text-center mb-4">
+            <h2 class="mb-0">리뷰 사진 미리보기</h2>
+        </div>
+    </div>
+
+        <!-- Slider START -->
+        <div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
+            <div class="tiny-slider-inner d-flex align-items-center" data-autoplay="true" data-edge="2" data-arrow="true" data-dots="false" data-items="6" data-items-lg="4" data-items-sm="2">
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/festival.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/festival2.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/festival3.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/show1.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/show2.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/show3.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/festival.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/festival2.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/festival3.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/show1.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/show2.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Slider item -->
+                <div>
+                    <a data-glightbox="" data-gallery="gallery" href="assets/images/category/hotel/gallery/01.jpg">
+                        <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                            <!-- Image -->
+                            <img src="assets/images/category/culture-theme/show3.jpg" class="rounded-3" alt="">
+                            <!-- Full screen button -->
+                            <div class="hover-element w-100 h-100">
+                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>			
+    <!-- Slider END	 -->
+</div>
+</section>
+<!-- =======================
+Gallery END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark pt-5">
+<div class="container">
+    <!-- Row START -->
+    <div class="row g-4">
+
+        <!-- Widget 1 START -->
+        <div class="col-lg-3">
+            <!-- logo -->
+            <a href="index.html">
+                <img class="h-40px" src="assets/images/logo-light.svg" alt="logo">
+            </a>
+            <p class="my-3 text-body-secondary">Departure defective arranging rapturous did believe him all had supported.</p>
+            <p class="mb-2"><a href="#" class="text-body-secondary text-primary-hover"><i class="bi bi-telephone me-2"></i>+1234 568 963</a> </p>
+            <p class="mb-0"><a href="#" class="text-body-secondary text-primary-hover"><i class="bi bi-envelope me-2"></i>example@gmail.com</a></p>
+        </div>
+        <!-- Widget 1 END -->
+
+        <!-- Widget 2 START -->
+        <div class="col-lg-8 ms-auto">
+            <div class="row g-4">
+                <!-- Link block -->
+                <div class="col-6 col-md-3">
+                    <h5 class="text-white mb-2 mb-md-4">Page</h5>
+                    <ul class="nav flex-column text-primary-hover">
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">About us</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Contact us</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">News and Blog</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Meet a Team</a></li>
+                    </ul>
+                </div>
+
+                <!-- Link block -->
+                <div class="col-6 col-md-3">
+                    <h5 class="text-white mb-2 mb-md-4">Link</h5>
+                    <ul class="nav flex-column text-primary-hover">
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Sign in</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Privacy Policy</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Terms</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Cookie</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Support</a></li>
+                    </ul>
+                </div>
+                                
+                <!-- Link block -->
+                <div class="col-6 col-md-3">
+                    <h5 class="text-white mb-2 mb-md-4">Global Site</h5>
+                    <ul class="nav flex-column text-primary-hover">
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">India</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">California</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Indonesia</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Canada</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#">Malaysia</a></li>
+                    </ul>
+                </div>
+
+                <!-- Link block -->
+                <div class="col-6 col-md-3">
+                    <h5 class="text-white mb-2 mb-md-4">Booking</h5>
+                    <ul class="nav flex-column text-primary-hover">
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#"><i class="fa-solid fa-hotel me-2"></i>Hotel</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#"><i class="fa-solid fa-plane me-2"></i>Flight</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#"><i class="fa-solid fa-globe-americas me-2"></i>Tour</a></li>
+                        <li class="nav-item"><a class="nav-link text-body-secondary" href="#"><i class="fa-solid fa-car me-2"></i>Cabs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Widget 2 END -->
+
+    </div><!-- Row END -->
+
+    <!-- Tops Links -->
+    <div class="row mt-5">
+        <h5 class="mb-2 text-white">Top Links</h5>
+        <ul class="list-inline text-primary-hover lh-lg">
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Flights</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Hotels</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Tours</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Cabs</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">About</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Contact us</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Blogs</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Services</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Detail page</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Services</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Policy</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Testimonials</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Newsletters</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Podcasts</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Protests</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">NewsCyber</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Education</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Sports</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Tech and Auto</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Opinion</a></li>
+            <li class="list-inline-item"><a href="#" class="text-body-secondary">Share Market</a></li>
+        </ul>
+    </div>
+
+    <!-- Payment and card -->
+    <div class="row g-4 justify-content-between mt-0 mt-md-2">
+
+        <!-- Payment card -->
+        <div class="col-sm-7 col-md-6 col-lg-4">
+            <h5 class="text-white mb-2">Payment & Security</h5>
+            <ul class="list-inline mb-0 mt-3">
+                <li class="list-inline-item"> <a href="#"><img src="assets/images/element/paypal.svg" class="h-30px" alt=""></a></li>
+                <li class="list-inline-item"> <a href="#"><img src="assets/images/element/visa.svg" class="h-30px" alt=""></a></li>
+                <li class="list-inline-item"> <a href="#"><img src="assets/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
+                <li class="list-inline-item"> <a href="#"><img src="assets/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
+            </ul>
+        </div>
+
+        <!-- Social media icon -->
+        <div class="col-sm-5 col-md-6 col-lg-3 text-sm-end">
+            <h5 class="text-white mb-2">Follow us on</h5>
+            <ul class="list-inline mb-0 mt-3">
+                <li class="list-inline-item"> <a class="btn btn-sm px-2 bg-facebook mb-0" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+                <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-instagram mb-0" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
+                <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-twitter mb-0" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+                <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-linkedin mb-0" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+            </ul>	
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="mt-4 mb-0">
+
+    <!-- Bottom footer -->
+    <div class="row">
+        <div class="container">
+            <div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
+                <!-- copyright text -->
+                <div class="text-body-secondary text-primary-hover"> Copyrights ©2023 Booking. Build by <a href="https://www.webestica.com/" class="text-body-secondary">Webestica</a>. </div>
+                <!-- copyright links-->
+                <div class="nav mt-2 mt-lg-0">
+                    <ul class="list-inline text-primary-hover mx-auto mb-0">
+                        <li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1" href="#">Privacy policy</a></li>
+                        <li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1" href="#">Terms and conditions</a></li>
+                        <li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1 pe-0" href="#">Refund policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Modal START -->
+<div class="modal fade" id="map360" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Title -->
+        <div class="modal-header">
+            <h5 class="modal-title" id="map360label">Hotel 360 View</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body p-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!4v1664190302197!6m8!1m7!1sgWjBbRwH2wMmQTbvyZwkGw!2m2!1d51.49712857925994!2d-0.1593322776188391!3f348.1837813715552!4f17.07463868756892!5f0.8485845663286693" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+<script src="assets/vendor/choices/js/choices.min.js"></script>
+<script src="assets/vendor/jarallax/jarallax.min.js"></script>
+<script src="assets/vendor/jarallax/jarallax-video.min.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="assets/js/functions.js"></script>
+
 </body>
 </html>

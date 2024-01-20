@@ -94,6 +94,13 @@
 		SELECT COUNT(*) FROM FOOD;
 	</select>
 	
+	<select id="selectFoodAll" resultMap="FoodResultMap">
+		SELECT 
+			
+	
+	
+	</select>
+	
 	<insert id="insertFood" parameterType="Food">
     INSERT INTO FOOD
     (CONTENTID, CONTENTTYPEID, HOMEPAGE, TEL, TITLE,
