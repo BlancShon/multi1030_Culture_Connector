@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.api.OpenApiManagerForXml;
 import com.multi.mvc.board.controller.BoardController;
@@ -31,8 +32,8 @@ public class CultureController {
 	private CultureService service;
 	
 	List<Culture> list = OpenApiManagerForXml.parse();
+	private Culture culture;
 	
-	private static Culture culture;
 	
 	@Bean(initMethod = "init")
 	public void init() {
@@ -77,18 +78,20 @@ public class CultureController {
 	}
 	
 	
-//	@GetMapping("/culture/list")
-//	public String list(Model model, Culture food) {
-//		
-//		
-//		
-//		
-//		
-//		
-//		//service.count();
-//		
-//		model.addAttribute("list", list);
-//		return "culture/cultureList";
-//	}
+	@RequestMapping("/culture/detail")
+	public String detailView(Model model, @RequestParam("no") int no) {
+		
+		try {
+			culture = service.findCultureByBNo(no);
+		} catch (Exception e) {}
+		if(culture == null) {
+			return "redirect:error";
+		}
+		
+		//model.addAttribute("typeMap", typeMap);
+		model.addAttribute("culture", culture);
+		
+		return "culture/cultureDetail";
+	}
 
 }

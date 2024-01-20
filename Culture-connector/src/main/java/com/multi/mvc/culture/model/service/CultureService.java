@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.mvc.api.OpenApiManagerForXml;
+import com.multi.mvc.board.model.vo.AttachFile;
 import com.multi.mvc.board.model.vo.Board;
 import com.multi.mvc.board.model.vo.BoardParam;
+import com.multi.mvc.board.model.vo.BoardReply;
 import com.multi.mvc.culture.model.mapper.CultureMapper;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
@@ -25,15 +28,10 @@ public class CultureService {
 
 	public int save() {
 		int result = 0;
-		
-		
+
 		mapper.insertCulture(OpenApiManagerForXml.parse());
 		return result;
-		
-		
-		
-		
-			
+	
 	}
 	
 	public int count() {
@@ -58,6 +56,15 @@ public class CultureService {
 	
 	public int getCultureCount(CultureParam param) {
 		return mapper.selectCultureCount(param);
+	}
+	
+	
+	
+	@Transactional(rollbackFor = Exception.class)
+	public Culture findCultureByBNo(int cno) {
+		Culture culture = mapper.selectCultureByNo(cno);
+	
+		return culture;
 	}
 
 }

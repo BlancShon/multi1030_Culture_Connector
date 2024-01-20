@@ -221,47 +221,25 @@
 
 
 	<%-- 	<!-- 검색창 시작 -->
-		 <form name="searchForm" action="${path}/culture/list" method="get">
-			<input type="hidden" name="page" value="1">
-			
-			<!-- 카테고리 checkbox -->	
-			<div style="text-align: center;">
-				<c:forEach var="item" items="${categoryList}">
-					<label>
-						<input type="checkbox" name="types" value="${item.type}"
-							${fn:contains(typeList, item.type) ? 'checked' : ''} >
-						${item.name}
-					</label>
-				</c:forEach>
-			</div>
-			
-			<!-- 검색창 -->	
-			<div style="text-align: center;">
-				<label><input type="radio" name="searchType" value="title" 
-											${searchType == 'title' ? 'checked' : ''} />제목</label>
-				<label><input type="radio" name="searchType" value="content"
-											${searchType == 'address' ? 'checked' : ''} />내용</label>
-				
-				<span class="blue_window"> 
-				<input type="text" id="searchValue" name="searchValue" class="input_text" 
-																	value="${param.searchValue}" />
-				</span>
-				<button type="submit" class="sch_smit">검색</button>
-				<button type="reset" class="sch_smit">초기화</button>
-			</div>
-		</form> 
+	
 		<!-- 검색창 끝 --> --%>
-
+		
         <!--서치바-->
         <div class="container ">
             <h4 class="mx-4 text-primary">떠나고 싶은 지역을 검색하세요!</h4>
             
             <form action="${path}/culture/list" method="get" name="searchForm">
             <input type="hidden" name="page" value="1">
-            	<label><input type="radio" name="searchType" value="title" 
-											${searchType == 'title' ? 'checked' : ''} />제목</label>
-				<label><input type="radio" name="searchType" value="content"
-											${searchType == 'address' ? 'checked' : ''} />주소</label>
+            	<div style="margin-top: 30px">
+            	<label style="margin-left: 40px"><input type="radio" name="searchType" value="title" 
+											<%-- ${searchType == 'title' ? 'checked' : ''} --%> /> 제목</label>
+				<label style=""><input type="radio" name="searchType" value="address"
+											${searchType == 'address' ? 'checked' : ''} /> 주소</label>
+				
+				<input style="border: none; width: 300px;"  placeholder="(검색할 카테고리를 선택하세요.)">
+				</div>	
+				
+									
                 <div class="mx-auto mt-3 search-bar input-group mb-3 z-index-1 px-4" style="font-family: 'SUIT-Medium'"
                     id="search">
                     <input onkeyup="filter()" id="serchinput" type="text" name="searchValue" value="${param.searchValue}"
@@ -277,7 +255,7 @@
                             <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul"  
-											${checkBox == 'seoul' ? 'checked' : ''} />서울</label>
+											<%-- ${checkBox == 'seoul' ? 'checked' : ''} --%> />서울</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
@@ -289,7 +267,7 @@
                             <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="chungnam" 
-											${checkBox == 'chungnam' ? 'checked' : ''} />충남</label>
+											${checkBox == 'chungnam' ? 'checked' : ''}/>충남</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
@@ -325,7 +303,7 @@
                                 </div>
                             </li>
                         </ul> 
-                         <button class="btn btn-primary" type="submit">체크박스 전송</button>
+                         
                     </div>
                     <br>
                  
@@ -344,15 +322,7 @@
                             <div class="count" style="float: left;">
                                 총 <span class="count text-primary" style=" text-align: left;">40,725</span>
                             </div>
-                            <div class="sort" style="float: right;">
-
-                                <input id="sortBtn1" class="btn btn-primary rounded-pill" type="button"
-                                    name='Ftags' value='최신순&nbsp&#124;'>
-                                <input id="sortBtn2" class="btn btn-primary rounded-pill" type="button"
-                                    name='Ftags' value='거리순&nbsp&#124;'>
-                                <input id="sortBtn3" class="btn btn-primary rounded-pill" type="button"
-                                    name='Ftags' value='인기순'>
-                            </div>
+                         
                         </div>
                         <!-- Main content START -->
                         <form name="cultureList" action="${path}/culture/list" method="get">
@@ -377,9 +347,12 @@
                                                 </div>
                                             </div>
 
+				
                                             <!-- Card title and rating -->
                                             <div class="col-sm-6 col-md-4 col-xl-6">
-                                                <h5 class="card-title mb-2"><a href="culture_detail.html">${item.title}</a>
+                                                <h5 class="card-title mb-2">
+                                                <a href="${path}/culture/detail?no=${item.cno}">
+                                                <c:out value="${item.title}"/></a>
                                                 </h5>
                                                 <!-- Nav divider -->
                                                
@@ -439,7 +412,7 @@
 							</c:if>
                             </c:forEach>
                              <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
-                           		 <button style="border: none; background: none;"  none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
+                           		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
                              	</a>
                            	</li>
                                         
@@ -520,6 +493,17 @@
 
 <script type="text/javascript">
 
+$(".form-check-input").change(function(){
+	  if($(this).prop('checked') == true){
+		  searchForm.submit();
+	  }
+	});
+	
+
+</script>
+
+<script type="text/javascript">
+	
 	
 
 </script>

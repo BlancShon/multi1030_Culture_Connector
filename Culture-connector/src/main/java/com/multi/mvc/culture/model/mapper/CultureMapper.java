@@ -16,6 +16,8 @@ public interface CultureMapper {
 	
 	int selectCount();
 	
+	Culture selectCultureByNo(int cno);
+	
 	void createTableCulture();
 	
 	List<Culture> selectCultureList(CultureParam param);

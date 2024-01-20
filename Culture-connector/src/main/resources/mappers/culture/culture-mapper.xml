@@ -92,7 +92,7 @@
 	
 	
 	<select id="selectCultureList" parameterType="CultureParam" resultMap="cultureResultMap">
-		SELECT  TITLE, ADDR1, firstimage, firstimage2
+		SELECT  CNO, TITLE, ADDR1, firstimage, firstimage2
 		FROM CULTURE
 		 
 			
@@ -100,7 +100,7 @@
 			    where TITLE LIKE '%${searchValue}%' 
 			</if>
 			<if test="searchType == 'address'">
-			   where AND ADDR1 LIKE '%${searchValue}%' 
+			   where ADDR1 LIKE '%${searchValue}%' 
 			</if>
 			<if test="checkBox == 'seoul'">
 			    where ADDR1 LIKE '%서울%' 
@@ -109,19 +109,19 @@
 			    where ADDR1 LIKE '%경기%' 
 			</if>
 			<if test="checkBox == 'chungnam'">
-			    where ADDR1 LIKE '%충남%' 
+			    where ADDR1 LIKE '%충청남도%' 
 			</if>
 			<if test="checkBox == 'chugbuk'">
-			    where ADDR1 LIKE '%충북%' 
+			    where ADDR1 LIKE '%충청북도%' 
 			</if>
 			<if test="checkBox == 'kangwon'">
 			    where ADDR1 LIKE '%강원%' 
 			</if>
 			<if test="checkBox == 'Jeonbuk'">
-			    where ADDR1 LIKE '%전북%' 
+			    where ADDR1 LIKE '%전라북도%' 
 			</if>
 			<if test="checkBox == 'Jeonnam'">
-			    where ADDR1 LIKE '%전남%' 
+			    where ADDR1 LIKE '%전라남도%' 
 			</if>
 			<if test="checkBox == 'jeju'">
 			    where ADDR1 LIKE '%제주%' 
@@ -148,26 +148,33 @@
 			    where ADDR1 LIKE '%경기%' 
 			</if>
 			<if test="checkBox == 'chungnam'">
-			    where ADDR1 LIKE '%충남%' 
+			    where ADDR1 LIKE '%충청남도%' 
 			</if>
 			<if test="checkBox == 'chugbuk'">
-			    where ADDR1 LIKE '%충북%' 
+			    where ADDR1 LIKE '%충청북도%' 
 			</if>
 			<if test="checkBox == 'kangwon'">
 			    where ADDR1 LIKE '%강원%' 
 			</if>
 			<if test="checkBox == 'Jeonbuk'">
-			    where ADDR1 LIKE '%전북%' 
+			    where ADDR1 LIKE '%전라북도%' 
 			</if>
 			<if test="checkBox == 'Jeonnam'">
-			    where ADDR1 LIKE '%전남%' 
+			    where ADDR1 LIKE '%전라남도%' 
 			</if>
 			<if test="checkBox == 'jeju'">
 			    where ADDR1 LIKE '%제주%' 
 			</if>
 	</select>
 	
-
+	<select id="selectCultureByNo" parameterType="int" resultMap="cultureResultMap">
+		SELECT  
+			CNO, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY
+			
+			FROM culture where CNO = #{cno}
+		
+		
+	</select>
 	
 	
 </mapper>
