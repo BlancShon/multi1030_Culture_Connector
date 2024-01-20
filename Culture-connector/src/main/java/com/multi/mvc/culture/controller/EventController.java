@@ -29,8 +29,8 @@ public class EventController {
 	
 	
 	
-	@Bean(initMethod = "init2")
-	public void init2() {
+	@Bean(initMethod = "initEvent")
+	public void initEvent() {
 		log.debug("Event Controller 확인");
 		
 		service.createTable();
