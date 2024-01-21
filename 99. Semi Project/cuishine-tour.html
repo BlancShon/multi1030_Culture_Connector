@@ -19,79 +19,7 @@
 	<meta name="author" content="Webestica.com" />
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme" />
 
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem("theme");
-
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme;
-			}
-			return window.matchMedia("(prefers-color-scheme: dark)").matches
-				? "dark"
-				: "light";
-		};
-
-		const setTheme = function (theme) {
-			if (
-				theme === "auto" &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches
-			) {
-				document.documentElement.setAttribute("data-bs-theme", "dark");
-			} else {
-				document.documentElement.setAttribute("data-bs-theme", theme);
-			}
-		};
-
-		setTheme(getPreferredTheme());
-
-		window.addEventListener("DOMContentLoaded", () => {
-			var el = document.querySelector(".theme-icon-active");
-			if (el != "undefined" && el != null) {
-				const showActiveTheme = (theme) => {
-					const activeThemeIcon = document.querySelector(
-						".theme-icon-active use"
-					);
-					const btnToActive = document.querySelector(
-						`[data-bs-theme-value="${theme}"]`
-					);
-					const svgOfActiveBtn = btnToActive
-						.querySelector(".mode-switch use")
-						.getAttribute("href");
-
-					document
-						.querySelectorAll("[data-bs-theme-value]")
-						.forEach((element) => {
-							element.classList.remove("active");
-						});
-
-					btnToActive.classList.add("active");
-					activeThemeIcon.setAttribute("href", svgOfActiveBtn);
-				};
-
-				window
-					.matchMedia("(prefers-color-scheme: dark)")
-					.addEventListener("change", () => {
-						if (storedTheme !== "light" || storedTheme !== "dark") {
-							setTheme(getPreferredTheme());
-						}
-					});
-
-				showActiveTheme(getPreferredTheme());
-
-				document
-					.querySelectorAll("[data-bs-theme-value]")
-					.forEach((toggle) => {
-						toggle.addEventListener("click", () => {
-							const theme = toggle.getAttribute("data-bs-theme-value");
-							localStorage.setItem("theme", theme);
-							setTheme(theme);
-							showActiveTheme(theme);
-						});
-					});
-			}
-		});
-	</script>
+	
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
@@ -272,20 +200,22 @@
 	<main>
 		<!-- =======================
 Main Banner START -->
-		<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active c-item">
-					<img src="https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_1672836e8a1d0e0fe500d33e553a8242f95be9631.jpeg?width=750&format=jpeg&optimize=medium.jpg"
-						class="d-block w-100 c-img" alt="Slide 1">
-					<div class="carousel-caption top-0 mt-4 left-align">
+<section class="d-flex align-items-start dark-overlay bg-cover" style="background-image: url(https://a.cdn-hotels.com/gdcs/production50/d1916/51d76cc9-cbe8-4572-a671-545f882f1847.jpg?impolicy=fcrop&w=1600&h=1066&q=medium); background-size: cover; background-position: center; padding-top: 100px; padding-bottom: 100px;">
+    <div class="container py-6 py-lg-7 text-white overlay-content text-left ml-lg-0 ml-md-0 ml-0">
+        <div class="row">
+            <div class="top-0 mt-4 left-align">
+                <h1 class="text-uppercase fs-1 mt-7 mb-3" style="color: rgb(255, 255, 255); font-family: sans-serif; font-weight: bold; font-size: 3.5rem;">음식투어</h1>
+                <h4 class="text-muted mb-0" style="font-family:  sans-serif; font-size: 1.8rem;">전국 맛집과 카페를 한눈에</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
 
-						<p class="text-uppercase fs-2 mt-8"><span style="color: rgb(253, 253, 253);"><b>전국 팔도의 맛집</span><br>
-							<span style="color: rgba(243, 198, 198, 0.941);">그리고</span>
-							<br><span style="color: rgba(148, 244, 209, 0.923);">여유로운 커피 한잔</span></p></b>
-						<!-- <a href="#" class="btn btn-link text-light text-decoration-none fs-6 mt-5 d-block" style="border-bottom: 1px solid transparent; transition: border-bottom 0.3sease; text-align: left;">자세히 보기</a> -->
-					</div>
-				</div>
-			</div>
+
+
+
+
 			
 			<!--서치바-->
 			<div div class="container mt-5">
@@ -332,23 +262,16 @@ Main Banner START -->
 							<!-- Offer card START -->
 							<div>
 								<div class="card">
-									<img src="assets/images/R고기.png" class="card-img" alt="">
+									<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=95edda88-107b-4809-b969-ad3029828e17" class="card-img" alt="">
 									<!-- Card body -->
 									<div class="position-absolute top-100 start-50 translate-middle w-100">
 										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 											<h6 class="card-title mb-1"><a href="#"
-													style="text-align: center;">R고기</a><br>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
+													style="text-align: left;">신당동 떡볶이 타운</a><br>
+										
 											</h6>
-											<medium style="color: black;">강남구 청담동</medium><br>
-											<small>인기 메뉴 : 등심(100g), 안심(100g)</small><br>
+											<medium style="color: black;">서울 중구</medium><br>
+											<small>인기 메뉴 : 떡볶이</small><br>
 
 											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
 											</div>
@@ -359,28 +282,18 @@ Main Banner START -->
 							<!-- Offer card END -->
 
 							<!-- Offer card START -->
-
 							<div>
 								<div class="card">
-									<img src="assets/images/보르트메종.png" class="card-img" alt="">
+									<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b6ba00f5-5906-4a53-a255-a93e5ffa8c8d" class="card-img" alt="">
 									<!-- Card body -->
 									<div class="position-absolute top-100 start-50 translate-middle w-100">
 										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 											<h6 class="card-title mb-1"><a href="#"
-													style="text-align: center;">보르트메종</a><br>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
+													style="text-align: left;">뱀부 15-8</a><br>
+										
 											</h6>
-											<medium style="color: black;">대구 동구</medium><br>
-											<small>인기 메뉴 : 런치 시그니처 코스</small><br>
+											<medium style="color: black;">경기도 김포시</medium><br>
+											<small>인기 메뉴 :판다 티라미수</small><br>
 
 											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
 											</div>
@@ -389,25 +302,19 @@ Main Banner START -->
 								</div>
 							</div>
 
+							
 							<div>
 								<div class="card">
-									<img src="assets/images/스시마츠모토.png" class="card-img" alt="">
+									<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6a83f4cd-f102-4caf-b8fc-1e030a47a1ec" class="card-img" alt="">
 									<!-- Card body -->
 									<div class="position-absolute top-100 start-50 translate-middle w-100">
 										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 											<h6 class="card-title mb-1"><a href="#"
-													style="text-align: center;">스시마츠모토</a><br>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
+													style="text-align: center;">생선회</a><br>
+												
 											</h6>
-											<medium style="color: black;">인천 중구</medium><br>
-											<small>인기 메뉴 : 런치 오마카세</small><br>
+											<medium style="color: black;">부산 민락동</medium><br>
+											<small>인기 메뉴 : 매운탕, 회</small><br>
 
 											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
 											</div>
@@ -418,23 +325,16 @@ Main Banner START -->
 							<!-- Offer card END -->
 							<div>
 								<div class="card">
-									<img src="assets/images/세야스시.png" class="card-img" alt="">
+									<img src="assets/images/스시마츠모토.png" class="card-img" alt="">
 									<!-- Card body -->
 									<div class="position-absolute top-100 start-50 translate-middle w-100">
 										<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
 											<h6 class="card-title mb-1"><a href="#"
-													style="text-align: center;">세야스시</a><br>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i
-														class="fa-solid fa-star text-warning"></i></li>
+													style="text-align: center;">스시마츠모토</a><br>
+												
 											</h6>
-											<medium style="color: black;">송파구 석촌동</medium><br>
-											<small>인기 메뉴 : 런치 시그니처 코스</small><br>
+											<medium style="color: black;">인천 중구</medium><br>
+											<small>인기 메뉴 : 런치 오마카세</small><br>
 
 											<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
 											</div>
@@ -442,9 +342,6 @@ Main Banner START -->
 									</div>
 								</div>
 							</div>
-
-						</div>
-					</div>
 					<!-- Slider END -->
 				</div>
 			</section>

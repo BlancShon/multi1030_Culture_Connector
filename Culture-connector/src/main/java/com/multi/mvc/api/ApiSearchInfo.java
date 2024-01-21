@@ -20,7 +20,7 @@ public class ApiSearchInfo {
 	public static final String DETAIL_INFO_URL = "https://apis.data.go.kr/B551011/KorService1/detailIntro1?"; 
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=10";
+	public static String numOfRows = "numOfRows=40";
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
@@ -42,12 +42,6 @@ public class ApiSearchInfo {
 			
 	}
 	
-	// 여행코스 필수 url
-	public static String getCourseURL() {
-		StringBuffer sb = requiredValueURL(AREA_BASED_URL);
-		return sb.append(arrange()).append(contentTypeId("25")).toString();
-	}
-	
 	// 페스티발 필수 url 
 	public static String getFestivalURL() {
 		StringBuffer sb = new StringBuffer(FESTIVAL_URL);
@@ -55,10 +49,10 @@ public class ApiSearchInfo {
 				.append(type).append(getServiceKey()).append(eventStartDate()).toString();
 	}
 	
-	// 이벤트 필수 url
-	public static String getEventURL() {
+	// 컨텐트 타입 별 url 해결사
+	public static String getContentTypeURL(String contentType) {
 		StringBuffer sb = requiredValueURL(AREA_BASED_URL);
-		return sb.append(contentTypeId("15")).toString();
+		return sb.append(contentTypeId(contentType)).toString();
 	}
 
 	public static String getAreaCodeURL() {

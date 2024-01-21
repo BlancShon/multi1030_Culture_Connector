@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- Dao를 Mapper Interface로 대체 할 예정, namespace=Class의 풀네임 선언 필요 -->
+<mapper namespace="com.multi.mvc.culture.model.mapper.LeisureSportsMapper">
+
+	<resultMap type="LeisureSports" id="leportsResultMap">
+	    <id property="contentid" column="CONTENTID"/>
+	    <result property="contenttypeid" column="CONTENTTYPEID"/>
+	    <result property="addr1" column="ADDR1"/>
+	    <result property="addr2" column="ADDR2"/>
+	    <result property="areacode" column="AREACODE"/>
+	    <result property="booktour" column="BOOKTOUR"/>
+	    <result property="cat1" column="CAT1"/>
+	    <result property="cat2" column="CAT2"/>
+	    <result property="cat3" column="CAT3"/>
+	    <result property="createdtime" column="CREATEDTIME"/>
+	    <result property="firstimage" column="FIRSTIMAGE"/>
+	    <result property="firstimage2" column="FIRSTIMAGE2"/>
+	    <result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+	    <result property="mapx" column="MAPX"/>
+	    <result property="mapy" column="MAPY"/>
+	    <result property="mlevel" column="MLEVEL"/>
+	    <result property="modifiedtime" column="MODIFIEDTIME"/>
+	    <result property="sigungucode" column="SIGUNGUCODE"/>
+	    <result property="tel" column="TEL"/>
+	    <result property="title" column="TITLE"/>
+	    <result property="zipcode" column="ZIPCODE"/>
+	    <result property="openperiod" column="OPENPERIOD"/>
+	    <result property="reservation" column="RESERVATION"/>
+	    <result property="infocenterleports" column="INFOCENTERLEPORTS"/>
+	    <result property="scaleleports" column="SCALELEPORTS"/>
+	    <result property="accomcountleports" column="ACCOMCOUNTLEPORTS"/>
+	    <result property="restdateleports" column="RESTDATESLEPORTS"/>
+	    <result property="usetimeleports" column="USETIMELEPORTS"/>
+	    <result property="usefeeleports" column="USEFEELEPORTS"/>
+	    <result property="expagerangeleports" column="EXPAGERANGELEPORTS"/>
+	    <result property="parkingleports" column="PARKINGLEPORTS"/>
+	    <result property="parkingfeeleports" column="PARKINGFEELEPORTS"/>
+	    <result property="chkbabycarriageleports" column="CHKBABYCARLEPORTS"/>
+	    <result property="chkpetleports" column="CHKPETLEPORTS"/>
+	    <result property="chkcreditcardleports" column="CHKCREDITCARDLEPORTS"/>
+	</resultMap>
+
+
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM LEPORTS;
+	</select>
+
+	<insert id="createTableLeports">
+
+		CREATE TABLE IF NOT EXISTS LEPORTS (
+	    	contentid INT, 
+		    contenttypeid INT,
+		    addr1 VARCHAR(100),
+		    addr2 VARCHAR(100),
+		    areacode INT,
+		    booktour INT,
+		    cat1 VARCHAR(100),
+		    cat2 VARCHAR(100),
+		    cat3 VARCHAR(100),
+		    createdtime DATETIME,
+		    firstimage VARCHAR(100),
+		    firstimage2 VARCHAR(100),
+		    cpyrhtDivCd VARCHAR(100),
+		    mapx VARCHAR(100),
+		    mapy VARCHAR(100),
+		    mlevel INT,
+		    modifiedtime DATETIME,
+		    sigungucode INT,
+		    tel VARCHAR(100),
+		    title VARCHAR(100),
+		    zipcode VARCHAR(100),
+		    openperiod VARCHAR(100),
+		    reservation TEXT,
+		    infocenterleports VARCHAR(100),
+		    scaleleports VARCHAR(100),
+		    accomcountleports VARCHAR(100),
+		    restdateleports VARCHAR(100),
+		    usetimeleports TEXT,
+		    useFeeLeports VARCHAR(100),
+		    expAgeRangeLeports VARCHAR(100),
+		    parkingLeports VARCHAR(100),
+		    parkingFeeLeports VARCHAR(100),
+		    chkBabyCarriageLeports VARCHAR(100),
+		    chkPetLeports VARCHAR(100),
+		    chkCreditCardLeports VARCHAR(100),
+		    CONSTRAINT PK_LEPORTS PRIMARY KEY (CONTENTID, CONTENTTYPEID)
+		    
+		);
+
+	</insert>
+
+	<insert id="initLeports" parameterType="java.util.List">
+	    INSERT INTO LEPORTS (
+	        contentid, contenttypeid, addr1, addr2, areacode, booktour, cat1, cat2, cat3,
+	        createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime,
+	        sigungucode, tel, title, zipcode, openPeriod, reservation, infoCenterLeports,
+	        scaleLeports, accomCountLeports, restDateLeports, useTimeLeports, useFeeLeports,
+	        expAgeRangeLeports, parkingLeports, parkingFeeLeports, chkBabyCarriageLeports,
+	        chkPetLeports, chkCreditCardLeports
+	    ) VALUES
+	    <foreach collection="list" item="item" separator=",">
+	        (
+	            #{item.contentid}, #{item.contenttypeid}, #{item.addr1}, #{item.addr2},
+	            #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2}, #{item.cat3},
+	            #{item.createdtime}, #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd},
+	            #{item.mapx}, #{item.mapy}, #{item.mlevel}, #{item.modifiedtime},
+	            #{item.sigungucode}, #{item.tel}, #{item.title}, #{item.zipcode},
+	            #{item.openperiod}, #{item.reservation}, #{item.infocenterleports},
+	            #{item.scaleleports}, #{item.accomcountleports}, #{item.restdateleports},
+	            #{item.usetimeleports}, #{item.usefeeleports}, #{item.expagerangeleports},
+	            #{item.parkingleports}, #{item.parkingfeeleports},
+	            #{item.chkbabycarriageleports}, #{item.chkpetleports}, #{item.chkcreditcardleports}
+	        )
+	    </foreach>;
+	</insert>
+
+	
+	<select id="leportsList" resultType="LeisureSports">
+		SELECT * FROM LEPORTS;
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>
