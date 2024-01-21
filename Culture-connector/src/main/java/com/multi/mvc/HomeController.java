@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.member.model.mapper.MemberMapper;
 import com.multi.mvc.member.model.vo.Member;
 
@@ -52,5 +53,13 @@ public class HomeController {
 		log.info("home 요청");
 		return "home";
 	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String home() {
+        return "home"; // This forwards to /WEB-INF/views/home.jsp
+    }
+	
+	
+	
 	
 }

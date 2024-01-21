@@ -16,13 +16,12 @@
     <!-- Meta Tags -->
     <meta charset="utf-8" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
    
     
 
-    <!-- Favicon -->
+    <!-- Logo -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" />
 
     <!-- Google Font -->
@@ -77,7 +76,7 @@
   <nav class="navbar navbar-expand-xl">
       <div class="container">
           <!-- Logo START -->
-          <a class="navbar-brand" href="main.html">
+          <a class="navbar-brand" href="${path}/home">
             <img style="height: 100px" class="light-mode-item navbar-brand-item" src="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" alt="logo">
 		    		<img style="height: 100px" class="dark-mode-item navbar-brand-item" src="${pageContext.request.contextPath}/resources/images/logo-culture.png" alt="logo">
 
@@ -105,7 +104,7 @@
 
 					<!-- Nav item 홈  -->
 					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="main.html">홈</a>
+            <a class="nav-link active" aria-current="page" href="${path}/home">홈</a>
           </li>
 
 					<!-- Nav item 문화 테마 -->
@@ -113,17 +112,17 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
-							<li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
-							<li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
-							<li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-theme1.html">문화 관광지</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-theme2.html">문화 예술 공연</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-theme3.html">지역 문화 축제</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-theme4.html">액티비티/원데이 클래스</a></li>
 
 						</ul>
 					</li>
 
           <!-- Nav item 음식 투어  -->
 					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${path}/food.jsp">음식 투어</a>	
+            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/food">음식 투어</a>	
           </li>
 
           <!-- Nav item 문화 소식 -->
@@ -131,9 +130,9 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
-							<li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
-							<li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-news1.html">문화 기사</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-news2.html">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="${path}/cluture-news3.html">쿠폰/혜택</a></li>
 
 						</ul>
 					</li>
@@ -143,30 +142,50 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
+							<li> <a class="dropdown-item" href="${path}/review-talk1.html">리뷰 게시판</a></li>
+							<li> <a class="dropdown-item" href="${path}/review-talk2.html">리뷰 참여하기</a></li>
 
 						</ul>
 					</li>
 
           <!-- Nav item 문화(여행) 지도  -->
 					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
+            <a class="nav-link active" aria-current="page" href="${path}/cluture-tour-map.html">문화(여행) 지도</a>
           </li>
 
 
+          <script>
+            // 페이지가 로드되면 실행될 함수
+            document.addEventListener('DOMContentLoaded', function () {
+                // 서버로부터 로그인 상태를 받아옵니다.
+                // 이 예제에서는 임의로 로그인 상태를 설정했습니다.
+                // 실제 구현에서는 서버로부터 이 값을 가져와야 합니다.
+                var isUserLoggedIn = false; // 예제를 위해 false로 설정, 실제 구현에서는 서버로부터의 데이터를 사용하세요.
+            
+                // 로그인 상태에 따라 메뉴 옵션을 변경합니다.
+                if (isUserLoggedIn) {
+                    // 로그인 상태일 때 보여줄 요소
+                    document.getElementById('login').style.display = 'none'; // 로그인 버튼 숨기기
+                    document.getElementById('user-info').style.display = 'block'; // 사용자 정보 메뉴 보이기
+                } else {
+                    // 비로그인 상태일 때 보여줄 요소
+                    document.getElementById('login').style.display = 'block'; // 로그인 버튼 보이기
+                    document.getElementById('user-info').style.display = 'none'; // 사용자 정보 메뉴 숨기기
+                }
+            });
+            </script>
 
           <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
           <li class="nav-item" id="login">
-            <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
+            <a class="nav-link active" aria-current="page" href="${path}/login.html">로그인</a>
           </li>
 
 					<!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown" id="user-info">
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원 정보</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
+							<li> <a class="dropdown-item" href="${path}/inform.html">내 정보</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>

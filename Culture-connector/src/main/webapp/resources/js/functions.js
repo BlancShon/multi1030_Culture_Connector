@@ -779,11 +779,10 @@ var e = {
           }));
         }
       }
-    }
+    },
     // END: dropzone
 
     // START: 20 Fake Password
-    
     fakePwd: function () {
       if (e.isVariableDefined(e.select('.fakepassword'))) {
         var password = document.querySelector('.fakepassword');

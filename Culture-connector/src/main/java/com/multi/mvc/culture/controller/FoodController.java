@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multi.mvc.api.OpenApiManagerForXml_food;
 //import com.multi.mvc.common.util.PageInfo;
@@ -49,6 +51,11 @@ public class FoodController {
 		model.addAttribute("FoodList", FoodList);
 		return "culture/foodList";
 	}
+	
+	@RequestMapping(value = "/food", method = RequestMethod.GET)
+    public String home() {
+        return "/culture/food"; // This forwards to /WEB-INF/views/home.jsp
+    }
 	
 	
 //	@GetMapping("/culture/list")

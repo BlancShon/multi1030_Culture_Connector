@@ -1,8 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%-- <jsp:include page="/WEB-INF/views/common/culutreheader.jsp"> --%>
-<%-- 	<jsp:param value="Culture Connector" name="title"/> --%>
+<%-- <jsp:param value="Culture Connector" name="title"/> --%>
 <%-- </jsp:include> --%>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+	crossorigin="anonymous"></script>
+<meta name="author" content="Webestica.com" />
+<meta name="description" content="Booking - Multipurpose Online Booking Theme" />
+
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
@@ -917,10 +927,5 @@ Footer START -->
 <!-- ThemeFunctions -->
 <script src="${pageContext.request.contextPath}/js/functions.js"></script>
 
-</body>
-</html>
-</head>
-<body>
-    
 </body>
 </html>
