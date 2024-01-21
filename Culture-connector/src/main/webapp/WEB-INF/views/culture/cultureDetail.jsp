@@ -14,7 +14,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
-	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" ></script>
+	
+	<!-- 카카오톡 공유 기능 사용하는데 필요한 자바스크립트 파일 -->
+	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" ></script> 
+	
+	<!-- 카카오맵 기능 사용하는데 필요한 자바스크립트 파일/ appkey는 kakaoDeveloper 사이트에서 생성한 고유 javaScript 키를 입력하면 됩니다. -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb83919493996c6c554671877067a90a&libraries=services"></script>
 
 	<!-- Favicon -->
@@ -324,50 +328,7 @@ Content START -->
 								<!-- Map START -->
 								
 								<div id="map" style="width:100%;height:270px;"></div>
-								<script>
-
-								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-									mapOption = {
-										center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-										level: 1 // 지도의 확대 레벨
-									};  
-
-								// 지도를 생성합니다    
-								var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-								// 주소-좌표 변환 객체를 생성합니다
-								var geocoder = new kakao.maps.services.Geocoder();
-
-								// 주소로 좌표를 검색합니다
-								var locationName =  document.getElementById('locationName').value
-								console.log(locationName)
-								var locationCoor =  document.getElementById('mapCoordinate').value
-								 console.log(locationCoor)
-								 
-								geocoder.addressSearch(locationCoor, function(result, status) {
-									
-									// 정상적으로 검색이 완료됐으면 
-									if (status === kakao.maps.services.Status.OK) {
-
-										var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-										// 결과값으로 받은 위치를 마커로 표시합니다
-									 	var marker = new kakao.maps.Marker({
-											map: map,
-											position: coords
-										}); 
-
-										// 인포윈도우로 장소에 대한 설명을 표시합니다
-									/* 	var infowindow = new kakao.maps.InfoWindow({
-											 content:'<div style="width:150px;text-align:center;padding:6px 0;"></div>'
-										});
-										infowindow.open(map); */
-										marker.setMap(map)
-										// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-										map.setCenter(coords);
-									} 
-								});    
-								</script>
+								
 								<!-- Info -->
 								<ul class="list-group list-group-borderless my-3">
 									<!-- Address -->
@@ -626,12 +587,15 @@ Kakao.init('bb83919493996c6c554671877067a90a'); // 사용하려는 앱의 JavaSc
 
 <script>
 
+
+
+<!-- 카카오톡 공유 썸네일에 사용할 변수 -->
 var thumbImg = document.getElementById("mainImage").value; //이미지 주소
 console.log(thumbImg)
 var thumbTitle = document.getElementById("locationName").value; 
 console.log(thumbTitle)
 
-
+<!-- 카카오톡 공유 기능 -->
 Kakao.Share.createDefaultButton({
     container: '#kakaotalk-sharing-btn',
     objectType: 'feed',
@@ -643,7 +607,7 @@ Kakao.Share.createDefaultButton({
       link: {
         // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
         mobileWebUrl: 'https://developers.kakao.com',
-        webUrl: location.href,
+        webUrl: location.href, // 현재 접속 중인 웹사이트 경로를 출력하는 함수
       },
     },
     social: {
@@ -675,16 +639,48 @@ Kakao.Share.createDefaultButton({
 
 
 <script>
-
-
-
-
-
-
-
-
-
-
+		<!--카카오맵 기능(db로부터 주소를 받아와서 변수로 입력하면 해당 주소를 좌표로 변환하여 카카오맵에서 구현) -->
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			mapOption = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				level: 1 // 지도의 확대 레벨
+			};  
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+		// 주소로 좌표를 검색합니다
+		var locationName =  document.getElementById('locationName').value
+		console.log(locationName)
+		var locationCoor =  document.getElementById('mapCoordinate').value
+		 console.log(locationCoor)
+		 
+		geocoder.addressSearch(locationCoor, function(result, status) {
+			
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
+		
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		
+				// 결과값으로 받은 위치를 마커로 표시합니다
+			 	var marker = new kakao.maps.Marker({
+					map: map,
+					position: coords
+				}); 
+		
+				// 인포윈도우로 장소에 대한 설명을 표시합니다
+			/* 	var infowindow = new kakao.maps.InfoWindow({
+					 content:'<div style="width:150px;text-align:center;padding:6px 0;"></div>'
+				});
+				infowindow.open(map); */
+				marker.setMap(map)
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			} 
+		});    
 </script>
 
 
