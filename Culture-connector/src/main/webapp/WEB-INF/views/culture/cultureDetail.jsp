@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
-
+	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" ></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb83919493996c6c554671877067a90a&libraries=services"></script>
 
 	<!-- Favicon -->
@@ -174,13 +174,15 @@
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
+
 	
 	<!--Main banner START -->
 	<section class="py-0">
-		<div class="container-fluid px-0" style="text-align: center; width: 1500px; height: 500px;">
-			<img src ="${pageContext.request.contextPath}/resources/images/library.jpg" style="width: 700px">
 
+		<div class="container-fluid px-0" style="text-align: center; width: 1500px; height: 500px;">
+			<input id="mainImage" value="${culture.firstimage}" type="hidden"><img src ="${culture.firstimage}" style="width: 700px">
 		</div>
+
 	</section>
 	<!-- =======================
 	<!-- Main banner END -->
@@ -196,13 +198,15 @@
 						<!-- Title and badge -->
 						<div><img src="">
 							<!-- Badge -->
+							
 							<div class="badge text-bg-dark"><i class="fas fa-building fa-fw text-warning"></i> 문화시설</div>
 							
 							<div class="badge text-bg-dark"><i class="fas fa-star fa-fw text-warning"></i> 4.5</div>
 							
 							<!-- Title -->
-							<h1 class="h3 mt-2 mb-1">구립구산동도서관마을</h1>
-							<p class="mb-2 mb-sm-0"><i class="bi bi-geo-alt me-1 text-primary"></i>서울특별시 은평구 연서로13길 29-23</p>
+							<input id="locationName" value="${culture.title}" type="hidden"><h1 class="h3 mt-2 mb-1">${culture.title}</h1>
+							<input id="mapCoordinate" value="${culture.addr1}" type="hidden"> <p class="mb-2 mb-sm-0">${culture.addr1}</p>
+						
 						</div>
 						<!-- Buttons -->
 						<ul class="list-inline mb-0">
@@ -211,7 +215,7 @@
 								<a href="#" class="btn btn-sm btn-white px-2"><img src="${pageContext.request.contextPath}/resources/images/heart.svg" style="width: 20px;"></a>
 							</li>
 							<li class="list-inline-item">
-								<a href="#" class="btn btn-sm btn-white px-2"><img src="${pageContext.request.contextPath}/resources/images/kakaotalk.svg" style="width: 20px;"></a>
+								<a href="javascript:;" class="btn btn-sm btn-white px-2" id="kakaotalk-sharing-btn"><img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" style="width: 20px;"></a>
 							</li>
 							<li class="list-inline-item">
 								<a href="#" class="btn btn-sm btn-white px-2"><img src="${pageContext.request.contextPath}/resources/images/whatsapp.svg" style="width: 20px;"></a>
@@ -237,6 +241,7 @@ Title and tabs END -->
 
 <!-- =======================
 Content START -->
+
 <section class="pt-0">
 	<div class="container">
 		<!-- Tabs contents START -->
@@ -255,6 +260,7 @@ Content START -->
 							</div>
 							<!-- Card body -->
 							<div class="card-body px-0 pb-0">
+							
 								<p class="mb-3">서울시 은평구 구산동 주택가 한복판에 자리한 구산동도서관마을은 외관부터 특이하다. 크고 번듯한 하나의 건물이 아니라, 서로 다른 모양과 색깔의 건물 여럿이 모여 도서관을 이루고 있다. 여러 집이 모여 하나의 마을을 이루는 것처럼. 지금은 도서관이 된 건물들도 이전에는 사람들이 살던 집이었다. 낡은 연립주택 세 동을 리모델링한 후 도서관 하나를 만든 것이다. 
 
  
@@ -262,6 +268,7 @@ Content START -->
 									구산동도서관마을의 공간 구성은 아주 독특하다. 원래 골목길이었던 도서관 로비부터가 그렇다. 붉은 벽돌로 지어진 옛 건물과 새로 지은 건물이 독특하게 어우러진 로비를 지나면, 다른 도서관처럼 거대한 열람공간 대신 기존의 방들을 최대한 살려 누구나 편안하게 책을 볼 수 있는 아늑한 공간들이 나온다. 5층짜리 도서관에는 55개나 되는 크고 작은 방에 분야별로 나뉜 서가와 여러 가지 시설이 자리 잡았다. 이런 공간은 마치 미로처럼 이어진다. 길 중간에 뜻밖의 계단이 나타나고, 층계를 오르다 보면 콘크리트 벽이 붉은 벽돌로 바뀌는 식이다. 계단 벽에는 주요 공간들의 옛날과 현재 사진이 비교 전시되어 공간의 역사를 느낄 수 있다. </p>
 
 								<p class="mb-0">마을 주민들이 직접 도서관을 운영하니, 지역 맞춤, 주민 맞춤형 프로그램이 가득하다. 작년에는 주민참여예산을 지원받아 ‘도서관 마을학교’를 진행했다. 장장 7개월 동안 진행된 프로그램에 참여한 주민들은 후속모임을 거쳐 독서 동아리를 구성하고 구산동도서관마을 독사활동가로 활동하고 있다. 은평구뿐 아니라 이웃 지역의 기관, 단체 등과 다양한 연계 프로그램도 진행 중이다. </p>
+					
 							</div>
 						</div>
 						<!-- Card END -->
@@ -275,12 +282,13 @@ Content START -->
 							<!-- Card body -->
 							<div class="card-body px-0 pb-0">
 								<div class="row g-4">
+							
 									<div class="col-md-4">
-									<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
+									<img alt="" src="${culture.firstimage}">
 									</div>
 
 									<div class="col-md-4">
-									<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
+									<img alt="" src="${culture.firstimage}">
 									</div>
 
 									<div class="col-md-4">
@@ -295,17 +303,6 @@ Content START -->
 										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">	
 									</div>
 
-									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/directory/08.jpg">
-										
-										</a>
-									</div>
-
-									<div class="col-md-4">
-										<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/directory/07.jpg">
-										
-										</a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -342,25 +339,30 @@ Content START -->
 								var geocoder = new kakao.maps.services.Geocoder();
 
 								// 주소로 좌표를 검색합니다
-								geocoder.addressSearch('서울 은평구 연서로13길 29-23 구산동도서관마을', function(result, status) {
-
+								var locationName =  document.getElementById('locationName').value
+								console.log(locationName)
+								var locationCoor =  document.getElementById('mapCoordinate').value
+								 console.log(locationCoor)
+								 
+								geocoder.addressSearch(locationCoor, function(result, status) {
+									
 									// 정상적으로 검색이 완료됐으면 
 									if (status === kakao.maps.services.Status.OK) {
 
 										var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
 										// 결과값으로 받은 위치를 마커로 표시합니다
-										var marker = new kakao.maps.Marker({
+									 	var marker = new kakao.maps.Marker({
 											map: map,
 											position: coords
-										});
+										}); 
 
 										// 인포윈도우로 장소에 대한 설명을 표시합니다
-										var infowindow = new kakao.maps.InfoWindow({
-											content: '<div style="width:150px;text-align:center;padding:6px 0;">구산동도서관마을</div>'
+									/* 	var infowindow = new kakao.maps.InfoWindow({
+											 content:'<div style="width:150px;text-align:center;padding:6px 0;"></div>'
 										});
-										infowindow.open(map, marker);
-
+										infowindow.open(map); */
+										marker.setMap(map)
 										// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 										map.setCenter(coords);
 									} 
@@ -369,15 +371,16 @@ Content START -->
 								<!-- Info -->
 								<ul class="list-group list-group-borderless my-3">
 									<!-- Address -->
+						
 									<li class="list-group-item">
 										<a href="#" class="h6 fw-normal mb-0">
-											<img src="${pageContext.request.contextPath}/resources/images/location-mark.svg" style="width: 20px;">서울특별시 은평구 연서로13길 29-23
+											<img src="${pageContext.request.contextPath}/resources/images/location-mark.svg" style="width: 20px;">${culture.addr1}
 										</a>
 									</li>
 									<!-- Call no -->
 									<li class="list-group-item">
 										<a href="#" class="h6 fw-normal mb-0">
-											<img src="${pageContext.request.contextPath}/resources/images/call.svg" style="width: 20px;"> +82 02-357-0100
+											<img src="${pageContext.request.contextPath}/resources/images/call.svg" style="width: 20px;"> +82&nbsp;${culture.tel} 
 										</a>
 									</li>
 									<!-- Email -->
@@ -386,6 +389,7 @@ Content START -->
 											<img src="${pageContext.request.contextPath}/resources/images/email.svg" style="width: 20px;">example@gmail.com
 										</a>
 									</li>
+								
 								</ul>
 								<!-- Social button -->
 								<ul class="list-inline mb-0 mt-3">
@@ -468,7 +472,10 @@ Content START -->
 		
 </div>
 	</div>		
+	
 </section>
+
+</form>
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
@@ -598,6 +605,120 @@ Footer START -->
 
 <!-- ThemeFunctions -->
 <script src="assets/js/functions.js"></script>
+
+
+<script type="text/javascript">
+
+Kakao.init('bb83919493996c6c554671877067a90a');
+console.log(location.href)
+</script>
+
+
+
+<script>
+Kakao.init('bb83919493996c6c554671877067a90a'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+
+<a id="kakaotalk-sharing-btn" href="javascript:;">
+  <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+    alt="카카오톡 공유 보내기 버튼" />
+</a>
+
+<script>
+
+var thumbImg = document.getElementById("mainImage").value; //이미지 주소
+console.log(thumbImg)
+var thumbTitle = document.getElementById("locationName").value; 
+console.log(thumbTitle)
+
+
+Kakao.Share.createDefaultButton({
+    container: '#kakaotalk-sharing-btn',
+    objectType: 'feed',
+    content: {
+      title: thumbTitle,
+      description: '#부산',
+      imageUrl:
+    	  thumbImg,
+      link: {
+        // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+        mobileWebUrl: 'https://developers.kakao.com',
+        webUrl: location.href,
+      },
+    },
+    social: {
+      likeCount: 286,
+      commentCount: 45,
+      sharedCount: 845,
+    },
+    buttons: [
+      {
+        title: '웹으로 보기',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: location.href,
+        },
+      },
+      {
+        title: '앱으로 보기',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: location.href,
+        },
+      },
+    ],
+  });
+</script>
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+	
+
+
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

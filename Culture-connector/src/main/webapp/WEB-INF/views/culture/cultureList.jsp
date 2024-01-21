@@ -499,7 +499,7 @@ $(".form-check-input").change(function(){
 	  }
 	});
 	
-
+console.log(document.location.href)
 </script>
 
 <script type="text/javascript">

@@ -169,7 +169,7 @@
 	
 	<select id="selectCultureByNo" parameterType="int" resultMap="cultureResultMap">
 		SELECT  
-			CNO, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY
+			CNO, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY, tel
 			
 			FROM culture where CNO = #{cno}
 		
