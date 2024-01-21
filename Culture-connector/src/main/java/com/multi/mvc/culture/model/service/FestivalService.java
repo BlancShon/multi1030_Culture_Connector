@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.FestivalMapper;
 import com.multi.mvc.culture.model.vo.Festival;
+import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Service
 public class FestivalService {
@@ -33,5 +34,9 @@ public class FestivalService {
 	
 	public int count() {
 		return mapper.selectCount();
+	}
+	
+	public List<Festival> getTestList(SearchForm searchForm){
+		return mapper.testList(searchForm);
 	}
 }

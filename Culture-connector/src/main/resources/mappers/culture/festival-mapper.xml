@@ -30,6 +30,11 @@
 		
 	</resultMap>
 	
+	<resultMap type="Festival" id="FestivalminResult">
+		<result property="title" column="TITLE"/>
+		<result property="firstimage" column="FIRSTIMAGE"/>
+	</resultMap>
+	
 	<select id="selectCount" resultType="int">
 		SELECT COUNT(*) FROM FESTIVAL;
 	</select>
@@ -93,6 +98,76 @@
 	        )
 	    </foreach>
 	</insert>
+	
+	
+	
+	<!--  통합 검색 !!!!! -->
+	<select id="testList" resultMap="FestivalminResult" parameterType="SearchForm">
+		select title, firstimage, eventstartdate, eventenddate, addr1, modifiedtime
+		from festival
+		<where>
+			
+			<if test="progress != null">
+				<choose>
+					<when test="progress == 'ongoing'">
+						AND EVENTSTARTDATE &lt; curdate()
+					</when>
+					<when test="progress == 'planed'">
+						AND EVENTSTARTDATE &gt; curdate()
+					</when>
+					<when test="progress == 'over'">
+						AND EVENTENDDATE &lt; curdate()
+					</when>
+					<otherwise></otherwise>						
+				</choose>
+			</if>
+			
+			<if test="regions != null and regions.size() > 0">
+				        AND (
+				            <foreach collection="regions" item="region" separator="OR">
+				                ADDR1 LIKE CONCAT('%', #{region}, '%')
+				            </foreach>
+				        )
+		   		 </if>
+		   		 
+		   		  <if test="foodTypes != null and foodTypes.size() > 0">
+	        	AND (
+					<foreach collection="foodTypes" item="foodType" separator="OR">
+						<if test="foodType == '한식'">
+							CAT3 = 'A05020100'
+						</if>
+						<if test="foodType == '양식'">
+							CAT3 = 'A05020200'
+						</if>
+						<if test="foodType == '일식'">
+							CAT3 = 'A05020300'
+						</if>
+						<if test="foodType == '중식'">
+							CAT3 = 'A05020400'
+						</if>
+						<if test="foodType == '카페'">
+							CAT3 = 'A05020900'
+						</if>
+					</foreach>
+	        	)
+	        </if>
+	   		 
+		</where>	
+		
+		
+		<if test="upToDate != null">
+            <choose>
+                <when test="upToDate == 'asc'">
+                    ORDER BY MODIFIEDTIME ASC
+                </when>
+                <when test="upToDate == 'desc'">
+                    ORDER BY MODIFIEDTIME DESC
+                </when>
+            </choose>
+        </if>
+       
+		
+	</select>
 	
 	
 	

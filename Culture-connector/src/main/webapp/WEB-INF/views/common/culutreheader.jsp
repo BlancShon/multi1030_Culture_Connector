@@ -144,7 +144,8 @@
 
 							<li> <a class="dropdown-item" href="${path}/review-talk1.html">리뷰 게시판</a></li>
 							<li> <a class="dropdown-item" href="${path}/review-talk2.html">리뷰 참여하기</a></li>
-
+							<li> <a class="dropdown-item" href="${path}/festival/searchTestList">검색 테스트</a></li>
+							<!--  검색 테스트는 테스트 끝나면 지울겁니다 -->
 						</ul>
 					</li>
 
