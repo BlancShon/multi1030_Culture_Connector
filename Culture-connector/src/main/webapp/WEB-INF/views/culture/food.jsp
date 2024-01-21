@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%-- <jsp:include page="/WEB-INF/views/common/culutreheader.jsp"> --%>
-<%-- <jsp:param value="Culture Connector" name="title"/> --%>
-<%-- </jsp:include> --%>
+<jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
+	<jsp:param value="Culture Connector" name="title"/>
+</jsp:include>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -922,7 +922,7 @@ Footer START -->
 <script src="${pageContext.request.contextPath}/vendor/flatpickr/js/flatpickr.min.js"></script>
 <script src="${pageContext.request.contextPath}/vendor/choices/js/choices.min.js"></script>
 <script src="${pageContext.request.contextPath}/vendor/jarallax/jarallax.min.js"></script>
-	<script src="${pageContext.request.contextPath}/vendor/jarallax/jarallax-video.min.js"></script>
+<script src="${pageContext.request.contextPath}/vendor/jarallax/jarallax-video.min.js"></script>
 
 <!-- ThemeFunctions -->
 <script src="${pageContext.request.contextPath}/js/functions.js"></script>

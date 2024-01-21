@@ -52,9 +52,10 @@ public class FoodController {
 		return "culture/foodList";
 	}
 	
+	
 	@RequestMapping(value = "/food", method = RequestMethod.GET)
-    public String home() {
-        return "/culture/food"; // This forwards to /WEB-INF/views/home.jsp
+    public String food() {
+        return "/culture/food"; // This forwards to /WEB-INF/views/culture/food.jsp
     }
 	
 	

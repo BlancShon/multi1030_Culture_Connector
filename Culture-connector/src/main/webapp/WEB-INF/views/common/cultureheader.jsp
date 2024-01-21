@@ -112,11 +112,10 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="${path}/cluture-theme1.html">문화 관광지</a></li>
-							<li> <a class="dropdown-item" href="${path}/cluture-theme2.html">문화 예술 공연</a></li>
-							<li> <a class="dropdown-item" href="${path}/cluture-theme3.html">지역 문화 축제</a></li>
-							<li> <a class="dropdown-item" href="${path}/cluture-theme4.html">액티비티/원데이 클래스</a></li>
-
+							<li> <a class="dropdown-item" href="${path}/culture-theme1.html">문화 관광지</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme2.jsp">문화 예술 공연</a></li>
+							<li> <a class="dropdown-item" href="${path}/culture-theme3.html">지역 문화 축제</a></li>
+							<li> <a class="dropdown-item" href="${path}/culture-theme4.html">액티비티/원데이 클래스</a></li>
 						</ul>
 					</li>
 
@@ -130,9 +129,9 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="${path}/cluture-news1.html">문화 기사</a></li>
-							<li> <a class="dropdown-item" href="${path}/cluture-news2.html">문화 코스</a></li>
-							<li> <a class="dropdown-item" href="${path}/cluture-news3.html">쿠폰/혜택</a></li>
+							<li> <a class="dropdown-item" href="${path}/culture-news1.html">문화 기사</a></li>
+							<li> <a class="dropdown-item" href="${path}/culture-news2.html">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="${path}/culture-news3.html">쿠폰/혜택</a></li>
 
 						</ul>
 					</li>
@@ -150,7 +149,7 @@
 
           <!-- Nav item 문화(여행) 지도  -->
 					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${path}/cluture-tour-map.html">문화(여행) 지도</a>
+            <a class="nav-link active" aria-current="page" href="${path}/culture-tour-map.html">문화(여행) 지도</a>
           </li>
 
 
