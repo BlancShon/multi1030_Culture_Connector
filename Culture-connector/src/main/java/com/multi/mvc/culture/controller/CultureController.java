@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.api.OpenApiManagerForXml;
@@ -21,6 +22,7 @@ import com.multi.mvc.culture.model.mapper.CultureMapper;
 import com.multi.mvc.culture.model.service.CultureService;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
+import com.mysql.cj.log.Log;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -92,6 +94,14 @@ public class CultureController {
 		model.addAttribute("culture", culture);
 		
 		return "culture/cultureDetail";
+	}
+	
+	
+	
+	@RequestMapping(value = "/cultureTheme2", method = RequestMethod.GET)
+	public String cultureTheme2() {
+	    log.info("cultureTheme2 request");
+	    return "/culture/cultureTheme2";
 	}
 
 }

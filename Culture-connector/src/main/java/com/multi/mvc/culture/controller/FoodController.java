@@ -58,19 +58,5 @@ public class FoodController {
         return "/culture/food"; // This forwards to /WEB-INF/views/culture/food.jsp
     }
 	
-	
-//	@GetMapping("/culture/list")
-//	public String list(Model model, Culture food) {
-//		
-//		
-//		
-//		
-//		
-//		
-//		//service.count();
-//		
-//		model.addAttribute("list", list);
-//		return "culture/cultureList";
-//	}
 
 }
