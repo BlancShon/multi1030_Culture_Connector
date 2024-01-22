@@ -26,7 +26,7 @@ public class CourseService {
 	}
 	
 	public void initCourse() {
-		mapper.initCourse(ApiParsing.listBySidoGroups(Course.class));
+		mapper.initCourse(ApiParsing.parseAndExportToTheList(Course.class));
 	}
 	
 	public int count() {

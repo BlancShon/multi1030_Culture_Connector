@@ -6,9 +6,9 @@ import java.time.format.DateTimeFormatter;
 public class ApiSearchInfo {
 
 	// 공공데이터 포털 서비스 키값 안되면 하나씩 주석풀고 해결해보기 or 본인 서비스키 입력해보기
-	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew==";
+//	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew==";
 //	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
-//	public static final String SERVICE_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
+	public static final String SERVICE_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
 	
 	// 페스티벌 기본 url 입니다
 	public static final String FESTIVAL_URL = "https://apis.data.go.kr/B551011/KorService1/searchFestival1?";
