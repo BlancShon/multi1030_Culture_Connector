@@ -3,6 +3,8 @@ package com.multi.mvc.api;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,10 +14,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.multi.mvc.culture.model.dto.EventDto;
-import com.multi.mvc.culture.model.dto.LeisureSportsDto;
-import com.multi.mvc.culture.model.vo.Event;
-import com.multi.mvc.culture.model.vo.LeisureSports;
+import com.multi.mvc.culture.model.vo.CultureParent;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,17 +23,27 @@ public class ApiParsing {
 
 	// url 해결해주는맵
 	private static Map<String, String> urlMap;
+	
+	private static Map<String, String> keyMap;
 
 	static {
 		urlMap = new HashMap<>();
 		urlMap.put("Festival", ApiSearchInfo.getFestivalURL());
-		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12"));
-		urlMap.put("Culture", ApiSearchInfo.getContentTypeURL("14"));
-		urlMap.put("Event", ApiSearchInfo.getContentTypeURL("15"));
-		urlMap.put("Course", ApiSearchInfo.getContentTypeURL("25"));
-		urlMap.put("LeisureSports", ApiSearchInfo.getContentTypeURL("28"));
-		urlMap.put("Food", ApiSearchInfo.getContentTypeURL("39"));
+		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12") + ApiSearchInfo.getServiceKey("박현"));
+		urlMap.put("Culture", ApiSearchInfo.getContentTypeURL("14") + ApiSearchInfo.getServiceKey("김진경"));
+		urlMap.put("Event", ApiSearchInfo.getContentTypeURL("15") + ApiSearchInfo.getServiceKey("고재목"));
+		urlMap.put("Course", ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey("고재목2"));
+		urlMap.put("LeisureSports", ApiSearchInfo.getContentTypeURL("28") + ApiSearchInfo.getServiceKey("이병집"));
+		urlMap.put("Food", ApiSearchInfo.getContentTypeURL("39") + ApiSearchInfo.getServiceKey("장성희"));
 
+		keyMap = new HashMap<>();
+		keyMap.put("TouristAttraction", "박현");
+		keyMap.put("Culture", "김진경");
+		keyMap.put("Event", "고재목");
+		keyMap.put("LeisureSports", "이병집");
+		keyMap.put("Food", "장성희");
+		keyMap.put("Course", "고재목2");
+		
 	}
 
 	// 분류없이 그냥 리스트 뽑아오는 메소드
@@ -88,7 +97,8 @@ public class ApiParsing {
 	}
 
 	// 분류없이 타겟에 상세정보까지 주입하는 메서드
-	public static <T, D> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, Class<D> dtoClass) {
+	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass) {
+		String whosKey = keyMap.get(targetClass.getSimpleName());
 		String targetUrl = urlMap.get(targetClass.getSimpleName());
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
@@ -122,15 +132,21 @@ public class ApiParsing {
 				for (JsonNode itemNode : itemsNode) {
 					String contentId = itemNode.get("contentid").asText();
 					String contentTypeId = itemNode.get("contenttypeid").asText();
-					D targetDetail = getDetail(dtoClass, contentId, contentTypeId);
-					T target = objMapper.treeToValue(itemNode, targetClass);
+					
+					// 기본 정보들 받아오는 바구니
 					try {
-						target = (T) detailInjection(target, targetDetail);
+						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
+						T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
+						target = commonInjection(target, common, imgList);
+						
+						list.add(target);
 					} catch (NullPointerException ne) {
-						log.error(contentId + "디테일 삽입중 널포인터", ne);
+						log.info("주입도중 {} 에러 발생!!!! {}", ne);
+					} catch (Exception e) {
+						log.info("주입 도중 {} 에러 발생!!!",e);
 					}
 
-					list.add(target);
 				}
 
 			} catch (Exception e) {
@@ -146,11 +162,110 @@ public class ApiParsing {
 		}
 		return list;
 	}
+	
+	// 이미지 정보 받아오는 메소드
+	private static List<String> getImgList(String contentId, String contentTypeId, String name) throws Exception {
+		String targetUrl = ApiSearchInfo.getImageURL(contentId) + ApiSearchInfo.getServiceKey(name);
+		
+		List<String> list = new ArrayList<>();
 
-	// Dto 값 받아오는 메서드
-	private static <D> D getDetail(Class<D> dtoClass, String contentId, String contentTypeId) {
-		D dto = null;
-		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId);
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+//	        conn.setRequestProperty("Content-type", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/json");
+
+			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+
+			if (responseCode < 200 || 300 <= responseCode) {
+				log.error("페이지가 잘못되었습니다. {}", responseCode);
+			}
+
+			try (InputStream is = conn.getInputStream();
+					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+					BufferedReader br = new BufferedReader(isr);) {
+
+				// json 을 파싱하는 도구?? ObjectMapper
+				ObjectMapper objMapper = new ObjectMapper();
+
+				String line = br.readLine();
+				JsonNode rootNode = objMapper.readTree(line);
+				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+
+				for (JsonNode itemNode : itemsNode) {
+				list.add(itemNode.path("originimgurl").asText());
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				conn.disconnect(); // 리소스 닫기
+			}
+		}
+		
+		if(contentTypeId.equals("39")) {
+			// 푸드면 푸드 이미지도 가져오는 로직 작성
+		}
+		
+		return list;
+	}
+
+	// 하나로 합쳐주는 메소드
+	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList) throws Exception {
+		int size = imgList.size();
+		target.setAddr1(common.getAddr1());
+		target.setAddr2(common.getAddr2());
+		target.setAreacode(common.getAreacode());
+		target.setBooktour(common.getBooktour());
+		target.setCat1(common.getCat1());
+		target.setCat2(common.getCat2());
+		target.setCat3(common.getCat3());
+		target.setCreatedtime(common.getCreatedtime());
+		target.setFirstimage(common.getFirstimage());
+		target.setFirstimage2(common.getFirstimage2());
+		target.setCpyrhtDivCd(common.getCpyrhtDivCd());
+		target.setMapx(common.getMapx());
+		target.setMapy(common.getMapy());
+		target.setMlevel(common.getMlevel());
+		target.setModifiedtime(common.getModifiedtime());
+		target.setSigungucode(common.getSigungucode());
+		target.setTel(common.getTel());
+		target.setTitle(common.getTitle());
+		target.setZipcode(common.getZipcode());
+		target.setShowflag(common.getShowflag());
+		target.setImgCount(size);
+		for (int i = 0; i < size; i++) {
+		
+		    // 이미지 필드명을 동적으로 생성
+		    String imageFieldName = "Image" + i;
+		    // Reflection을 사용하여 동적으로 필드에 접근하여 값을 복사
+		    try {
+		    	
+		        // target 객체의 image 필드명에 해당하는 Setter 메서드를 찾음
+		        Method targetSetter = target.getClass().getMethod("set" + imageFieldName, String.class);
+
+		        // 값을 복사
+		        targetSetter.invoke(target, imgList.get(i));
+		    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+		        log.error("이미지 삽입 도중 예외",e);
+		    }
+		}
+		
+		return target;
+	}
+
+	// 디테일한거 받아오는 메소드
+	private static <T> T getDetail(Class<T> targetClass, String contentId, String contentTypeId, String name) throws Exception {
+		T target = null;
+		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId)	+ ApiSearchInfo.getServiceKey(name);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -179,7 +294,7 @@ public class ApiParsing {
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 
 				for (JsonNode itemNode : itemsNode) {
-					dto = objMapper.treeToValue(itemNode, dtoClass);
+					target = objMapper.treeToValue(itemNode, targetClass);
 				}
 
 			} catch (Exception e) {
@@ -193,62 +308,9 @@ public class ApiParsing {
 				conn.disconnect(); // 리소스 닫기
 			}
 		}
-		return dto;
+		return target;
 	}
 
-	// 디테일 주입하는 메서드
-	private static Object detailInjection(Object targetClass, Object targetDetailClass) throws NullPointerException {
-
-		if (targetClass.getClass().equals(Event.class)) {
-			Event target = (Event) targetClass;
-			EventDto targetDetail = (EventDto) targetDetailClass;
-
-			target.setSponsor1(targetDetail.getSponsor1());
-			target.setSponsor1tel(targetDetail.getSponsor1tel());
-			target.setSponsor2(targetDetail.getSponsor1());
-			target.setSponsor2tel(targetDetail.getSponsor2tel());
-			target.setEventEndDate(targetDetail.getEventEndDate());
-			target.setPlaytime(targetDetail.getPlaytime());
-			target.setEventPlace(targetDetail.getEventPlace());
-			target.setEventHomepage(targetDetail.getEventHomepage());
-			target.setAgelimit(targetDetail.getAgelimit());
-			target.setBookingplace(targetDetail.getBookingplace());
-			target.setPlaceinfo(targetDetail.getPlaceinfo());
-			target.setSubevent(targetDetail.getSubevent());
-			target.setProgram(targetDetail.getProgram());
-			target.setEventStartDate(targetDetail.getEventStartDate());
-			target.setUsetimefestival(targetDetail.getUsetimefestival());
-			target.setDiscountinfofestival(targetDetail.getDiscountinfofestival());
-			target.setSpendtimefestival(targetDetail.getSpendtimefestival());
-			target.setFestivalgrade(targetDetail.getFestivalgrade());
-
-			return target;
-		}
-
-		if (targetClass.getClass().equals(LeisureSports.class)) {
-			LeisureSports target = (LeisureSports) targetClass;
-			LeisureSportsDto targetDetail = (LeisureSportsDto) targetDetailClass;
-
-			target.setOpenperiod(targetDetail.getOpenperiod());
-			target.setReservation(targetDetail.getReservation());
-			target.setInfocenterleports(targetDetail.getInfocenterleports());
-			target.setScaleleports(targetDetail.getScaleleports());
-			target.setAccomcountleports(targetDetail.getAccomcountleports());
-			target.setRestdateleports(targetDetail.getRestdateleports());
-			target.setUsetimeleports(targetDetail.getUsetimeleports());
-			target.setUsefeeleports(targetDetail.getUsefeeleports());
-			target.setExpagerangeleports(targetDetail.getExpagerangeleports());
-			target.setParkingleports(targetDetail.getParkingleports());
-			target.setParkingfeeleports(targetDetail.getParkingfeeleports());
-			target.setChkbabycarriageleports(targetDetail.getChkbabycarriageleports());
-			target.setChkpetleports(targetDetail.getChkpetleports());
-			target.setChkcreditcardleports(targetDetail.getChkcreditcardleports());
-
-			return target;
-		}
-
-		return null;
-	}
 
 	// 지역코드 받는것도 오버로딩
 	public static <T> List<T> parseAndExportToTheList(Class<T> targetClass, String areaCode) {
@@ -464,6 +526,11 @@ public class ApiParsing {
 			}
 		}
 		return list;
+	}
+	
+	public static void main(String[] args) {
+//		 System.out.println("여기를 보십쇼!!!" + ApiSearchInfo.getContentTypeURL("28") + ApiSearchInfo.getServiceKey("이병집"));
+		
 	}
 
 }

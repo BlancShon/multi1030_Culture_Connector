@@ -6,7 +6,8 @@
 
 	<resultMap type="Event" id="eventResultMap">
 
-	    <result property="eno" column="ENO"/>
+	    <result property="contentid" column="CONTENTID"/>
+	    <result property="contenttypeid" column="CONTENTTYPEID"/>
 	    <result property="addr1" column="ADDR1"/>
 	    <result property="addr2" column="ADDR2"/>
 	    <result property="areacode" column="AREACODE"/>
@@ -14,8 +15,6 @@
 	    <result property="cat1" column="CAT1"/>
 	    <result property="cat2" column="CAT2"/>
 	    <result property="cat3" column="CAT3"/>
-	    <result property="contentid" column="CONTENTID"/>
-	    <result property="contenttypeid" column="CONTENTTYPEID"/>
 	    <result property="createdtime" column="CREATEDTIME"/>
 	    <result property="firstimage" column="FIRSTIMAGE"/>
 	    <result property="firstimage2" column="FIRSTIMAGE2"/>
@@ -32,20 +31,43 @@
 	    <result property="sponsor1tel" column="SPONSOR1TEL"/>
 	    <result property="sponsor2" column="SPONSOR2"/>
 	    <result property="sponsor2tel" column="SPONSOR2TEL"/>
-	    <result property="eventEndDate" column="EVENTENDDATE"/>
+	    <result property="eventenddate" column="EVENTENDDATE"/>
 	    <result property="playtime" column="PLAYTIME"/>
-	    <result property="eventPlace" column="EVENTPLACE"/>
-	    <result property="eventHomepage" column="EVENTHOMEPAGE"/>
+	    <result property="eventplace" column="EVENTPLACE"/>
+	    <result property="eventhomepage" column="EVENTHOMEPAGE"/>
 	    <result property="agelimit" column="AGELIMIT"/>
 	    <result property="bookingplace" column="BOOKINGPLACE"/>
 	    <result property="placeinfo" column="PLACEINFO"/>
 	    <result property="subevent" column="SUBEVENT"/>
 	    <result property="program" column="PROGRAM"/>
-	    <result property="eventStartDate" column="EVENTSTARTDATE"/>
+	    <result property="eventstartdate" column="EVENTSTARTDATE"/>
 	    <result property="usetimefestival" column="USETIMEFESTIVAL"/>
 	    <result property="discountinfofestival" column="DISCOUNTINFOFESTIVAL"/>
 	    <result property="spendtimefestival" column="SPENDTIMEFESTIVAL"/>
 	    <result property="festivalgrade" column="FESTIVALGRADE"/>
+	    
+	    <result property="image0" column="IMAGE0"/>
+	    <result property="image1" column="IMAGE1"/>
+	    <result property="image2" column="IMAGE2"/>
+	    <result property="image3" column="IMAGE3"/>
+	    <result property="image4" column="IMAGE4"/>
+	    <result property="image5" column="IMAGE5"/>
+	    <result property="image6" column="IMAGE6"/>
+	    <result property="image7" column="IMAGE7"/>
+	    <result property="image8" column="IMAGE8"/>
+	    <result property="image9" column="IMAGE9"/>
+	    <result property="image10" column="IMAGE10"/>
+		<result property="image11" column="IMAGE11"/>
+		<result property="image12" column="IMAGE12"/>
+		<result property="image13" column="IMAGE13"/>
+		<result property="image14" column="IMAGE14"/>
+		<result property="image15" column="IMAGE15"/>
+		<result property="image16" column="IMAGE16"/>
+		<result property="image17" column="IMAGE17"/>
+		<result property="image18" column="IMAGE18"/>
+		<result property="image19" column="IMAGE19"/>
+		<result property="image20" column="IMAGE20"/>
+    	<result property="imgCount" column="IMGCOUNT"/>
 	</resultMap>
 
 
@@ -54,15 +76,10 @@
 	</select>
 
 
-	<delete id="deleteTableEvent">
-		<!-- DELETE FROM FESTIVAL; -->
-		DROP TABLE IF EXISTS EVENT;
-	</delete>
-
 	<insert id="createTableEvent">
 
 		CREATE TABLE IF NOT EXISTS EVENT (
-		    CONTENTID INT,
+		    CONTENTID INT PRIMARY KEY,
 		    CONTENTTYPEID INT,
 		    ADDR1 VARCHAR(255),
 		    ADDR2 VARCHAR(255),
@@ -71,14 +88,14 @@
 		    CAT1 VARCHAR(255),
 		    CAT2 VARCHAR(255),
 		    CAT3 VARCHAR(255),
-		    CREATEDTIME DATE,
+		    CREATEDTIME VARCHAR(255),
 		    FIRSTIMAGE VARCHAR(255),
 		    FIRSTIMAGE2 VARCHAR(255),
 		    CPYRHTDIVCD VARCHAR(255),
 		    MAPX VARCHAR(255),
 		    MAPY VARCHAR(255),
 		    MLEVEL INT,
-		    MODIFIEDTIME DATE,
+		    MODIFIEDTIME VARCHAR(255),
 		    SIGUNGUCODE INT,
 		    TEL VARCHAR(255),
 		    TITLE VARCHAR(255),
@@ -101,44 +118,73 @@
 		    DISCOUNTINFOFESTIVAL VARCHAR(255),
 		    SPENDTIMEFESTIVAL VARCHAR(255),
 		    FESTIVALGRADE VARCHAR(255),
-		    CONSTRAINT PK_EVENT PRIMARY KEY (CONTENTID, CONTENTTYPEID)
+		    
+		    IMAGE0 VARCHAR(255),
+		    IMAGE1 VARCHAR(255),
+		    IMAGE2 VARCHAR(255),
+		    IMAGE3 VARCHAR(255),
+		    IMAGE4 VARCHAR(255),
+		    IMAGE5 VARCHAR(255),
+		    IMAGE6 VARCHAR(255),
+		    IMAGE7 VARCHAR(255),
+		    IMAGE8 VARCHAR(255),
+		    IMAGE9 VARCHAR(255),
+		    IMAGE10 VARCHAR(255),
+		    IMAGE11 VARCHAR(255),
+			IMAGE12 VARCHAR(255),
+			IMAGE13 VARCHAR(255),
+			IMAGE14 VARCHAR(255),
+			IMAGE15 VARCHAR(255),
+			IMAGE16 VARCHAR(255),
+			IMAGE17 VARCHAR(255),
+			IMAGE18 VARCHAR(255),
+			IMAGE19 VARCHAR(255),
+			IMAGE20 VARCHAR(255),
+			IMGCOUNT INT
 		);
 
+
 	</insert>
-
-	<insert id="initEvent" parameterType="java.util.List">
-	
-		INSERT INTO EVENT(
-		    ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
-		    CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
-		    FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
-		    SIGUNGUCODE, TEL, TITLE, ZIPCODE,
-		    SPONSOR1, SPONSOR1TEL, SPONSOR2, SPONSOR2TEL,
-		    EVENTENDDATE, PLAYTIME, EVENTPLACE, EVENTHOMEPAGE,
-		    AGELIMIT, BOOKINGPLACE, PLACEINFO, SUBEVENT,
-		    PROGRAM, EVENTSTARTDATE, USETIMEFESTIVAL,
-		    DISCOUNTINFOFESTIVAL, SPENDTIMEFESTIVAL, FESTIVALGRADE
-		) VALUES
-		<foreach collection="list" index="index" item="item" separator=",">
-		    (
-		        #{item.addr1}, #{item.addr2}, #{item.areacode}, #{item.booktour},
-		        #{item.cat1}, #{item.cat2},
-		        #{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime},
-		        #{item.firstimage},
-		        #{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx}, #{item.mapy}, #{item.mlevel},
-		        #{item.modifiedtime}, #{item.sigungucode}, #{item.tel},
-		        #{item.title}, #{item.zipcode},
-		        #{item.sponsor1}, #{item.sponsor1tel}, #{item.sponsor2}, #{item.sponsor2tel},
-		        #{item.eventEndDate}, #{item.playtime}, #{item.eventPlace}, #{item.eventHomepage},
-		        #{item.agelimit}, #{item.bookingplace}, #{item.placeinfo}, #{item.subevent},
-		        #{item.program}, #{item.eventStartDate}, #{item.usetimefestival},
-		        #{item.discountinfofestival}, #{item.spendtimefestival}, #{item.festivalgrade}
-		    )
-		</foreach>;
-
 		
+	<insert id="initEvent" parameterType="java.util.List">
+	    INSERT INTO EVENT (
+	        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
+	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
+	        FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
+	        SIGUNGUCODE, TEL, TITLE, ZIPCODE,
+	        SPONSOR1, SPONSOR1TEL, SPONSOR2, SPONSOR2TEL,
+	        EVENTENDDATE, PLAYTIME, EVENTPLACE, EVENTHOMEPAGE,
+	        AGELIMIT, BOOKINGPLACE, PLACEINFO, SUBEVENT,
+	        PROGRAM, EVENTSTARTDATE, USETIMEFESTIVAL,
+	        DISCOUNTINFOFESTIVAL, SPENDTIMEFESTIVAL, FESTIVALGRADE,
+	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4,
+	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10,
+	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
+	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
+	        IMGCOUNT
+	    ) VALUES
+	    <foreach collection="list" index="index" item="item" separator=",">
+	        (
+	            #{item.addr1}, #{item.addr2}, #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2},
+	            #{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime},
+	            #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx}, #{item.mapy}, #{item.mlevel},
+	            #{item.modifiedtime}, #{item.sigungucode}, #{item.tel},
+	            #{item.title}, #{item.zipcode},
+	            #{item.sponsor1}, #{item.sponsor1tel}, #{item.sponsor2}, #{item.sponsor2tel},
+	            #{item.eventenddate}, #{item.playtime}, #{item.eventplace}, #{item.eventhomepage},
+	            #{item.agelimit}, #{item.bookingplace}, #{item.placeinfo}, #{item.subevent},
+	            #{item.program}, #{item.eventstartdate}, #{item.usetimefestival},
+	            #{item.discountinfofestival}, #{item.spendtimefestival}, #{item.festivalgrade},
+	            #{item.image0}, #{item.image1}, #{item.image2}, #{item.image3}, #{item.image4},
+	            #{item.image5}, #{item.image6}, #{item.image7}, #{item.image8}, #{item.image9}, #{item.image10},
+	            #{item.image11}, #{item.image12}, #{item.image13}, #{item.image14}, #{item.image15},
+	            #{item.image16}, #{item.image17}, #{item.image18}, #{item.image19}, #{item.image20},
+	            #{item.imgCount}
+	        )
+	    </foreach>;
 	</insert>
-	
+
+
 	<select id="eventList" resultType="Event">
 		select * from event;
 	</select>

@@ -4,12 +4,24 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class ApiSearchInfo {
-
-	// 공공데이터 포털 서비스 키값 안되면 하나씩 주석풀고 해결해보기 or 본인 서비스키 입력해보기
-//	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew==";
-//	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
-//	public static final String SERVICE_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
-	public static final String SERVICE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
+	
+	// 고재목 카카오키
+	public static final String KOJAE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew==";
+//	public static final String KOJAE_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
+	// 고재목2 네이버키
+	public static final String KOJAE_KEY2="oW%2FrS%2BFT6fgy036VPTpERN4pM3sBFCi2BwpZKn0nVfCts2U4npVDdN%2Fh152OFXPOP1Kt4APjeqSmJhVFbAE7uA%3D%3D";
+	// 고재목3 회원가입키
+	public static final String KOJAE_KEY3="EOhQWsO5B8yK%2FBsejXeqdcGFxsrVBGaLRymdYxQjlXBhmIZWF0BEt5NiAMGk08XMTUMEMseUO1ngMzre4RueNg%3D%3D";
+	
+	// 장성희님 서비스키
+	public static final String JANGSUNG_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
+	// 이병집님 서비스키
+	public static final String LEEBYUNG_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
+	// 김진경님 서비스키
+	public static final String KIMJIN_KEY="YTJQhiGqFaJcSgNyq0wvDHuRUmE56hVRG63knwqWhvJrdeidrPvz4XZeoCVamdcKeml7TDUsG7qGCcdSqxa8zg==";
+	// 박현님 서비스키
+	public static final String PARKHYUN_KEY="yX2RtRptCoLL/kspIFHuDPrRpow4DHVtbw+NJDatd/cuSRWrPN4IcIivuC6y+O68h2uzkJOdWltsrYjQbiEqaA==";
+	
 	
 	// 페스티벌 기본 url 입니다
 	public static final String FESTIVAL_URL = "https://apis.data.go.kr/B551011/KorService1/searchFestival1?";
@@ -19,6 +31,8 @@ public class ApiSearchInfo {
 	public static final String AREA_CODE_URL = "https://apis.data.go.kr/B551011/KorService1/areaCode1?numOfRows=100&MobileOS=etc&MobileApp=test&_type=json";
 	// 디테일 정보 조회 기본 url 입니다.
 	public static final String DETAIL_INFO_URL = "https://apis.data.go.kr/B551011/KorService1/detailIntro1?"; 
+	// 추가 사진 정보 조회 기본 url 입니다.
+	public static final String IMAGE_INFO_URL = "http://apis.data.go.kr/B551011/KorService1/detailImage1?subImageYN=Y&";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
 	public static String numOfRows = "numOfRows=10";
@@ -27,27 +41,40 @@ public class ApiSearchInfo {
 	public static String mobileOs = "&MobileOS=etc";
 	public static String mobileApp = "&MobileApp=test";
 	
-	public static String eventStartDate;
 	
 	// 필수값들 넣은 url
 	public static StringBuffer requiredValueURL(String basicUrl) {
 		StringBuffer sb = new StringBuffer(basicUrl);
 		return sb.append(numOfRows).append(mobileOs).append(mobileApp)
-				.append(type).append(arrange()).append(getServiceKey());
+				.append(type).append(arrange());
 	}
 	
+	// 디테일 정보 url
 	public static String getDetailURL(String contentId, String contentTypeId){
 		StringBuffer sb = new StringBuffer(DETAIL_INFO_URL);
 		return sb.append(numOfRows).append(mobileOs).append(mobileApp)
-				.append(type).append(getServiceKey()).append(contentId(contentId)).append(contentTypeId(contentTypeId)).toString();
-			
+				.append(type).append(contentId(contentId)).append(contentTypeId(contentTypeId)).toString();
+	}
+	
+	// 이미지 정보 url
+	public static String getImageURL(String contentId) {
+		StringBuffer sb = new StringBuffer(IMAGE_INFO_URL);
+		return sb.append(numOfRows).append(mobileOs).append(mobileApp)
+				.append(type).append(contentId(contentId)).append("&imageYN=Y").toString();
+	}
+	
+	// 음식이미지 정보 url
+	public static String getFoodImageURL(String contentId) {
+		StringBuffer sb = new StringBuffer(IMAGE_INFO_URL);
+		return sb.append(numOfRows).append(mobileOs).append(mobileApp)
+				.append(type).append(contentId(contentId)).append("&imageYN=N").toString();
 	}
 	
 	// 페스티발 필수 url 
 	public static String getFestivalURL() {
 		StringBuffer sb = new StringBuffer(FESTIVAL_URL);
 		return sb.append("numOfRows=300").append(mobileOs).append(mobileApp)
-				.append(type).append(getServiceKey()).append(eventStartDate()).toString();
+				.append(type).append(getServiceKey("고재목3")).append(eventStartDate()).toString();
 	}
 	
 	// 컨텐트 타입 별 url 해결사
@@ -57,7 +84,7 @@ public class ApiSearchInfo {
 	}
 
 	public static String getAreaCodeURL() {
-		return AREA_CODE_URL + "&serviceKey="+ SERVICE_KEY;
+		return AREA_CODE_URL + "&serviceKey="+ KOJAE_KEY;
 	}
 	
 	public static String getSigunguCodeURL(String areaCode) {
@@ -68,8 +95,23 @@ public class ApiSearchInfo {
 		return "&eventStartDate=" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")).toString();
 	}
 	
-	public static String getServiceKey() {
-		return "&serviceKey="+SERVICE_KEY;
+	public static String getServiceKey(String name) {
+		String serviceKey = null;
+		if (name.equals("고재목")) {
+			serviceKey = KOJAE_KEY;
+		} else if (name.equals("장성희")) {
+			serviceKey = JANGSUNG_KEY;
+		} else if (name.equals("이병집")) {
+			serviceKey = LEEBYUNG_KEY;
+		} else if (name.equals("김진경")) {
+			serviceKey = KIMJIN_KEY;
+		} else if (name.equals("박현")) {
+			serviceKey = PARKHYUN_KEY;
+		} else if (name.equals("고재목2")) {
+			serviceKey = KOJAE_KEY2;
+		}
+		
+		return "&serviceKey="+serviceKey;
 	}
 	
 	public static String pageNo(String num) {

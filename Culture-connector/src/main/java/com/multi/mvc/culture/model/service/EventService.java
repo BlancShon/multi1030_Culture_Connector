@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.mvc.api.ApiParsing;
-import com.multi.mvc.culture.model.dto.EventDto;
 import com.multi.mvc.culture.model.mapper.EventMapper;
 import com.multi.mvc.culture.model.vo.Event;
 
@@ -22,7 +21,7 @@ public class EventService {
 	}
 	
 	public void initEvent() {
-		mapper.initEvent(ApiParsing.parseAndExportToTheListAdvanced(Event.class, EventDto.class));
+		mapper.initEvent(ApiParsing.parseAndExportToTheListAdvanced(Event.class));
 	}
 	
 	public int count() {

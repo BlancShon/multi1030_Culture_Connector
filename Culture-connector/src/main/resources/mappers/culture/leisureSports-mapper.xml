@@ -40,6 +40,29 @@
 	    <result property="chkbabycarriageleports" column="CHKBABYCARLEPORTS"/>
 	    <result property="chkpetleports" column="CHKPETLEPORTS"/>
 	    <result property="chkcreditcardleports" column="CHKCREDITCARDLEPORTS"/>
+	    
+	     <result property="image0" column="IMAGE0"/>
+	    <result property="image1" column="IMAGE1"/>
+	    <result property="image2" column="IMAGE2"/>
+	    <result property="image3" column="IMAGE3"/>
+	    <result property="image4" column="IMAGE4"/>
+	    <result property="image5" column="IMAGE5"/>
+	    <result property="image6" column="IMAGE6"/>
+	    <result property="image7" column="IMAGE7"/>
+	    <result property="image8" column="IMAGE8"/>
+	    <result property="image9" column="IMAGE9"/>
+	    <result property="image10" column="IMAGE10"/>
+		<result property="image11" column="IMAGE11"/>
+		<result property="image12" column="IMAGE12"/>
+		<result property="image13" column="IMAGE13"/>
+		<result property="image14" column="IMAGE14"/>
+		<result property="image15" column="IMAGE15"/>
+		<result property="image16" column="IMAGE16"/>
+		<result property="image17" column="IMAGE17"/>
+		<result property="image18" column="IMAGE18"/>
+		<result property="image19" column="IMAGE19"/>
+		<result property="image20" column="IMAGE20"/>
+    	<result property="imgCount" column="IMGCOUNT"/>
 	</resultMap>
 
 
@@ -50,43 +73,64 @@
 	<insert id="createTableLeports">
 
 		CREATE TABLE IF NOT EXISTS LEPORTS (
-	    	contentid INT, 
+	    	contentid INT PRIMARY KEY,
 		    contenttypeid INT,
-		    addr1 VARCHAR(100),
-		    addr2 VARCHAR(100),
+		    addr1 VARCHAR(255),
+		    addr2 VARCHAR(255),
 		    areacode INT,
 		    booktour INT,
-		    cat1 VARCHAR(100),
-		    cat2 VARCHAR(100),
-		    cat3 VARCHAR(100),
-		    createdtime DATETIME,
-		    firstimage VARCHAR(100),
-		    firstimage2 VARCHAR(100),
-		    cpyrhtDivCd VARCHAR(100),
-		    mapx VARCHAR(100),
-		    mapy VARCHAR(100),
+		    cat1 VARCHAR(255),
+		    cat2 VARCHAR(255),
+		    cat3 VARCHAR(255),
+		    createdtime VARCHAR(255),
+		    firstimage VARCHAR(255),
+		    firstimage2 VARCHAR(255),
+		    cpyrhtDivCd VARCHAR(255),
+		    mapx VARCHAR(255),
+		    mapy VARCHAR(255),
 		    mlevel INT,
-		    modifiedtime DATETIME,
+		    modifiedtime VARCHAR(255),
 		    sigungucode INT,
-		    tel VARCHAR(100),
-		    title VARCHAR(100),
-		    zipcode VARCHAR(100),
-		    openperiod VARCHAR(100),
+		    tel VARCHAR(255),
+		    title VARCHAR(255),
+		    zipcode VARCHAR(255),
+		    openperiod VARCHAR(255),
 		    reservation TEXT,
-		    infocenterleports VARCHAR(100),
-		    scaleleports VARCHAR(100),
-		    accomcountleports VARCHAR(100),
-		    restdateleports VARCHAR(100),
+		    infocenterleports VARCHAR(255),
+		    scaleleports VARCHAR(255),
+		    accomcountleports VARCHAR(255),
+		    restdateleports VARCHAR(255),
 		    usetimeleports TEXT,
-		    useFeeLeports VARCHAR(100),
-		    expAgeRangeLeports VARCHAR(100),
-		    parkingLeports VARCHAR(100),
-		    parkingFeeLeports VARCHAR(100),
-		    chkBabyCarriageLeports VARCHAR(100),
-		    chkPetLeports VARCHAR(100),
-		    chkCreditCardLeports VARCHAR(100),
-		    CONSTRAINT PK_LEPORTS PRIMARY KEY (CONTENTID, CONTENTTYPEID)
+		    useFeeLeports VARCHAR(255),
+		    expAgeRangeLeports VARCHAR(255),
+		    parkingLeports VARCHAR(255),
+		    parkingFeeLeports VARCHAR(255),
+		    chkBabyCarriageLeports VARCHAR(255),
+		    chkPetLeports VARCHAR(255),
+		    chkCreditCardLeports VARCHAR(255),
 		    
+		    IMAGE0 VARCHAR(255),
+		    IMAGE1 VARCHAR(255),
+		    IMAGE2 VARCHAR(255),
+		    IMAGE3 VARCHAR(255),
+		    IMAGE4 VARCHAR(255),
+		    IMAGE5 VARCHAR(255),
+		    IMAGE6 VARCHAR(255),
+		    IMAGE7 VARCHAR(255),
+		    IMAGE8 VARCHAR(255),
+		    IMAGE9 VARCHAR(255),
+		    IMAGE10 VARCHAR(255),
+		    IMAGE11 VARCHAR(255),
+			IMAGE12 VARCHAR(255),
+			IMAGE13 VARCHAR(255),
+			IMAGE14 VARCHAR(255),
+			IMAGE15 VARCHAR(255),
+			IMAGE16 VARCHAR(255),
+			IMAGE17 VARCHAR(255),
+			IMAGE18 VARCHAR(255),
+			IMAGE19 VARCHAR(255),
+			IMAGE20 VARCHAR(255),
+			IMGCOUNT INT
 		);
 
 	</insert>
@@ -98,9 +142,12 @@
 	        sigungucode, tel, title, zipcode, openPeriod, reservation, infoCenterLeports,
 	        scaleLeports, accomCountLeports, restDateLeports, useTimeLeports, useFeeLeports,
 	        expAgeRangeLeports, parkingLeports, parkingFeeLeports, chkBabyCarriageLeports,
-	        chkPetLeports, chkCreditCardLeports
+	        chkPetLeports, chkCreditCardLeports,
+	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9,
+	        IMAGE10, IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15, IMAGE16, IMAGE17, IMAGE18,
+	        IMAGE19, IMAGE20, IMGCOUNT
 	    ) VALUES
-	    <foreach collection="list" item="item" separator=",">
+	    <foreach collection="list" index="index" item="item" separator=",">
 	        (
 	            #{item.contentid}, #{item.contenttypeid}, #{item.addr1}, #{item.addr2},
 	            #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2}, #{item.cat3},
@@ -111,10 +158,17 @@
 	            #{item.scaleleports}, #{item.accomcountleports}, #{item.restdateleports},
 	            #{item.usetimeleports}, #{item.usefeeleports}, #{item.expagerangeleports},
 	            #{item.parkingleports}, #{item.parkingfeeleports},
-	            #{item.chkbabycarriageleports}, #{item.chkpetleports}, #{item.chkcreditcardleports}
+	            #{item.chkbabycarriageleports}, #{item.chkpetleports}, #{item.chkcreditcardleports},
+	            #{item.image0}, #{item.image1}, #{item.image2}, #{item.image3}, #{item.image4},
+	            #{item.image5}, #{item.image6}, #{item.image7}, #{item.image8}, #{item.image9},
+	            #{item.image10}, #{item.image11}, #{item.image12}, #{item.image13}, #{item.image14},
+	            #{item.image15}, #{item.image16}, #{item.image17}, #{item.image18}, #{item.image19},
+	            #{item.image20}, #{item.imgCount}
 	        )
 	    </foreach>;
 	</insert>
+
+
 
 	
 	<select id="leportsList" resultType="LeisureSports">
