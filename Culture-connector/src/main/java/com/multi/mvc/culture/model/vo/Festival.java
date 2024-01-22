@@ -15,15 +15,15 @@ import lombok.NoArgsConstructor;
 public class Festival {
 	
 	private int fno;
+	private int contentid;
+	private int contenttypeid;
 	private String addr1;
 	private String addr2;
 	private int booktour;
 	private String cat1;
 	private String cat2;
 	private String cat3;
-	private int contentid;
-	private String contenttypeid;
-	private Date createdtime;
+	private long createdtime;
 	private String eventstartdate;
 	private String eventenddate;
 	private String firstimage;
@@ -32,7 +32,7 @@ public class Festival {
 	private String mapx;
 	private String mapy;
 	private int mlevel;
-	private Date modifiedtime;
+	private long modifiedtime;
 	private int areacode;
 	private int sigungucode;
 	private String tel;

@@ -7,11 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.service.FestivalService;
 import com.multi.mvc.culture.model.vo.Festival;
+import com.multi.mvc.culture.model.vo.SearchForm;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,6 +47,15 @@ public class FestivalController {
 		System.out.println(list.getClass());
 		System.out.println(list);
 		return "culture/festivalList";
+	}
+	
+
+	@GetMapping("/searchTestList")
+	public String testList(Model model, @ModelAttribute SearchForm searchForm) {
+		List<Festival> testList = service.getTestList(searchForm);
+		model.addAttribute("testList", testList);
+		
+		return "culture/testList";
 	}
 	
 }
