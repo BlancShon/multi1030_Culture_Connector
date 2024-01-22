@@ -53,7 +53,7 @@ public class FestivalController {
 		List<Festival> testList = service.getTestList(searchForm);
 		model.addAttribute("testList", testList);
 		
-		return "culture/testList";
+		return "culture/test/testList";
 	}
 	
 }
