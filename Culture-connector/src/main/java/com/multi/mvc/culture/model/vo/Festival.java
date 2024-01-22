@@ -23,7 +23,7 @@ public class Festival {
 	private String cat1;
 	private String cat2;
 	private String cat3;
-	private long createdtime;
+	private String createdtime;
 	private String eventstartdate;
 	private String eventenddate;
 	private String firstimage;
@@ -32,7 +32,7 @@ public class Festival {
 	private String mapx;
 	private String mapy;
 	private int mlevel;
-	private long modifiedtime;
+	private String modifiedtime;
 	private int areacode;
 	private int sigungucode;
 	private String tel;
