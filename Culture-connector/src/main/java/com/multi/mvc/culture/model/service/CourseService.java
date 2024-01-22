@@ -1,5 +1,7 @@
 package com.multi.mvc.culture.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,9 @@ public class CourseService {
 	
 	public int count() {
 		return mapper.selectCount();
+	}
+
+	public List<Course> showCourseTable() {
+		return mapper.selectCourse();
 	}
 }

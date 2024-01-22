@@ -18,10 +18,6 @@ public class FestivalService {
 	private FestivalMapper mapper;
 	
 	
-	public void dropTable() {
-		mapper.initDeleteFestival();
-	}
-	
 	public void createTable() {
 		mapper.createTableFestival();
 	}
@@ -38,5 +34,9 @@ public class FestivalService {
 	
 	public List<Festival> getTestList(SearchForm searchForm){
 		return mapper.testList(searchForm);
+	}
+
+	public List<Festival> getFestivalTable() {
+		return mapper.selectFestival();
 	}
 }

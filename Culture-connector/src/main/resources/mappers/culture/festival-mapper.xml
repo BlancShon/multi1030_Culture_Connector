@@ -40,11 +40,6 @@
 	</select>
 	
 	
-	<delete id="initDeleteFestival">
-		<!--  DELETE FROM FESTIVAL; -->
-		 DROP TABLE IF EXISTS FESTIVAL;
-	</delete>
-	
 	<insert id="createTableFestival">
 	CREATE TABLE IF NOT EXISTS festival (
 		<!-- CREATE TABLE FESTIVAL( -->
@@ -169,7 +164,9 @@
 		
 	</select>
 	
-	
+	<select id="selectFestival" resultType="Festival">
+		select * from festival;
+	</select>
 	
 
 </mapper>

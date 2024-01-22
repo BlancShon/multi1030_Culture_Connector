@@ -29,7 +29,7 @@ public class EventService {
 		return mapper.selectCount();
 	}
 	
-	public List<Event> showEventTable() {
+	public List<Event> getEventTable() {
 		return mapper.eventList();
 	}
 }

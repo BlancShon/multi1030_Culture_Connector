@@ -42,7 +42,7 @@ public class EventController {
 	@GetMapping("/list")
 	public String eventList(Model model) {
 		log.debug("Event Controller list 확인");
-		List<Event> list = service.showEventTable();
+		List<Event> list = service.getEventTable();
 		model.addAttribute("eventList", list);
 		
 		return "culture/eventList";

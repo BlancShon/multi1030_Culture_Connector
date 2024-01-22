@@ -61,6 +61,10 @@
 		);
 
 	</insert>
+	
+	<select id="selectCourse" resultType="Course">
+		select * from course;
+	</select>
 
 
 

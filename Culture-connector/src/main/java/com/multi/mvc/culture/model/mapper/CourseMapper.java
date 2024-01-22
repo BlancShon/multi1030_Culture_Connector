@@ -15,4 +15,6 @@ public interface CourseMapper {
 	void initCourse(List<Course> list);
 	
 	int selectCount();
+
+	List<Course> selectCourse();
 }

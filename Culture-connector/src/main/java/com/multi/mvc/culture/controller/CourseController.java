@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.service.CourseService;
 import com.multi.mvc.culture.model.vo.Course;
 
@@ -24,7 +23,7 @@ public class CourseController {
 	private CourseService service;
 	
 //	public static List<Course> list = ApiParsing.parseAndExportToTheList(Event.class);
-	public static List<Course> list = ApiParsing.listBySidoGroups(Course.class);
+//	public static List<Course> list = ApiParsing.listBySidoGroups(Course.class);
 //	public static List<Course> list = ApiParsing.listBySigunguGroups(Event.class);
 	
 	
@@ -40,6 +39,7 @@ public class CourseController {
 	
 	@GetMapping("/list")
 	public String courseList(Model model) {
+		List<Course> list = service.showCourseTable();
 		model.addAttribute("courseList", list);
 		
 		return "culture/courseList";

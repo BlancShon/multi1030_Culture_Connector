@@ -9,8 +9,7 @@ import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Mapper
 public interface FestivalMapper {
-	void initDeleteFestival();
-	
+		
 	void createTableFestival();
 	
 	void initFestival(List<Festival> list);
@@ -18,4 +17,6 @@ public interface FestivalMapper {
 	int selectCount();
 	
 	List<Festival> testList(SearchForm searchForm);
+
+	List<Festival> selectFestival();
 }
