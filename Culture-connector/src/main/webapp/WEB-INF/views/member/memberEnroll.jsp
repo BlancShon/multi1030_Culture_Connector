@@ -4,83 +4,93 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="회원가입" name="title"/>
-</jsp:include>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 
-<style>
-	section #enroll-container {text-align: center;}
-	section #enroll-container input {margin: 3px;}
-	section #enroll-container table {margin: 0 auto;}
-	section #enroll-container table th {padding: 0 10px; text-align: right;}
-	section #enroll-container table td {padding: 0 10px;text-align: left;}
-</style>
+    <link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+
+    <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
+        <jsp:param value="회원가입" name="title"/>
+    </jsp:include>
+
+    <style>
+        #checkDuplicate {
+   	 width: auto;  
+    margin-top: 5px;
+			}
+        
+    </style>
+</head>
 
 <section id="content">
-	<h3 align="center">회원가입</h3>
-	
-	<form id="enroll-container" name="form1" action="${path}/member/enroll" method="post">
-		<table>
-			<tr>
-				<th>아이디</th>
-				<td>
-					<input type="text" id="id" name="id" placeholder="아이디 4글자 이상" required>
-					<input type="button" id="checkDuplicate" value="중복검사" >
-				</td>
-			</tr>		
-			<tr>
-				<th>패스워드</th>
-				<td>
-					<input type="password" id="password1" name="password" required>
-				</td>
-			</tr>
-			<tr>
-				<th>패스워드 확인</th>
-				<td>
-					<input type="password" id="password2" required>
-				</td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td>
-					<input type="text" id="name" name="name" required>
-				</td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<input type="tel" id="phone" name="phone" maxlength="13" placeholder="010-1234-5678">
-				</td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td>
-					<input type="email" name="email" id="email">
-				</td>
-			</tr>		
-			<tr>
-				<th>주소</th>
-				<td>
-					<input type="text" id="address" name="address">
-				</td>
-			</tr>
-			<tr>
-				<th>취미</th>
-				<td>
-					<label><input type="checkbox" name="hobby" value="여행">여행</label>
-					<label><input type="checkbox" name="hobby" value="운동">운동</label>
-					<label><input type="checkbox" name="hobby" value="수영">수영</label>
-					<label><input type="checkbox" name="hobby" value="게임">게임</label>
-					<label><input type="checkbox" name="hobby" value="독서">독서</label>
-				</td>
-			</tr>
-		</table>
-		<input type="submit" id="enrollSubmit" value="가입">
-		<input type="reset" value="취소">
-	</form>
+    <h3 align="center">회원가입</h3>
+
+    <form id="enroll-container" name="form1" action="${path}/member/enroll" method="post">
+        <div class="container" style="min-height: 500px;">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+                    <div class="card border border-light-subtle rounded-4">
+                        <div class="card-body p-3 p-md-4 p-xl-5">
+                            <div class="row mb-3">
+                                <label for="id" class="col-sm-3 col-form-label">아이디</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="아이디 4글자 이상" required>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="button" class="btn btn-outline-dark mt-1 ml-1" id="checkDuplicate" value="중복확인"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="password1" class="col-sm-3 col-form-label">패스워드</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="password1" name="password" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="password2" class="col-sm-3 col-form-label">패스워드 확인</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="password2" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="name" class="col-sm-3 col-form-label">이름</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="phone" class="col-sm-3 col-form-label">전화번호</label>
+                                <div class="col-sm-9">
+                                    <input type="tel" class="form-control" id="phone" name="phone" maxlength="13" placeholder="010-1234-5678">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="email" class="col-sm-3 col-form-label">이메일</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="address" class="col-sm-3 col-form-label">주소</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="address" name="address">
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-sm-12">
+                                    <input type="submit" class="btn btn-primary" id="enrollSubmit" value="가입"/>
+                                    <input type="reset" class="btn btn-secondary ml-1" value="취소"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </section>
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 
 <script type="text/javascript">
@@ -148,14 +158,3 @@
 		
 	});
 </script>
-
-
-
-
-
-
-
-
-
-
-
