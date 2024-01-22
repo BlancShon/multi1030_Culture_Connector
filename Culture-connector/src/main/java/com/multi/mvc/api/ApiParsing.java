@@ -140,7 +140,9 @@ public class ApiParsing {
 						T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
 						target = commonInjection(target, common, imgList);
 						
-						list.add(target);
+						if(target != null) {
+							list.add(target);
+						}
 					} catch (NullPointerException ne) {
 						log.info("주입도중 {} 에러 발생!!!! {}", ne);
 					} catch (Exception e) {
@@ -221,6 +223,9 @@ public class ApiParsing {
 	// 하나로 합쳐주는 메소드
 	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList) throws Exception {
 		int size = imgList.size();
+		if (target == null || common == null) {
+			return target = null;
+		}
 		target.setAddr1(common.getAddr1());
 		target.setAddr2(common.getAddr2());
 		target.setAreacode(common.getAreacode());

@@ -22,7 +22,7 @@ public class LeisureSportsController {
 	@Autowired
 	private LeisureSportsService service;
 	
-	@Bean(initMethod = "initLeports")
+//	@Bean(initMethod = "initLeports")
 	public void initLeports() {
 		log.debug("initLeports Controller 확인");
 		

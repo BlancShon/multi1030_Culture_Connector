@@ -29,7 +29,7 @@ public class EventController {
 	
 	
 	
-	@Bean(initMethod = "initEvent")
+//	@Bean(initMethod = "initEvent")
 	public void initEvent() {
 		log.debug("Event Controller 확인");
 		

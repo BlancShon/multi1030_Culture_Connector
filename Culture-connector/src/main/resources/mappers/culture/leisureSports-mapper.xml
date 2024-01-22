@@ -168,8 +168,6 @@
 	    </foreach>;
 	</insert>
 
-
-
 	
 	<select id="leportsList" resultType="LeisureSports">
 		SELECT * FROM LEPORTS;
