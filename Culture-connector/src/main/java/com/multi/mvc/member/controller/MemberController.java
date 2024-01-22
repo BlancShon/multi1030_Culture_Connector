@@ -29,6 +29,15 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	
+	@GetMapping("/login")
+	public String loginForm() {
+		log.debug("로그인 요청");
+		return "loginForm";
+	}
+	
+	
+	
 
 	// action : /login, method : POST
 	// 파라메터 : memberId, memberPwd
@@ -44,7 +53,7 @@ public class MemberController {
 			return "redirect:/"; // index로 보내는 리다이렉트문
 		} else { // 로그인이 실패한 경우
 			model.addAttribute("msg", "아이디와 패스워드를 확인해주세요.");
-			model.addAttribute("location", "/");
+			model.addAttribute("location", "/login");
 			return "common/msg";
 		}
 	}

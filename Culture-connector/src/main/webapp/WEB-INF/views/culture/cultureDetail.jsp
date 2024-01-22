@@ -436,7 +436,7 @@ Content START -->
 	
 </section>
 
-</form>
+
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 

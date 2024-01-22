@@ -47,6 +47,7 @@ public class MemberService {
 		// pw 확인하는 로직
 		if(pwEncoder.matches(pwd, member.getPassword())) {
 			// 로그인 성공한 경우
+			System.out.println("로그인 아이디" + member.toString());
 			return member;
 		}else {
 			// 실패

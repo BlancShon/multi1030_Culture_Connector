@@ -112,7 +112,7 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme1">문화 관광지</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/culture/list">문화 관광지</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme2">문화 예술 공연</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme3">지역 문화 축제</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme4">액티비티/원데이 클래스</a></li>
@@ -177,24 +177,27 @@
             </script>
 
           <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
+          <c:if test="${loginMember == null}">
           <li class="nav-item" id="login">
-            <a class="nav-link active" aria-current="page" href="${path}/login.html">로그인</a>
+            <a class="nav-link active" aria-current="page" href="${path}/login">로그인</a>
           </li>
+          </c:if>
 
 					<!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
+					<c:if test="${loginMember != null}">
 					<li class="nav-item dropdown" id="user-info">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원 정보</a>
+						<a class="nav-link dropdown-toggle" href="/member/view" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">회원 정보</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="{pageContext.request.contextPath}/inform">내 정보</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/inform">내 정보</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
+							<li> <a class="dropdown-item" href="${path}/logout">로그아웃</a></li>
 
 						</ul>
 					</li>
-
+					</c:if>
 					
 				</ul>
 			</div>
