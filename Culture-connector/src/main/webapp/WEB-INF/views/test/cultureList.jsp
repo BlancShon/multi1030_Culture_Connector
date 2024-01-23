@@ -94,7 +94,6 @@
 	            <c:forEach var="culture" items="${list}">
 	                <tr>
 	                    <td><c:out value="${culture.contentid}"/></td>
-	                    <td><c:out value="${culture.contentid}"/></td>
 				        <td><c:out value="${culture.contenttypeid}"/></td>
 				        <td><c:out value="${culture.addr1}"/></td>
 				        <td><c:out value="${culture.addr2}"/></td>
