@@ -34,9 +34,9 @@ public class EventController {
 		log.debug("Event Controller 확인");
 		
 		service.createTable();
-		if(service.count() == 0) {
-			service.initEvent();
-		}
+//		if(service.count() == 0) {
+//			service.initEvent();
+//		}
 	}
 	
 	@GetMapping("/list")

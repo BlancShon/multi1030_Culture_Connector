@@ -25,7 +25,7 @@ public class FoodController {
 	@Autowired
 	private FoodService service;
 	
-	List<Food> FoodList = OpenApiManagerForXml_food.parse();
+//	List<Food> FoodList = OpenApiManagerForXml_food.parse();
 	
 	private static Culture food;
 	
@@ -33,9 +33,9 @@ public class FoodController {
 	public void init2() {
 		log.debug("food controller 확인");
 		service.createTable();
-		if(service.count() == 0) {
-			service.save();
-		}
+//		if(service.count() == 0) {
+//			service.save();
+//		}
 	}
 	
 	@GetMapping("/food/list")
@@ -48,7 +48,7 @@ public class FoodController {
 		
 		//service.count();
 		
-		model.addAttribute("FoodList", FoodList);
+//		model.addAttribute("FoodList", FoodList);
 		return "culture/foodList";
 	}
 	
