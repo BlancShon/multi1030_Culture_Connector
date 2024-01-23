@@ -7,12 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 
-
- 	<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/logins/login-7/assets/css/login-7.css">
-    <link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" />
 
 </head>
 <body>
@@ -36,7 +35,7 @@
                   </div>
                 </div>
               </div>
-            
+              
               <form action="${path}/login" method="post" id="loginFrm" name="loginFrm" >
                 <div class="row gy-3 overflow-hidden">
                   <div class="col-12">
@@ -73,11 +72,16 @@
                   <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
                     <a href="${path}/member/enroll" class="link-secondary text-decoration-none">회원가입</a>
                     <a href="#!" class="link-secondary text-decoration-none">아이디 찾기</a>
-                    <a href="#!" class="link-secondary text-decoration-none">비밀번호 찾기</a>     
+                    <a href="#!" class="link-secondary text-decoration-none">비밀번호 찾기</a>
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
               <div style="margin-left:80px; margin-top:20px">
+=======
+              
+			  <div style="margin-left:90px; margin-top:20px">
+>>>>>>> branch 'master' of https://github.com/BlancShon/multi1030_Culture_Connector
               <h6>소셜 계정으로 가입하기(  
               <a style="border: none;" href="">구글/</a>
               <a style="border: none;" href="">네이버/</a>
@@ -85,8 +89,13 @@
               </div>
               <div class="row">
                 <div class="col-12">
+<<<<<<< HEAD
                   <p class="mt-5 mb-5" id="socialLoginMsg" style="text-align:center;">소셜 로그인</p>
 				
+=======
+                  <p class="mt-5 mb-5" id="socialLoginMsg">소셜 로그인</p>
+
+>>>>>>> branch 'master' of https://github.com/BlancShon/multi1030_Culture_Connector
                   <div class="d-flex gap-2 gap-sm-3 justify-content-center">
                     <a href="#!" class="btn btn-lg btn-outline-dark p-3 lh-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"  class="bi bi-google" viewBox="0 0 16 16">
@@ -100,15 +109,19 @@
                         </svg>
                     </a>
 
+<<<<<<< HEAD
                    <a id="btn" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=28661b9849fd4704ad288e59fe9b571c&redirect_uri=http://localhost:8080/mvc/kakaoLogin" class="btn btn-lg btn-outline-success p-3 lh-1" style="">
+=======
+                    <a id="btn" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=28661b9849fd4704ad288e59fe9b571c&redirect_uri=http://localhost:8080/mvc/kakaoLogin" class="btn btn-lg btn-outline-success p-3 lh-1" style="">카카오로그인 
+>>>>>>> branch 'master' of https://github.com/BlancShon/multi1030_Culture_Connector
                    		
-					 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="bi bi-kakao" width="28" height="28" >  
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="bi bi-kakao" width="28" height="28" >  
                             <path d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3zm5.907 8.06l1.47-1.424a.472.472 0 0 0-.656-.678l-1.928 1.866V9.282a.472.472 0 0 0-.944 0v2.557a.471.471 0 0 0 0 .222V13.5a.472.472 0 0 0 .944 0v-1.363l.427-.413 1.428 2.033a.472.472 0 1 0 .773-.543l-1.514-2.155zm-2.958 1.924h-1.46V9.297a.472.472 0 0 0-.943 0v4.159c0 .26.21.472.471.472h1.932a.472.472 0 1 0 0-.944zm-5.857-1.092l.696-1.707.638 1.707H9.092zm2.523.488l.002-.016a.469.469 0 0 0-.127-.32l-1.046-2.8a.69.69 0 0 0-.627-.474.696.696 0 0 0-.653.447l-1.661 4.075a.472.472 0 0 0 .874.357l.33-.813h2.07l.299.8a.472.472 0 1 0 .884-.33l-.345-.926zM8.293 9.302a.472.472 0 0 0-.471-.472H4.577a.472.472 0 1 0 0 .944h1.16v3.736a.472.472 0 0 0 .944 0V9.774h1.14c.261 0 .472-.212.472-.472z"/> 
                         </svg>
-                        
-                        </a>
-				      
-                  </div>      
+
+                    </a>
+                       
+                  </div>
                 </div>
               </div>
             </div>

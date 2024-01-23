@@ -142,7 +142,7 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/reviewTalk1.html">리뷰 게시판</a></li>
+							<li> <a class="dropdown-item" href="${path}/board/list">리뷰 게시판</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/reviewTalk2.html">리뷰 참여하기</a></li>
 							<li> <a class="dropdown-item" href="${path}/festival/searchTestList">검색 테스트</a></li>
 							<!--  검색 테스트는 테스트 끝나면 지울겁니다 -->
