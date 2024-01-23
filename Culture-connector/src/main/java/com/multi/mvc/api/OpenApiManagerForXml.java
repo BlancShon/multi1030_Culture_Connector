@@ -113,12 +113,12 @@ public class OpenApiManagerForXml {
 						String title = getStrData(eElement, "title");
 						String zipcode = getStrData(eElement, "zipcode");
 						
-						
-						Culture culture = new Culture(0,addr1, addr2, areacode, booktour, cat1, cat2, cat3, contentid, contenttypeid, createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime, sigungucode, tel, title, zipcode); 
+						// 생성자 달라져서 수정함
+//						Culture culture = new Culture(0,addr1, addr2, areacode, booktour, cat1, cat2, cat3, contentid, contenttypeid, createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime, sigungucode, tel, title, zipcode); 
 						
 					
 //						System.out.println(culture);
-						list.add(culture);
+//						list.add(culture);
 					} catch (Exception e) {
 						System.out.println("데이터가 잘못되었습니다!");
 					}

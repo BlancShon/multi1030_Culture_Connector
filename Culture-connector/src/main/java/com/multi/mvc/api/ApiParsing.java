@@ -219,7 +219,7 @@ public class ApiParsing {
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 				int count = 0;
 				for (JsonNode itemNode : itemsNode) {
-					log.info("번째 데이터",++count);
+					log.info("{}번째 데이터",++count);
 					String contentId = itemNode.get("contentid").asText();
 					String contentTypeId = itemNode.get("contenttypeid").asText();
 					

@@ -45,6 +45,13 @@ public class HomeController {
 		return sb.toString();
 	}
 	
+	// DB 저장 호출 메소드
+	@RequestMapping(value = "/dbsave", method = RequestMethod.GET)
+	public String dbSave() {
+		log.info("dbSave 호출 완료");
+		return "test/DBSave";
+	}
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
