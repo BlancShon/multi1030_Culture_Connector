@@ -21,7 +21,10 @@ public class EventService {
 	}
 	
 	public void initEvent() {
-		mapper.initEvent(ApiParsing.parseAndExportToTheListAdvanced(Event.class));
+		List<Event>list =  ApiParsing.parseAndExportToTheListAdvanced(Event.class);
+		for(Event item : list) {			
+			mapper.insertEvent(item);
+		}
 	}
 	
 	public int count() {

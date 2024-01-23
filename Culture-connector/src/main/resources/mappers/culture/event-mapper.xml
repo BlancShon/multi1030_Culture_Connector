@@ -146,7 +146,8 @@
 
 	</insert>
 		
-	<insert id="initEvent" parameterType="java.util.List">
+		
+	<insert id="insertEvent" parameterType="Event">
 	    INSERT INTO EVENT (
 	        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
 	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
@@ -163,7 +164,7 @@
 	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
 	        IMGCOUNT
 	    ) VALUES
-	    <foreach collection="list" index="index" item="item" separator=",">
+	   
 	        (
 	            #{item.addr1}, #{item.addr2}, #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2},
 	            #{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime},
@@ -180,8 +181,8 @@
 	            #{item.image11}, #{item.image12}, #{item.image13}, #{item.image14}, #{item.image15},
 	            #{item.image16}, #{item.image17}, #{item.image18}, #{item.image19}, #{item.image20},
 	            #{item.imgCount}
-	        )
-	    </foreach>;
+	        );
+
 	</insert>
 
 

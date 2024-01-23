@@ -16,4 +16,6 @@ public interface EventMapper {
 	int selectCount();
 	
 	List<Event> eventList();
+
+	int insertEvent(Event item);
 }
