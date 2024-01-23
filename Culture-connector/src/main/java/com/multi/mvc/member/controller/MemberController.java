@@ -1,5 +1,6 @@
 package com.multi.mvc.member.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.multi.mvc.kakao.service.KaKaoService;
 import com.multi.mvc.member.model.service.MemberService;
 import com.multi.mvc.member.model.vo.Member;
 
@@ -30,7 +33,11 @@ public class MemberController {
 	private MemberService service;
 	
 	
-	@GetMapping("/login")
+	@Autowired
+	private KaKaoService kakaoService;
+	
+	
+	@GetMapping("/loginForm")
 	public String loginForm() {
 		log.debug("로그인 요청");
 		return "loginForm";
@@ -58,6 +65,53 @@ public class MemberController {
 		}
 	}
 	
+	@GetMapping("/member/enroll/kakao")
+	public String enrollKakao(Model model, String code) {
+		log.info("가입 페이지 요청");
+		if(code != null) {
+			try {
+				String enrollUrl = "http://localhost:8080/mvc/member/enroll/kakao";
+				System.out.println("code : " + code);
+				String token = kakaoService.getToken(code, enrollUrl);
+				System.out.println("token : " + token);
+				Map<String, Object> map = kakaoService.getUserInfo(token);
+				System.out.println(map);
+				model.addAttribute("kakaoMap",map);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return "/member/kakaoMemberEnroll";
+	}
+	
+	@GetMapping("/kakaoLogin")
+	public String kakaoLogin(Model model, String code) {
+		log.info("로그인 요청");
+		System.out.println("code =" +  code);
+		
+		if(code != null) {
+			try {
+				String loginUrl = "http://localhost:8080/mvc/kakaoLogin";
+				String token = kakaoService.getToken(code, loginUrl);
+				Map<String, Object> map = kakaoService.getUserInfo(token);
+				String kakaoToken = (String) map.get("id");
+				Member loginMember = service.loginKaKao(kakaoToken);
+
+				if(loginMember != null) { // 로그인 성공
+					model.addAttribute("loginMember", loginMember); // 세션으로 저장되는 코드, 이유: @SessionAttributes
+					return "redirect:/";
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		model.addAttribute("msg", "로그인에 실패하였습니다.");
+		model.addAttribute("location","/");
+		return "common/msg";
+	}
+	
+
 	@RequestMapping("/logout")
 	public String logout(SessionStatus status) { // status: 세션의 상태를 확인하는 인자
 		log.debug("status : " + status.isComplete()); // isComplete : 세션이 완료 되었는지
@@ -92,6 +146,13 @@ public class MemberController {
 		
 		return "common/msg";
 	}
+	
+	
+	
+
+	
+	
+	
 	
 	// url 검사 : http://localhost/mvc/member/idCheck?id=test2
 	

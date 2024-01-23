@@ -42,7 +42,7 @@ public class OpenApiManagerForXml {
 		urlBuffer.append("&" + "serviceKey=" + KEY);
 		urlBuffer.append("&" + "listYN=" + "Y");
 		urlBuffer.append("&" + "arrange=" + "A");
-		urlBuffer.append("&" + "contentTypeId=" + "39");
+		urlBuffer.append("&" + "contentTypeId=" + "14");
 		urlBuffer.append("&" + "areaCode=" + "");
 		urlBuffer.append("&" + "sigunguCode=" + "");
 		urlBuffer.append("&" + "cat1=" + "");

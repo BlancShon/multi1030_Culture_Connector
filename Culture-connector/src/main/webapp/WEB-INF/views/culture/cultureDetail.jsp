@@ -183,8 +183,8 @@
 	<!--Main banner START -->
 	<section class="py-0">
 
-		<div class="container-fluid px-0" style="text-align: center; width: 1500px; height: 500px;">
-			<input id="mainImage" value="${culture.firstimage}" type="hidden"><img src ="${culture.firstimage}" style="width: 700px">
+		<div class="container" style="text-align: center; width: 2000px; height: 500px;">
+			<input id="mainImage" value="${culture.firstimage}" type="hidden"><img src ="${culture.firstimage}" style="width: 100%; height: 100%">
 		</div>
 
 	</section>

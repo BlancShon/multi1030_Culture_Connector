@@ -179,7 +179,7 @@
           <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
           <c:if test="${loginMember == null}">
           <li class="nav-item" id="login">
-            <a class="nav-link active" aria-current="page" href="${path}/login">로그인</a>
+            <a class="nav-link active" aria-current="page" href="${path}/loginForm">로그인</a>
           </li>
           </c:if>
 

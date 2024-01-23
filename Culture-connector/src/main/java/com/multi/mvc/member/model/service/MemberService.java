@@ -54,6 +54,23 @@ public class MemberService {
 			return null;
 		}
 	}
+	
+	
+	public Member loginKaKao(String kakaoToken) {
+		Member member = mapper.selectMemberByKakaoToken(kakaoToken);
+		if(member != null ) {
+			// 성공일때!
+			return member;
+		}else {
+			// 인증 실패했을때
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
 
 	// 서비스의 save : mno(key)가 없으면 insert, key가 있으면 update가 되는 로직
 	// @Transactional : 트랜잭션을 관리하는 어노테이션, commit, rollback을 자동으로 지원
