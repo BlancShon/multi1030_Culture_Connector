@@ -120,6 +120,18 @@ public class MemberService {
 		return mapper.deleteMember(mno);
 	}
 	
+	// 구글 관련
+		public Member loginGoogle(String googleToken) {
+		    Member member = mapper.selectMemberByGoogleToken(googleToken);
+		    if (member != null) {
+		        // When successful!
+		        return member;
+		    } else {
+		        // When authentication fails
+		        return null;
+		    }
+		}
+	
 }
 
 

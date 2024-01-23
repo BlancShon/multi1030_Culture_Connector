@@ -30,5 +30,6 @@ public interface MemberMapper {
 	
 	
 	Member selectMemberByKakaoToken(String token);
+	Member selectMemberByGoogleToken(String googleToken);
 	
 }

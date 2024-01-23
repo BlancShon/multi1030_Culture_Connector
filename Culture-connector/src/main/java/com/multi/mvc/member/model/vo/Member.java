@@ -21,6 +21,7 @@ public class Member {
 	private String hobby;
 	private String status;
 	private String kakaoToken;
+	private String googleToken; // 구글에서 인증된 token을 저장하는 장소 
 	private Date   enrollDate;
 	private Date   modifyDate;
 }

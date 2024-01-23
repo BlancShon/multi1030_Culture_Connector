@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.multi.mvc.google.service.GoogleService;
 import com.multi.mvc.kakao.service.KaKaoService;
 import com.multi.mvc.member.model.service.MemberService;
 import com.multi.mvc.member.model.vo.Member;
@@ -36,6 +37,8 @@ public class MemberController {
 	@Autowired
 	private KaKaoService kakaoService;
 	
+	@Autowired
+	private GoogleService googleService;
 	
 	@GetMapping("/loginForm")
 	public String loginForm() {
@@ -251,13 +254,50 @@ public class MemberController {
 		return "/common/msg";
 	}
 	
-	
-	// contoller에서 전체 Error 처리하는 핸들러 
-//	@ExceptionHandler(Exception.class)
-//	public String error() {
-//		return "/common/error";
-//	}
-	
+	// 구글 관련
+		@GetMapping("/member/enroll/google")
+		public String enrollGoogle(Model model, String code) {
+		    log.info("Google sign-up page request");
+		    if (code != null) {
+		        try {
+		            String enrollUrl = "http://localhost/mvc/member/enroll/google";
+		            System.out.println("code : " + code);
+		            String token = googleService.getToken(code, enrollUrl);
+		            System.out.println("token : " + token);
+		            Map<String, Object> map = googleService.getUserInfo(token);
+		            System.out.println(map);
+		            model.addAttribute("googleMap", map);
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		    }
+		    return "member/memberEnroll";
+		}
+
+		@GetMapping("/googleLogin")
+		public String googleLogin(Model model, String code) {
+		    log.info("Google login request");
+		    if (code != null) {
+		        try {
+		            String loginUrl = "http://localhost/mvc/googleLogin";
+		            String token = googleService.getToken(code, loginUrl);
+		            Map<String, Object> map = googleService.getUserInfo(token);
+		            String googleToken = (String) map.get("id"); // Adjust the key based on Google's response
+		            Member loginMember = service.loginGoogle(googleToken);
+
+		            if (loginMember != null) { // Login successful
+		                model.addAttribute("loginMember", loginMember); // Code to be stored in session, reason: @SessionAttributes
+		                return "redirect:/";
+		            }
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		    }
+		    model.addAttribute("msg", "Login failed.");
+		    model.addAttribute("location", "/");
+		    return "common/msg";
+		}
+		
 }
 
 
