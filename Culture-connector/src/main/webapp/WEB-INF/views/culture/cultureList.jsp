@@ -30,7 +30,7 @@
 
 
 <style>
- 	section#board-list-container{width:600px; margin:0 auto; text-align:center;}
+/*  	section#board-list-container{width:600px; margin:0 auto; text-align:center;}
 	section#board-list-container h2{margin:10px 0;}
 	table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
 	table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
@@ -40,7 +40,7 @@
     .input_text { width: calc( 100% - 14px); margin: 6px 7px; border: 0;  background: #007dd100; font-weight: bold;font-size: 16px; outline: none;}
     .sch_smit {width: 54px; height: 40px; margin: 0; border: 0; vertical-align: top; background: #007dd1; color: white; font-weight: bold; border-radius: 1px; cursor: pointer;}
     .sch_smit:hover {background: #007dd1;}
-    #board-list-container h2{text-align: center; margin-top: 5px; margin-bottom: 5px} 
+    #board-list-container h2{text-align: center; margin-top: 5px; margin-bottom: 5px}  */
     
     
 
@@ -48,7 +48,7 @@
 
 	
 	
-<jsp:include page="/WEB-INF/views/common/header.jsp">
+<jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="문화시설 목록" name="title"/>
 </jsp:include>
 
@@ -57,148 +57,7 @@
 		 <title>문화 테마 - 문화 관광지 html입니다.</title>
 		 
 		 
-		  <header class="navbar-light header-sticky" style="font-weight: bold;">
-        <!-- Logo Nav START -->
-        <nav class="navbar navbar-expand-xl">
-            <div class="container">
-                <!-- Logo START -->
-                <a class="navbar-brand" href="main.html">
-                    <img style="height: 100px" class="light-mode-item navbar-brand-item"
-                        src="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" alt="logo">
-                    <img style="height: 100px" class="dark-mode-item navbar-brand-item"
-                        src="${pageContext.request.contextPath}/resources/images/logo-culture.png" alt="logo">
-
-                </a>
-                <!-- Logo END -->
-
-                <!-- Responsive navbar toggler -->
-                <button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-animation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                    <span class="d-none d-sm-inline-block small">Menu</span>
-                </button>
-
-                <!-- Responsive category toggler -->
-                <button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse"
-                    aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span
-                        class="d-none d-sm-inline-block small">Category</span>
-                </button>
-
-                <!-- Main navbar START -->
-                <div class="navbar-collapse collapse" id="navbarCollapse">
-                    <ul class="navbar-nav navbar-nav-scroll me-auto">
-
-                        <!-- Nav item 홈  -->
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="main.html">홈</a>
-                        </li>
-
-                        <!-- Nav item 문화 테마 -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">문화 테마</a>
-                            <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-                                <li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
-                                <li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
-                                <li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
-                                <li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
-
-                            </ul>
-                        </li>
-
-                        <!-- Nav item 음식 투어  -->
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
-                        </li>
-
-                        <!-- Nav item 문화 소식 -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">문화 소식</a>
-                            <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-                                <li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
-                                <li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
-                                <li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
-
-                            </ul>
-                        </li>
-
-                        <!-- Nav item 리뷰(수다톡) -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
-                            <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-                                <li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
-                                <li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
-
-                            </ul>
-                        </li>
-
-                        <!-- Nav item 문화(여행) 지도  -->
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
-                        </li>
-
-
-
-                        <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
-                        <li class="nav-item" id="login">
-                            <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
-                        </li>
-
-                        <!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">회원 정보</a>
-                            <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-                                <li> <a class="dropdown-item" href="inform.html">내 정보</a></li>
-                                <li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
-                                <li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
-                                <li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
-                                <li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
-                </div>
-                <!-- Main navbar END -->
-
-                <!-- Toggler button and stay button -->
-                <div class="d-flex align-items-center justify-content-end">
-                    <!-- Responsive navbar toggler -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-animation">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="d-none d-sm-inline-block small">Menu</span>
-                    </button>
-
-
-                </div>
-            </div>
-            
-          
-       
-        </nav>
-
-    </header>
+		  
 
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -338,12 +197,15 @@
                                             <!-- Card image -->
                                             <div class="col-md-6 col-xl-6">
                                                 <div>
-                                                	<c:if test="${item.firstimage == null and item.firstimage2 == null}">
+                                                	<c:choose> 
+                                                	<c:when test="${empty item.firstimage and empty item.firstimage2}">
                                                 	<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
-                                                	</c:if>
+                                                	</c:when> 
+                                                	<c:otherwise>
                                                     <img src="${item.firstimage}" class="rounded" alt="${item.firstimage2}"
                                                         style="width: 400px; height: 200px;">
-                                                        
+                                                      </c:otherwise> 
+                                                    </c:choose>     
                                                 </div>
                                             </div>
 

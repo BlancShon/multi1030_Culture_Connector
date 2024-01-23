@@ -70,7 +70,7 @@ public class MemberController {
 		log.info("가입 페이지 요청");
 		if(code != null) {
 			try {
-				String enrollUrl = "http://localhost:8080/mvc/member/enroll/kakao";
+				String enrollUrl = "http://localhost/mvc/member/enroll/kakao";
 				System.out.println("code : " + code);
 				String token = kakaoService.getToken(code, enrollUrl);
 				System.out.println("token : " + token);
@@ -92,7 +92,7 @@ public class MemberController {
 		
 		if(code != null) {
 			try {
-				String loginUrl = "http://localhost:8080/mvc/kakaoLogin";
+				String loginUrl = "http://localhost/mvc/kakaoLogin";
 				String token = kakaoService.getToken(code, loginUrl);
 				Map<String, Object> map = kakaoService.getUserInfo(token);
 				String kakaoToken = (String) map.get("id");
