@@ -37,7 +37,7 @@ public class ApiSearchInfo {
 	public static final String IMAGE_INFO_URL = "http://apis.data.go.kr/B551011/KorService1/detailImage1?subImageYN=Y&";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=150";
+	public static String numOfRows = "numOfRows=180";
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
