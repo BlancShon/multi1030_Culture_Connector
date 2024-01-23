@@ -25,8 +25,8 @@
     </style>
 </head>
 <body>
-	<h3><a href="${path}/mvc">홈</a></h3>
-         <h3><a href="${path}/mvc/dbsave">데이터베이스 저장</a></h3>
+	<h3><a href="${path}/">홈</a></h3>
+         <h3><a href="${path}/dbsave">데이터베이스 저장</a></h3>
 
     <h2>문화시설 목록</h2>
 
@@ -90,69 +90,73 @@
                 <th>IMAGE19</th>
                 <th>IMAGE20</th>
                 <th>IMGCOUNT</th>
+                 <th>OVERVIEW</th>
+            	<th>HOMEPAGE</th>
             </tr>
         </thead>
         <tbody>
            <c:if test="${not empty list}">
-	            <c:forEach var="culture" items="${list}">
+	            <c:forEach var="item" items="${list}">
 	                <tr>
-	                    <td><c:out value="${culture.contentid}"/></td>
-				        <td><c:out value="${culture.contenttypeid}"/></td>
-				        <td><c:out value="${culture.addr1}"/></td>
-				        <td><c:out value="${culture.addr2}"/></td>
-				        <td><c:out value="${culture.areacode}"/></td>
-				        <td><c:out value="${culture.booktour}"/></td>
-				        <td><c:out value="${culture.cat1}"/></td>
-				        <td><c:out value="${culture.cat2}"/></td>
-				        <td><c:out value="${culture.cat3}"/></td>
-				        <td><c:out value="${culture.createdtime}"/></td>
-				        <td><c:out value="${culture.firstimage}"/></td>
-				        <td><c:out value="${culture.firstimage2}"/></td>
-				        <td><c:out value="${culture.cpyrhtDivCd}"/></td>
-				        <td><c:out value="${culture.mapx}"/></td>
-				        <td><c:out value="${culture.mapy}"/></td>
-				        <td><c:out value="${culture.mlevel}"/></td>
-				        <td><c:out value="${culture.modifiedtime}"/></td>
-				        <td><c:out value="${culture.sigungucode}"/></td>
-				        <td><c:out value="${culture.tel}"/></td>
-				        <td><c:out value="${culture.title}"/></td>
-				        <td><c:out value="${culture.zipcode}"/></td>
-				        <td><c:out value="${culture.overview}"/></td>
-				        <td><c:out value="${culture.scale}"/></td>
-				        <td><c:out value="${culture.usefee}"/></td>
-				        <td><c:out value="${culture.discountinfo}"/></td>
-				        <td><c:out value="${culture.spendtime}"/></td>
-				        <td><c:out value="${culture.parkingfee}"/></td>
-				        <td><c:out value="${culture.infocenterculture}"/></td>
-				        <td><c:out value="${culture.accomcountculture}"/></td>
-				        <td><c:out value="${culture.usetimeculture}"/></td>
-				        <td><c:out value="${culture.restdateculture}"/></td>
-				        <td><c:out value="${culture.parkingculture}"/></td>
-				        <td><c:out value="${culture.chkbabycarriageculture}"/></td>
-				        <td><c:out value="${culture.chkpetculture}"/></td>
-				        <td><c:out value="${culture.chkcreditcardculture}"/></td>
-	                    <<td><img src="<c:out value="${culture.image0}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image1}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image2}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image3}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image4}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image5}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image6}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image7}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image8}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image9}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image10}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image11}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image12}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image13}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image14}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image15}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image16}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image17}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image18}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image19}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><img src="<c:out value="${culture.image20}"/>" height="200px" alt="이미지 설명"/></td>
-				        <td><c:out value="${culture.imgCount}"/></td>
+	                    <td><c:out value="${item.contentid}"/></td>
+				        <td><c:out value="${item.contenttypeid}"/></td>
+				        <td><c:out value="${item.addr1}"/></td>
+				        <td><c:out value="${item.addr2}"/></td>
+				        <td><c:out value="${item.areacode}"/></td>
+				        <td><c:out value="${item.booktour}"/></td>
+				        <td><c:out value="${item.cat1}"/></td>
+				        <td><c:out value="${item.cat2}"/></td>
+				        <td><c:out value="${item.cat3}"/></td>
+				        <td><c:out value="${item.createdtime}"/></td>
+				        <td><c:out value="${item.firstimage}"/></td>
+				        <td><c:out value="${item.firstimage2}"/></td>
+				        <td><c:out value="${item.cpyrhtDivCd}"/></td>
+				        <td><c:out value="${item.mapx}"/></td>
+				        <td><c:out value="${item.mapy}"/></td>
+				        <td><c:out value="${item.mlevel}"/></td>
+				        <td><c:out value="${item.modifiedtime}"/></td>
+				        <td><c:out value="${item.sigungucode}"/></td>
+				        <td><c:out value="${item.tel}"/></td>
+				        <td><c:out value="${item.title}"/></td>
+				        <td><c:out value="${item.zipcode}"/></td>
+				        <td><c:out value="${item.overview}"/></td>
+				        <td><c:out value="${item.scale}"/></td>
+				        <td><c:out value="${item.usefee}"/></td>
+				        <td><c:out value="${item.discountinfo}"/></td>
+				        <td><c:out value="${item.spendtime}"/></td>
+				        <td><c:out value="${item.parkingfee}"/></td>
+				        <td><c:out value="${item.infocenterculture}"/></td>
+				        <td><c:out value="${item.accomcountculture}"/></td>
+				        <td><c:out value="${item.usetimeculture}"/></td>
+				        <td><c:out value="${item.restdateculture}"/></td>
+				        <td><c:out value="${item.parkingculture}"/></td>
+				        <td><c:out value="${item.chkbabycarriageculture}"/></td>
+				        <td><c:out value="${item.chkpetculture}"/></td>
+				        <td><c:out value="${item.chkcreditcardculture}"/></td>
+	                    <<td><img src="<c:out value="${item.image0}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image1}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image2}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image3}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image4}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image5}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image6}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image7}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image8}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image9}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image10}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image11}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image12}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image13}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image14}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image15}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image16}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image17}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image18}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image19}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><img src="<c:out value="${item.image20}"/>" height="200px" alt="이미지 설명"/></td>
+				        <td><c:out value="${item.imgCount}"/></td>
+				        <td><c:out value="${item.overview}"/></td>
+                    	<td><c:out value="${item.homepage}"/></td>
 	                </tr>
 	            </c:forEach>
 				</c:if>

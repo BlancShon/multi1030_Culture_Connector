@@ -25,8 +25,8 @@
     </style>
 </head>
 <body>
-	<h3><a href="${path}/mvc">홈</a></h3>
-         <h3><a href="${path}/mvc/dbsave">데이터베이스 저장</a></h3>
+	<h3><a href="${path}/">홈</a></h3>
+         <h3><a href="${path}/dbsave">데이터베이스 저장</a></h3>
 
     <h2>문화시설 목록</h2>
 
@@ -95,7 +95,8 @@
             <th>IMAGE19</th>
             <th>IMAGE20</th>
             <th>IMGCOUNT</th>
-           
+           	<th>OVERVIEW</th>
+            <th>HOMEPAGE</th>
         </tr>
     </thead>
     <tbody>
@@ -164,7 +165,8 @@
 					<td><img src="<c:out value="${event.image19}" />" height="200px" alt="이미지 설명" /></td>
 					<td><img src="<c:out value="${event.image20}" />" height="200px" alt="이미지 설명" /></td>
 					<td><c:out value="${event.imgCount}" /></td>
-				
+					<td><c:out value="${item.overview}"/></td>
+                    <td><c:out value="${item.homepage}"/></td>
 				</tr>
 			</c:forEach>
 		</c:if>

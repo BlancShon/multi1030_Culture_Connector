@@ -9,9 +9,13 @@ import com.multi.mvc.culture.model.vo.TouristAttraction;
 @Mapper   
 public interface TouristAttractionMapper {
 
-    void insertTouristAttractions(List<TouristAttraction> list);
+	List<TouristAttraction> selectTable();
+	
+    int insertTouristAttraction(TouristAttraction item);
 
+    void createTableTourist();
+    
     int selectTouristAttractionCount();
     
-    void createTableTourist();
+    
 }

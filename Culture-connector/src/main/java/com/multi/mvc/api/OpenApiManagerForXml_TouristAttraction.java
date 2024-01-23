@@ -120,16 +120,16 @@ public class OpenApiManagerForXml_TouristAttraction {
                         String useseason = getStrData(eElement, "useseason");
                         String usetime = getStrData(eElement, "usetime");
 
-                    	TouristAttraction touristAttraction = new TouristAttraction(
-                                 contentid, contenttypeid, homepage, tel, title, firstimage, firstimage2,
-                                areacode, sigungucode, cat1, cat2, cat3, addr1, addr2, zipcode, mapx, mapy,
-                                overview, mlevel, accomcount, chkbabycarriage, chkcreditcard, chkpet, expagerange,
-                                expguide, heritage1, heritage2, heritage3, infocenterculture, opendate, parking,
-                                restdate, useseason, usetime
-                        );                      
+//                    	TouristAttraction touristAttraction = new TouristAttraction(
+//                                 contentid, contenttypeid, homepage, tel, title, firstimage, firstimage2,
+//                                areacode, sigungucode, cat1, cat2, cat3, addr1, addr2, zipcode, mapx, mapy,
+//                                overview, mlevel, accomcount, chkbabycarriage, chkcreditcard, chkpet, expagerange,
+//                                expguide, heritage1, heritage2, heritage3, infocenterculture, opendate, parking,
+//                                restdate, useseason, usetime
+//                        );                      
 
 //                        System.out.println(touristAttraction);
-                        list.add(touristAttraction);
+//                        list.add(touristAttraction);
                     } catch (Exception e) {
                         System.out.println("데이터가 잘못되었습니다!");
                     }

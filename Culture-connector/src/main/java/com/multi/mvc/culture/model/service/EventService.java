@@ -21,9 +21,13 @@ public class EventService {
 	}
 	
 	public void initEvent() {
-		List<Event>list =  ApiParsing.parseAndExportToTheListAdvanced(Event.class);
-		for(Event item : list) {	
-			mapper.insertEvent(item);
+		List<Event> list = ApiParsing.parseAndExportToTheListAdvanced(Event.class);
+		for(Event item : list) {
+			try {
+				mapper.insertEvent(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -32,7 +36,7 @@ public class EventService {
 	}
 	
 	public List<Event> getEventTable() {
-		return mapper.eventList();
+		return mapper.selectTable();
 	}
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다

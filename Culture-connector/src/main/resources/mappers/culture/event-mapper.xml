@@ -69,6 +69,8 @@
 		<result property="image19" column="IMAGE19"/>
 		<result property="image20" column="IMAGE20"/>
     	<result property="imgCount" column="IMGCOUNT"/>
+    	<result property="overview" column="OVERVIEW"/>
+    	<result property="homepage" column="HOMEPAGE"/>
 	</resultMap>
 
 
@@ -143,7 +145,8 @@
 			IMAGE19 VARCHAR(255),
 			IMAGE20 VARCHAR(255),
 			IMGCOUNT INT,
-			OVERVIEW TEXT
+		    OVERVIEW TEXT,
+		    HOMEPAGE TEXT
 		);
 
 
@@ -164,7 +167,7 @@
 	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10,
 	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
 	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
-	        IMGCOUNT, OVERVIEW
+	        IMGCOUNT, OVERVIEW, HOMEPAGE
 	    ) VALUES (
             #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
 	        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
@@ -180,7 +183,7 @@
 	        #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10},
 	        #{image11}, #{image12}, #{image13}, #{image14}, #{image15},
 	        #{image16}, #{image17}, #{image18}, #{image19}, #{image20},
-	        #{imgCount}, #{overview}
+	        #{imgCount}, #{overview}, #{homepage} 
 	        );
 
 	</insert>

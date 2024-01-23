@@ -65,6 +65,7 @@
 		<result property="image20" column="IMAGE20"/>
     	<result property="imgCount" column="IMGCOUNT"/>
 		<result property="overview" column="OVERVIEW"/>
+		<result property="homepage" column="HOMEPAGE"/>
 		
 	</resultMap>
 	
@@ -137,7 +138,8 @@
 		    IMAGE19 VARCHAR(255),
 		    IMAGE20 VARCHAR(255),
 		    IMGCOUNT INT,
-		    OVERVIEW TEXT
+		    OVERVIEW TEXT,
+		    HOMEPAGE TEXT
 		);
 
 	</insert>
@@ -153,7 +155,7 @@
 	        CHKBABYCARRIAGECULTURE, CHKPETCULTURE, CHKCREDITCARDCULTURE,
 	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8,
 	        IMAGE9, IMAGE10, IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15, IMAGE16,
-	        IMAGE17, IMAGE18, IMAGE19, IMAGE20, IMGCOUNT , OVERVIEW
+	        IMAGE17, IMAGE18, IMAGE19, IMAGE20, IMGCOUNT , OVERVIEW, HOMEPAGE
 	    ) VALUES
 	        (
             #{contentid}, #{contenttypeid}, #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2}, #{cat3},
@@ -162,7 +164,7 @@
 			#{accomcountculture}, #{usetimeculture}, #{restdateculture}, #{parkingculture}, #{chkbabycarriageculture}, #{chkpetculture},
 			#{chkcreditcardculture}, #{image0}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7},
 			#{image8}, #{image9}, #{image10}, #{image11}, #{image12}, #{image13}, #{image14}, #{image15}, #{image16}, #{image17},
-			#{image18}, #{image19}, #{image20}, #{imgCount}, #{overview}
+			#{image18}, #{image19}, #{image20}, #{imgCount}, #{overview}, #{homepage} 
 
 	        );
 	</insert>

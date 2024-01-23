@@ -2,35 +2,20 @@ package com.multi.mvc.culture.model.vo;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TouristAttraction {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TouristAttraction  extends CultureParent {
+    
     private int contentid;
     private int contenttypeid;
-    private String homepage;
-    private String tel;
-    private String title;
-    private String firstimage;
-    private String firstimage2;
-    private String areacode;
-    private String sigungucode;
-    private String cat1;
-    private String cat2;
-    private String cat3;
-    private String addr1;
-    private String addr2;
-    private String zipcode;
-    private String mapx;
-    private String mapy;
-    private String overview;
-    private String mlevel;
     private String accomcount;
     private String chkbabycarriage;
     private String chkcreditcard;
@@ -40,12 +25,12 @@ public class TouristAttraction {
     private String heritage1;
     private String heritage2;
     private String heritage3;
-    private String infocenterculture;
+    private String infocenter;
     private String opendate;
     private String parking;
     private String restdate;
     private String useseason;
     private String usetime;
-
+    
     
 }

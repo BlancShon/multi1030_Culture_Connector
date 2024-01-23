@@ -4,103 +4,172 @@
 <!-- Dao를 Mapper Interface로 대체 할 예정, namespace=Class의 풀네임 선언 필요 -->
 <mapper namespace="com.multi.mvc.culture.model.mapper.TouristAttractionMapper">
 	<resultMap type="TouristAttraction" id="TouristAttractionResultMap">
-		<result property="contentid" column="CONTENTID"/> 
-		<result property="contenttypeid" column="CONTENTTYPEID"/> 
-		<result property="homepage" column="HOMEPAGE"/> 
-		<result property="tel" column="TEL"/> 
-		<result property="title" column="TITLE"/>
-		<result property="firstimage" column="FIRSTIMAGE"/> 
-		<result property="firstimage2" column="FIRSTIMAGE2"/> 
-		<result property="areacode" column="AREACODE"/> 
-		<result property="sigungucode" column="SIGUNGUCODE"/> 
-		<result property="cat1" column="CAT1"/> 
-		<result property="cat2" column="CAT2"/> 
-		<result property="cat3" column="CAT3"/> 
-		<result property="addr1" column="ADDR1"/> 
-		<result property="addr2" column="ADDR2"/> 
-		<result property="zipcode" column="ZIPCODE"/> 
-		<result property="mapx" column="MAPX"/> 
-		<result property="mapy" column="MAPY"/> 
-		<result property="overview" column="OVERVIEW"/> 
-		<result property="mlevel" column="MLEVEL"/> 
-		<result property= "accomcount" column="ACCOMCOUNT"/> 
-		<result property="chkcreditcardFood" column="CHKCREDITCARDFOOD"/> 
-		<result property="chkpet" column="CHKPET"/> 
-		<result property="expagerange" column="EXPAGERANGE"/> 
-		<result property="expguide" column="EXPGUIDE"/> 
-		<result property="heritage1" column="HERITAGE1"/> 
-		<result property="heritage2" column="HERITAGE2"/> 
-		<result property="heritage3" column="HERITAGE3"/> 
-		<result property="infocenterculture" column="INFOCENTERCULTURE"/> 
-		<result property="opendate" column="OPENDATE"/> 
-		<result property="parking" column="PARKING"/> 
-		<result property="restdate" column="RESTDATE"/> 
-		<result property="useseason" column="USESEASON"/> 
-		<result property="usetime" column="USETIME"/> 
+
+	    <result property="contentid" column="CONTENTID"/>
+	    <result property="contenttypeid" column="CONTENTTYPEID"/>
+	    <result property="addr1" column="ADDR1"/>
+	    <result property="addr2" column="ADDR2"/>
+	    <result property="areacode" column="AREACODE"/>
+	    <result property="booktour" column="BOOKTOUR"/>
+	    <result property="cat1" column="CAT1"/>
+	    <result property="cat2" column="CAT2"/>
+	    <result property="cat3" column="CAT3"/>
+	    <result property="createdtime" column="CREATEDTIME"/>
+	    <result property="firstimage" column="FIRSTIMAGE"/>
+	    <result property="firstimage2" column="FIRSTIMAGE2"/>
+	    <result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+	    <result property="mapx" column="MAPX"/>
+	    <result property="mapy" column="MAPY"/>
+	    <result property="mlevel" column="MLEVEL"/>
+	    <result property="modifiedtime" column="MODIFIEDTIME"/>
+	    <result property="sigungucode" column="SIGUNGUCODE"/>
+	    <result property="tel" column="TEL"/>
+	    <result property="title" column="TITLE"/>
+	    <result property="zipcode" column="ZIPCODE"/>
+	    
+	    <result property="homepage" column="HOMEPAGE"/>
+	    <result property="accomcount" column="ACCOMCOUNT"/>
+	    <result property="chkbabycarriage" column="CHKBABYCARRIAGE"/>
+	    <result property="chkcreditcard" column="CHKCREDITCARD"/>
+	    <result property="chkpet" column="CHKPET"/>
+	    <result property="expagerange" column="EXPAGERANGE"/>
+	    <result property="expguide" column="EXPGUIDE"/>
+	    <result property="heritage1" column="HERITAGE1"/>
+	    <result property="heritage2" column="HERITAGE2"/>
+	    <result property="heritage3" column="HERITAGE3"/>
+	    <result property="infocenter" column="INFOCENTER"/>
+	    <result property="opendate" column="OPENDATE"/>
+	    <result property="parking" column="PARKING"/>
+	    <result property="restdate" column="RESTDAY"/>
+	    <result property="useseason" column="USESEASON"/>
+	    <result property="usetime" column="USETIME"/>
+	    
+	    <result property="image0" column="IMAGE0"/>
+	    <result property="image1" column="IMAGE1"/>
+	    <result property="image2" column="IMAGE2"/>
+	    <result property="image3" column="IMAGE3"/>
+	    <result property="image4" column="IMAGE4"/>
+	    <result property="image5" column="IMAGE5"/>
+	    <result property="image6" column="IMAGE6"/>
+	    <result property="image7" column="IMAGE7"/>
+	    <result property="image8" column="IMAGE8"/>
+	    <result property="image9" column="IMAGE9"/>
+	    <result property="image10" column="IMAGE10"/>
+	    <result property="image11" column="IMAGE11"/>
+	    <result property="image12" column="IMAGE12"/>
+	    <result property="image13" column="IMAGE13"/>
+	    <result property="image14" column="IMAGE14"/>
+	    <result property="image15" column="IMAGE15"/>
+	    <result property="image16" column="IMAGE16"/>
+	    <result property="image17" column="IMAGE17"/>
+	    <result property="image18" column="IMAGE18"/>
+	    <result property="image19" column="IMAGE19"/>
+	    <result property="image20" column="IMAGE20"/>
+	    <result property="imgCount" column="IMGCOUNT"/>
+	    <result property="overview" column="OVERVIEW"/>
 	</resultMap>
 	
+	<select id="selectTable" resultType="TouristAttraction">
+		SELECT * FROM TOURIST_ATTRACTION;
+	</select>
+
 	<insert id="createTableTourist">
+	
 		CREATE TABLE IF NOT EXISTS TOURIST_ATTRACTION (
-		    CONTENTID INT,
+		    CONTENTID INT PRIMARY KEY,
 		    CONTENTTYPEID INT,
-		    HOMEPAGE VARCHAR(600),
-		    TEL VARCHAR(100),
-		    TITLE VARCHAR(200),
-		    FIRSTIMAGE VARCHAR(200),
-		    FIRSTIMAGE2 VARCHAR(200),
-		    AREACODE VARCHAR(100),
-		    SIGUNGUCODE VARCHAR(100),
-		    CAT1 VARCHAR(100),
-		    CAT2 VARCHAR(100),
-		    CAT3 VARCHAR(100),
-		    ADDR1 VARCHAR(100),
-		    ADDR2 VARCHAR(100),
-		    ZIPCODE VARCHAR(100),
-		    MAPX VARCHAR(100),
-		    MAPY VARCHAR(100),
-		    OVERVIEW VARCHAR(500),
-		    MLEVEL VARCHAR(100),
-		    ACCOMCOUNT VARCHAR(100),
-		    CHKBABYCARRIAGE VARCHAR(500),
-		    CHKCREDITCARD VARCHAR(100),
-		    CHKPET VARCHAR(100),
-		    EXPAGERANGE VARCHAR(100),
-		    EXPGUIDE VARCHAR(100),
-		    HERITAGE1 VARCHAR(100),
-		    HERITAGE2 VARCHAR(100),
-		    HERITAGE3 VARCHAR(100),
-		    INFOCENTERCULTURE VARCHAR(100),
-		    OPENDATE VARCHAR(100),
-		    PARKING VARCHAR(100),
-		    RESTDATE VARCHAR(100),
-		    USESEASON VARCHAR(100),
-		    USETIME VARCHAR(100),
-		    CONSTRAINT PK_TOURIST_ATTRACTION PRIMARY KEY (CONTENTID, CONTENTTYPEID)
+		    ADDR1 VARCHAR(255),
+		    ADDR2 VARCHAR(255),
+		    AREACODE INT,
+		    BOOKTOUR INT,
+		    CAT1 VARCHAR(255),
+		    CAT2 VARCHAR(255),
+		    CAT3 VARCHAR(255),
+		    CREATEDTIME VARCHAR(255),
+		    FIRSTIMAGE VARCHAR(255),
+		    FIRSTIMAGE2 VARCHAR(255),
+		    CPYRHTDIVCD VARCHAR(255),
+		    MAPX VARCHAR(255),
+		    MAPY VARCHAR(255),
+		    MLEVEL INT,
+		    MODIFIEDTIME VARCHAR(255),
+		    SIGUNGUCODE VARCHAR(255),
+		    TEL VARCHAR(255),
+		    TITLE VARCHAR(255),
+		    ZIPCODE VARCHAR(255),
+		    
+		   
+		    ACCOMCOUNT VARCHAR(255),
+		    CHKBABYCARRIAGE VARCHAR(255),
+		    CHKCREDITCARD VARCHAR(255),
+		    CHKPET VARCHAR(255),
+		    EXPAGERANGE TEXT,
+		    EXPGUIDE TEXT,
+		    HERITAGE1 VARCHAR(255),
+		    HERITAGE2 VARCHAR(255),
+		    HERITAGE3 VARCHAR(255),
+		    INFOCENTER VARCHAR(255),
+		    OPENDATE VARCHAR(255),
+		    PARKING VARCHAR(255),
+		    RESTDATE VARCHAR(255),
+		    USESEASON VARCHAR(255),
+		    USETIME VARCHAR(255),
+		    
+		    IMAGE0 VARCHAR(255),
+		    IMAGE1 VARCHAR(255),
+		    IMAGE2 VARCHAR(255),
+		    IMAGE3 VARCHAR(255),
+		    IMAGE4 VARCHAR(255),
+		    IMAGE5 VARCHAR(255),
+		    IMAGE6 VARCHAR(255),
+		    IMAGE7 VARCHAR(255),
+		    IMAGE8 VARCHAR(255),
+		    IMAGE9 VARCHAR(255),
+		    IMAGE10 VARCHAR(255),
+		    IMAGE11 VARCHAR(255),
+		    IMAGE12 VARCHAR(255),
+		    IMAGE13 VARCHAR(255),
+		    IMAGE14 VARCHAR(255),
+		    IMAGE15 VARCHAR(255),
+		    IMAGE16 VARCHAR(255),
+		    IMAGE17 VARCHAR(255),
+		    IMAGE18 VARCHAR(255),
+		    IMAGE19 VARCHAR(255),
+		    IMAGE20 VARCHAR(255),
+		    IMGCOUNT INT,
+		    OVERVIEW TEXT,
+		    HOMEPAGE TEXT
 		);
+
 	</insert>
 	
 	<select id="selectTouristAttractionCount" resultType="int">
 		SELECT COUNT(*) FROM TOURIST_ATTRACTION;
 	</select>
 	
-	<insert id="insertTouristAttractions" parameterType="TouristAttraction">
-		INSERT INTO TOURIST_ATTRACTION 
-		(CONTENTID, CONTENTTYPEID, HOMEPAGE, TEL, TITLE, FIRSTIMAGE, FIRSTIMAGE2, 
-		 AREACODE, SIGUNGUCODE, CAT1, CAT2, CAT3, ADDR1, ADDR2, ZIPCODE, MAPX, MAPY, 
-		 OVERVIEW, MLEVEL, ACCOMCOUNT, CHKBABYCARRIAGE, CHKCREDITCARD, CHKPET, EXPAGERANGE, 
-		 EXPGUIDE, HERITAGE1, HERITAGE2, HERITAGE3, INFOCENTERCULTURE, OPENDATE, PARKING, 
-		 RESTDATE, USESEASON, USETIME
-		)
-		VALUES
-		<foreach collection="list" index="index" item="item" separator=",">
-			(#{item.contentid}, #{item.contenttypeid}, #{item.homepage}, #{item.tel}, #{item.title},
-			 #{item.firstimage}, #{item.firstimage2}, #{item.areacode}, #{item.sigungucode}, #{item.cat1},
-			 #{item.cat2}, #{item.cat3}, #{item.addr1}, #{item.addr2}, #{item.zipcode},
-			 #{item.mapx}, #{item.mapy}, #{item.overview}, #{item.mlevel}, #{item.accomcount},
-			 #{item.chkbabycarriage}, #{item.chkcreditcard}, #{item.chkpet}, #{item.expagerange},
-			 #{item.expguide}, #{item.heritage1}, #{item.heritage2}, #{item.heritage3}, #{item.infocenterculture},
-			 #{item.opendate}, #{item.parking}, #{item.restdate}, #{item.useseason}, #{item.usetime}
-			)
-		</foreach>
+	<insert id="insertTouristAttraction" parameterType="TouristAttraction">
+	    INSERT INTO TOURIST_ATTRACTION (
+	        CONTENTID, CONTENTTYPEID, ADDR1, ADDR2, AREACODE, BOOKTOUR,
+	        CAT1, CAT2, CAT3, CREATEDTIME, FIRSTIMAGE, FIRSTIMAGE2, CPYRHTDIVCD,
+	        MAPX, MAPY, MLEVEL, MODIFIEDTIME, SIGUNGUCODE, TEL, TITLE, ZIPCODE,
+	        ACCOMCOUNT, CHKBABYCARRIAGE, CHKCREDITCARD, CHKPET, EXPAGERANGE,
+	        EXPGUIDE, HERITAGE1, HERITAGE2, HERITAGE3, INFOCENTER, OPENDATE, PARKING,
+	        RESTDATE, USESEASON, USETIME, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4,
+	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10, IMAGE11, IMAGE12, IMAGE13,
+	        IMAGE14, IMAGE15, IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20, IMGCOUNT,
+	        OVERVIEW, HOMEPAGE
+	    ) VALUES (
+	        #{contentid}, #{contenttypeid}, #{addr1}, #{addr2}, #{areacode}, #{booktour},
+	        #{cat1}, #{cat2}, #{cat3}, #{createdtime}, #{firstimage}, #{firstimage2},
+	        #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel}, #{modifiedtime}, #{sigungucode},
+	        #{tel}, #{title}, #{zipcode}, #{accomcount}, #{chkbabycarriage},
+	        #{chkcreditcard}, #{chkpet}, #{expagerange}, #{expguide}, #{heritage1}, #{heritage2},
+	        #{heritage3}, #{infocenter}, #{opendate}, #{parking}, #{restdate}, #{useseason},
+	        #{usetime}, #{image0}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5},
+	        #{image6}, #{image7}, #{image8}, #{image9}, #{image10}, #{image11}, #{image12},
+	        #{image13}, #{image14}, #{image15}, #{image16}, #{image17}, #{image18}, #{image19},
+	        #{image20}, #{imgCount}, #{overview}, #{homepage}
+	    );
 	</insert>
+
 </mapper>

@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Event extends CultureParent  {
 	
+	private int contentid;
+    private int contenttypeid;
 	private String sponsor1;
     private String sponsor1tel;
     private String sponsor2;

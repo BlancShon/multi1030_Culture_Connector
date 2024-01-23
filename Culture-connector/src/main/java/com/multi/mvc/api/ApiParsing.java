@@ -143,11 +143,11 @@ public class ApiParsing {
 						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
 						// 이미지 정보들 받아오는 리스트
 						List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
-						// 오버뷰 받아오는 메소드
-						String overview = getOverview(contentId, whosKey);
+						// 오버뷰, 홈페이지 받아오는 메소드
+						Map<String, String> overAndHomepage = getOverview(contentId, whosKey);
 						// 몸통
 						T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
-						target = commonInjection(target, common, imgList, overview);
+						target = commonInjection(target, common, imgList, overAndHomepage);
 						
 						if(target != null) {
 							list.add(target);
@@ -234,11 +234,12 @@ public class ApiParsing {
 						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
 						// 이미지 정보들 받아오는 리스트
 						List<String> imgList = getImgList(contentId, contentTypeId, name);
-						// 오버뷰 받아오는 메소드
-						String overview = getOverview(contentId, name);
+						// 오버뷰, 홈페이지 받아오는 메소드
+						Map<String, String> overAndHomepage = getOverview(contentId, name);
 						// 몸통
 						T target = getDetail(targetClass, contentId, contentTypeId, name);
-						target = commonInjection(target, common, imgList, overview);
+						target = commonInjection(target, common, imgList, overAndHomepage);
+						
 						if(target != null) {
 							list.add(target);
 						}
@@ -324,7 +325,7 @@ public class ApiParsing {
 
 	// 하나로 합쳐주는 메소드
 	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, 
-			List<String> imgList, String overview) throws NullPointerException {
+			List<String> imgList, Map<String, String> overAndHomepage) throws NullPointerException {
 		
 		if (target == null || common == null) {
 			return target=null;
@@ -353,7 +354,8 @@ public class ApiParsing {
 			
 		}
 		
-		target.setOverview(overview);
+		target.setOverview(overAndHomepage.get("overview"));
+		target.setHomepage(overAndHomepage.get("homepage"));
 		target.setAddr1(common.getAddr1());
 		target.setAddr2(common.getAddr2());
 		target.setAreacode(common.getAreacode());
@@ -435,8 +437,8 @@ public class ApiParsing {
 	}
 	
 	// 오버뷰 받아오는 메소드
-		private static String getOverview(String contentId, String whosKey) throws JsonParseException {
-			String overview = null;
+		private static Map<String, String> getOverview(String contentId, String whosKey) throws JsonParseException {
+			Map<String, String> map = new HashMap<>();
 			String targetUrl = ApiSearchInfo.getOverviewURL(contentId, whosKey);
 			HttpURLConnection conn = null;
 			try {
@@ -466,7 +468,8 @@ public class ApiParsing {
 					JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 
 					for (JsonNode itemNode : itemsNode) {
-						overview = itemNode.path("overview").asText();
+						map.put("overview",itemNode.path("overview").asText());
+						map.put("homepage",itemNode.path("homepage").asText());
 					}
 
 				} catch (JsonParseException je) {
@@ -485,7 +488,7 @@ public class ApiParsing {
 				}
 			}
 			
-			return overview;
+			return map;
 		}
 
 

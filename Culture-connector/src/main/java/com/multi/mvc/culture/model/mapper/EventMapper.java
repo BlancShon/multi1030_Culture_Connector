@@ -16,10 +16,6 @@ public interface EventMapper {
 	
 	void createTableEvent();
 	
-	void initEvent(List<Event> list);
-	
 	int selectCount();
-	
-	List<Event> eventList();
 
 }
