@@ -23,5 +23,7 @@ public interface CultureMapper {
 	List<Culture> selectCultureList(CultureParam param);
 	int selectCultureCount(CultureParam param);
 
-
+	// DB 주입 확인을 위해 만들었습니다
+	List<Culture> selectTable();
+	
 }

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.multi.mvc.culture.model.vo.CultureParent;
@@ -29,7 +30,7 @@ public class ApiParsing {
 	static {
 		urlMap = new HashMap<>();
 		urlMap.put("Festival", ApiSearchInfo.getFestivalURL());
-		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12") + ApiSearchInfo.getServiceKey("박현"));
+		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12") + ApiSearchInfo.getServiceKey("고재목2"));
 		urlMap.put("Culture", ApiSearchInfo.getContentTypeURL("14") + ApiSearchInfo.getServiceKey("김진경"));
 		urlMap.put("Event", ApiSearchInfo.getContentTypeURL("15") + ApiSearchInfo.getServiceKey("고재목"));
 		urlMap.put("Course", ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey("고재목2"));
@@ -37,7 +38,7 @@ public class ApiParsing {
 		urlMap.put("Food", ApiSearchInfo.getContentTypeURL("39") + ApiSearchInfo.getServiceKey("장성희"));
 
 		keyMap = new HashMap<>();
-		keyMap.put("TouristAttraction", "박현");
+		keyMap.put("TouristAttraction", "고재목2");
 		keyMap.put("Culture", "김진경");
 		keyMap.put("Event", "고재목");
 		keyMap.put("LeisureSports", "이병집");
@@ -100,6 +101,9 @@ public class ApiParsing {
 	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass) {
 		String whosKey = keyMap.get(targetClass.getSimpleName());
 		String targetUrl = urlMap.get(targetClass.getSimpleName());
+		
+		log.info("누구 키인지 {}, 유알엘 정보 {}",whosKey, targetUrl);
+		
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
 		try {
@@ -134,25 +138,21 @@ public class ApiParsing {
 					String contentTypeId = itemNode.get("contenttypeid").asText();
 					
 					// 기본 정보들 받아오는 바구니
-					try {
-						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
-						List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
-						T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
-						target = commonInjection(target, common, imgList);
-						
-						if(target != null) {
-							list.add(target);
-						}
-					} catch (NullPointerException ne) {
-						log.info("주입도중 {} 에러 발생!!!! {}", ne);
-					} catch (Exception e) {
-						log.info("주입 도중 {} 에러 발생!!!",e);
+					CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+					// 이미지 정보들 받아오는 리스트
+					List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
+					// 몸통
+					T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
+					target = commonInjection(target, common, imgList);
+					
+					if(target != null) {
+						list.add(target);
 					}
-
 				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch (JsonParseException je) {
+				log.info("{} 의 키에 문제가 생긴것으로 보입니다. url 확인해보십시오 {}",whosKey, targetUrl);
+				log.error("위의 url 을 확인해보세요", je);
 			}
 
 		} catch (Exception e) {
@@ -162,11 +162,100 @@ public class ApiParsing {
 				conn.disconnect(); // 리소스 닫기
 			}
 		}
+		if (list.size() == 0) {
+			
+		}
+		return list;
+	}
+	
+	
+	// 분류없이 타겟에 상세정보까지 주입하는 메서드222 이름 넣는 버전
+	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name) {
+		String contentType = null;
+           
+		if (targetClass.getSimpleName().equals("Culture")) {
+			contentType = "14";
+		} else if (targetClass.getSimpleName().equals("Event")) {
+			contentType = "15";
+		} else if (targetClass.getSimpleName().equals("Course")) {
+			contentType = "25";
+		} else if (targetClass.getSimpleName().equals("LeisureSports")) {
+			contentType = "28";
+		} else if (targetClass.getSimpleName().equals("Food")) {
+			contentType = "39";
+		} 
+		String targetUrl =  ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
+		
+		log.info("{} 이름 넣는 버전 타겟 유알엘 정보입니다 {}",name ,targetUrl);
+		
+		
+		List<T> list = new ArrayList<>();
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+//	        conn.setRequestProperty("Content-type", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/json");
+			
+			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+			
+			if (responseCode < 200 || 300 <= responseCode) {
+				log.error("페이지가 잘못되었습니다. {}", responseCode);
+				
+			}
+			
+			try (InputStream is = conn.getInputStream();
+					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+					BufferedReader br = new BufferedReader(isr);) {
+				
+				// json 을 파싱하는 도구?? ObjectMapper
+				ObjectMapper objMapper = new ObjectMapper();
+				
+				String line = br.readLine();
+				JsonNode rootNode = objMapper.readTree(line);
+				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+				int count = 0;
+				for (JsonNode itemNode : itemsNode) {
+					log.info("번째 데이터",++count);
+					String contentId = itemNode.get("contentid").asText();
+					String contentTypeId = itemNode.get("contenttypeid").asText();
+					
+					// 기본 정보들 받아오는 바구니
+					CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+					// 이미지 정보들 받아오는 리스트
+					List<String> imgList = getImgList(contentId, contentTypeId, name);
+					// 몸통
+					T target = getDetail(targetClass, contentId, contentTypeId, name);
+					target = commonInjection(target, common, imgList);
+					
+					if(target != null) {
+						list.add(target);
+					}
+				}
+				
+			} catch (JsonParseException je) {
+				log.info("{} 의 키에 문제가 생긴것으로 보입니다. url 확인해보십시오 {}",name, targetUrl);
+				log.error("위의 url 을 확인해보세요", je);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				conn.disconnect(); // 리소스 닫기
+			}
+		}
+		if (list.size() == 0) {
+			
+		}
 		return list;
 	}
 	
 	// 이미지 정보 받아오는 메소드
-	private static List<String> getImgList(String contentId, String contentTypeId, String name) throws Exception {
+	private static List<String> getImgList(String contentId, String contentTypeId, String name) throws JsonParseException {
 		String targetUrl = ApiSearchInfo.getImageURL(contentId) + ApiSearchInfo.getServiceKey(name);
 		
 		List<String> list = new ArrayList<>();
@@ -202,9 +291,12 @@ public class ApiParsing {
 				list.add(itemNode.path("originimgurl").asText());
 				}
 				
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch(JsonParseException je) {
+				throw je;
 			}
+			
+		} catch (JsonParseException je) {
+			throw je;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -221,11 +313,18 @@ public class ApiParsing {
 	}
 
 	// 하나로 합쳐주는 메소드
-	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList) throws Exception {
-		int size = imgList.size();
+	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList) throws NullPointerException {
+		
 		if (target == null || common == null) {
-			return target = null;
+			return target=null;
 		}
+		
+		int size = imgList.size();
+		if (size > 20) {
+			imgList = imgList.subList(0, 20);
+			size = 20;
+		}
+				
 		target.setAddr1(common.getAddr1());
 		target.setAddr2(common.getAddr2());
 		target.setAreacode(common.getAreacode());
@@ -260,15 +359,16 @@ public class ApiParsing {
 		        // 값을 복사
 		        targetSetter.invoke(target, imgList.get(i));
 		    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-		        log.error("이미지 삽입 도중 예외",e);
+		        log.error("이미지 삽입 도중 예외", e);
 		    }
 		}
+	
 		
 		return target;
 	}
 
 	// 디테일한거 받아오는 메소드
-	private static <T> T getDetail(Class<T> targetClass, String contentId, String contentTypeId, String name) throws Exception {
+	private static <T> T getDetail(Class<T> targetClass, String contentId, String contentTypeId, String name) throws JsonParseException {
 		T target = null;
 		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId)	+ ApiSearchInfo.getServiceKey(name);
 		HttpURLConnection conn = null;
@@ -302,10 +402,14 @@ public class ApiParsing {
 					target = objMapper.treeToValue(itemNode, targetClass);
 				}
 
+			} catch (JsonParseException je) {
+				throw je;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
+		} catch (JsonParseException je) {
+			throw je;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

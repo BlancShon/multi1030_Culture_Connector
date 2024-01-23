@@ -145,7 +145,8 @@
 							<li> <a class="dropdown-item" href="${path}/board/list">리뷰 게시판</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/reviewTalk2.html">리뷰 참여하기</a></li>
 							<li> <a class="dropdown-item" href="${path}/festival/searchTestList">검색 테스트</a></li>
-							<!--  검색 테스트는 테스트 끝나면 지울겁니다 -->
+							<li> <a class="dropdown-item" href="${path}/dbsave">데이터베이스 저장</a></li>
+							<!--  검색 테스트는 테스트 끝나면 지울겁니다 데베저장도 마찬가지 -->
 						</ul>
 					</li>
 

@@ -2,16 +2,12 @@ package com.multi.mvc.culture.model.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.api.OpenApiManagerForXml;
-import com.multi.mvc.board.model.vo.AttachFile;
-import com.multi.mvc.board.model.vo.Board;
-import com.multi.mvc.board.model.vo.BoardParam;
-import com.multi.mvc.board.model.vo.BoardReply;
 import com.multi.mvc.culture.model.mapper.CultureMapper;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
@@ -66,5 +62,15 @@ public class CultureService {
 	
 		return culture;
 	}
+	
+	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
+//	 @Transactional(noRollbackFor = SQLException.class)
+	public void saveData(String name) {
+		mapper.insertCulture(ApiParsing.parseAndExportToTheListAdvanced(Culture.class, name));
+	}
+	public List<Culture> getListForDB() {
+		return mapper.selectTable();
+	}
+
 
 }

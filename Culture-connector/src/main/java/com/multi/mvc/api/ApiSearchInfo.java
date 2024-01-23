@@ -11,7 +11,9 @@ public class ApiSearchInfo {
 	// 고재목2 네이버키
 	public static final String KOJAE_KEY2="oW%2FrS%2BFT6fgy036VPTpERN4pM3sBFCi2BwpZKn0nVfCts2U4npVDdN%2Fh152OFXPOP1Kt4APjeqSmJhVFbAE7uA%3D%3D";
 	// 고재목3 회원가입키
-	public static final String KOJAE_KEY3="EOhQWsO5B8yK%2FBsejXeqdcGFxsrVBGaLRymdYxQjlXBhmIZWF0BEt5NiAMGk08XMTUMEMseUO1ngMzre4RueNg%3D%3D";
+//	public static final String KOJAE_KEY3="EOhQWsO5B8yK%2FBsejXeqdcGFxsrVBGaLRymdYxQjlXBhmIZWF0BEt5NiAMGk08XMTUMEMseUO1ngMzre4RueNg%3D%3D";
+	public static final String KOJAE_KEY3="EOhQWsO5B8yK/BsejXeqdcGFxsrVBGaLRymdYxQjlXBhmIZWF0BEt5NiAMGk08XMTUMEMseUO1ngMzre4RueNg==";
+	
 	
 	// 장성희님 서비스키
 	public static final String JANGSUNG_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
@@ -35,7 +37,7 @@ public class ApiSearchInfo {
 	public static final String IMAGE_INFO_URL = "http://apis.data.go.kr/B551011/KorService1/detailImage1?subImageYN=Y&";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=10";
+	public static String numOfRows = "numOfRows=150";
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
@@ -109,6 +111,8 @@ public class ApiSearchInfo {
 			serviceKey = PARKHYUN_KEY;
 		} else if (name.equals("고재목2")) {
 			serviceKey = KOJAE_KEY2;
+		} else if (name.equals("고재목3")) {
+			serviceKey = KOJAE_KEY3;
 		}
 		
 		return "&serviceKey="+serviceKey;

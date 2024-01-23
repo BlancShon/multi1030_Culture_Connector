@@ -3,31 +3,67 @@
 
 <!-- Dao를 Mapper Interface로 대체 할 예정, namespace=Class의 풀네임 선언 필요 -->
 <mapper namespace="com.multi.mvc.culture.model.mapper.CultureMapper">
-	<resultMap type="Culture" id="cultureResultMap">
-		<result property="cno" column="CNO"/>
-		<result property="addr1" column="ADDR1"/>
-		<result property="addr2" column="ADDR2"/>
-		<result property="areacode" column="AREACODE"/>
-		<result property="booktour" column="BOOKTOUR"/>
-		<result property="cat1" column="CAT1"/>
-		<result property="cat2" column="CAT2"/>
-		<result property="cat3" column="CAT3"/>
-		<result property="contentid" column="CONTENTID"/>
-		<result property="contenttypeid" column="CONTENTTYPEID"/>
-		<result property="createdtime" column="CREATEDTIME"/>
-		<result property="firstimage" column="FIRSTIMAGE"/>
-		<result property="firstimage2" column="FIRSTIMAGE2"/>
-		<result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
-		<result property="mapx" column="MAPX"/>
-		<result property="mapy" column="MAPY"/>
-		<result property="mlevel" column="MLEVEL"/>
-		<result property="modifiedtime" column="MODIFIEDTIME"/>
-		<result property="sigungucode" column="SIGUNGUCODE"/>
-		<result property="tel" column="TEL"/>
-		<result property="title" column="TITLE"/>
-		<result property="zipcode" column="ZIPCODE"/>
 
-		
+	<resultMap type="Culture" id="cultureResultMap">
+	
+		<result property="contentid" column="CONTENTID"/>
+	    <result property="contenttypeid" column="CONTENTTYPEID"/>
+	    <result property="addr1" column="ADDR1"/>
+	    <result property="addr2" column="ADDR2"/>
+	    <result property="areacode" column="AREACODE"/>
+	    <result property="booktour" column="BOOKTOUR"/>
+	    <result property="cat1" column="CAT1"/>
+	    <result property="cat2" column="CAT2"/>
+	    <result property="cat3" column="CAT3"/>
+	    <result property="createdtime" column="CREATEDTIME"/>
+	    <result property="firstimage" column="FIRSTIMAGE"/>
+	    <result property="firstimage2" column="FIRSTIMAGE2"/>
+	    <result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+	    <result property="mapx" column="MAPX"/>
+	    <result property="mapy" column="MAPY"/>
+	    <result property="mlevel" column="MLEVEL"/>
+	    <result property="modifiedtime" column="MODIFIEDTIME"/>
+	    <result property="sigungucode" column="SIGUNGUCODE"/>
+	    <result property="tel" column="TEL"/>
+	    <result property="title" column="TITLE"/>
+	    <result property="zipcode" column="ZIPCODE"/>
+	    
+		<result property="scale" column="HERITAGE1"/>
+	    <result property="useFee" column="HERITAGE2"/>
+	    <result property="discountInfo" column="HERITAGE3"/>
+	    <result property="spendTime" column="INFOCENTER"/>
+	    <result property="parkingFee" column="OPENDATE"/>
+	    <result property="infoCenterCulture" column="RESTDATE"/>
+	    <result property="accomCountCulture" column="EXPGUIDE"/>
+	    <result property="useTimeCulture" column="EXPAGERANGE"/>
+	    <result property="restDateCulture" column="ACCOMCOUNT"/>
+	    <result property="parkingCulture" column="USESEASON"/>
+	    <result property="chkBabyCarriageCulture" column="USETIME"/>
+	    <result property="chkPetCulture" column="PARKING"/>
+	    <result property="chkCreditCardCulture" column="CHKBABYCARRIAGE"/>
+
+		<result property="image0" column="IMAGE0"/>
+	    <result property="image1" column="IMAGE1"/>
+	    <result property="image2" column="IMAGE2"/>
+	    <result property="image3" column="IMAGE3"/>
+	    <result property="image4" column="IMAGE4"/>
+	    <result property="image5" column="IMAGE5"/>
+	    <result property="image6" column="IMAGE6"/>
+	    <result property="image7" column="IMAGE7"/>
+	    <result property="image8" column="IMAGE8"/>
+	    <result property="image9" column="IMAGE9"/>
+	    <result property="image10" column="IMAGE10"/>
+		<result property="image11" column="IMAGE11"/>
+		<result property="image12" column="IMAGE12"/>
+		<result property="image13" column="IMAGE13"/>
+		<result property="image14" column="IMAGE14"/>
+		<result property="image15" column="IMAGE15"/>
+		<result property="image16" column="IMAGE16"/>
+		<result property="image17" column="IMAGE17"/>
+		<result property="image18" column="IMAGE18"/>
+		<result property="image19" column="IMAGE19"/>
+		<result property="image20" column="IMAGE20"/>
+    	<result property="imgCount" column="IMGCOUNT"/>
 		
 	</resultMap>
 	
@@ -35,60 +71,108 @@
 		SELECT COUNT(*) FROM CULTURE
 	</select>
 	
+	<select id="selectTable" resultType="Culture">
+		SELECT * FROM CULTURE;
+	</select>
+	
 	<insert id="createTableCulture">
 
 		CREATE TABLE IF NOT EXISTS CULTURE (
-			CNO INT AUTO_INCREMENT,
-			ADDR1 VARCHAR(100),
-			ADDR2 VARCHAR(100),
-			AREACODE INT,
-			BOOKTOUR INT,
-			CAT1 VARCHAR(100),
-			CAT2 VARCHAR(100),
-			CAT3 VARCHAR(100),
-			CONTENTID INT,
-			CONTENTTYPEID INT,
-			CREATEDTIME DATE,
-			FIRSTIMAGE VARCHAR(100),
-			FIRSTIMAGE2 VARCHAR(100),
-			CPYRHTDIVCD VARCHAR(100),
-			MAPX VARCHAR(100),
-			MAPY VARCHAR(100),
-			MLEVEL INT,
-			MODIFIEDTIME DATE,
-			SIGUNGUCODE INT,
-			TEL VARCHAR(100),
-			TITLE VARCHAR(100),
-			ZIPCODE VARCHAR(100),
-	
-			PRIMARY KEY (CNO)
+		    CONTENTID INT PRIMARY KEY,
+		    CONTENTTYPEID INT,
+		    ADDR1 VARCHAR(255),
+		    ADDR2 VARCHAR(255),
+		    AREACODE INT,
+		    BOOKTOUR INT,
+		    CAT1 VARCHAR(255),
+		    CAT2 VARCHAR(255),
+		    CAT3 VARCHAR(255),
+		    CREATEDTIME VARCHAR(255),
+		    FIRSTIMAGE VARCHAR(255),
+		    FIRSTIMAGE2 VARCHAR(255),
+		    CPYRHTDIVCD VARCHAR(255),
+		    MAPX VARCHAR(255),
+		    MAPY VARCHAR(255),
+		    MLEVEL INT,
+		    MODIFIEDTIME VARCHAR(255),
+		    SIGUNGUCODE INT,
+		    TEL VARCHAR(255),
+		    TITLE VARCHAR(255),
+		    ZIPCODE VARCHAR(255),
+		    
+		    SCALE VARCHAR(255),
+		    USEFEE TEXT,
+		    DISCOUNTINFO VARCHAR(255),
+		    SPENDTIME VARCHAR(255),
+		    PARKINGFEE VARCHAR(255),
+		    INFOCENTERCULTURE VARCHAR(255),
+		    ACCOMCOUNTCULTURE VARCHAR(255),
+		    USETIMECULTURE VARCHAR(255),
+		    RESTDATECULTURE VARCHAR(255),
+		    PARKINGCULTURE VARCHAR(255),
+		    CHKBABYCARRIAGECULTURE VARCHAR(255),
+		    CHKPETCULTURE VARCHAR(255),
+		    CHKCREDITCARDCULTURE VARCHAR(255),
+		    
+		    IMAGE0 VARCHAR(255),
+		    IMAGE1 VARCHAR(255),
+		    IMAGE2 VARCHAR(255),
+		    IMAGE3 VARCHAR(255),
+		    IMAGE4 VARCHAR(255),
+		    IMAGE5 VARCHAR(255),
+		    IMAGE6 VARCHAR(255),
+		    IMAGE7 VARCHAR(255),
+		    IMAGE8 VARCHAR(255),
+		    IMAGE9 VARCHAR(255),
+		    IMAGE10 VARCHAR(255),
+		    IMAGE11 VARCHAR(255),
+		    IMAGE12 VARCHAR(255),
+		    IMAGE13 VARCHAR(255),
+		    IMAGE14 VARCHAR(255),
+		    IMAGE15 VARCHAR(255),
+		    IMAGE16 VARCHAR(255),
+		    IMAGE17 VARCHAR(255),
+		    IMAGE18 VARCHAR(255),
+		    IMAGE19 VARCHAR(255),
+		    IMAGE20 VARCHAR(255),
+		    IMGCOUNT INT
 		);
 
 	</insert>
 	
 	
 	<insert id="insertCulture" parameterType="java.util.List">
-    INSERT INTO CULTURE
-    (	
-          cNO, addr1, addr2, areacode, booktour
-          , cat1, cat2, cat3, contentid, contenttypeid
-          , createdtime, firstimage, firstimage2, cpyrhtDivCd 
-          , mapx, mapy, mlevel, modifiedtime, sigungucode, tel          
-          , title, zipcode   
-
-    )VALUES
-    <foreach collection="list" index="index" item="item" separator=","> 
-    ( 
-    
-    		0, #{item.addr1}, #{item.addr2}, #{item.areacode}
-          , #{item.booktour}, #{item.cat1}, #{item.cat2}, #{item.cat3}
-          , #{item.contentid}, #{item.contenttypeid}, #{item.createdtime}
-          , #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd}
-          , #{item.mapx}, #{item.mapy}, #{item.mlevel}, #{item.modifiedtime}
-          , #{item.sigungucode}, #{item.tel}, #{item.title}, #{item.zipcode}
-	)
-    </foreach> 
+	    INSERT INTO CULTURE (
+	        CONTENTID, CONTENTTYPEID, ADDR1, ADDR2, AREACODE, BOOKTOUR,
+	        CAT1, CAT2, CAT3, CREATEDTIME, FIRSTIMAGE, FIRSTIMAGE2, CPYRHTDIVCD,
+	        MAPX, MAPY, MLEVEL, MODIFIEDTIME, SIGUNGUCODE, TEL, TITLE, ZIPCODE,
+	        SCALE, USEFEE, DISCOUNTINFO, SPENDTIME, PARKINGFEE,
+	        INFOCENTERCULTURE, ACCOMCOUNTCULTURE, USETIMECULTURE, RESTDATECULTURE, PARKINGCULTURE,
+	        CHKBABYCARRIAGECULTURE, CHKPETCULTURE, CHKCREDITCARDCULTURE,
+	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8,
+	        IMAGE9, IMAGE10, IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15, IMAGE16,
+	        IMAGE17, IMAGE18, IMAGE19, IMAGE20, IMGCOUNT
+	    ) VALUES
+	    <foreach collection="list" index="index" item="item" separator=",">
+	        (
+	            #{item.contentid}, #{item.contenttypeid}, #{item.addr1}, #{item.addr2},
+	            #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2}, #{item.cat3},
+	            #{item.createdtime}, #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd},
+	            #{item.mapx}, #{item.mapy}, #{item.mlevel}, #{item.modifiedtime}, #{item.sigungucode},
+	            #{item.tel}, #{item.title}, #{item.zipcode}, #{item.scale}, #{item.usefee},
+	            #{item.discountinfo}, #{item.spendtime}, #{item.parkingfee}, #{item.infocenterculture},
+	            #{item.accomcountculture}, #{item.usetimeculture}, #{item.restdateculture},
+	            #{item.parkingculture}, #{item.chkbabycarriageculture}, #{item.chkpetculture},
+	            #{item.chkcreditcardculture}, #{item.image0}, #{item.image1}, #{item.image2},
+	            #{item.image3}, #{item.image4}, #{item.image5}, #{item.image6}, #{item.image7},
+	            #{item.image8}, #{item.image9}, #{item.image10}, #{item.image11}, #{item.image12},
+	            #{item.image13}, #{item.image14}, #{item.image15}, #{item.image16}, #{item.image17},
+	            #{item.image18}, #{item.image19}, #{item.image20}, #{item.imgCount}
+	        )
+	    </foreach>
 	</insert>
+
+
 	
 	
 	<select id="selectCultureList" parameterType="CultureParam" resultMap="cultureResultMap">
@@ -175,13 +259,6 @@
 		
 		
 	</select>
-	
-	 <update id="deleteCulture" parameterType="int">
-	 	UPDATE CULTURE 
-	 		SET STATUS = 'N'
-	 	WHERE mNO = #{cno}
-	 </update>
-	
 	
 	
 </mapper>

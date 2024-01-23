@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>카드 형태의 폼</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>문화시설</h2>
+
+        <!-- 테이블 생성 버튼 -->
+        <button onclick="window.location='${path}/mvc/culture/createTable'">테이블 생성</button>
+
+        <!-- 데이터 입력 폼 -->
+        <form action="${path}/mvc/culture/dataSave" method="post">
+            <label for="data">이름을 입력하세요:</label>
+           	<input type="text" id="name" name="name" required>
+            <br>
+            <input type="submit" value="데이터 받기">
+        </form>
+
+        <!-- 테이블 조회 버튼 -->
+        <button onclick="window.location='${path}/mvc/culture/listForDB'">테이블 보기</button>
+    </div>
+
+</body>
+</html>
