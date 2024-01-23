@@ -64,6 +64,7 @@
 		<result property="image19" column="IMAGE19"/>
 		<result property="image20" column="IMAGE20"/>
     	<result property="imgCount" column="IMGCOUNT"/>
+		<result property="overview" column="OVERVIEW"/>
 		
 	</resultMap>
 	
@@ -135,13 +136,14 @@
 		    IMAGE18 VARCHAR(255),
 		    IMAGE19 VARCHAR(255),
 		    IMAGE20 VARCHAR(255),
-		    IMGCOUNT INT
+		    IMGCOUNT INT,
+		    OVERVIEW TEXT
 		);
 
 	</insert>
 	
 	
-	<insert id="insertCulture" parameterType="java.util.List">
+	<insert id="insertCulture" parameterType="Culture">
 	    INSERT INTO CULTURE (
 	        CONTENTID, CONTENTTYPEID, ADDR1, ADDR2, AREACODE, BOOKTOUR,
 	        CAT1, CAT2, CAT3, CREATEDTIME, FIRSTIMAGE, FIRSTIMAGE2, CPYRHTDIVCD,
@@ -151,25 +153,18 @@
 	        CHKBABYCARRIAGECULTURE, CHKPETCULTURE, CHKCREDITCARDCULTURE,
 	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8,
 	        IMAGE9, IMAGE10, IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15, IMAGE16,
-	        IMAGE17, IMAGE18, IMAGE19, IMAGE20, IMGCOUNT
+	        IMAGE17, IMAGE18, IMAGE19, IMAGE20, IMGCOUNT , OVERVIEW
 	    ) VALUES
-	    <foreach collection="list" index="index" item="item" separator=",">
 	        (
-	            #{item.contentid}, #{item.contenttypeid}, #{item.addr1}, #{item.addr2},
-	            #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2}, #{item.cat3},
-	            #{item.createdtime}, #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd},
-	            #{item.mapx}, #{item.mapy}, #{item.mlevel}, #{item.modifiedtime}, #{item.sigungucode},
-	            #{item.tel}, #{item.title}, #{item.zipcode}, #{item.scale}, #{item.usefee},
-	            #{item.discountinfo}, #{item.spendtime}, #{item.parkingfee}, #{item.infocenterculture},
-	            #{item.accomcountculture}, #{item.usetimeculture}, #{item.restdateculture},
-	            #{item.parkingculture}, #{item.chkbabycarriageculture}, #{item.chkpetculture},
-	            #{item.chkcreditcardculture}, #{item.image0}, #{item.image1}, #{item.image2},
-	            #{item.image3}, #{item.image4}, #{item.image5}, #{item.image6}, #{item.image7},
-	            #{item.image8}, #{item.image9}, #{item.image10}, #{item.image11}, #{item.image12},
-	            #{item.image13}, #{item.image14}, #{item.image15}, #{item.image16}, #{item.image17},
-	            #{item.image18}, #{item.image19}, #{item.image20}, #{item.imgCount}
-	        )
-	    </foreach>
+            #{contentid}, #{contenttypeid}, #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2}, #{cat3},
+			#{createdtime}, #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel}, #{modifiedtime}, #{sigungucode},
+			#{tel}, #{title}, #{zipcode}, #{scale}, #{usefee}, #{discountinfo}, #{spendtime}, #{parkingfee}, #{infocenterculture},
+			#{accomcountculture}, #{usetimeculture}, #{restdateculture}, #{parkingculture}, #{chkbabycarriageculture}, #{chkpetculture},
+			#{chkcreditcardculture}, #{image0}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{image6}, #{image7},
+			#{image8}, #{image9}, #{image10}, #{image11}, #{image12}, #{image13}, #{image14}, #{image15}, #{image16}, #{image17},
+			#{image18}, #{image19}, #{image20}, #{imgCount}, #{overview}
+
+	        );
 	</insert>
 
 

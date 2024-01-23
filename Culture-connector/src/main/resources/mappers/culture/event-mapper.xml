@@ -27,6 +27,7 @@
 	    <result property="tel" column="TEL"/>
 	    <result property="title" column="TITLE"/>
 	    <result property="zipcode" column="ZIPCODE"/>
+	    
 	    <result property="sponsor1" column="SPONSOR1"/>
 	    <result property="sponsor1tel" column="SPONSOR1TEL"/>
 	    <result property="sponsor2" column="SPONSOR2"/>
@@ -100,6 +101,7 @@
 		    TEL VARCHAR(255),
 		    TITLE VARCHAR(255),
 		    ZIPCODE VARCHAR(255),
+		    
 		    SPONSOR1 VARCHAR(255),
 		    SPONSOR1TEL VARCHAR(255),
 		    SPONSOR2 VARCHAR(255),
@@ -140,12 +142,12 @@
 			IMAGE18 VARCHAR(255),
 			IMAGE19 VARCHAR(255),
 			IMAGE20 VARCHAR(255),
-			IMGCOUNT INT
+			IMGCOUNT INT,
+			OVERVIEW TEXT
 		);
 
 
 	</insert>
-		
 		
 	<insert id="insertEvent" parameterType="Event">
 	    INSERT INTO EVENT (
@@ -162,7 +164,7 @@
 	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10,
 	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
 	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
-	        IMGCOUNT
+	        IMGCOUNT, OVERVIEW
 	    ) VALUES (
             #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
 	        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
@@ -178,34 +180,14 @@
 	        #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10},
 	        #{image11}, #{image12}, #{image13}, #{image14}, #{image15},
 	        #{image16}, #{image17}, #{image18}, #{image19}, #{image20},
-	        #{imgCount}
+	        #{imgCount}, #{overview}
 	        );
 
 	</insert>
 
-
-	<select id="eventList" resultType="Event">
+	<select id="selectTable" resultType="Event">
 		select * from event;
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 </mapper>

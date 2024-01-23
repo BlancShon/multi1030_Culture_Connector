@@ -25,7 +25,7 @@ public class CultureService {
 	public int save() {
 		int result = 0;
 
-		mapper.insertCulture(OpenApiManagerForXml.parse());
+//		mapper.insertCulture(OpenApiManagerForXml.parse());
 		return result;
 	
 	}
@@ -57,8 +57,8 @@ public class CultureService {
 	
 	
 	@Transactional(rollbackFor = Exception.class)
-	public Culture findCultureByBNo(int cno) {
-		Culture culture = mapper.selectCultureByNo(cno);
+	public Culture findCultureById(int contentid) {
+		Culture culture = mapper.selectCultureById(contentid);
 	
 		return culture;
 	}
@@ -66,8 +66,16 @@ public class CultureService {
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
 	public void saveData(String name) {
-		mapper.insertCulture(ApiParsing.parseAndExportToTheListAdvanced(Culture.class, name));
+		List<Culture> list = ApiParsing.parseAndExportToTheListAdvanced(Culture.class, name);
+		for(Culture item : list) {
+			try {
+				mapper.insertCulture(item);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
+	// 데이터 리스트를 보여주는 메소드 임시입니다
 	public List<Culture> getListForDB() {
 		return mapper.selectTable();
 	}

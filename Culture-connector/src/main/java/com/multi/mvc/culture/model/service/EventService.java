@@ -22,7 +22,7 @@ public class EventService {
 	
 	public void initEvent() {
 		List<Event>list =  ApiParsing.parseAndExportToTheListAdvanced(Event.class);
-		for(Event item : list) {			
+		for(Event item : list) {	
 			mapper.insertEvent(item);
 		}
 	}
@@ -33,5 +33,22 @@ public class EventService {
 	
 	public List<Event> getEventTable() {
 		return mapper.eventList();
+	}
+	
+	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
+//	 @Transactional(noRollbackFor = SQLException.class)
+	public void saveData(String name) {
+		List<Event> list = ApiParsing.parseAndExportToTheListAdvanced(Event.class, name);
+		for(Event item : list) {
+			try {
+				mapper.insertEvent(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	// 데이터 리스트를 보여주는 메소드 임시입니다
+	public List<Event> getListForDB() {
+		return mapper.selectTable();
 	}
 }

@@ -30,7 +30,7 @@ public class ApiParsing {
 	static {
 		urlMap = new HashMap<>();
 		urlMap.put("Festival", ApiSearchInfo.getFestivalURL());
-		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12") + ApiSearchInfo.getServiceKey("고재목2"));
+		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12") + ApiSearchInfo.getServiceKey("박현"));
 		urlMap.put("Culture", ApiSearchInfo.getContentTypeURL("14") + ApiSearchInfo.getServiceKey("김진경"));
 		urlMap.put("Event", ApiSearchInfo.getContentTypeURL("15") + ApiSearchInfo.getServiceKey("고재목"));
 		urlMap.put("Course", ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey("고재목2"));
@@ -38,7 +38,7 @@ public class ApiParsing {
 		urlMap.put("Food", ApiSearchInfo.getContentTypeURL("39") + ApiSearchInfo.getServiceKey("장성희"));
 
 		keyMap = new HashMap<>();
-		keyMap.put("TouristAttraction", "고재목2");
+		keyMap.put("TouristAttraction", "박현");
 		keyMap.put("Culture", "김진경");
 		keyMap.put("Event", "고재목");
 		keyMap.put("LeisureSports", "이병집");
@@ -133,21 +133,27 @@ public class ApiParsing {
 				JsonNode rootNode = objMapper.readTree(line);
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 
+				int count = 0;
 				for (JsonNode itemNode : itemsNode) {
+					log.info("{} 번째 데이터",++count);
 					String contentId = itemNode.get("contentid").asText();
 					String contentTypeId = itemNode.get("contenttypeid").asText();
+					try {
+						// 기본 정보들 받아오는 바구니
+						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						// 이미지 정보들 받아오는 리스트
+						List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
+						// 오버뷰 받아오는 메소드
+						String overview = getOverview(contentId, whosKey);
+						// 몸통
+						T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
+						target = commonInjection(target, common, imgList, overview);
+						
+						if(target != null) {
+							list.add(target);
+						}
+					} catch (JsonParseException | NullPointerException jno) {}
 					
-					// 기본 정보들 받아오는 바구니
-					CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
-					// 이미지 정보들 받아오는 리스트
-					List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
-					// 몸통
-					T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
-					target = commonInjection(target, common, imgList);
-					
-					if(target != null) {
-						list.add(target);
-					}
 				}
 
 			} catch (JsonParseException je) {
@@ -167,8 +173,7 @@ public class ApiParsing {
 		}
 		return list;
 	}
-	
-	
+
 	// 분류없이 타겟에 상세정보까지 주입하는 메서드222 이름 넣는 버전
 	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name) {
 		String contentType = null;
@@ -217,28 +222,33 @@ public class ApiParsing {
 				String line = br.readLine();
 				JsonNode rootNode = objMapper.readTree(line);
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+				
 				int count = 0;
 				for (JsonNode itemNode : itemsNode) {
-					log.info("{}번째 데이터",++count);
+					log.info("{} 번째 데이터",++count);
 					String contentId = itemNode.get("contentid").asText();
 					String contentTypeId = itemNode.get("contenttypeid").asText();
-					
-					// 기본 정보들 받아오는 바구니
-					CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
-					// 이미지 정보들 받아오는 리스트
-					List<String> imgList = getImgList(contentId, contentTypeId, name);
-					// 몸통
-					T target = getDetail(targetClass, contentId, contentTypeId, name);
-					target = commonInjection(target, common, imgList);
-					
-					if(target != null) {
-						list.add(target);
+						
+					try {
+						// 기본 정보들 받아오는 바구니
+						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						// 이미지 정보들 받아오는 리스트
+						List<String> imgList = getImgList(contentId, contentTypeId, name);
+						// 오버뷰 받아오는 메소드
+						String overview = getOverview(contentId, name);
+						// 몸통
+						T target = getDetail(targetClass, contentId, contentTypeId, name);
+						target = commonInjection(target, common, imgList, overview);
+						if(target != null) {
+							list.add(target);
+						}
+					} catch (JsonParseException | NullPointerException jno) {
+						jno.printStackTrace();
 					}
 				}
 				
-			} catch (JsonParseException je) {
-				log.info("{} 의 키에 문제가 생긴것으로 보입니다. url 확인해보십시오 {}",name, targetUrl);
-				log.error("위의 url 을 확인해보세요", je);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			
 		} catch (Exception e) {
@@ -313,7 +323,8 @@ public class ApiParsing {
 	}
 
 	// 하나로 합쳐주는 메소드
-	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList) throws NullPointerException {
+	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, 
+			List<String> imgList, String overview) throws NullPointerException {
 		
 		if (target == null || common == null) {
 			return target=null;
@@ -324,7 +335,25 @@ public class ApiParsing {
 			imgList = imgList.subList(0, 20);
 			size = 20;
 		}
-				
+		
+		if (size != 0) {
+			for (int i = 0; i < size; i++) {
+				// 이미지 필드명을 동적으로 생성
+				String imageFieldName = "Image" + i;
+				// Reflection을 사용하여 동적으로 필드에 접근하여 값을 복사
+				try {
+					// target 객체의 image 필드명에 해당하는 Setter 메서드를 찾음
+					Method targetSetter = target.getClass().getMethod("set" + imageFieldName, String.class);
+					// 값을 복사
+					targetSetter.invoke(target, imgList.get(i));
+				} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+					log.error("이미지 삽입 도중 예외", e);
+				}
+			}
+			
+		}
+		
+		target.setOverview(overview);
 		target.setAddr1(common.getAddr1());
 		target.setAddr2(common.getAddr2());
 		target.setAreacode(common.getAreacode());
@@ -346,22 +375,7 @@ public class ApiParsing {
 		target.setZipcode(common.getZipcode());
 		target.setShowflag(common.getShowflag());
 		target.setImgCount(size);
-		for (int i = 0; i < size; i++) {
-		
-		    // 이미지 필드명을 동적으로 생성
-		    String imageFieldName = "Image" + i;
-		    // Reflection을 사용하여 동적으로 필드에 접근하여 값을 복사
-		    try {
-		    	
-		        // target 객체의 image 필드명에 해당하는 Setter 메서드를 찾음
-		        Method targetSetter = target.getClass().getMethod("set" + imageFieldName, String.class);
 
-		        // 값을 복사
-		        targetSetter.invoke(target, imgList.get(i));
-		    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-		        log.error("이미지 삽입 도중 예외", e);
-		    }
-		}
 	
 		
 		return target;
@@ -419,6 +433,60 @@ public class ApiParsing {
 		}
 		return target;
 	}
+	
+	// 오버뷰 받아오는 메소드
+		private static String getOverview(String contentId, String whosKey) throws JsonParseException {
+			String overview = null;
+			String targetUrl = ApiSearchInfo.getOverviewURL(contentId, whosKey);
+			HttpURLConnection conn = null;
+			try {
+				URL url = new URL(targetUrl);
+				conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Content-type", "application/json");
+//			        conn.setRequestProperty("Content-type", "application/xml");
+//			        conn.setRequestProperty("Accept", "application/xml");
+//			        conn.setRequestProperty("Accept", "application/json");
+
+				int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+
+				if (responseCode < 200 || 300 <= responseCode) {
+					log.error("페이지가 잘못되었습니다. {}", responseCode);
+				}
+
+				try (InputStream is = conn.getInputStream();
+						InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+						BufferedReader br = new BufferedReader(isr);) {
+
+					// json 을 파싱하는 도구?? ObjectMapper
+					ObjectMapper objMapper = new ObjectMapper();
+
+					String line = br.readLine();
+					JsonNode rootNode = objMapper.readTree(line);
+					JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+
+					for (JsonNode itemNode : itemsNode) {
+						overview = itemNode.path("overview").asText();
+					}
+
+				} catch (JsonParseException je) {
+					throw je;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			} catch (JsonParseException je) {
+				throw je;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (conn != null) {
+					conn.disconnect(); // 리소스 닫기
+				}
+			}
+			
+			return overview;
+		}
 
 
 	// 지역코드 받는것도 오버로딩

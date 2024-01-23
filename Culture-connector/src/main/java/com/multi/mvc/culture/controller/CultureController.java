@@ -32,7 +32,7 @@ public class CultureController {
 //	@Bean(initMethod = "init")
 	public void init() {
 		log.info("culture init 호출 확인");
-		service.createTable();
+//		service.createTable();
 //		if(service.count() == 0) {
 //			service.save();
 //		}
@@ -94,7 +94,7 @@ public class CultureController {
 	public String detailView(Model model, @RequestParam("no") int no) {
 		
 		try {
-			culture = service.findCultureByBNo(no);
+			culture = service.findCultureById(no);
 		} catch (Exception e) {}
 		if(culture == null) {
 			return "redirect:error";

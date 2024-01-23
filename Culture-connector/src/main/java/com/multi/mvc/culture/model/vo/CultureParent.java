@@ -58,5 +58,6 @@ public class CultureParent {
     private String image20;
 	   
     private int imgCount;
+    private String overview;
 	
 }

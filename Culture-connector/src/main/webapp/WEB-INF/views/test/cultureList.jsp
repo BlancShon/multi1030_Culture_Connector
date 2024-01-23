@@ -25,6 +25,8 @@
     </style>
 </head>
 <body>
+	<h3><a href="${path}/mvc">홈</a></h3>
+         <h3><a href="${path}/mvc/dbsave">데이터베이스 저장</a></h3>
 
     <h2>문화시설 목록</h2>
 
@@ -52,6 +54,7 @@
                 <th>TEL</th>
                 <th>TITLE</th>
                 <th>ZIPCODE</th>
+                <th>OVERVIEW</th>
                 <th>SCALE</th>
                 <th>USEFEE</th>
                 <th>DISCOUNTINFO</th>
@@ -114,6 +117,7 @@
 				        <td><c:out value="${culture.tel}"/></td>
 				        <td><c:out value="${culture.title}"/></td>
 				        <td><c:out value="${culture.zipcode}"/></td>
+				        <td><c:out value="${culture.overview}"/></td>
 				        <td><c:out value="${culture.scale}"/></td>
 				        <td><c:out value="${culture.usefee}"/></td>
 				        <td><c:out value="${culture.discountinfo}"/></td>

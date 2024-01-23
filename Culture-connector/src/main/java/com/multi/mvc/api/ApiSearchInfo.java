@@ -35,6 +35,8 @@ public class ApiSearchInfo {
 	public static final String DETAIL_INFO_URL = "https://apis.data.go.kr/B551011/KorService1/detailIntro1?"; 
 	// 추가 사진 정보 조회 기본 url 입니다.
 	public static final String IMAGE_INFO_URL = "http://apis.data.go.kr/B551011/KorService1/detailImage1?subImageYN=Y&";
+	// 오버뷰 가져오는 기본 url
+	public static final String OVERVIEW_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&overviewYN=Y&_type=json";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
 	public static String numOfRows = "numOfRows=150";
@@ -83,6 +85,11 @@ public class ApiSearchInfo {
 	public static String getContentTypeURL(String contentType) {
 		StringBuffer sb = requiredValueURL(AREA_BASED_URL);
 		return sb.append(contentTypeId(contentType)).toString();
+	}
+	
+	public static String getOverviewURL(String contentid, String whosKey) {
+		StringBuffer sb = new StringBuffer(OVERVIEW_URL);
+		return sb.append(contentId(contentid)).append(getServiceKey(whosKey)).toString();
 	}
 
 	public static String getAreaCodeURL() {
