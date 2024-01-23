@@ -21,20 +21,19 @@ public class TouristAttractionController {
     @Autowired
     private TouristAttractionService service;
 
-    List<TouristAttraction> list = OpenApiManagerForXml_TouristAttraction.parse();
+//    List<TouristAttraction> list = OpenApiManagerForXml_TouristAttraction.parse();
 
     @Bean(initMethod = "init3")
     public void init3() {
     	service.createTable();
-    	log.debug("service count is {} !!!!!!!!!!!", service.count());
-    	if(service.count() == 0) {
-    		service.save();
-    	}
+//    	if(service.count() == 0) {
+//    		service.save();
+//    	}
     }
 
     @GetMapping("/touristAttraction/list")
     public String list(Model model, TouristAttraction touristAttraction) {
-        model.addAttribute("list", list);
+//        model.addAttribute("list", list);
         return "culture/touristAttractionList";
     }
 }

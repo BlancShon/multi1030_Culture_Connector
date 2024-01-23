@@ -27,9 +27,9 @@ public class LeisureSportsController {
 		log.debug("initLeports Controller 확인");
 		
 		service.createTable();
-		if(service.count() == 0) {
-			service.initLeports();
-		}
+//		if(service.count() == 0) {
+//			service.initLeports();
+//		}
 	}
 	
 	@GetMapping("/list")

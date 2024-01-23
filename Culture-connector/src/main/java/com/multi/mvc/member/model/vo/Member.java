@@ -20,6 +20,7 @@ public class Member {
 	private String address;
 	private String hobby;
 	private String status;
+	private String kakaoToken;
 	private Date   enrollDate;
 	private Date   modifyDate;
 }

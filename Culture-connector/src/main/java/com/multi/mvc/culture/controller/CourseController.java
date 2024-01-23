@@ -22,19 +22,15 @@ public class CourseController {
 	@Autowired
 	private CourseService service;
 	
-//	public static List<Course> list = ApiParsing.parseAndExportToTheList(Event.class);
-//	public static List<Course> list = ApiParsing.listBySidoGroups(Course.class);
-//	public static List<Course> list = ApiParsing.listBySigunguGroups(Event.class);
-	
 	
 	@Bean(initMethod = "init5")
 	public void init5() {
 		log.debug("Course Controller 확인");
 		
-		service.createTable();
-		if(service.count() == 0) {
-			service.initCourse();
-		}
+//		service.createTable();
+//		if(service.count() == 0) {
+//			service.initCourse();
+//		}
 	}
 	
 	@GetMapping("/list")

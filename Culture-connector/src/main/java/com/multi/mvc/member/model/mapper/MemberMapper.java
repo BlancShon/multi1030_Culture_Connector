@@ -25,4 +25,10 @@ public interface MemberMapper {
 	 */
 	int updatePwd(Map<String, String> map);
 	int deleteMember(int mno);
+	
+	
+	
+	
+	Member selectMemberByKakaoToken(String token);
+	
 }

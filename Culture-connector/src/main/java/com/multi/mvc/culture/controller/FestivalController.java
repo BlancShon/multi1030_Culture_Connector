@@ -33,9 +33,9 @@ public class FestivalController {
 		log.debug("Festival Controller init 확인");
 		
 		service.createTable();
-		if(service.count() == 0) {
-			service.initFestival();
-		}
+//		if(service.count() == 0) {
+//			service.initFestival();
+//		}
 	}
 	
 	@GetMapping("/list")
