@@ -163,24 +163,22 @@
 	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
 	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
 	        IMGCOUNT
-	    ) VALUES
-	   
-	        (
-	            #{item.addr1}, #{item.addr2}, #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2},
-	            #{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime},
-	            #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx}, #{item.mapy}, #{item.mlevel},
-	            #{item.modifiedtime}, #{item.sigungucode}, #{item.tel},
-	            #{item.title}, #{item.zipcode},
-	            #{item.sponsor1}, #{item.sponsor1tel}, #{item.sponsor2}, #{item.sponsor2tel},
-	            #{item.eventenddate}, #{item.playtime}, #{item.eventplace}, #{item.eventhomepage},
-	            #{item.agelimit}, #{item.bookingplace}, #{item.placeinfo}, #{item.subevent},
-	            #{item.program}, #{item.eventstartdate}, #{item.usetimefestival},
-	            #{item.discountinfofestival}, #{item.spendtimefestival}, #{item.festivalgrade},
-	            #{item.image0}, #{item.image1}, #{item.image2}, #{item.image3}, #{item.image4},
-	            #{item.image5}, #{item.image6}, #{item.image7}, #{item.image8}, #{item.image9}, #{item.image10},
-	            #{item.image11}, #{item.image12}, #{item.image13}, #{item.image14}, #{item.image15},
-	            #{item.image16}, #{item.image17}, #{item.image18}, #{item.image19}, #{item.image20},
-	            #{item.imgCount}
+	    ) VALUES (
+            #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
+	        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
+	        #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel},
+	        #{modifiedtime}, #{sigungucode}, #{tel},
+	        #{title}, #{zipcode},
+	        #{sponsor1}, #{sponsor1tel}, #{sponsor2}, #{sponsor2tel},
+	        #{eventenddate}, #{playtime}, #{eventplace}, #{eventhomepage},
+	        #{agelimit}, #{bookingplace}, #{placeinfo}, #{subevent},
+	        #{program}, #{eventstartdate}, #{usetimefestival},
+	        #{discountinfofestival}, #{spendtimefestival}, #{festivalgrade},
+	        #{image0}, #{image1}, #{image2}, #{image3}, #{image4},
+	        #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10},
+	        #{image11}, #{image12}, #{image13}, #{image14}, #{image15},
+	        #{image16}, #{image17}, #{image18}, #{image19}, #{image20},
+	        #{imgCount}
 	        );
 
 	</insert>
