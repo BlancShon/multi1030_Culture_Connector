@@ -113,8 +113,10 @@
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul"  
-											<%-- ${checkBox == 'seoul' ? 'checked' : ''} --%> />서울</label>
+                                	<input type="hidden" class="SelectedcheckBox" value="${checkBox}" >
+                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul" 
+											${checkBox == 'seoul' ? 'checked' : ''}  />서울</label>
+											
                                 </div>
                             </li>
                             <li class="list-inline-item">
@@ -358,6 +360,7 @@
 $(".form-check-input").change(function(){
 	  if($(this).prop('checked') == true){
 		  searchForm.submit();
+		  document.getElementByClass('form-check-input').selected = true;
 	  }
 	});
 	
@@ -365,7 +368,18 @@ console.log(document.location.href)
 </script>
 
 <script type="text/javascript">
-	
-	
+<script>
+$(function(){
+	var SelectedcheckBox = $(".SelectedcheckBox").val();
+		console.log(SelectedcheckBox);
+	$('input:checkbox[name="checkBox"]').each(function() {
+		if( SelectedcheckBox.indexOf(this.value) > -1){  
+			$(this).prop('checked', true); 
+		   }
+	});
+  });
 
 </script>
+	
+
+

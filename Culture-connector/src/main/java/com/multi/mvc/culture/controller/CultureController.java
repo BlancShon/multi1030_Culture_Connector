@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.multi.mvc.api.OpenApiManagerForXml;
 import com.multi.mvc.board.controller.BoardController;
@@ -22,6 +23,7 @@ import com.multi.mvc.culture.model.mapper.CultureMapper;
 import com.multi.mvc.culture.model.service.CultureService;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
+import com.multi.mvc.member.model.vo.Member;
 import com.mysql.cj.log.Log;
 
 import lombok.extern.slf4j.Slf4j;
@@ -94,6 +96,13 @@ public class CultureController {
 		
 		return "culture/cultureDetail";
 	}
+	
+	
+	
+
+	
+	
+	
 	
 	
 	

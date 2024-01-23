@@ -176,5 +176,12 @@
 		
 	</select>
 	
+	 <update id="deleteCulture" parameterType="int">
+	 	UPDATE CULTURE 
+	 		SET STATUS = 'N'
+	 	WHERE mNO = #{cno}
+	 </update>
+	
+	
 	
 </mapper>
