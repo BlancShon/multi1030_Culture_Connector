@@ -1,8 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <%-- <jsp:include page="/WEB-INF/views/common/cultureheader.jsp"> --%>
 <%-- 	<jsp:param value="Culture Connector" name="title"/> --%>
 <%-- </jsp:include> --%>
+
+<head>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb83919493996c6c554671877067a90a&libraries=services"></script>
+
+
+
+</head>
+
+
+
+
+
+
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
@@ -125,46 +142,8 @@ Main Content START -->
                                 
 								오늘잡은소 대구칠곡점은 대구광역시 북구 국우동에 있다. KBS 2TV 시사 교양 프로그램 생생정보에 출연한 바 있다. 깔끔한 외관과 내부가 눈에 띄는 곳이다. 내부에는 단체석이 마련되어 있어 각종 모임을 하기 좋다. 대표 메뉴는 꽃등심로스구이다. 이 밖에 안심스테이크, 갈비살, 부채살, 육회비빔밥, 물냉면, 비빔냉면 등 등을 맛볼 수 있다. 오전 11시부터 오후 2시까지 한우 불고기와 한돈 고추장불고기, 다양한 반찬과 후식을 푸짐하게 먹을 수 있는 한식뷔페도 운영된다. 단, 일요일은 예외다. 칠곡IC와 서변IC에서 가깝고, 인근에 운암지 수변공원, 신전뮤지엄이 있다.
 								<br>
-                                <div id="map" style="width:100%;height:350px; border-style: dashed;"></div>
-                                <script>
-									
-                                   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                                        mapOption = {
-                                            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                                            level: 1 // 지도의 확대 레벨
-                                        };  
-
-                                    // 지도를 생성합니다    
-                                    var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-                                    // 주소-좌표 변환 객체를 생성합니다
-                                    var geocoder = new kakao.maps.services.Geocoder();
-
-                                    // 주소로 좌표를 검색합니다
-                                    geocoder.addressSearch('대구광역시 북구 구리로 183-8 오늘잡은소', function(result, status) {
-
-                                        // 정상적으로 검색이 완료됐으면 
-                                        if (status === kakao.maps.services.Status.OK) {
-
-                                            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                                            // 결과값으로 받은 위치를 마커로 표시합니다
-                                            var marker = new kakao.maps.Marker({
-                                                map: map,
-                                                position: coords
-                                            });
-
-                                            // 인포윈도우로 장소에 대한 설명을 표시합니다
-                                            var infowindow = new kakao.maps.InfoWindow({
-                                                content: '<div style="width:150px;text-align:center;padding:6px 0;">오늘 잡은 소 대구 칠곡점</div>'
-                                            });
-                                            infowindow.open(map, marker);
-
-                                            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                                            map.setCenter(coords);
-                                        } 
-                                    });    
-                                </script>
+                                <div id="map" style="width:400px;height:350px;"></div>
+                               
 								<div>
 								<div style="float: left;">
 								<ul>
@@ -188,8 +167,9 @@ Main Content START -->
 									
 								</ul> -->
 								</div>
+								</form>
 							</div>
-                            </form>
+                            
 							<!-- Form END -->
 						</div>
 						<!-- Card body END -->
@@ -200,6 +180,7 @@ Main Content START -->
 					
                     
 			
+		</div>
 		</div>
 	</div>
 </section>
@@ -232,4 +213,71 @@ Footer END -->
 <script src="${pageContext.request.contextPath}/js/functions.js"></script>
 
 </body>
+
+
+
+<script>
+
+<!--카카오맵 기능(db로부터 주소를 받아와서 변수로 입력하면 해당 주소를 좌표로 변환하여 카카오맵에서 구현) -->
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};  
+
+//지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+//주소로 좌표를 검색합니다
+
+<!--locationName, locationCoor 주석 지우면 오류나서 맵 동작을 안합니다. 이 부분은 나중에 컨트롤러에서 각 변수 값을 가져오고 나서 사용하세요.  -->
+/* var locationName =  document.getElementById('locationName').value
+		console.log(locationName)
+
+		<!--각 음식점의 주소를 가져오는 코드입니다.-->
+	var locationCoor =  document.getElementById('mapCoordinate').value
+    
+ console.log(locationCoor) */
+geocoder.addressSearch('대구 북구 구리로 183-8', function(result, status) {
+
+// 정상적으로 검색이 완료됐으면 
+ if (status === kakao.maps.services.Status.OK) {
+
+    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+    // 결과값으로 받은 위치를 마커로 표시합니다
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: coords
+    });
+
+    // 인포윈도우로 장소에 대한 설명을 표시합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+    });
+    infowindow.open(map, marker);
+
+    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    map.setCenter(coords);
+} 
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

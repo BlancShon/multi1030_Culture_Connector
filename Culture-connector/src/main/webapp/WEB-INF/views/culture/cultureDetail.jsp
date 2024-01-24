@@ -41,140 +41,12 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 
 </head>
-
+<jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
+<jsp:param value="문화시설 상세" name="title"/>
+</jsp:include>
 <body>
 
-	<nav class="navbar navbar-expand-xl">
-		<div class="container">
-			<!-- Logo START -->
-			<a class="navbar-brand" href="main.html">
-				<img class="light-mode-item navbar-brand-item" src="${pageContext.request.contextPath}/resources/images/logo-culture-light.png" alt="logo">
-				<img class="dark-mode-item navbar-brand-item" src="${pageContext.request.contextPath}/resources/images/logo-culture.png" alt="logo">
-			</a>
-			<!-- Logo END -->
-
-			<!-- Responsive navbar toggler -->
-			<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-animation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-		<span class="d-none d-sm-inline-block small">Menu</span>
-			</button>
-
-			<!-- Responsive category toggler -->
-			<button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse" aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span class="d-none d-sm-inline-block small">Category</span>
-			</button>
-
-			<!-- Main navbar START -->
-			<div class="navbar-collapse collapse" id="navbarCollapse">
-				<ul class="navbar-nav navbar-nav-scroll me-auto">
-
-					<!-- Nav item 홈  -->
-					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="main.html">홈</a>
-          </li>
-
-					<!-- Nav item 문화 테마 -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 테마</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-							<li> <a class="dropdown-item" href="cluture-theme1.html">문화 관광지</a></li>
-							<li> <a class="dropdown-item" href="cluture-theme2.html">문화 예술 공연</a></li>
-							<li> <a class="dropdown-item" href="cluture-theme3.html">지역 문화 축제</a></li>
-							<li> <a class="dropdown-item" href="cluture-theme4.html">액티비티/원데이 클래스</a></li>
-
-						</ul>
-					</li>
-
-          <!-- Nav item 음식 투어  -->
-					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="cuisine-tour.html">음식 투어</a>
-          </li>
-
-          <!-- Nav item 문화 소식 -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-							<li> <a class="dropdown-item" href="cluture-news1.html">문화 기사</a></li>
-							<li> <a class="dropdown-item" href="cluture-news2.html">문화 코스</a></li>
-							<li> <a class="dropdown-item" href="cluture-news3.html">쿠폰/혜택</a></li>
-
-						</ul>
-					</li>
-
-          <!-- Nav item 리뷰(수다톡) -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">리뷰(수다톡)</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-							<li> <a class="dropdown-item" href="review-talk1.html">리뷰 게시판</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">리뷰 참여하기</a></li>
-
-						</ul>
-					</li>
-
-          <!-- Nav item 문화(여행) 지도  -->
-					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="cluture-tour-map.html">문화(여행) 지도</a>
-          </li>
-
-
-
-          <!-- 로그인 하기 전 나중에 자바스크립트로 같은거로 로그인 상태 확인뒤에 보이거나 안보이게-->
-          <li class="nav-item" id="login">
-            <a class="nav-link active" aria-current="page" href="login.html">로그인</a>
-          </li>
-
-					<!-- Nav item 회원 정보 로그인 전/후 차이 둬야할듯-->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원 정보</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-							<li> <a class="dropdown-item" href="review-talk1.html">내 정보</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">로그아웃</a></li>
-
-						</ul>
-					</li>
-
-					
-				</ul>
-			</div>
-			<!-- Main navbar END -->
-
-				<!-- Toggler button and stay button -->
-				<div class="d-flex align-items-center justify-content-end">
-				  <!-- Responsive navbar toggler -->
-				  <button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarCollapse"
-					aria-controls="navbarCollapse"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				  >
-					<span class="navbar-toggler-animation">
-					  <span></span>
-					  <span></span>
-					  <span></span>
-					</span>
-					<span class="d-none d-sm-inline-block small">Menu</span>
-				  </button>
-
-			 
-				</div>
-			  </div>
-			
-		
-	  </nav>
+	
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
@@ -265,13 +137,11 @@ Content START -->
 							<!-- Card body -->
 							<div class="card-body px-0 pb-0">
 							
-								<p class="mb-3">서울시 은평구 구산동 주택가 한복판에 자리한 구산동도서관마을은 외관부터 특이하다. 크고 번듯한 하나의 건물이 아니라, 서로 다른 모양과 색깔의 건물 여럿이 모여 도서관을 이루고 있다. 여러 집이 모여 하나의 마을을 이루는 것처럼. 지금은 도서관이 된 건물들도 이전에는 사람들이 살던 집이었다. 낡은 연립주택 세 동을 리모델링한 후 도서관 하나를 만든 것이다. 
+								<p class="mb-3">${culture.overview}</p> 
 
  
 
-									구산동도서관마을의 공간 구성은 아주 독특하다. 원래 골목길이었던 도서관 로비부터가 그렇다. 붉은 벽돌로 지어진 옛 건물과 새로 지은 건물이 독특하게 어우러진 로비를 지나면, 다른 도서관처럼 거대한 열람공간 대신 기존의 방들을 최대한 살려 누구나 편안하게 책을 볼 수 있는 아늑한 공간들이 나온다. 5층짜리 도서관에는 55개나 되는 크고 작은 방에 분야별로 나뉜 서가와 여러 가지 시설이 자리 잡았다. 이런 공간은 마치 미로처럼 이어진다. 길 중간에 뜻밖의 계단이 나타나고, 층계를 오르다 보면 콘크리트 벽이 붉은 벽돌로 바뀌는 식이다. 계단 벽에는 주요 공간들의 옛날과 현재 사진이 비교 전시되어 공간의 역사를 느낄 수 있다. </p>
-
-								<p class="mb-0">마을 주민들이 직접 도서관을 운영하니, 지역 맞춤, 주민 맞춤형 프로그램이 가득하다. 작년에는 주민참여예산을 지원받아 ‘도서관 마을학교’를 진행했다. 장장 7개월 동안 진행된 프로그램에 참여한 주민들은 후속모임을 거쳐 독서 동아리를 구성하고 구산동도서관마을 독사활동가로 활동하고 있다. 은평구뿐 아니라 이웃 지역의 기관, 단체 등과 다양한 연계 프로그램도 진행 중이다. </p>
+									
 					
 							</div>
 						</div>
@@ -288,23 +158,23 @@ Content START -->
 								<div class="row g-4">
 							
 									<div class="col-md-4">
-									<img alt="" src="${culture.firstimage}">
+									<img alt="" src="${culture.image0}">
 									</div>
 
 									<div class="col-md-4">
-									<img alt="" src="${culture.firstimage}">
+									<img alt="" src="${culture.image1}">
 									</div>
 
 									<div class="col-md-4">
-										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
+										<img alt="" src="${culture.image2}">
 									</div>
 
 									<div class="col-md-4">
-										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
+										<img alt="" src="${culture.image3}">
 									</div>
 
 									<div class="col-md-4">
-										<img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">	
+										<img alt="" src="${culture.image4}">	
 									</div>
 
 								</div>
@@ -341,7 +211,7 @@ Content START -->
 									<!-- Call no -->
 									<li class="list-group-item">
 										<a href="#" class="h6 fw-normal mb-0">
-											<img src="${pageContext.request.contextPath}/resources/images/call.svg" style="width: 20px;"> +82&nbsp;${culture.tel} 
+											<img src="${pageContext.request.contextPath}/resources/images/call.svg" style="width: 20px;"> +82&nbsp;${culture.infocenterculture} 
 										</a>
 									</li>
 									<!-- Email -->
@@ -570,8 +440,8 @@ Footer START -->
 
 <script type="text/javascript">
 
-Kakao.init('bb83919493996c6c554671877067a90a');
-console.log(location.href)
+/* Kakao.init('bb83919493996c6c554671877067a90a');
+console.log(location.href) */
 </script>
 
 
@@ -580,10 +450,7 @@ console.log(location.href)
 Kakao.init('bb83919493996c6c554671877067a90a'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 
-<a id="kakaotalk-sharing-btn" href="javascript:;">
-  <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
-    alt="카카오톡 공유 보내기 버튼" />
-</a>
+
 
 <script>
 

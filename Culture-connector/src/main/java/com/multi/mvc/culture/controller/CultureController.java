@@ -91,10 +91,11 @@ public class CultureController {
 	
 	
 	@RequestMapping("/culture/detail")
-	public String detailView(Model model, @RequestParam("no") int no) {
-		
+	public String detailView(Model model, @RequestParam("contentid") int contentid) {
+			
 		try {
-			culture = service.findCultureById(no);
+			culture = service.findCultureByContentId(contentid);
+			System.out.println("culture = " + culture);
 		} catch (Exception e) {}
 		if(culture == null) {
 			return "redirect:error";
@@ -102,6 +103,8 @@ public class CultureController {
 		
 		//model.addAttribute("typeMap", typeMap);
 		model.addAttribute("culture", culture);
+		model.addAttribute("contentid", culture.getContentid());
+		model.addAttribute("overview", culture.getOverview());
 		
 		return "culture/cultureDetail";
 	}

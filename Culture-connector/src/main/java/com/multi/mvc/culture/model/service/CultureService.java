@@ -56,8 +56,8 @@ public class CultureService {
 	
 	
 	@Transactional(rollbackFor = Exception.class)
-	public Culture findCultureById(int contentid) {
-		Culture culture = mapper.selectCultureById(contentid);
+	public Culture findCultureByContentId(int contentid) {
+		Culture culture = mapper.selectCultureByContentId(contentid);
 	
 		return culture;
 	}

@@ -17,7 +17,7 @@ public interface CultureMapper {
 	
 	int selectCount();
 	
-	Culture selectCultureById(int contentid);
+	Culture selectCultureByContentId(int contentid);
 	
 	void createTableCulture();
 	

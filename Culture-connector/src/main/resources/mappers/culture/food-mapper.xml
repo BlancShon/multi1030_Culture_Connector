@@ -124,4 +124,25 @@
   		)
 	</foreach>
 	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 	<select id="selectFoodByContentId" parameterType="int" resultMap="FoodResultMap">
+		SELECT  
+			contentid, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY, tel, FIRSTMENU, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+			
+			FROM culture where contentid = #{contentid}
+		
+		
+	</select> -->
+	
+	
+	
+	
+	
 </mapper>
