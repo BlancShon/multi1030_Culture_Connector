@@ -26,7 +26,7 @@ public class FestivalController {
 	
 	
 	
-	@Bean(initMethod = "init1")
+//	@Bean(initMethod = "init1")
 	public void init1() {
 		log.debug("Festival Controller init 확인");
 		

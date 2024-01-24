@@ -24,7 +24,7 @@ public class TouristAttractionController {
 
 //    List<TouristAttraction> list = OpenApiManagerForXml_TouristAttraction.parse();
 
-    @Bean(initMethod = "init3")
+//    @Bean(initMethod = "init3")
     public void init3() {
     	service.createTable();
 //    	if(service.count() == 0) {

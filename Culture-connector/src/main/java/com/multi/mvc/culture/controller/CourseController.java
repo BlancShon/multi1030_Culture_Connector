@@ -23,7 +23,7 @@ public class CourseController {
 	private CourseService service;
 	
 	
-	@Bean(initMethod = "init5")
+//	@Bean(initMethod = "init5")
 	public void init5() {
 		log.debug("Course Controller 확인");
 		
