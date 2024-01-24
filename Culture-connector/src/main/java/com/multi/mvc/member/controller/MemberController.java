@@ -1,8 +1,13 @@
 package com.multi.mvc.member.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.multi.mvc.google.service.GoogleService;
 import com.multi.mvc.kakao.service.KaKaoService;
@@ -30,6 +37,8 @@ import lombok.extern.slf4j.Slf4j;
 @SessionAttributes("loginMember") // loginMember를 model에서 취급할때 세션으로 처리하는 어노테이션
 public class MemberController {
 	
+	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
+    
 	@Autowired
 	private MemberService service;
 	
@@ -255,48 +264,40 @@ public class MemberController {
 	}
 	
 	// 구글 관련
-		@GetMapping("/member/enroll/google")
-		public String enrollGoogle(Model model, String code) {
-		    log.info("Google sign-up page request");
-		    if (code != null) {
-		        try {
-		            String enrollUrl = "http://localhost/mvc/member/enroll/google";
-		            System.out.println("code : " + code);
-		            String token = googleService.getToken(code, enrollUrl);
-		            System.out.println("token : " + token);
-		            Map<String, Object> map = googleService.getUserInfo(token);
-		            System.out.println(map);
-		            model.addAttribute("googleMap", map);
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		    }
-		    return "member/memberEnroll";
-		}
+	@GetMapping("/googlelogin")
+    public RedirectView redirectToGoogleLogin() {
+        String googleAuthURL = googleService.generateGoogleAuthorizationURL();
+        log.debug("Redirecting to Google login: {}", googleAuthURL); // Correct use of logging placeholders
+        return new RedirectView(googleAuthURL);
+    }
+    
+		
+	@GetMapping("/member/enroll/google")
+    public String handleGoogleRedirect(@RequestParam("code") String authorizationCode, HttpSession session, RedirectAttributes redirectAttributes) {
+        try {
+            log.info("Received Google redirect with code: {}", authorizationCode); // Log the received authorization code
+            
+            String accessToken = googleService.exchangeCodeForAccessToken(authorizationCode);
+            log.debug("Obtained access token: {}", accessToken); // Log the obtained access token
 
-		@GetMapping("/googleLogin")
-		public String googleLogin(Model model, String code) {
-		    log.info("Google login request");
-		    if (code != null) {
-		        try {
-		            String loginUrl = "http://localhost/mvc/googleLogin";
-		            String token = googleService.getToken(code, loginUrl);
-		            Map<String, Object> map = googleService.getUserInfo(token);
-		            String googleToken = (String) map.get("id"); // Adjust the key based on Google's response
-		            Member loginMember = service.loginGoogle(googleToken);
+            Map<String, Object> userInfo = googleService.getUserInfo(accessToken);
+            log.debug("Fetched user info: {}", userInfo); // Log the fetched user info
 
-		            if (loginMember != null) { // Login successful
-		                model.addAttribute("loginMember", loginMember); // Code to be stored in session, reason: @SessionAttributes
-		                return "redirect:/";
-		            }
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		    }
-		    model.addAttribute("msg", "Login failed.");
-		    model.addAttribute("location", "/");
-		    return "common/msg";
-		}
+            // Process userInfo to either create a new user or update an existing one
+            Member member = service.processGoogleUser(userInfo);
+            log.info("Processed Google user info for member: {}", member.getId()); // Adjust to log relevant member info
+
+            // Set user information in session to keep the user logged in
+            session.setAttribute("loginMember", member);
+            log.info("User logged in and session updated for member: {}", member.getId()); // Adjust as necessary
+
+            return "redirect:/";
+        } catch (Exception e) {
+            log.error("Failed to handle Google login redirect", e); // Log the exception
+            redirectAttributes.addFlashAttribute("error", "Failed to log in with Google.");
+            return "redirect:/loginForm";
+        }
+    }
 		
 }
 

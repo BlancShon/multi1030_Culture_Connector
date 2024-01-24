@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
 
-    <link rel="shortcut icon" href="assets/images/logo-culture-light.png" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo-culture-light.png" />
 
     <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
         <jsp:param value="회원가입" name="title"/>
