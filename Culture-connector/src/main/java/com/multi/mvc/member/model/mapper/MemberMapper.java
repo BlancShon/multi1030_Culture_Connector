@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.multi.mvc.member.model.vo.Member;
 
@@ -31,5 +32,7 @@ public interface MemberMapper {
 	
 	Member selectMemberByKakaoToken(String token);
 	Member selectMemberByGoogleToken(String googleToken);
+	@Select("SELECT * FROM member WHERE email = #{email}")
+    Member selectMemberByEmail(String email);
 	
 }

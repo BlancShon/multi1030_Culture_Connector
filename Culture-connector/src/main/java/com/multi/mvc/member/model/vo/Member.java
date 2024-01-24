@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
-	private int    mno;         // mNo라던가 mNO 표기 하지 말고, mno와 같이 소문자로 통일 할 것! -> jsp에서 el 호환을 위해
+	private int    mno;         
 	private String id;
 	private String password;
 	private String role;
@@ -21,7 +21,7 @@ public class Member {
 	private String hobby;
 	private String status;
 	private String kakaoToken;
-	private String googleToken; // 구글에서 인증된 token을 저장하는 장소 
+	private String googleToken;  
 	private Date   enrollDate;
 	private Date   modifyDate;
 }

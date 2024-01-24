@@ -76,28 +76,19 @@
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
               <div style="margin-left:80px; margin-top:20px">
-=======
-              
-			  <div style="margin-left:90px; margin-top:20px">
->>>>>>> branch 'master' of https://github.com/BlancShon/multi1030_Culture_Connector
               <h6>소셜 계정으로 가입하기(  
-              <a style="border: none;" href="">구글/</a>
+              <a style="border: none;" href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=279034163666-29bpefgl96tg0c3tosugfbrf9d3bgogj.apps.googleusercontent.com&redirect_uri=http://localhost:8080/mvc/member/enroll/google&scope=profile email">구글/</a>
               <a style="border: none;" href="">네이버/</a>
               <a style="border: none;" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=28661b9849fd4704ad288e59fe9b571c&redirect_uri=http://localhost:8080/mvc/member/enroll/kakao">카카오</a>) </h6>
               </div>
               <div class="row">
                 <div class="col-12">
-<<<<<<< HEAD
                   <p class="mt-5 mb-5" id="socialLoginMsg" style="text-align:center;">소셜 로그인</p>
 				
-=======
-                  <p class="mt-5 mb-5" id="socialLoginMsg">소셜 로그인</p>
-
->>>>>>> branch 'master' of https://github.com/BlancShon/multi1030_Culture_Connector
+                  
                   <div class="d-flex gap-2 gap-sm-3 justify-content-center">
-                    <a href="#!" class="btn btn-lg btn-outline-dark p-3 lh-1">
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=279034163666-29bpefgl96tg0c3tosugfbrf9d3bgogj.apps.googleusercontent.com&redirect_uri=http://localhost:8080/mvc/member/enroll/google&scope=profile email" class="btn btn-lg btn-outline-dark p-3 lh-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"  class="bi bi-google" viewBox="0 0 16 16">
                         <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
                       </svg>
@@ -109,11 +100,7 @@
                         </svg>
                     </a>
 
-<<<<<<< HEAD
                    <a id="btn" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=28661b9849fd4704ad288e59fe9b571c&redirect_uri=http://localhost:8080/mvc/kakaoLogin" class="btn btn-lg btn-outline-success p-3 lh-1" style="">
-=======
-                    <a id="btn" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=28661b9849fd4704ad288e59fe9b571c&redirect_uri=http://localhost:8080/mvc/kakaoLogin" class="btn btn-lg btn-outline-success p-3 lh-1" style="">카카오로그인 
->>>>>>> branch 'master' of https://github.com/BlancShon/multi1030_Culture_Connector
                    		
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="bi bi-kakao" width="28" height="28" >  
                             <path d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3zm5.907 8.06l1.47-1.424a.472.472 0 0 0-.656-.678l-1.928 1.866V9.282a.472.472 0 0 0-.944 0v2.557a.471.471 0 0 0 0 .222V13.5a.472.472 0 0 0 .944 0v-1.363l.427-.413 1.428 2.033a.472.472 0 1 0 .773-.543l-1.514-2.155zm-2.958 1.924h-1.46V9.297a.472.472 0 0 0-.943 0v4.159c0 .26.21.472.471.472h1.932a.472.472 0 1 0 0-.944zm-5.857-1.092l.696-1.707.638 1.707H9.092zm2.523.488l.002-.016a.469.469 0 0 0-.127-.32l-1.046-2.8a.69.69 0 0 0-.627-.474.696.696 0 0 0-.653.447l-1.661 4.075a.472.472 0 0 0 .874.357l.33-.813h2.07l.299.8a.472.472 0 1 0 .884-.33l-.345-.926zM8.293 9.302a.472.472 0 0 0-.471-.472H4.577a.472.472 0 1 0 0 .944h1.16v3.736a.472.472 0 0 0 .944 0V9.774h1.14c.261 0 .472-.212.472-.472z"/> 

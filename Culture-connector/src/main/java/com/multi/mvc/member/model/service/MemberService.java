@@ -1,5 +1,8 @@
 package com.multi.mvc.member.model.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +17,9 @@ import com.multi.mvc.member.model.vo.Member;
 
 @Service
 public class MemberService {
+	
+	private static final Logger log = LoggerFactory.getLogger(MemberService.class);
+
 
 	// 테스트 코드임을 알리는 부분 -> 원래는 공통부나 다른곳에서 만들어야한다.
 	boolean isTest = true;
@@ -120,18 +126,51 @@ public class MemberService {
 		return mapper.deleteMember(mno);
 	}
 	
-	// 구글 관련
-		public Member loginGoogle(String googleToken) {
-		    Member member = mapper.selectMemberByGoogleToken(googleToken);
-		    if (member != null) {
-		        // When successful!
-		        return member;
-		    } else {
-		        // When authentication fails
-		        return null;
-		    }
-		}
 	
+	
+	
+	
+	// 구글 관련
+	
+	public Member loginGoogle(String googleToken) {
+        log.debug("Attempting to log in with Google token: {}", googleToken);
+        Member member = mapper.selectMemberByGoogleToken(googleToken);
+        if (member != null) {
+            log.info("Login successful for member with ID: {}", member.getId());
+            return member;
+        } else {
+            log.warn("Login failed with Google token: {}", googleToken);
+            return null;
+        }
+    }
+
+
+	public Member processGoogleUser(Map<String, Object> userInfo) {
+        log.debug("Processing Google user info: {}", userInfo);
+        String email = (String) userInfo.get("email");
+        Member member = mapper.selectMemberByEmail(email);
+
+        if (member == null) {
+            log.info("No existing member found for email: {}, creating a new one", email);
+            member = new Member();
+            // Set properties from userInfo
+            member.setId(email);
+            member.setEmail(email);
+            log.debug("Member retrieved by email {}: {}", email, member);
+            member.setName((String) userInfo.get("name"));
+            // Additional properties setting
+            member.setPassword(pwEncoder.encode("defaultPassword"));
+            mapper.insertMember(member);
+            log.info("New member created with ID: {}", member.getId());
+        } else {
+            log.info("Existing member found for email: {}, updating information", email);
+            // Update member information
+            mapper.updateMember(member);
+            log.info("Member updated with ID: {}", member.getId());
+        }
+
+        return member;
+    }
 }
 
 
