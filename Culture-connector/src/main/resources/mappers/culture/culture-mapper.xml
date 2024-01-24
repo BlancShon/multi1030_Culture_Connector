@@ -173,7 +173,7 @@
 	
 	
 	<select id="selectCultureList" parameterType="CultureParam" resultMap="cultureResultMap">
-		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2
+		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
 		FROM CULTURE
 		 
 			
@@ -248,9 +248,9 @@
 			</if>
 	</select>
 	
-	<select id="selectCultureByNo" parameterType="int" resultMap="cultureResultMap">
+	<select id="selectCultureByContentId" parameterType="int" resultMap="cultureResultMap">
 		SELECT  
-			contentid, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY, tel
+			contentid, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY, tel, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
 			
 			FROM culture where contentid = #{contentid}
 		

@@ -11,50 +11,44 @@
 <head>
 
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/choices.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/nouislider.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/all.min.css"> --%>
+  <%--   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap-icons.css"> --%>
+  <%--   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/flatpickr.min.css"> --%>
+ <%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/choices.min.css"> --%>
+<%--     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/nouislider.css"> --%>
+	<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+   <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	
 	    <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet" />
+<%--     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet" /> --%>
 
 
 </head>
 
-
-<style>
-/*  	section#board-list-container{width:600px; margin:0 auto; text-align:center;}
-	section#board-list-container h2{margin:10px 0;}
-	table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
-	table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
-	input#btn-add{float:right; margin: 0 0 15px;}
-	div#pageBar{margin-top:10px; text-align:center; background-color:rgba(0, 188, 212, 0.3);}
-    .blue_window { display: inline-block; width: 366px;  border: 3px solid #6ccaf5; }
-    .input_text { width: calc( 100% - 14px); margin: 6px 7px; border: 0;  background: #007dd100; font-weight: bold;font-size: 16px; outline: none;}
-    .sch_smit {width: 54px; height: 40px; margin: 0; border: 0; vertical-align: top; background: #007dd1; color: white; font-weight: bold; border-radius: 1px; cursor: pointer;}
-    .sch_smit:hover {background: #007dd1;}
-    #board-list-container h2{text-align: center; margin-top: 5px; margin-bottom: 5px}  */
-    
-    
-
-</style>
-
-	
-	
 <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="문화시설 목록" name="title"/>
 </jsp:include>
 
 
+<style>
 
-		 <title>문화 테마 - 문화 관광지 html입니다.</title>
+.navbar navbar-expand-xl {
+
+background-color: white !important;
+
+
+
+}
+
+
+</style>
+
+
+
+		<!--  <title>문화 테마 - 문화 관광지 html입니다.</title> -->
 		 
 		 
 		  
@@ -215,7 +209,7 @@
                                             <!-- Card title and rating -->
                                             <div class="col-sm-6 col-md-4 col-xl-6">
                                                 <h5 class="card-title mb-2">
-                                                <a href="${path}/culture/detail?no=${item.contentid}">
+                                                <a href="${path}/culture/detail?contentid=${item.contentid}">
                                                 <c:out value="${item.title}"/></a>
                                                 </h5>
                                                 <!-- Nav divider -->
@@ -317,21 +311,9 @@
 			</div> --%>
 		<!-- page부 끝 -->
 
-					
-					
-					 
-					
-				
-    
-				
-
-
     </section>
 
     </main>
-
-
-
 
 
 
@@ -364,7 +346,7 @@ $(".form-check-input").change(function(){
 	  }
 	});
 	
-console.log(document.location.href)
+
 </script>
 
 <script type="text/javascript">
