@@ -215,7 +215,7 @@
                                             <!-- Card title and rating -->
                                             <div class="col-sm-6 col-md-4 col-xl-6">
                                                 <h5 class="card-title mb-2">
-                                                <a href="${path}/culture/detail?no=${item.cno}">
+                                                <a href="${path}/culture/detail?no=${item.contentid}">
                                                 <c:out value="${item.title}"/></a>
                                                 </h5>
                                                 <!-- Nav divider -->

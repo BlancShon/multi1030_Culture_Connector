@@ -21,6 +21,8 @@ public class ApiSearchInfo {
 	public static final String LEEBYUNG_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
 	// 김진경님 서비스키
 	public static final String KIMJIN_KEY="YTJQhiGqFaJcSgNyq0wvDHuRUmE56hVRG63knwqWhvJrdeidrPvz4XZeoCVamdcKeml7TDUsG7qGCcdSqxa8zg==";
+	// 김진경님 서비스키 2
+	public static final String KIMJIN_KEY2="QUTEmhGKzYJJsg44vsO8qEM2FRolXGXxh9IJDu6zCewqNMvT1wKBCshsL38%2FLplwjaEKmMQngsdJZ9VkZ%2BW8cw%3D%3D";
 	// 박현님 서비스키
 	public static final String PARKHYUN_KEY="yX2RtRptCoLL/kspIFHuDPrRpow4DHVtbw+NJDatd/cuSRWrPN4IcIivuC6y+O68h2uzkJOdWltsrYjQbiEqaA==";
 	
@@ -114,7 +116,9 @@ public class ApiSearchInfo {
 			serviceKey = LEEBYUNG_KEY;
 		} else if (name.equals("김진경")) {
 			serviceKey = KIMJIN_KEY;
-		} else if (name.equals("박현")) {
+		} else if (name.equals("김진경2")) { 
+			serviceKey = KIMJIN_KEY2;
+		}else if (name.equals("박현")) {
 			serviceKey = PARKHYUN_KEY;
 		} else if (name.equals("고재목2")) {
 			serviceKey = KOJAE_KEY2;

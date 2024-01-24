@@ -173,7 +173,7 @@
 	
 	
 	<select id="selectCultureList" parameterType="CultureParam" resultMap="cultureResultMap">
-		SELECT  CNO, TITLE, ADDR1, firstimage, firstimage2
+		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2
 		FROM CULTURE
 		 
 			
@@ -208,7 +208,7 @@
 			    where ADDR1 LIKE '%제주%' 
 			</if>
 			
-		ORDER BY CNO LIMIT ${limit} OFFSET ${offset};
+		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	<select id="selectCultureCount" parameterType="CultureParam" resultType="int">
@@ -250,9 +250,9 @@
 	
 	<select id="selectCultureByNo" parameterType="int" resultMap="cultureResultMap">
 		SELECT  
-			CNO, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY, tel
+			contentid, TITLE, ADDR1, firstimage, firstimage2,MAPX, MAPY, tel
 			
-			FROM culture where CNO = #{cno}
+			FROM culture where contentid = #{contentid}
 		
 		
 	</select>
