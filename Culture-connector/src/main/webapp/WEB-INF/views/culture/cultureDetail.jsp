@@ -440,8 +440,8 @@ Footer START -->
 
 <script type="text/javascript">
 
-Kakao.init('bb83919493996c6c554671877067a90a');
-console.log(location.href)
+/* Kakao.init('bb83919493996c6c554671877067a90a');
+console.log(location.href) */
 </script>
 
 
@@ -450,10 +450,7 @@ console.log(location.href)
 Kakao.init('bb83919493996c6c554671877067a90a'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
 
-<a id="kakaotalk-sharing-btn" href="javascript:;">
-  <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
-    alt="카카오톡 공유 보내기 버튼" />
-</a>
+
 
 <script>
 

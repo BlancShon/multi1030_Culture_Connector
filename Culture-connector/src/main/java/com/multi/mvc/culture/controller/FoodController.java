@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.api.OpenApiManagerForXml_food;
 //import com.multi.mvc.common.util.PageInfo;
@@ -27,7 +28,7 @@ public class FoodController {
 	
 //	List<Food> FoodList = OpenApiManagerForXml_food.parse();
 	
-	private static Culture food;
+	private  Food food;
 	
 	@Bean(initMethod = "init2")
 	public void init2() {
@@ -39,7 +40,7 @@ public class FoodController {
 	}
 	
 	@GetMapping("/food/list")
-	public String list(Model model, Culture food) {
+	public String list(Model model, Food food) {
 		
 		
 		
@@ -57,6 +58,35 @@ public class FoodController {
     public String food() {
         return "/culture/food"; // This forwards to /WEB-INF/views/culture/food.jsp
     }
+	
+	
+	@RequestMapping("/food/detail")
+	public String detailView() {
+			
+//		try {
+//			food = service.findCultureByContentId(contentid);
+//			System.out.println("culture = " + culture);
+//		} catch (Exception e) {}
+//		if(food == null) {
+//			return "redirect:error";
+//		}
+//		
+//		//model.addAttribute("typeMap", typeMap);
+//		model.addAttribute("food", food);
+//		model.addAttribute("contentid", food.getContentid());
+//		model.addAttribute("overview", food.getOverview());
+		
+		return "culture/food_detail";
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 
 }
