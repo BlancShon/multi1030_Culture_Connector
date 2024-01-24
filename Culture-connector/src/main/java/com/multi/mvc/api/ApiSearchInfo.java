@@ -39,7 +39,7 @@ public class ApiSearchInfo {
 	public static final String OVERVIEW_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&overviewYN=Y&_type=json&defaultYN=Y";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=10";
+	public static String numOfRows = "numOfRows=100";
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
