@@ -29,6 +29,8 @@ public class ApiSearchInfo {
 	
 	// 페스티벌 기본 url 입니다
 	public static final String FESTIVAL_URL = "https://apis.data.go.kr/B551011/KorService1/searchFestival1?";
+	// 이벤트 공연 필수 url 입니다
+	public static final String EVENT_URL = "https://apis.data.go.kr/B551011/KorService1/areaBasedSyncList1?cat2=A0208&";
 	// 관광정보 동기화 목록 조회 기본 url 입니다.
 	public static final String AREA_BASED_URL = "https://apis.data.go.kr/B551011/KorService1/areaBasedSyncList1?";
 	// 지역 코드 조회 기본 url 입니다.
@@ -41,7 +43,7 @@ public class ApiSearchInfo {
 	public static final String OVERVIEW_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&overviewYN=Y&_type=json&defaultYN=Y";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=100";
+	public static String numOfRows = "numOfRows=10";
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
@@ -78,9 +80,12 @@ public class ApiSearchInfo {
 	
 	// 페스티발 필수 url 
 	public static String getFestivalURL() {
-		StringBuffer sb = new StringBuffer(FESTIVAL_URL);
-		return sb.append("numOfRows=300").append(mobileOs).append(mobileApp)
-				.append(type).append(getServiceKey("고재목3")).append(eventStartDate()).toString();
+		return requiredValueURL(FESTIVAL_URL).append(eventStartDate()).toString();
+	}
+	
+	// 이벤트 필수 url
+	public static String getEventURL() {
+		return requiredValueURL(EVENT_URL).toString();
 	}
 	
 	// 컨텐트 타입 별 url 해결사
@@ -105,6 +110,8 @@ public class ApiSearchInfo {
 	public static String eventStartDate() {
 		return "&eventStartDate=" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")).toString();
 	}
+	
+
 	
 	public static String getServiceKey(String name) {
 		String serviceKey = null;

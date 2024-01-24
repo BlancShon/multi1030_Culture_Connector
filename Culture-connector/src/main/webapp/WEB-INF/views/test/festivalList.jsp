@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>공연행사 목록</title>
+    <title>축제 목록</title>
     <style>
         table {
             border-collapse: collapse;
@@ -32,7 +32,7 @@
 	<h3><a href="${path}/">홈</a></h3>
          <h3><a href="${path}/dbsave">데이터베이스</a></h3>
 
-    <h2>공연 행사 목록</h2>
+    <h2>축제 목록</h2>
 
    <table>
     <thead>
@@ -58,6 +58,7 @@
             <th>TEL</th>
             <th>TITLE</th>
             <th>ZIPCODE</th>
+            <th>OVERVIEW</th>
             <th>SPONSOR1</th>
             <th>SPONSOR1TEL</th>
             <th>SPONSOR2</th>
@@ -127,6 +128,7 @@
                     <td><c:out value="${item.tel}" /></td>
                     <td><c:out value="${item.title}" /></td>
                     <td><c:out value="${item.zipcode}" /></td>
+                    <td><c:out value="${item.overview}" /></td>
 					<td><c:out value="${item.sponsor1}" /></td>
 					<td><c:out value="${item.sponsor1tel}" /></td>
 					<td><c:out value="${item.sponsor2}" /></td>

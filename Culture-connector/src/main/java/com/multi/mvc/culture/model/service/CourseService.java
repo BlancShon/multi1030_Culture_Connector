@@ -17,23 +17,44 @@ public class CourseService {
 	@Autowired
 	private CourseMapper mapper;
 	
-	public void dropTable() {
-		mapper.deleteTableCourse();
-	}
-	
 	public void createTable() {
 		mapper.createTableCourse();
 	}
 	
 	public void initCourse() {
-		mapper.initCourse(ApiParsing.parseAndExportToTheList(Course.class));
+		List<Course> list = ApiParsing.parseAndExportToTheListAdvanced(Course.class);
+		for(Course item : list) {
+			try {
+				mapper.insertCourse(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public int count() {
 		return mapper.selectCount();
 	}
 
-	public List<Course> showCourseTable() {
-		return mapper.selectCourse();
+	public List<Course> getCourseTable() {
+		return mapper.selectTable();
+	}
+	
+	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
+//	 @Transactional(noRollbackFor = SQLException.class)
+	public void saveData(String name) {
+		List<Course> list = ApiParsing.parseAndExportToTheListAdvanced(Course.class, name);
+		for(Course item : list) {
+			try {
+				mapper.insertCourse(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	// 데이터 리스트를 보여주는 메소드 임시입니다
+	public List<Course> getListForDB() {
+		return mapper.selectTable();
 	}
 }
+

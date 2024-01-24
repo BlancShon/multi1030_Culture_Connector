@@ -12,11 +12,11 @@ public interface FestivalMapper {
 		
 	void createTableFestival();
 	
-	void initFestival(List<Festival> list);
-	
 	int selectCount();
 	
 	List<Festival> testList(SearchForm searchForm);
 
-	List<Festival> selectFestival();
+	List<Festival> selectTable();
+
+	void insertFestival(Festival item);
 }

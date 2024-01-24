@@ -42,7 +42,7 @@
 	    <result property="chkpetleports" column="CHKPETLEPORTS"/>
 	    <result property="chkcreditcardleports" column="CHKCREDITCARDLEPORTS"/>
 	    
-	     <result property="image0" column="IMAGE0"/>
+	    <result property="image0" column="IMAGE0"/>
 	    <result property="image1" column="IMAGE1"/>
 	    <result property="image2" column="IMAGE2"/>
 	    <result property="image3" column="IMAGE3"/>

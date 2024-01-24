@@ -1,5 +1,7 @@
 package com.multi.mvc.culture.model.vo;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -10,31 +12,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Festival {
+public class Festival extends CultureParent  {
 	
-	private int fno;
 	private int contentid;
-	private int contenttypeid;
-	private String addr1;
-	private String addr2;
-	private int booktour;
-	private String cat1;
-	private String cat2;
-	private String cat3;
-	private String createdtime;
-	private String eventstartdate;
-	private String eventenddate;
-	private String firstimage;
-	private String firstimage2;
-	private String cpyrhtDivCd;
-	private String mapx;
-	private String mapy;
-	private int mlevel;
-	private String modifiedtime;
-	private int areacode;
-	private int sigungucode;
-	private String tel;
-	private String title;
+    private int contenttypeid;
+	private String sponsor1;
+    private String sponsor1tel;
+    private String sponsor2;
+    private String sponsor2tel;
+    private Date eventenddate;
+    private String playtime;
+    private String eventplace;
+    private String eventhomepage;
+    private String agelimit;
+    private String bookingplace;
+    private String placeinfo;
+    private String subevent;
+    private String program;
+    private Date eventstartdate;
+    private String usetimefestival;
+    private String discountinfofestival;
+    private String spendtimefestival;
+    private String festivalgrade;
 	
 	
 	

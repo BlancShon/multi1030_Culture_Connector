@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>레저스포츠 목록</title>
+    <title>코스 목록</title>
     <style>
         table {
             border-collapse: collapse;
@@ -32,7 +32,7 @@
 	<h3><a href="${path}/">홈</a></h3>
          <h3><a href="${path}/dbsave">데이터베이스</a></h3>
 
-    <h2>레포츠</h2>
+    <h2>코스 목록</h2>
 
     <table>
     <thead>
@@ -58,20 +58,11 @@
             <th>TEL</th>
             <th>TITLE</th>
             <th>ZIPCODE</th>
-            <th>OPENPERIOD</th>
-            <th>RESERVATION</th>
-            <th>INFOCENTERLEPORTS</th>
-            <th>SCALELEPORTS</th>
-            <th>ACCOMCOUNTLEPORTS</th>
-            <th>RESTDATELEPORTS</th>
-            <th>USETIMELEPORTS</th>
-            <th>USEFEELEPORTS</th>
-            <th>EXPAGERANGELEPORTS</th>
-            <th>PARKINGLEPORTS</th>
-            <th>PARKINGFEELEPORTS</th>
-            <th>CHKBABYCARLEPORTS</th>
-            <th>CHKPETLEPORTS</th>
-            <th>CHKCREDITCARDLEPORTS</th>
+            <th>INFOCENTERTOURCOURSE</th>
+            <th>SCHEDULE</th>
+            <th>TAKETIME</th>
+            <th>THEME</th>
+            <th>DISTANCE</th>
             <th>IMAGE0</th>
             <th>IMAGE1</th>
             <th>IMAGE2</th>
@@ -123,20 +114,11 @@
                     <td><c:out value="${item.tel}"/></td>
                     <td><c:out value="${item.title}"/></td>
                     <td><c:out value="${item.zipcode}"/></td>
-                    <td><c:out value="${item.openperiod}"/></td>
-                    <td><c:out value="${item.reservation}"/></td>
-                    <td><c:out value="${item.infocenterleports}"/></td>
-                    <td><c:out value="${item.scaleleports}"/></td>
-                    <td><c:out value="${item.accomcountleports}"/></td>
-                    <td><c:out value="${item.restdateleports}"/></td>
-                    <td><c:out value="${item.usetimeleports}"/></td>
-                    <td><c:out value="${item.usefeeleports}"/></td>
-                    <td><c:out value="${item.expagerangeleports}"/></td>
-                    <td><c:out value="${item.parkingleports}"/></td>
-                    <td><c:out value="${item.parkingfeeleports}"/></td>
-                    <td><c:out value="${item.chkbabycarriageleports}"/></td>
-                    <td><c:out value="${item.chkpetleports}"/></td>
-                    <td><c:out value="${item.chkcreditcardleports}"/></td>
+                    <td><c:out value="${item.infocentertourcourse}"/></td>
+                    <td><c:out value="${item.schedule}"/></td>
+                    <td><c:out value="${item.taketime}"/></td>
+                    <td><c:out value="${item.theme}"/></td>
+                    <td><c:out value="${item.distance}"/></td>
                     <td><img src="<c:out value="${item.image0}"/>" height="200px" alt="이미지 설명"/></td>
                     <td><img src="<c:out value="${item.image1}"/>" height="200px" alt="이미지 설명"/></td>
                     <td><img src="<c:out value="${item.image2}"/>" height="200px" alt="이미지 설명"/></td>
@@ -166,6 +148,6 @@
         </c:if>
     </tbody>
 </table>
-
+					
       </body>
   </html>

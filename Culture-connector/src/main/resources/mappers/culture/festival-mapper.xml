@@ -4,29 +4,71 @@
 <mapper namespace="com.multi.mvc.culture.model.mapper.FestivalMapper">
 	<resultMap type="Festival" id="festivalResultMap">
 	
-		<result property="fno" column="FNO"/>
-		<result property="addr1" column="ADDR1"/>
-		<result property="addr2" column="ADDR2"/>
-		<result property="booktour" column="BOOKTOUR"/>
-		<result property="cat1" column="CAT1"/>
-		<result property="cat2" column="CAT2"/>
-		<result property="cat3" column="CAT3"/>
 		<result property="contentid" column="CONTENTID"/>
-		<result property="contenttypeid" column="CONTENTTYPEID"/>
-		<result property="createdtime" column="CREATEDTIME"/>
-		<result property="eventstartdate" column="EVENTSTARTDATE"/>
-		<result property="eventenddate" column="EVENTENDDATE"/>
-		<result property="firstimage" column="FIRSTIMAGE"/>
-		<result property="firstimage2" column="FIRSTIMAGE2"/>
-		<result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
-		<result property="mapx" column="MAPX"/>
-		<result property="mapy" column="MAPY"/>
-		<result property="mlevel" column="MLEVEL"/>
-		<result property="modifiedtime" column="MODIFIEDTIME"/>
-		<result property="areacode" column="AREACODE"/>
-		<result property="sigungucode" column="SIGUNGUCODE"/>
-		<result property="tel" column="TEL"/>
-		<result property="title" column="TITLE"/>
+	    <result property="contenttypeid" column="CONTENTTYPEID"/>
+	    <result property="addr1" column="ADDR1"/>
+	    <result property="addr2" column="ADDR2"/>
+	    <result property="areacode" column="AREACODE"/>
+	    <result property="booktour" column="BOOKTOUR"/>
+	    <result property="cat1" column="CAT1"/>
+	    <result property="cat2" column="CAT2"/>
+	    <result property="cat3" column="CAT3"/>
+	    <result property="createdtime" column="CREATEDTIME"/>
+	    <result property="firstimage" column="FIRSTIMAGE"/>
+	    <result property="firstimage2" column="FIRSTIMAGE2"/>
+	    <result property="cpyrhtDivCd" column="CPYRHTDIVCD"/>
+	    <result property="mapx" column="MAPX"/>
+	    <result property="mapy" column="MAPY"/>
+	    <result property="mlevel" column="MLEVEL"/>
+	    <result property="modifiedtime" column="MODIFIEDTIME"/>
+	    <result property="sigungucode" column="SIGUNGUCODE"/>
+	    <result property="tel" column="TEL"/>
+	    <result property="title" column="TITLE"/>
+	    <result property="zipcode" column="ZIPCODE"/>
+	    
+	    <result property="sponsor1" column="SPONSOR1"/>
+	    <result property="sponsor1tel" column="SPONSOR1TEL"/>
+	    <result property="sponsor2" column="SPONSOR2"/>
+	    <result property="sponsor2tel" column="SPONSOR2TEL"/>
+	    <result property="eventenddate" column="EVENTENDDATE"/>
+	    <result property="playtime" column="PLAYTIME"/>
+	    <result property="eventplace" column="EVENTPLACE"/>
+	    <result property="eventhomepage" column="EVENTHOMEPAGE"/>
+	    <result property="agelimit" column="AGELIMIT"/>
+	    <result property="bookingplace" column="BOOKINGPLACE"/>
+	    <result property="placeinfo" column="PLACEINFO"/>
+	    <result property="subevent" column="SUBEVENT"/>
+	    <result property="program" column="PROGRAM"/>
+	    <result property="eventstartdate" column="EVENTSTARTDATE"/>
+	    <result property="usetimefestival" column="USETIMEFESTIVAL"/>
+	    <result property="discountinfofestival" column="DISCOUNTINFOFESTIVAL"/>
+	    <result property="spendtimefestival" column="SPENDTIMEFESTIVAL"/>
+	    <result property="festivalgrade" column="FESTIVALGRADE"/>
+	    
+	    <result property="image0" column="IMAGE0"/>
+	    <result property="image1" column="IMAGE1"/>
+	    <result property="image2" column="IMAGE2"/>
+	    <result property="image3" column="IMAGE3"/>
+	    <result property="image4" column="IMAGE4"/>
+	    <result property="image5" column="IMAGE5"/>
+	    <result property="image6" column="IMAGE6"/>
+	    <result property="image7" column="IMAGE7"/>
+	    <result property="image8" column="IMAGE8"/>
+	    <result property="image9" column="IMAGE9"/>
+	    <result property="image10" column="IMAGE10"/>
+		<result property="image11" column="IMAGE11"/>
+		<result property="image12" column="IMAGE12"/>
+		<result property="image13" column="IMAGE13"/>
+		<result property="image14" column="IMAGE14"/>
+		<result property="image15" column="IMAGE15"/>
+		<result property="image16" column="IMAGE16"/>
+		<result property="image17" column="IMAGE17"/>
+		<result property="image18" column="IMAGE18"/>
+		<result property="image19" column="IMAGE19"/>
+		<result property="image20" column="IMAGE20"/>
+    	<result property="imgCount" column="IMGCOUNT"/>
+    	<result property="overview" column="OVERVIEW"/>
+    	<result property="homepage" column="HOMEPAGE"/>
 		
 	</resultMap>
 	
@@ -41,57 +83,112 @@
 	
 	
 	<insert id="createTableFestival">
-	CREATE TABLE IF NOT EXISTS festival (
-		<!-- CREATE TABLE FESTIVAL( -->
-		    FNO INT AUTO_INCREMENT,
-		    ADDR1 VARCHAR(100),
-		    ADDR2 VARCHAR(100),
-		    BOOKTOUR INT,
-		    CAT1 VARCHAR(100),
-		    CAT2 VARCHAR(100),
-		    CAT3 VARCHAR(100),
-		    CONTENTID INT,
+
+		CREATE TABLE IF NOT EXISTS FESTIVAL (
+		    CONTENTID INT PRIMARY KEY,
 		    CONTENTTYPEID INT,
+		    ADDR1 VARCHAR(255),
+		    ADDR2 VARCHAR(255),
+		    AREACODE INT,
+		    BOOKTOUR INT,
+		    CAT1 VARCHAR(255),
+		    CAT2 VARCHAR(255),
+		    CAT3 VARCHAR(255),
 		    CREATEDTIME VARCHAR(255),
-		    EVENTSTARTDATE DATE,
-		    EVENTENDDATE DATE,
-		    FIRSTIMAGE VARCHAR(100),
-		    FIRSTIMAGE2 VARCHAR(100),
-		    CPYRHTDIVCD VARCHAR(100),
-		    MAPX VARCHAR(100),
-		    MAPY VARCHAR(100),
+		    FIRSTIMAGE VARCHAR(255),
+		    FIRSTIMAGE2 VARCHAR(255),
+		    CPYRHTDIVCD VARCHAR(255),
+		    MAPX VARCHAR(255),
+		    MAPY VARCHAR(255),
 		    MLEVEL INT,
 		    MODIFIEDTIME VARCHAR(255),
-		    AREACODE INT,
 		    SIGUNGUCODE INT,
-		    TEL VARCHAR(100),
-		    TITLE VARCHAR(100),
+		    TEL VARCHAR(255),
+		    TITLE VARCHAR(255),
+		    ZIPCODE VARCHAR(255),
 		    
-		    PRIMARY KEY (FNO)
+		    SPONSOR1 VARCHAR(255),
+		    SPONSOR1TEL VARCHAR(255),
+		    SPONSOR2 VARCHAR(255),
+		    SPONSOR2TEL VARCHAR(255),
+		    EVENTENDDATE DATE,
+		    PLAYTIME VARCHAR(255),
+		    EVENTPLACE VARCHAR(255),
+		    EVENTHOMEPAGE VARCHAR(255),
+		    AGELIMIT VARCHAR(255),
+		    BOOKINGPLACE VARCHAR(255),
+		    PLACEINFO VARCHAR(255),
+		    SUBEVENT VARCHAR(255),
+		    PROGRAM VARCHAR(255),
+		    EVENTSTARTDATE DATE,
+		    USETIMEFESTIVAL TEXT,
+		    DISCOUNTINFOFESTIVAL VARCHAR(255),
+		    SPENDTIMEFESTIVAL VARCHAR(255),
+		    FESTIVALGRADE VARCHAR(255),
+		    
+		    IMAGE0 VARCHAR(255),
+		    IMAGE1 VARCHAR(255),
+		    IMAGE2 VARCHAR(255),
+		    IMAGE3 VARCHAR(255),
+		    IMAGE4 VARCHAR(255),
+		    IMAGE5 VARCHAR(255),
+		    IMAGE6 VARCHAR(255),
+		    IMAGE7 VARCHAR(255),
+		    IMAGE8 VARCHAR(255),
+		    IMAGE9 VARCHAR(255),
+		    IMAGE10 VARCHAR(255),
+		    IMAGE11 VARCHAR(255),
+			IMAGE12 VARCHAR(255),
+			IMAGE13 VARCHAR(255),
+			IMAGE14 VARCHAR(255),
+			IMAGE15 VARCHAR(255),
+			IMAGE16 VARCHAR(255),
+			IMAGE17 VARCHAR(255),
+			IMAGE18 VARCHAR(255),
+			IMAGE19 VARCHAR(255),
+			IMAGE20 VARCHAR(255),
+			IMGCOUNT INT,
+		    OVERVIEW TEXT,
+		    HOMEPAGE TEXT
 		);
+
+
 	</insert>
 	
 	
-	<insert id="initFestival" parameterType="java.util.List">
-		
-		
-	
-	    INSERT INTO FESTIVAL(
-	        FNO, ADDR1, ADDR2, BOOKTOUR, CAT1, CAT2,
-	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, EVENTSTARTDATE,
-	        EVENTENDDATE, FIRSTIMAGE, FIRSTIMAGE2, CPYRHTDIVCD, MAPX,
-	        MAPY, MLEVEL, MODIFIEDTIME, AREACODE, SIGUNGUCODE,
-	        TEL, TITLE
-	    ) VALUES
-	    <foreach collection="list" index="index" item="item" separator=",">
-	        (
-	            0, #{item.addr1}, #{item.addr2}, #{item.booktour}, #{item.cat1}, #{item.cat2},
-	            #{item.cat3}, #{item.contentid}, #{item.contenttypeid}, #{item.createdtime}, #{item.eventstartdate},
-	            #{item.eventenddate}, #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd}, #{item.mapx},
-	            #{item.mapy}, #{item.mlevel}, #{item.modifiedtime}, #{item.areacode}, #{item.sigungucode},
-	            #{item.tel}, #{item.title}
-	        )
-	    </foreach>
+	<insert id="insertFestival" parameterType="Festival">
+		 INSERT INTO FESTIVAL (
+	        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
+	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
+	        FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
+	        SIGUNGUCODE, TEL, TITLE, ZIPCODE,
+	        SPONSOR1, SPONSOR1TEL, SPONSOR2, SPONSOR2TEL,
+	        EVENTENDDATE, PLAYTIME, EVENTPLACE, EVENTHOMEPAGE,
+	        AGELIMIT, BOOKINGPLACE, PLACEINFO, SUBEVENT,
+	        PROGRAM, EVENTSTARTDATE, USETIMEFESTIVAL,
+	        DISCOUNTINFOFESTIVAL, SPENDTIMEFESTIVAL, FESTIVALGRADE,
+	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4,
+	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10,
+	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
+	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
+	        IMGCOUNT, OVERVIEW, HOMEPAGE
+	    ) VALUES (
+            #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
+	        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
+	        #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel},
+	        #{modifiedtime}, #{sigungucode}, #{tel},
+	        #{title}, #{zipcode},
+	        #{sponsor1}, #{sponsor1tel}, #{sponsor2}, #{sponsor2tel},
+	        #{eventenddate}, #{playtime}, #{eventplace}, #{eventhomepage},
+	        #{agelimit}, #{bookingplace}, #{placeinfo}, #{subevent},
+	        #{program}, #{eventstartdate}, #{usetimefestival},
+	        #{discountinfofestival}, #{spendtimefestival}, #{festivalgrade},
+	        #{image0}, #{image1}, #{image2}, #{image3}, #{image4},
+	        #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10},
+	        #{image11}, #{image12}, #{image13}, #{image14}, #{image15},
+	        #{image16}, #{image17}, #{image18}, #{image19}, #{image20},
+	        #{imgCount}, #{overview}, #{homepage} 
+	     );
 	</insert>
 	
 	
@@ -164,21 +261,12 @@
 		
 	</select>
 	
-	<select id="selectFestival" resultType="Festival">
+	<select id="selectTable" resultType="Festival">
 		select * from festival;
 	</select>
 	
 
 </mapper>
-
-
-
-
-
-
-
-
-
 
 
 

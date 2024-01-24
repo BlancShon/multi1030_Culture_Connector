@@ -8,13 +8,12 @@ import com.multi.mvc.culture.model.vo.Course;
 
 @Mapper
 public interface CourseMapper {
-	void deleteTableCourse();
 	
 	void createTableCourse();
 	
-	void initCourse(List<Course> list);
-	
 	int selectCount();
 
-	List<Course> selectCourse();
+	List<Course> selectTable();
+
+	int insertCourse(Course item);
 }

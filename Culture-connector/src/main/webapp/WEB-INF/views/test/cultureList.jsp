@@ -58,7 +58,6 @@
                 <th>TEL</th>
                 <th>TITLE</th>
                 <th>ZIPCODE</th>
-                <th>OVERVIEW</th>
                 <th>SCALE</th>
                 <th>USEFEE</th>
                 <th>DISCOUNTINFO</th>
@@ -123,7 +122,6 @@
 				        <td><c:out value="${item.tel}"/></td>
 				        <td><c:out value="${item.title}"/></td>
 				        <td><c:out value="${item.zipcode}"/></td>
-				        <td><c:out value="${item.overview}"/></td>
 				        <td><c:out value="${item.scale}"/></td>
 				        <td><c:out value="${item.usefee}"/></td>
 				        <td><c:out value="${item.discountinfo}"/></td>

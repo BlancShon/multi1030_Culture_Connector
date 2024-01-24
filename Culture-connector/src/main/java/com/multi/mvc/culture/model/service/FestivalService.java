@@ -24,7 +24,14 @@ public class FestivalService {
 	
 	
 	public void initFestival() {
-		mapper.initFestival((List<Festival>)ApiParsing.parseAndExportToTheList(Festival.class));
+		List<Festival> list = ApiParsing.parseAndExportToTheListAdvanced(Festival.class);
+		for(Festival item : list) {
+			try {
+				mapper.insertFestival(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
@@ -36,7 +43,20 @@ public class FestivalService {
 		return mapper.testList(searchForm);
 	}
 
-	public List<Festival> getFestivalTable() {
-		return mapper.selectFestival();
+	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
+//	 @Transactional(noRollbackFor = SQLException.class)
+	public void saveData(String name) {
+		List<Festival> list = ApiParsing.parseAndExportToTheListAdvanced(Festival.class, name);
+		for(Festival item : list) {
+			try {
+				mapper.insertFestival(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	// 데이터 리스트를 보여주는 메소드 임시입니다
+	public List<Festival> getListForDB() {
+		return mapper.selectTable();
 	}
 }

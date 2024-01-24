@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>문화시설 목록</title>
+    <title>관광지 목록</title>
     <style>
         table {
             border-collapse: collapse;

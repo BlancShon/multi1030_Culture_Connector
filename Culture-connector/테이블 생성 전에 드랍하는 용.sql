@@ -16,8 +16,19 @@ use spring;
 -- 레포츠
 -- drop table leports;
 
+-- 코스
+-- drop table course;
+
 -- 푸드
 -- drop table food;
 
+-- ------------------------------------SELECT 문 ------------------------------------
+select * from festival;
+select * from culture;
+select * from event;
+select * from tourist_attraction;
+select * from leports;
+select * from course;
+select * from food;
 
 

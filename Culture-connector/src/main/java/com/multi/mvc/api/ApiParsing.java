@@ -32,7 +32,7 @@ public class ApiParsing {
 		urlMap.put("Festival", ApiSearchInfo.getFestivalURL());
 		urlMap.put("TouristAttraction", ApiSearchInfo.getContentTypeURL("12") + ApiSearchInfo.getServiceKey("박현"));
 		urlMap.put("Culture", ApiSearchInfo.getContentTypeURL("14") + ApiSearchInfo.getServiceKey("김진경"));
-		urlMap.put("Event", ApiSearchInfo.getContentTypeURL("15") + ApiSearchInfo.getServiceKey("고재목"));
+		urlMap.put("Event", ApiSearchInfo.getEventURL() + ApiSearchInfo.getServiceKey("고재목"));
 		urlMap.put("Course", ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey("고재목2"));
 		urlMap.put("LeisureSports", ApiSearchInfo.getContentTypeURL("28") + ApiSearchInfo.getServiceKey("이병집"));
 		urlMap.put("Food", ApiSearchInfo.getContentTypeURL("39") + ApiSearchInfo.getServiceKey("장성희"));
@@ -176,22 +176,31 @@ public class ApiParsing {
 
 	// 분류없이 타겟에 상세정보까지 주입하는 메서드222 이름 넣는 버전
 	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name) {
+		String className = targetClass.getSimpleName();
 		String contentType = null;
            
-		if (targetClass.getSimpleName().equals("Culture")) {
+		if (className.equals("Culture")) {
 			contentType = "14";
-		} else if (targetClass.getSimpleName().equals("Event")) {
-			contentType = "15";
-		} else if (targetClass.getSimpleName().equals("Course")) {
+		} else if (className.equals("Course")) {
 			contentType = "25";
-		} else if (targetClass.getSimpleName().equals("LeisureSports")) {
+		} else if (className.equals("LeisureSports")) {
 			contentType = "28";
-		} else if (targetClass.getSimpleName().equals("Food")) {
+		} else if (className.equals("Food")) {
 			contentType = "39";
-		} else if (targetClass.getSimpleName().equals("TouristAttraction")) {
+		} else if (className.equals("TouristAttraction")) {
 			contentType = "12";
 		}
-		String targetUrl =  ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
+		
+		String targetUrl = null;
+		if (className.equals("Event")) {
+			targetUrl = ApiSearchInfo.getEventURL() +  ApiSearchInfo.getServiceKey(name);
+		} else if (className.equals("Festival")) {
+			targetUrl = ApiSearchInfo.getFestivalURL() + ApiSearchInfo.getServiceKey(name);
+		} else {
+			targetUrl =  ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
+		}
+		
+		
 		
 		log.info("{} 의 키 사용, 이름 넣는 버전 타겟 유알엘 정보입니다 {}",name, targetUrl);
 		
@@ -708,11 +717,6 @@ public class ApiParsing {
 			}
 		}
 		return list;
-	}
-	
-	public static void main(String[] args) {
-//		 System.out.println("여기를 보십쇼!!!" + ApiSearchInfo.getContentTypeURL("28") + ApiSearchInfo.getServiceKey("이병집"));
-		
 	}
 
 }
