@@ -22,11 +22,18 @@
         th {
             background-color: #f2f2f2;
         }
+       
+		.table-cell {
+		  white-space: nowrap;
+		  overflow: hidden;
+		  text-overflow: ellipsis; /* 텍스트가 너무 길면 생략 (...) 표시 */
+		}
+
     </style>
 </head>
 <body>
 	<h3><a href="${path}/">홈</a></h3>
-         <h3><a href="${path}/dbsave">데이터베이스 저장</a></h3>
+         <h3><a href="${path}/dbsave">데이터베이스</a></h3>
 
     <h2>관광지 목록</h2>
 
@@ -54,6 +61,7 @@
             <th>TEL</th>
             <th>TITLE</th>
             <th>ZIPCODE</th>
+            
             <th>ACCOMCOUNT</th>
             <th>CHKBABYCARRIAGE</th>
             <th>CHKCREDITCARD</th>
@@ -69,6 +77,7 @@
             <th>RESTDATE</th>
             <th>USESEASON</th>
             <th>USETIME</th>
+            
             <th>IMAGE0</th>
             <th>IMAGE1</th>
             <th>IMAGE2</th>
@@ -120,6 +129,7 @@
                     <td><c:out value="${item.tel}"/></td>
                     <td><c:out value="${item.title}"/></td>
                     <td><c:out value="${item.zipcode}"/></td>
+                    
                     <td><c:out value="${item.accomcount}"/></td>
                     <td><c:out value="${item.chkbabycarriage}"/></td>
                     <td><c:out value="${item.chkcreditcard}"/></td>
@@ -135,35 +145,40 @@
                     <td><c:out value="${item.restdate}"/></td>
                     <td><c:out value="${item.useseason}"/></td>
                     <td><c:out value="${item.usetime}"/></td>
-                    <td><img src="<c:out value="${item.image0}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image1}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image2}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image3}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image4}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image5}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image6}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image7}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image8}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image9}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image10}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image11}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image12}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image13}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image14}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image15}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image16}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image17}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image18}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image19}"/>" height="200px" alt="이미지 설명"/></td>
-			        <td><img src="<c:out value="${item.image20}"/>" height="200px" alt="이미지 설명"/></td>
+                    
+                   <!-- 이미지 부분 -->
+					<td><img src="<c:out value="${item.image0}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image1}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image2}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image3}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image4}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image5}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image6}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image7}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image8}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image9}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image10}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image11}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image12}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image13}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image14}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image15}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image16}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image17}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image18}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image19}"/>" height="200px" alt="이미지 설명"/></td>
+					<td><img src="<c:out value="${item.image20}"/>" height="200px" alt="이미지 설명"/></td>
                     <td><c:out value="${item.imgCount}"/></td>
-                    <td><c:out value="${item.overview}"/></td>
+                    <td class="table-cell"><c:out value="${item.overview}"/></td>
                     <td><c:out value="${item.homepage}"/></td>
                 </tr>
             </c:forEach>
         </c:if>
     </tbody>
 </table>
+
+                    
+
                     
 
       </body>

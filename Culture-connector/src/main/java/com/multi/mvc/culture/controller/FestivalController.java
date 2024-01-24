@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.service.FestivalService;
-import com.multi.mvc.culture.model.vo.Event;
 import com.multi.mvc.culture.model.vo.Festival;
 import com.multi.mvc.culture.model.vo.SearchForm;
 

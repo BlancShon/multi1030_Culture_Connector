@@ -26,6 +26,7 @@
 	    <result property="tel" column="TEL"/>
 	    <result property="title" column="TITLE"/>
 	    <result property="zipcode" column="ZIPCODE"/>
+	    
 	    <result property="openperiod" column="OPENPERIOD"/>
 	    <result property="reservation" column="RESERVATION"/>
 	    <result property="infocenterleports" column="INFOCENTERLEPORTS"/>
@@ -63,6 +64,8 @@
 		<result property="image19" column="IMAGE19"/>
 		<result property="image20" column="IMAGE20"/>
     	<result property="imgCount" column="IMGCOUNT"/>
+    	<result property="overview" column="OVERVIEW"/>
+    	<result property="homepage" column="HOMEPAGE"/>
 	</resultMap>
 
 
@@ -94,6 +97,7 @@
 		    tel VARCHAR(255),
 		    title VARCHAR(255),
 		    zipcode VARCHAR(255),
+		    
 		    openperiod VARCHAR(255),
 		    reservation TEXT,
 		    infocenterleports VARCHAR(255),
@@ -130,12 +134,14 @@
 			IMAGE18 VARCHAR(255),
 			IMAGE19 VARCHAR(255),
 			IMAGE20 VARCHAR(255),
-			IMGCOUNT INT
+			IMGCOUNT INT,
+		    OVERVIEW TEXT,
+		    HOMEPAGE TEXT
 		);
 
 	</insert>
 
-	<insert id="initLeports" parameterType="java.util.List">
+	<insert id="insertLeports" parameterType="LeisureSports">
 	    INSERT INTO LEPORTS (
 	        contentid, contenttypeid, addr1, addr2, areacode, booktour, cat1, cat2, cat3,
 	        createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime,
@@ -145,31 +151,29 @@
 	        chkPetLeports, chkCreditCardLeports,
 	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9,
 	        IMAGE10, IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15, IMAGE16, IMAGE17, IMAGE18,
-	        IMAGE19, IMAGE20, IMGCOUNT
+	        IMAGE19, IMAGE20,  IMGCOUNT, OVERVIEW, HOMEPAGE
 	    ) VALUES
-	    <foreach collection="list" index="index" item="item" separator=",">
 	        (
-	            #{item.contentid}, #{item.contenttypeid}, #{item.addr1}, #{item.addr2},
-	            #{item.areacode}, #{item.booktour}, #{item.cat1}, #{item.cat2}, #{item.cat3},
-	            #{item.createdtime}, #{item.firstimage}, #{item.firstimage2}, #{item.cpyrhtDivCd},
-	            #{item.mapx}, #{item.mapy}, #{item.mlevel}, #{item.modifiedtime},
-	            #{item.sigungucode}, #{item.tel}, #{item.title}, #{item.zipcode},
-	            #{item.openperiod}, #{item.reservation}, #{item.infocenterleports},
-	            #{item.scaleleports}, #{item.accomcountleports}, #{item.restdateleports},
-	            #{item.usetimeleports}, #{item.usefeeleports}, #{item.expagerangeleports},
-	            #{item.parkingleports}, #{item.parkingfeeleports},
-	            #{item.chkbabycarriageleports}, #{item.chkpetleports}, #{item.chkcreditcardleports},
-	            #{item.image0}, #{item.image1}, #{item.image2}, #{item.image3}, #{item.image4},
-	            #{item.image5}, #{item.image6}, #{item.image7}, #{item.image8}, #{item.image9},
-	            #{item.image10}, #{item.image11}, #{item.image12}, #{item.image13}, #{item.image14},
-	            #{item.image15}, #{item.image16}, #{item.image17}, #{item.image18}, #{item.image19},
-	            #{item.image20}, #{item.imgCount}
-	        )
-	    </foreach>;
+	            #{contentid}, #{contenttypeid}, #{addr1}, #{addr2},
+	            #{areacode}, #{booktour}, #{cat1}, #{cat2}, #{cat3},
+	            #{createdtime}, #{firstimage}, #{firstimage2}, #{cpyrhtDivCd},
+	            #{mapx}, #{mapy}, #{mlevel}, #{modifiedtime},
+	            #{sigungucode}, #{tel}, #{title}, #{zipcode},
+	            #{openperiod}, #{reservation}, #{infocenterleports},
+	            #{scaleleports}, #{accomcountleports}, #{restdateleports},
+	            #{usetimeleports}, #{usefeeleports}, #{expagerangeleports},
+	            #{parkingleports}, #{parkingfeeleports},
+	            #{chkbabycarriageleports}, #{chkpetleports}, #{chkcreditcardleports},
+	            #{image0}, #{image1}, #{image2}, #{image3}, #{image4},
+	            #{image5}, #{image6}, #{image7}, #{image8}, #{image9},
+	            #{image10}, #{image11}, #{image12}, #{image13}, #{image14},
+	            #{image15}, #{image16}, #{image17}, #{image18}, #{image19},
+	            #{image20}, #{imgCount}, #{overview}, #{homepage} 
+	        );
 	</insert>
 
 	
-	<select id="leportsList" resultType="LeisureSports">
+	<select id="selectTable" resultType="LeisureSports">
 		SELECT * FROM LEPORTS;
 	</select>
 	

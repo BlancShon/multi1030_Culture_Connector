@@ -188,10 +188,12 @@ public class ApiParsing {
 			contentType = "28";
 		} else if (targetClass.getSimpleName().equals("Food")) {
 			contentType = "39";
-		} 
+		} else if (targetClass.getSimpleName().equals("TouristAttraction")) {
+			contentType = "12";
+		}
 		String targetUrl =  ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
 		
-		log.info("{} 이름 넣는 버전 타겟 유알엘 정보입니다 {}",name ,targetUrl);
+		log.info("{} 의 키 사용, 이름 넣는 버전 타겟 유알엘 정보입니다 {}",name, targetUrl);
 		
 		
 		List<T> list = new ArrayList<>();

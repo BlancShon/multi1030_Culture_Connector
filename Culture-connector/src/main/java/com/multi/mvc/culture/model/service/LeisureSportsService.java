@@ -21,7 +21,14 @@ public class LeisureSportsService {
 	}
 	
 	public void initLeports() {
-		mapper.initLeports(ApiParsing.parseAndExportToTheListAdvanced(LeisureSports.class));
+		List<LeisureSports> list = ApiParsing.parseAndExportToTheListAdvanced(LeisureSports.class);
+		for(LeisureSports item : list) {
+			try {
+				mapper.insertLeports(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public int count() {
@@ -29,6 +36,23 @@ public class LeisureSportsService {
 	}
 	
 	public List<LeisureSports> showLeportsTable() {
-		return mapper.leportsList();
+		return mapper.selectTable();
+	}
+	
+	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
+//	 @Transactional(noRollbackFor = SQLException.class)
+	public void saveData(String name) {
+		List<LeisureSports> list = ApiParsing.parseAndExportToTheListAdvanced(LeisureSports.class, name);
+		for(LeisureSports item : list) {
+			try {
+				mapper.insertLeports(item);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	// 데이터 리스트를 보여주는 메소드 임시입니다
+	public List<LeisureSports> getListForDB() {
+		return mapper.selectTable();
 	}
 }

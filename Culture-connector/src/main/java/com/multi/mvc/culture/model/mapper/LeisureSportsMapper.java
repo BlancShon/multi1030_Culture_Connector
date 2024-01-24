@@ -11,9 +11,9 @@ public interface LeisureSportsMapper {
 	
 	void createTableLeports();
 	
-	void initLeports(List<LeisureSports> list);
+	int insertLeports(LeisureSports item);
 	
 	int selectCount();
 	
-	List<LeisureSports> leportsList();
+	List<LeisureSports> selectTable();
 }

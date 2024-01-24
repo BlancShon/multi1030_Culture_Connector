@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.multi.mvc.api.OpenApiManagerForXml_TouristAttraction;
 import com.multi.mvc.culture.model.service.TouristAttractionService;
-import com.multi.mvc.culture.model.vo.Event;
 import com.multi.mvc.culture.model.vo.TouristAttraction;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +32,7 @@ public class TouristAttractionController {
 //    	}
     }
     
- // 아래 세개는 디비 주입 확인을 위한 메소드입니다
+    // 아래 세개는 디비 주입 확인을 위한 메소드입니다
  	@PostMapping("/touristAttraction/dataSave")
  	public String dataSaveForDB(@RequestParam("name") String name) {
  		if(service.count() == 0) {

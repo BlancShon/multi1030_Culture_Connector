@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.culture.model.service.LeisureSportsService;
 import com.multi.mvc.culture.model.vo.LeisureSports;
@@ -22,21 +24,41 @@ public class LeisureSportsController {
 	@Autowired
 	private LeisureSportsService service;
 	
-//	@Bean(initMethod = "initLeports")
+	@Bean(initMethod = "initLeports")
 	public void initLeports() {
 		log.debug("initLeports Controller 확인");
 		
 		service.createTable();
-//		if(service.count() == 0) {
-//			service.initLeports();
-//		}
+		if(service.count() == 0) {
+			service.initLeports();
+		}
 	}
+	
+	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
+	 	@PostMapping("/dataSave")
+	 	public String dataSaveForDB(@RequestParam("name") String name) {
+	 		if(service.count() == 0) {
+	 			service.saveData(name);
+	 		}
+	 		return "redirect:/dbsave";
+	 	}
+	 	@GetMapping("/listForDB")
+	 	public String listForDB(Model model) {
+	 		List<LeisureSports> list = service.getListForDB();
+	 		model.addAttribute("list",list);
+	 		return "test/leportsList";
+	 	}
+	 	@GetMapping("/createTable")
+	 	public String createTable() {
+	 		service.createTable();
+	 		return "redirect:/dbsave";
+	 	}
 	
 	@GetMapping("/list")
 	public String leportsList(Model model) {
 		log.debug("LeisureSports Controller list 확인");
-		List<LeisureSports> list = service.showLeportsTable();
-		model.addAttribute("LeportsList", list);
+//		List<LeisureSports> list = service.showLeportsTable();
+//		model.addAttribute("LeportsList", list);
 		
 		return "culture/leisureSportsList";
 	}

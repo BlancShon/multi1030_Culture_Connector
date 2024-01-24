@@ -22,11 +22,15 @@
         th {
             background-color: #f2f2f2;
         }
+        .table-cell {
+		  white-space: nowrap;
+		  overflow: hidden;
+		  text-overflow: ellipsis; /* 텍스트가 너무 길면 생략 (...) 표시 */
     </style>
 </head>
 <body>
 	<h3><a href="${path}/">홈</a></h3>
-         <h3><a href="${path}/dbsave">데이터베이스 저장</a></h3>
+         <h3><a href="${path}/dbsave">데이터베이스</a></h3>
 
     <h2>문화시설 목록</h2>
 
@@ -165,7 +169,7 @@
 					<td><img src="<c:out value="${event.image19}" />" height="200px" alt="이미지 설명" /></td>
 					<td><img src="<c:out value="${event.image20}" />" height="200px" alt="이미지 설명" /></td>
 					<td><c:out value="${event.imgCount}" /></td>
-					<td><c:out value="${item.overview}"/></td>
+					 <td class="table-cell"><c:out value="${item.overview}"/></td>
                     <td><c:out value="${item.homepage}"/></td>
 				</tr>
 			</c:forEach>

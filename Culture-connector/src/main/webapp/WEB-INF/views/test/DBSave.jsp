@@ -61,7 +61,7 @@
     
     
     <div class="card">
-        <h2>관광지 미완성입니다</h2>
+        <h2>관광지</h2>
 
         <!-- 테이블 생성 버튼 -->
         <button onclick="window.location='${path}/mvc/touristAttraction/createTable'">테이블 생성</button>
@@ -76,6 +76,25 @@
 
         <!-- 테이블 조회 버튼 -->
         <button onclick="window.location='${path}/mvc/touristAttraction/listForDB'">테이블 보기</button>
+    </div>
+    
+    
+    <div class="card">
+        <h2>레포츠</h2>
+
+        <!-- 테이블 생성 버튼 -->
+        <button onclick="window.location='${path}/mvc/leports/createTable'">테이블 생성</button>
+
+        <!-- 데이터 입력 폼 -->
+        <form action="${path}/mvc/leports/dataSave" method="post">
+            <label for="data">이름을 입력하세요:</label>
+           	<input type="text" id="name" name="name" required>
+            <br>
+            <input type="submit" value="데이터 받기">
+        </form>
+
+        <!-- 테이블 조회 버튼 -->
+        <button onclick="window.location='${path}/mvc/leports/listForDB'">테이블 보기</button>
     </div>
 </body>
 </html>
