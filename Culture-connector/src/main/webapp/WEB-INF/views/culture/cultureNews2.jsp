@@ -72,6 +72,25 @@
                                       <!-- Guest -->
                                   </div>
                               </div>
+                              
+                              <div class="container mx-4 mt-n1">
+                              
+                              <br>
+                    <div style="text-align: center;">
+						<c:forEach var="item" items="${categoryList}">
+							<label>
+								<input type="checkbox" name="types" value="${item.type}"
+									${fn:contains(typeList, item.type) ? 'checked' : ''} >
+								${item.name}
+							</label>
+						</c:forEach>
+					</div>
+                    
+                    
+                    <br>
+                 
+                </div>
+                              
     
                               <!-- 셀렉트 + 검색창 끝-->
     

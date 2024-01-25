@@ -34,31 +34,65 @@
 		<result property="theme" column="THEME"/>
 		<result property="distance" column="DISTANCE"/>
 	    
-	    <result property="image0" column="IMAGE0"/>
-	    <result property="image1" column="IMAGE1"/>
-	    <result property="image2" column="IMAGE2"/>
-	    <result property="image3" column="IMAGE3"/>
-	    <result property="image4" column="IMAGE4"/>
-	    <result property="image5" column="IMAGE5"/>
-	    <result property="image6" column="IMAGE6"/>
-	    <result property="image7" column="IMAGE7"/>
-	    <result property="image8" column="IMAGE8"/>
-	    <result property="image9" column="IMAGE9"/>
-	    <result property="image10" column="IMAGE10"/>
-		<result property="image11" column="IMAGE11"/>
-		<result property="image12" column="IMAGE12"/>
-		<result property="image13" column="IMAGE13"/>
-		<result property="image14" column="IMAGE14"/>
-		<result property="image15" column="IMAGE15"/>
-		<result property="image16" column="IMAGE16"/>
-		<result property="image17" column="IMAGE17"/>
-		<result property="image18" column="IMAGE18"/>
-		<result property="image19" column="IMAGE19"/>
-		<result property="image20" column="IMAGE20"/>
-    	<result property="imgCount" column="IMGCOUNT"/>
-    	<result property="overview" column="OVERVIEW"/>
-    	<result property="homepage" column="HOMEPAGE"/>
+	    <!-- Subcontent 0 -->
+	    <result property="subcontentid0" column="SUBCONTENTID0"/>
+	    <result property="subcontenttypeid0" column="SUBCONTENTTYPEID0"/>
+	    <result property="subcontenttitle0" column="SUBCONTENTTITLE0"/>
+	    <result property="subcontentfirstimage0" column="SUBCONTENTFIRSTIMAGE0"/>
+	    <result property="subcontentadd10" column="SUBCONTENTADD10"/>
+	    <result property="subcontentadd20" column="SUBCONTENTADD20"/>
+	    <result property="subcontentaddmapx0" column="SUBCONTENTADDMAPX0"/>
+	    <result property="subcontentaddmapy0" column="SUBCONTENTADDMAPY0"/>
+	    <result property="subcontentaddoverview0" column="SUBCONTENTADDOVERVIEW0"/>
+	    <result property="subcontentaddhomepage0" column="SUBCONTENTADDHOMEPAGE0"/>
+	    
+	    <!-- Subcontent 1 -->
+	    <result property="subcontentid1" column="SUBCONTENTID1"/>
+	    <result property="subcontenttypeid1" column="SUBCONTENTTYPEID1"/>
+	    <result property="subcontenttitle1" column="SUBCONTENTTITLE1"/>
+	    <result property="subcontentfirstimage1" column="SUBCONTENTFIRSTIMAGE1"/>
+	    <result property="subcontentadd11" column="SUBCONTENTADD11"/>
+	    <result property="subcontentadd21" column="SUBCONTENTADD21"/>
+	    <result property="subcontentaddmapx1" column="SUBCONTENTADDMAPX1"/>
+	    <result property="subcontentaddmapy1" column="SUBCONTENTADDMAPY1"/>
+	    <result property="subcontentaddoverview1" column="SUBCONTENTADDOVERVIEW1"/>
+	    <result property="subcontentaddhomepage1" column="SUBCONTENTADDHOMEPAGE1"/>
+	   
+	   <!-- Subcontent 2 -->
+	    <result property="subcontentid2" column="SUBCONTENTID2"/>
+	    <result property="subcontenttypeid2" column="SUBCONTENTTYPEID2"/>
+	    <result property="subcontenttitle2" column="SUBCONTENTTITLE2"/>
+	    <result property="subcontentfirstimage2" column="SUBCONTENTFIRSTIMAGE2"/>
+	    <result property="subcontentadd12" column="SUBCONTENTADD12"/>
+	    <result property="subcontentadd22" column="SUBCONTENTADD22"/>
+	    <result property="subcontentaddmapx2" column="SUBCONTENTADDMAPX2"/>
+	    <result property="subcontentaddmapy2" column="SUBCONTENTADDMAPY2"/>
+	    <result property="subcontentaddoverview2" column="SUBCONTENTADDOVERVIEW2"/>
+	    <result property="subcontentaddhomepage2" column="SUBCONTENTADDHOMEPAGE2"/>
+	    
+	    <!-- Subcontent 3 -->
+	    <result property="subcontentid3" column="SUBCONTENTID3"/>
+	    <result property="subcontenttypeid3" column="SUBCONTENTTYPEID3"/>
+	    <result property="subcontenttitle3" column="SUBCONTENTTITLE3"/>
+	    <result property="subcontentfirstimage3" column="SUBCONTENTFIRSTIMAGE3"/>
+	    <result property="subcontentadd13" column="SUBCONTENTADD13"/>
+	    <result property="subcontentadd23" column="SUBCONTENTADD23"/>
+	    <result property="subcontentaddmapx3" column="SUBCONTENTADDMAPX3"/>
+	    <result property="subcontentaddmapy3" column="SUBCONTENTADDMAPY3"/>
+	    <result property="subcontentaddoverview3" column="SUBCONTENTADDOVERVIEW3"/>
+	    <result property="subcontentaddhomepage3" column="SUBCONTENTADDHOMEPAGE3"/>
 
+		 <result property="subcontentid4" column="SUBCONTENTID4"/>
+	    <result property="subcontenttypeid4" column="SUBCONTENTTYPEID4"/>
+	    <result property="subcontenttitle4" column="SUBCONTENTTITLE4"/>
+	    <result property="subcontentfirstimage4" column="SUBCONTENTFIRSTIMAGE4"/>
+	    <result property="subcontentadd14" column="SUBCONTENTADD14"/>
+	    <result property="subcontentadd24" column="SUBCONTENTADD24"/>
+	    <result property="subcontentaddmapx4" column="SUBCONTENTADDMAPX4"/>
+	    <result property="subcontentaddmapy4" column="SUBCONTENTADDMAPY4"/>
+	    <result property="subcontentaddoverview4" column="SUBCONTENTADDOVERVIEW4"/>
+	    <result property="subcontentaddhomepage4" column="SUBCONTENTADDHOMEPAGE4"/>
+	    
 	</resultMap>
 
 	<select id="selectCount" resultType="int">
@@ -100,65 +134,119 @@
 	        THEME VARCHAR(255),
 	        DISTANCE VARCHAR(255),
 	        
-	        IMAGE0 VARCHAR(255),
-	        IMAGE1 VARCHAR(255),
-	        IMAGE2 VARCHAR(255),
-	        IMAGE3 VARCHAR(255),
-	        IMAGE4 VARCHAR(255),
-	        IMAGE5 VARCHAR(255),
-	        IMAGE6 VARCHAR(255),
-	        IMAGE7 VARCHAR(255),
-	        IMAGE8 VARCHAR(255),
-	        IMAGE9 VARCHAR(255),
-	        IMAGE10 VARCHAR(255),
-	        IMAGE11 VARCHAR(255),
-	        IMAGE12 VARCHAR(255),
-	        IMAGE13 VARCHAR(255),
-	        IMAGE14 VARCHAR(255),
-	        IMAGE15 VARCHAR(255),
-	        IMAGE16 VARCHAR(255),
-	        IMAGE17 VARCHAR(255),
-	        IMAGE18 VARCHAR(255),
-	        IMAGE19 VARCHAR(255),
-	        IMAGE20 VARCHAR(255),
-	        IMGCOUNT INT,
 	        OVERVIEW TEXT,
-	        HOMEPAGE TEXT
+	        HOMEPAGE TEXT,
+	        
+	        SUBCONTENTID0 VARCHAR(255),
+		    SUBCONTENTTYPEID0 VARCHAR(255),
+		    SUBCONTENTTITLE0 VARCHAR(255),
+		    SUBCONTENTFIRSTIMAGE0 VARCHAR(255),
+		    SUBCONTENTADD10 VARCHAR(255),
+		    SUBCONTENTADD20 VARCHAR(255),
+		    SUBCONTENTADDMAPX0 VARCHAR(255),
+		    SUBCONTENTADDMAPY0 VARCHAR(255),
+		    SUBCONTENTADDOVERVIEW0 TEXT,
+		    SUBCONTENTADDHOMEPAGE0 TEXT,
+		    
+		    SUBCONTENTID1 VARCHAR(255),
+		    SUBCONTENTTYPEID1 VARCHAR(255),
+		    SUBCONTENTTITLE1 VARCHAR(255),
+		    SUBCONTENTFIRSTIMAGE1 VARCHAR(255),
+		    SUBCONTENTADD11 VARCHAR(255),
+		    SUBCONTENTADD21 VARCHAR(255),
+		    SUBCONTENTADDMAPX1 VARCHAR(255),
+		    SUBCONTENTADDMAPY1 VARCHAR(255),
+		    SUBCONTENTADDOVERVIEW1 TEXT,
+		    SUBCONTENTADDHOMEPAGE1 TEXT,
+		    
+		    SUBCONTENTID2 VARCHAR(255),
+		    SUBCONTENTTYPEID2 VARCHAR(255),
+		    SUBCONTENTTITLE2 VARCHAR(255),
+		    SUBCONTENTFIRSTIMAGE2 VARCHAR(255),
+		    SUBCONTENTADD12 VARCHAR(255),
+		    SUBCONTENTADD22 VARCHAR(255),
+		    SUBCONTENTADDMAPX2 VARCHAR(255),
+		    SUBCONTENTADDMAPY2 VARCHAR(255),
+		    SUBCONTENTADDOVERVIEW2 TEXT,
+		    SUBCONTENTADDHOMEPAGE2 TEXT,
+		    
+		     SUBCONTENTID3 VARCHAR(255),
+		    SUBCONTENTTYPEID3 VARCHAR(255),
+		    SUBCONTENTTITLE3 VARCHAR(255),
+		    SUBCONTENTFIRSTIMAGE3 VARCHAR(255),
+		    SUBCONTENTADD13 VARCHAR(255),
+		    SUBCONTENTADD23 VARCHAR(255),
+		    SUBCONTENTADDMAPX3 VARCHAR(255),
+		    SUBCONTENTADDMAPY3 VARCHAR(255),
+		    SUBCONTENTADDOVERVIEW3 TEXT,
+		    SUBCONTENTADDHOMEPAGE3 TEXT,
+		    
+		     SUBCONTENTID4 VARCHAR(255),
+		    SUBCONTENTTYPEID4 VARCHAR(255),
+		    SUBCONTENTTITLE4 VARCHAR(255),
+		    SUBCONTENTFIRSTIMAGE4 VARCHAR(255),
+		    SUBCONTENTADD14 VARCHAR(255),
+		    SUBCONTENTADD24 VARCHAR(255),
+		    SUBCONTENTADDMAPX4 VARCHAR(255),
+		    SUBCONTENTADDMAPY4 VARCHAR(255),
+		    SUBCONTENTADDOVERVIEW4 TEXT,
+		    SUBCONTENTADDHOMEPAGE4 TEXT
+		    
 	    );
 	</insert>
 
 	
 	
-
-
-
 	<insert id="insertCourse" parameterType="Course">
-	    INSERT INTO COURSE (
-	        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
-	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
-	        FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
-	        SIGUNGUCODE, TEL, TITLE, ZIPCODE,
-	        INFOCENTERTOURCOURSE, SCHEDULE, TAKETIME, THEME, DISTANCE,
-	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4,
-	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10,
-	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
-	        IMAGE16, IMAGE17, IMAGE18, IMAGE19, IMAGE20,
-	        IMGCOUNT, OVERVIEW, HOMEPAGE
-	    ) VALUES (
-	        #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
-	        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
-	        #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel},
-	        #{modifiedtime}, #{sigungucode}, #{tel},
-	        #{title}, #{zipcode},
-	        #{infocentertourcourse}, #{schedule}, #{taketime}, #{theme}, #{distance},
-	        #{image0}, #{image1}, #{image2}, #{image3}, #{image4},
-	        #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10},
-	        #{image11}, #{image12}, #{image13}, #{image14}, #{image15},
-	        #{image16}, #{image17}, #{image18}, #{image19}, #{image20},
-	        #{imgCount}, #{overview}, #{homepage} 
-	    );
-	</insert>
-
+    INSERT INTO COURSE (
+        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
+        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
+        FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
+        SIGUNGUCODE, TEL, TITLE, ZIPCODE,
+        INFOCENTERTOURCOURSE, SCHEDULE, TAKETIME, THEME, DISTANCE,
+        SUBCONTENTID0, SUBCONTENTTYPEID0, SUBCONTENTTITLE0, SUBCONTENTFIRSTIMAGE0,
+        SUBCONTENTADD10, SUBCONTENTADD20, SUBCONTENTADDMAPX0, SUBCONTENTADDMAPY0,
+        SUBCONTENTADDOVERVIEW0, SUBCONTENTADDHOMEPAGE0,
+        SUBCONTENTID1, SUBCONTENTTYPEID1, SUBCONTENTTITLE1, SUBCONTENTFIRSTIMAGE1,
+        SUBCONTENTADD11, SUBCONTENTADD21, SUBCONTENTADDMAPX1, SUBCONTENTADDMAPY1,
+        SUBCONTENTADDOVERVIEW1, SUBCONTENTADDHOMEPAGE1,
+        SUBCONTENTID2, SUBCONTENTTYPEID2, SUBCONTENTTITLE2, SUBCONTENTFIRSTIMAGE2,
+        SUBCONTENTADD12, SUBCONTENTADD22, SUBCONTENTADDMAPX2, SUBCONTENTADDMAPY2,
+        SUBCONTENTADDOVERVIEW2, SUBCONTENTADDHOMEPAGE2,
+        SUBCONTENTID3, SUBCONTENTTYPEID3, SUBCONTENTTITLE3, SUBCONTENTFIRSTIMAGE3,
+        SUBCONTENTADD13, SUBCONTENTADD23, SUBCONTENTADDMAPX3, SUBCONTENTADDMAPY3,
+        SUBCONTENTADDOVERVIEW3, SUBCONTENTADDHOMEPAGE3,
+        SUBCONTENTID4, SUBCONTENTTYPEID4, SUBCONTENTTITLE4, SUBCONTENTFIRSTIMAGE4,
+        SUBCONTENTADD14, SUBCONTENTADD24, SUBCONTENTADDMAPX4, SUBCONTENTADDMAPY4,
+        SUBCONTENTADDOVERVIEW4, SUBCONTENTADDHOMEPAGE4,
+        OVERVIEW, HOMEPAGE
+    ) VALUES (
+        #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
+        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
+        #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel},
+        #{modifiedtime}, #{sigungucode}, #{tel},
+        #{title}, #{zipcode},
+        #{infocentertourcourse}, #{schedule}, #{taketime}, #{theme}, #{distance},
+        #{subcontentid0}, #{subcontenttypeid0}, #{subcontenttitle0}, #{subcontentfirstimage0},
+        #{subcontentadd10}, #{subcontentadd20}, #{subcontentaddmapx0}, #{subcontentaddmapy0},
+        #{subcontentaddoverview0}, #{subcontentaddhomepage0},
+        #{subcontentid1}, #{subcontenttypeid1}, #{subcontenttitle1}, #{subcontentfirstimage1},
+        #{subcontentadd11}, #{subcontentadd21}, #{subcontentaddmapx1}, #{subcontentaddmapy1},
+        #{subcontentaddoverview1}, #{subcontentaddhomepage1},
+        #{subcontentid2}, #{subcontenttypeid2}, #{subcontenttitle2}, #{subcontentfirstimage2},
+        #{subcontentadd12}, #{subcontentadd22}, #{subcontentaddmapx2}, #{subcontentaddmapy2},
+        #{subcontentaddoverview2}, #{subcontentaddhomepage2},
+        #{subcontentid3}, #{subcontenttypeid3}, #{subcontenttitle3}, #{subcontentfirstimage3},
+        #{subcontentadd13}, #{subcontentadd23}, #{subcontentaddmapx3}, #{subcontentaddmapy3},
+        #{subcontentaddoverview3}, #{subcontentaddhomepage3},
+        #{subcontentid4}, #{subcontenttypeid4}, #{subcontenttitle4}, #{subcontentfirstimage4},
+        #{subcontentadd14}, #{subcontentadd24}, #{subcontentaddmapx4}, #{subcontentaddmapy4},
+        #{subcontentaddoverview4}, #{subcontentaddhomepage4},
+        #{overview}, #{homepage}
+    );
+</insert>
+       
+	
 
 
 

@@ -63,30 +63,68 @@
             <th>TAKETIME</th>
             <th>THEME</th>
             <th>DISTANCE</th>
-            <th>IMAGE0</th>
-            <th>IMAGE1</th>
-            <th>IMAGE2</th>
-            <th>IMAGE3</th>
-            <th>IMAGE4</th>
-            <th>IMAGE5</th>
-            <th>IMAGE6</th>
-            <th>IMAGE7</th>
-            <th>IMAGE8</th>
-            <th>IMAGE9</th>
-            <th>IMAGE10</th>
-            <th>IMAGE11</th>
-            <th>IMAGE12</th>
-            <th>IMAGE13</th>
-            <th>IMAGE14</th>
-            <th>IMAGE15</th>
-            <th>IMAGE16</th>
-            <th>IMAGE17</th>
-            <th>IMAGE18</th>
-            <th>IMAGE19</th>
-            <th>IMAGE20</th>
-            <th>IMGCOUNT</th>
             <th>OVERVIEW</th>
             <th>HOMEPAGE</th>
+            
+             <!-- 추가된 부분 시작 -->
+            <th>SUBCONTENTID0</th>
+            <th>SUBCONTENTTYPEID0</th>
+            <th>SUBCONTENTTITLE0</th>
+            <th>SUBCONTENTFIRSTIMAGE0</th>
+            <th>SUBCONTENTADD10</th>
+            <th>SUBCONTENTADD20</th>
+            <th>SUBCONTENTADDMAPX0</th>
+            <th>SUBCONTENTADDMAPY0</th>
+            <th>SUBCONTENTADDOVERVIEW0</th>
+            <th>SUBCONTENTADDHOMEPAGE0</th>
+            
+            <!-- 추가된 부분 시작 -->
+            <th>SUBCONTENTID1</th>
+            <th>SUBCONTENTTYPEID1</th>
+            <th>SUBCONTENTTITLE1</th>
+            <th>SUBCONTENTFIRSTIMAGE1</th>
+            <th>SUBCONTENTADD11</th>
+            <th>SUBCONTENTADD21</th>
+            <th>SUBCONTENTADDMAPX1</th>
+            <th>SUBCONTENTADDMAPY1</th>
+            <th>SUBCONTENTADDOVERVIEW1</th>
+            <th>SUBCONTENTADDHOMEPAGE1</th>
+            
+             <th>SUBCONTENTID2</th>
+            <th>SUBCONTENTTYPEID2</th>
+            <th>SUBCONTENTTITLE2</th>
+            <th>SUBCONTENTFIRSTIMAGE2</th>
+            <th>SUBCONTENTADD12</th>
+            <th>SUBCONTENTADD22</th>
+            <th>SUBCONTENTADDMAPX2</th>
+            <th>SUBCONTENTADDMAPY2</th>
+            <th>SUBCONTENTADDOVERVIEW2</th>
+            <th>SUBCONTENTADDHOMEPAGE2</th>
+            
+              <th>SUBCONTENTID3</th>
+            <th>SUBCONTENTTYPEID3</th>
+            <th>SUBCONTENTTITLE3</th>
+            <th>SUBCONTENTFIRSTIMAGE3</th>
+            <th>SUBCONTENTADD13</th>
+            <th>SUBCONTENTADD23</th>
+            <th>SUBCONTENTADDMAPX3</th>
+            <th>SUBCONTENTADDMAPY3</th>
+            <th>SUBCONTENTADDOVERVIEW3</th>
+            <th>SUBCONTENTADDHOMEPAGE3</th>
+            
+             <th>SUBCONTENTID4</th>
+            <th>SUBCONTENTTYPEID4</th>
+            <th>SUBCONTENTTITLE4</th>
+            <th>SUBCONTENTFIRSTIMAGE4</th>
+            <th>SUBCONTENTADD14</th>
+            <th>SUBCONTENTADD24</th>
+            <th>SUBCONTENTADDMAPX4</th>
+            <th>SUBCONTENTADDMAPY4</th>
+            <th>SUBCONTENTADDOVERVIEW4</th>
+            <th>SUBCONTENTADDHOMEPAGE4</th>
+            
+            
+            
         </tr>
     </thead>
     <tbody>
@@ -119,30 +157,67 @@
                     <td><c:out value="${item.taketime}"/></td>
                     <td><c:out value="${item.theme}"/></td>
                     <td><c:out value="${item.distance}"/></td>
-                    <td><img src="<c:out value="${item.image0}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image1}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image2}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image3}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image4}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image5}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image6}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image7}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image8}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image9}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image10}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image11}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image12}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image13}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image14}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image15}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image16}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image17}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image18}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image19}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><img src="<c:out value="${item.image20}"/>" height="200px" alt="이미지 설명"/></td>
-                    <td><c:out value="${item.imgCount}"/></td>
                     <td class="table-cell"><c:out value="${item.overview}"/></td>
                     <td><c:out value="${item.homepage}"/></td>
+                    
+                     <td><c:out value="${item.subcontentid0}"/></td>
+		            <td><c:out value="${item.subcontenttypeid0}"/></td>
+		            <td><c:out value="${item.subcontenttitle0}"/></td>
+		            <td><c:out value="${item.subcontentfirstimage0}"/></td>
+		            <td><c:out value="${item.subcontentadd10}"/></td>
+		            <td><c:out value="${item.subcontentadd20}"/></td>
+		            <td><c:out value="${item.subcontentaddmapx0}"/></td>
+		            <td><c:out value="${item.subcontentaddmapy0}"/></td>
+		            <td><c:out value="${item.subcontentaddoverview0}"/></td>
+		            <td><c:out value="${item.subcontentaddhomepage0}"/></td>
+		            
+		             <td><c:out value="${item.subcontentid1}"/></td>
+		          <td><c:out value="${item.subcontenttypeid1}"/></td>
+		          <td><c:out value="${item.subcontenttitle1}"/></td>
+		          <td><c:out value="${item.subcontentfirstimage1}"/></td>
+		          <td><c:out value="${item.subcontentadd11}"/></td>
+		          <td><c:out value="${item.subcontentadd21}"/></td>
+		          <td><c:out value="${item.subcontentaddmapx1}"/></td>
+		          <td><c:out value="${item.subcontentaddmapy1}"/></td>
+		          <td><c:out value="${item.subcontentaddoverview1}"/></td>
+		          <td><c:out value="${item.subcontentaddhomepage1}"/></td>
+		            
+		             <td><c:out value="${item.subcontentid2}"/></td>
+		            <td><c:out value="${item.subcontenttypeid2}"/></td>
+		            <td><c:out value="${item.subcontenttitle2}"/></td>
+		            <td><c:out value="${item.subcontentfirstimage2}"/></td>
+		            <td><c:out value="${item.subcontentadd12}"/></td>
+		            <td><c:out value="${item.subcontentadd22}"/></td>
+		            <td><c:out value="${item.subcontentaddmapx2}"/></td>
+		            <td><c:out value="${item.subcontentaddmapy2}"/></td>
+		            <td><c:out value="${item.subcontentaddoverview2}"/></td>
+		            <td><c:out value="${item.subcontentaddhomepage2}"/></td>
+		
+		            <!-- 필요한 만큼 SUBCONTENT 변수들 추가 -->
+		
+		            <td><c:out value="${item.subcontentid3}"/></td>
+		            <td><c:out value="${item.subcontenttypeid3}"/></td>
+		            <td><c:out value="${item.subcontenttitle3}"/></td>
+		            <td><c:out value="${item.subcontentfirstimage3}"/></td>
+		            <td><c:out value="${item.subcontentadd13}"/></td>
+		            <td><c:out value="${item.subcontentadd23}"/></td>
+		            <td><c:out value="${item.subcontentaddmapx3}"/></td>
+		            <td><c:out value="${item.subcontentaddmapy3}"/></td>
+		            <td><c:out value="${item.subcontentaddoverview3}"/></td>
+		            <td><c:out value="${item.subcontentaddhomepage3}"/></td>
+		
+		            <!-- 필요한 만큼 SUBCONTENT 변수들 추가 -->
+		
+		            <td><c:out value="${item.subcontentid4}"/></td>
+		            <td><c:out value="${item.subcontenttypeid4}"/></td>
+		            <td><c:out value="${item.subcontenttitle4}"/></td>
+		            <td><c:out value="${item.subcontentfirstimage4}"/></td>
+		            <td><c:out value="${item.subcontentadd14}"/></td>
+		            <td><c:out value="${item.subcontentadd24}"/></td>
+		            <td><c:out value="${item.subcontentaddmapx4}"/></td>
+		            <td><c:out value="${item.subcontentaddmapy4}"/></td>
+		            <td><c:out value="${item.subcontentaddoverview4}"/></td>
+		            <td><c:out value="${item.subcontentaddhomepage4}"/></td>
                 </tr>
             </c:forEach>
         </c:if>

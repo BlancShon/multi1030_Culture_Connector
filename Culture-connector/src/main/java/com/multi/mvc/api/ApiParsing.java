@@ -9,12 +9,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.multi.mvc.culture.model.vo.Course;
 import com.multi.mvc.culture.model.vo.CultureParent;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +27,7 @@ public class ApiParsing {
 
 	// url 해결해주는맵
 	private static Map<String, String> urlMap;
-	
+
 	private static Map<String, String> keyMap;
 
 	static {
@@ -44,7 +47,7 @@ public class ApiParsing {
 		keyMap.put("LeisureSports", "이병집");
 		keyMap.put("Food", "장성희");
 		keyMap.put("Course", "고재목2");
-		
+
 	}
 
 	// 분류없이 그냥 리스트 뽑아오는 메소드
@@ -98,12 +101,12 @@ public class ApiParsing {
 	}
 
 	// 분류없이 타겟에 상세정보까지 주입하는 메서드
-	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass) {
+	public static <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass) {
 		String whosKey = keyMap.get(targetClass.getSimpleName());
 		String targetUrl = urlMap.get(targetClass.getSimpleName());
-		
-		log.info("누구 키인지 {}, 유알엘 정보 {}",whosKey, targetUrl);
-		
+
+		log.info("누구 키인지 {}, 유알엘 정보 {}", whosKey, targetUrl);
+
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
 		try {
@@ -135,7 +138,7 @@ public class ApiParsing {
 
 				int count = 0;
 				for (JsonNode itemNode : itemsNode) {
-					log.info("{} 번째 데이터",++count);
+					log.info("{} 번째 데이터", ++count);
 					String contentId = itemNode.get("contentid").asText();
 					String contentTypeId = itemNode.get("contenttypeid").asText();
 					try {
@@ -148,16 +151,17 @@ public class ApiParsing {
 						// 몸통
 						T target = getDetail(targetClass, contentId, contentTypeId, whosKey);
 						target = commonInjection(target, common, imgList, overAndHomepage);
-						
-						if(target != null) {
+
+						if (target != null) {
 							list.add(target);
 						}
-					} catch (JsonParseException | NullPointerException jno) {}
-					
+					} catch (JsonParseException | NullPointerException jno) {
+					}
+
 				}
 
 			} catch (JsonParseException je) {
-				log.info("{} 의 키에 문제가 생긴것으로 보입니다. url 확인해보십시오 {}",whosKey, targetUrl);
+				log.info("{} 의 키에 문제가 생긴것으로 보입니다. url 확인해보십시오 {}", whosKey, targetUrl);
 				log.error("위의 url 을 확인해보세요", je);
 			}
 
@@ -169,16 +173,16 @@ public class ApiParsing {
 			}
 		}
 		if (list.size() == 0) {
-			
+
 		}
 		return list;
 	}
 
 	// 분류없이 타겟에 상세정보까지 주입하는 메서드222 이름 넣는 버전
-	public static  <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name) {
+	public static <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name) {
 		String className = targetClass.getSimpleName();
 		String contentType = null;
-           
+
 		if (className.equals("Culture")) {
 			contentType = "14";
 		} else if (className.equals("Course")) {
@@ -190,21 +194,18 @@ public class ApiParsing {
 		} else if (className.equals("TouristAttraction")) {
 			contentType = "12";
 		}
-		
+
 		String targetUrl = null;
 		if (className.equals("Event")) {
-			targetUrl = ApiSearchInfo.getEventURL() +  ApiSearchInfo.getServiceKey(name);
+			targetUrl = ApiSearchInfo.getEventURL() + ApiSearchInfo.getServiceKey(name);
 		} else if (className.equals("Festival")) {
 			targetUrl = ApiSearchInfo.getFestivalURL() + ApiSearchInfo.getServiceKey(name);
 		} else {
-			targetUrl =  ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
+			targetUrl = ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
 		}
-		
-		
-		
-		log.info("{} 의 키 사용, 이름 넣는 버전 타겟 유알엘 정보입니다 {}",name, targetUrl);
-		
-		
+
+		log.info("{} 의 키 사용, 이름 넣는 버전 타겟 유알엘 정보입니다 {}", name, targetUrl);
+
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
 		try {
@@ -215,31 +216,31 @@ public class ApiParsing {
 //	        conn.setRequestProperty("Content-type", "application/xml");
 //	        conn.setRequestProperty("Accept", "application/xml");
 //	        conn.setRequestProperty("Accept", "application/json");
-			
+
 			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
-			
+
 			if (responseCode < 200 || 300 <= responseCode) {
 				log.error("페이지가 잘못되었습니다. {}", responseCode);
-				
+
 			}
-			
+
 			try (InputStream is = conn.getInputStream();
 					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 					BufferedReader br = new BufferedReader(isr);) {
-				
+
 				// json 을 파싱하는 도구?? ObjectMapper
 				ObjectMapper objMapper = new ObjectMapper();
-				
+
 				String line = br.readLine();
 				JsonNode rootNode = objMapper.readTree(line);
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
-				
+
 				int count = 0;
 				for (JsonNode itemNode : itemsNode) {
-					log.info("{} 번째 데이터",++count);
+					log.info("{} 번째 데이터", ++count);
 					String contentId = itemNode.get("contentid").asText();
 					String contentTypeId = itemNode.get("contenttypeid").asText();
-						
+
 					try {
 						// 기본 정보들 받아오는 바구니
 						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
@@ -250,19 +251,19 @@ public class ApiParsing {
 						// 몸통
 						T target = getDetail(targetClass, contentId, contentTypeId, name);
 						target = commonInjection(target, common, imgList, overAndHomepage);
-						
-						if(target != null) {
+
+						if (target != null) {
 							list.add(target);
 						}
 					} catch (JsonParseException | NullPointerException jno) {
 						jno.printStackTrace();
 					}
 				}
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -271,15 +272,16 @@ public class ApiParsing {
 			}
 		}
 		if (list.size() == 0) {
-			
+
 		}
 		return list;
 	}
-	
+
 	// 이미지 정보 받아오는 메소드
-	private static List<String> getImgList(String contentId, String contentTypeId, String name) throws JsonParseException {
+	private static List<String> getImgList(String contentId, String contentTypeId, String name)
+			throws JsonParseException {
 		String targetUrl = ApiSearchInfo.getImageURL(contentId) + ApiSearchInfo.getServiceKey(name);
-		
+
 		List<String> list = new ArrayList<>();
 
 		HttpURLConnection conn = null;
@@ -310,13 +312,13 @@ public class ApiParsing {
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 
 				for (JsonNode itemNode : itemsNode) {
-				list.add(itemNode.path("originimgurl").asText());
+					list.add(itemNode.path("originimgurl").asText());
 				}
-				
-			} catch(JsonParseException je) {
+
+			} catch (JsonParseException je) {
 				throw je;
 			}
-			
+
 		} catch (JsonParseException je) {
 			throw je;
 		} catch (Exception e) {
@@ -326,28 +328,28 @@ public class ApiParsing {
 				conn.disconnect(); // 리소스 닫기
 			}
 		}
-		
-		if(contentTypeId.equals("39")) {
+
+		if (contentTypeId.equals("39")) {
 			// 푸드면 푸드 이미지도 가져오는 로직 작성
 		}
-		
+
 		return list;
 	}
 
 	// 하나로 합쳐주는 메소드
-	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, 
-			List<String> imgList, Map<String, String> overAndHomepage) throws NullPointerException {
-		
+	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList,
+			Map<String, String> overAndHomepage) throws NullPointerException {
+
 		if (target == null || common == null) {
-			return target=null;
+			return target = null;
 		}
-		
+
 		int size = imgList.size();
 		if (size > 20) {
 			imgList = imgList.subList(0, 20);
 			size = 20;
 		}
-		
+
 		if (size != 0) {
 			for (int i = 0; i < size; i++) {
 				// 이미지 필드명을 동적으로 생성
@@ -362,9 +364,9 @@ public class ApiParsing {
 					log.error("이미지 삽입 도중 예외", e);
 				}
 			}
-			
+
 		}
-		
+
 		target.setOverview(overAndHomepage.get("overview"));
 		target.setHomepage(overAndHomepage.get("homepage"));
 		target.setAddr1(common.getAddr1());
@@ -389,15 +391,14 @@ public class ApiParsing {
 		target.setShowflag(common.getShowflag());
 		target.setImgCount(size);
 
-	
-		
 		return target;
 	}
 
 	// 디테일한거 받아오는 메소드
-	private static <T> T getDetail(Class<T> targetClass, String contentId, String contentTypeId, String name) throws JsonParseException {
+	private static <T> T getDetail(Class<T> targetClass, String contentId, String contentTypeId, String name)
+			throws JsonParseException {
 		T target = null;
-		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId)	+ ApiSearchInfo.getServiceKey(name);
+		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId) + ApiSearchInfo.getServiceKey(name);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -446,62 +447,61 @@ public class ApiParsing {
 		}
 		return target;
 	}
-	
+
 	// 오버뷰 받아오는 메소드
-		private static Map<String, String> getOverview(String contentId, String whosKey) throws JsonParseException {
-			Map<String, String> map = new HashMap<>();
-			String targetUrl = ApiSearchInfo.getOverviewURL(contentId, whosKey);
-			HttpURLConnection conn = null;
-			try {
-				URL url = new URL(targetUrl);
-				conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("Content-type", "application/json");
+	private static Map<String, String> getOverview(String contentId, String whosKey) throws JsonParseException {
+		Map<String, String> map = new HashMap<>();
+		String targetUrl = ApiSearchInfo.getOverviewURL(contentId, whosKey);
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
 //			        conn.setRequestProperty("Content-type", "application/xml");
 //			        conn.setRequestProperty("Accept", "application/xml");
 //			        conn.setRequestProperty("Accept", "application/json");
 
-				int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
 
-				if (responseCode < 200 || 300 <= responseCode) {
-					log.error("페이지가 잘못되었습니다. {}", responseCode);
-				}
+			if (responseCode < 200 || 300 <= responseCode) {
+				log.error("페이지가 잘못되었습니다. {}", responseCode);
+			}
 
-				try (InputStream is = conn.getInputStream();
-						InputStreamReader isr = new InputStreamReader(is, "UTF-8");
-						BufferedReader br = new BufferedReader(isr);) {
+			try (InputStream is = conn.getInputStream();
+					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+					BufferedReader br = new BufferedReader(isr);) {
 
-					// json 을 파싱하는 도구?? ObjectMapper
-					ObjectMapper objMapper = new ObjectMapper();
+				// json 을 파싱하는 도구?? ObjectMapper
+				ObjectMapper objMapper = new ObjectMapper();
 
-					String line = br.readLine();
-					JsonNode rootNode = objMapper.readTree(line);
-					JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+				String line = br.readLine();
+				JsonNode rootNode = objMapper.readTree(line);
+				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 
-					for (JsonNode itemNode : itemsNode) {
-						map.put("overview",itemNode.path("overview").asText());
-						map.put("homepage",itemNode.path("homepage").asText());
-					}
-
-				} catch (JsonParseException je) {
-					throw je;
-				} catch (Exception e) {
-					e.printStackTrace();
+				for (JsonNode itemNode : itemsNode) {
+					map.put("overview", itemNode.path("overview").asText());
+					map.put("homepage", itemNode.path("homepage").asText());
 				}
 
 			} catch (JsonParseException je) {
 				throw je;
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				if (conn != null) {
-					conn.disconnect(); // 리소스 닫기
-				}
 			}
-			
-			return map;
+
+		} catch (JsonParseException je) {
+			throw je;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				conn.disconnect(); // 리소스 닫기
+			}
 		}
 
+		return map;
+	}
 
 	// 지역코드 받는것도 오버로딩
 	public static <T> List<T> parseAndExportToTheList(Class<T> targetClass, String areaCode) {
@@ -590,7 +590,6 @@ public class ApiParsing {
 					T target = objMapper.treeToValue(itemNode, targetClass);
 					list.add(target);
 				}
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -719,4 +718,269 @@ public class ApiParsing {
 		return list;
 	}
 
+	// 코스 파싱 지옥
+	public static <T extends CultureParent> List<T> courseParser(Class<T> targetClass, String name){
+		String targetUrl =  ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey(name);
+		log.info("{} 의 키 사용, 코스 파싱 유알엘 정보입니다 {}",name, targetUrl);
+		List<T> list = new ArrayList<>();
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+//	        conn.setRequestProperty("Content-type", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/json");
+			
+			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+			
+			if (responseCode < 200 || 300 <= responseCode) {
+				log.error("페이지가 잘못되었습니다. {}", responseCode);
+				
+			}
+			
+			try (InputStream is = conn.getInputStream();
+					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+					BufferedReader br = new BufferedReader(isr);) {
+				
+				// json 을 파싱하는 도구?? ObjectMapper
+				ObjectMapper objMapper = new ObjectMapper();
+				
+				String line = br.readLine();
+				JsonNode rootNode = objMapper.readTree(line);
+				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+				
+				int count = 0;
+				for (JsonNode itemNode : itemsNode) {
+					log.info("{} 번째 데이터",++count);
+					String contentId = itemNode.get("contentid").asText();
+					String contentTypeId = itemNode.get("contenttypeid").asText();
+					try {
+						// 몸통
+						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						// 디테일 정보져오기
+						T target = getDetail(targetClass, contentId, contentTypeId, name);
+						// 서브 콘텐츠들 가져오기
+						Map<String, CultureParent> map = getSubConMap(contentId, contentTypeId, name);
+						
+						target = injectionSubConName(target, common, map);
+						
+						if(target != null) {
+							list.add(target);
+						}
+					} catch (JsonParseException | NullPointerException jno) {
+						jno.printStackTrace();
+					}
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if (conn != null) {
+				conn.disconnect(); // 리소스 닫기
+			}
+		}
+		return list;
+	}
+
+
+
+	// 맵에서 서브 컨텐츠 이름 세팅하고 맵주입까지 하는 메소드
+	private static <T extends CultureParent> T injectionSubConName(T target, CultureParent common ,Map<String, CultureParent> map) {
+		if(map.size() == 0) {
+			return null;
+		}
+		int count = 0;
+		for (String key : map.keySet()) {
+		    String subcontentid = "Subcontentid" + count;
+		    String subcontenttypeid = "Subcontenttypeid" + count;
+		    String subcontenttitle = "Subcontenttitle" + count;
+		    String subcontentfirstimage = "Subcontentfirstimage" + count;
+		    String subcontentadd1 = "Subcontentadd1" + count;
+		    String subcontentadd2 = "Subcontentadd2" + count;
+		    String subcontentaddmapx = "Subcontentaddmapx" + count;
+		    String subcontentaddmapy = "Subcontentaddmapy" + count;
+		    String subcontentaddoverview = "Subcontentaddoverview" + count;
+		    String subcontentaddhomepage = "Subcontentaddhomepage" + count;
+
+		    try {
+		        CultureParent dto = map.get(key);
+
+		        // Reflection을 사용하여 동적으로 필드에 접근하여 값을 복사
+		        Method targetSubcontentidSetter = target.getClass().getMethod("set" + subcontentid, String.class);
+		        targetSubcontentidSetter.invoke(target, key);
+
+		        Method targetSubcontenttypeidSetter = target.getClass().getMethod("set" + subcontenttypeid, String.class);
+		        targetSubcontentidSetter.invoke(target, key);
+		        
+		        Method targetSubcontenttitleSetter = target.getClass().getMethod("set" + subcontenttitle, String.class);
+		        targetSubcontenttitleSetter.invoke(target, dto.getTitle());
+
+		        Method targetSubcontentfirstimageSetter = target.getClass().getMethod("set" + subcontentfirstimage, String.class);
+		        targetSubcontentfirstimageSetter.invoke(target, dto.getFirstimage());
+
+		        Method targetSubcontentadd1Setter = target.getClass().getMethod("set" + subcontentadd1, String.class);
+		        targetSubcontentadd1Setter.invoke(target, dto.getAddr1());
+
+		        Method targetSubcontentadd2Setter = target.getClass().getMethod("set" + subcontentadd2, String.class);
+		        targetSubcontentadd2Setter.invoke(target, dto.getAddr2());
+
+		        Method targetSubcontentaddmapxSetter = target.getClass().getMethod("set" + subcontentaddmapx, String.class);
+		        targetSubcontentaddmapxSetter.invoke(target, dto.getMapx());
+
+		        Method targetSubcontentaddmapySetter = target.getClass().getMethod("set" + subcontentaddmapy, String.class);
+		        targetSubcontentaddmapySetter.invoke(target, dto.getMapy());
+
+		        Method targetSubcontentaddoverviewSetter = target.getClass().getMethod("set" + subcontentaddoverview, String.class);
+		        targetSubcontentaddoverviewSetter.invoke(target, dto.getOverview());
+
+		        Method targetSubcontentaddhomepageSetter = target.getClass().getMethod("set" + subcontentaddhomepage, String.class);
+		        targetSubcontentaddhomepageSetter.invoke(target, dto.getHomepage());
+
+		    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+		        log.error("맵 삽입 도중 예외", e);
+		    }
+		    if(count == 4) {
+		    	break;
+		    }
+		    count++;
+		}
+		
+		
+		target.setAddr1(common.getAddr1());
+		target.setAddr2(common.getAddr2());
+		target.setAreacode(common.getAreacode());
+		target.setBooktour(common.getBooktour());
+		target.setCat1(common.getCat1());
+		target.setCat2(common.getCat2());
+		target.setCat3(common.getCat3());
+		target.setCreatedtime(common.getCreatedtime());
+		target.setFirstimage(common.getFirstimage());
+		target.setFirstimage2(common.getFirstimage2());
+		target.setCpyrhtDivCd(common.getCpyrhtDivCd());
+		target.setMapx(common.getMapx());
+		target.setMapy(common.getMapy());
+		target.setMlevel(common.getMlevel());
+		target.setModifiedtime(common.getModifiedtime());
+		target.setSigungucode(common.getSigungucode());
+		target.setTel(common.getTel());
+		target.setTitle(common.getTitle());
+		target.setZipcode(common.getZipcode());
+		target.setShowflag(common.getShowflag());
+		
+		return target;
+	}
+
+	// 코스 서브 콘텐츠맵 가져오는 메소드
+	private static Map<String, CultureParent> getSubConMap(String contentId, String contentTypeId, String name) {
+		Map<String, CultureParent> map = new LinkedHashMap<>();
+		String targetUrl = new StringBuffer(ApiSearchInfo.DETAIL_URL).append(ApiSearchInfo.contentId(contentId))
+				.append(ApiSearchInfo.contentTypeId(contentTypeId)).append(ApiSearchInfo.getServiceKey(name)).toString();
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+//	        conn.setRequestProperty("Content-type", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/json");
+			
+			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+			
+			if (responseCode < 200 || 300 <= responseCode) {
+				log.error("페이지가 잘못되었습니다. {}", responseCode);
+			}
+			
+			try (InputStream is = conn.getInputStream();
+					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+					BufferedReader br = new BufferedReader(isr);) {
+				
+				// json 을 파싱하는 도구?? ObjectMapper
+				ObjectMapper objMapper = new ObjectMapper();
+				
+				String line = br.readLine();
+				JsonNode rootNode = objMapper.readTree(line);
+				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+				
+				for (JsonNode itemNode : itemsNode) {
+					try {
+						String subcontentid = itemNode.get("subcontentid").asText();
+						map.put(subcontentid, getOnething(CultureParent.class, subcontentid, name));
+						
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				conn.disconnect(); // 리소스 닫기
+			}
+		}
+		
+		System.out.println("맵 확인 : "+map);
+		return map;
+	}
+
+	
+	private static <T> T getOnething(Class<T> targetClass, String subcontentid, String name) {
+		T target = null;
+		String targetUrl = new StringBuffer(ApiSearchInfo.COMMON_URL)
+				.append(ApiSearchInfo.contentId(subcontentid)).append(ApiSearchInfo.getServiceKey(name)).toString();
+		
+		HttpURLConnection conn = null;
+		try {
+			URL url = new URL(targetUrl);
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-type", "application/json");
+//	        conn.setRequestProperty("Content-type", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/xml");
+//	        conn.setRequestProperty("Accept", "application/json");
+
+			int responseCode = conn.getResponseCode(); // 실제 HTTP로 호출을 시도하는 코드
+
+			if (responseCode < 200 || 300 <= responseCode) {
+				log.error("페이지가 잘못되었습니다. {}", responseCode);
+
+			}
+
+			try (InputStream is = conn.getInputStream();
+					InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+					BufferedReader br = new BufferedReader(isr);) {
+
+				// json 을 파싱하는 도구?? ObjectMapper
+				ObjectMapper objMapper = new ObjectMapper();
+
+				String line = br.readLine();
+				JsonNode rootNode = objMapper.readTree(line);
+				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
+
+				for (JsonNode itemNode : itemsNode) {
+					target = objMapper.treeToValue(itemNode, targetClass);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				conn.disconnect(); // 리소스 닫기
+			}
+		}
+		return target;
+	}
 }

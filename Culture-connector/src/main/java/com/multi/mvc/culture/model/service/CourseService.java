@@ -43,7 +43,9 @@ public class CourseService {
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
 	public void saveData(String name) {
-		List<Course> list = ApiParsing.parseAndExportToTheListAdvanced(Course.class, name);
+		
+//		List<Course> list =ApiParsing.parseAndExportToTheListAdvanced(Course.class);
+		List<Course> list = ApiParsing.courseParser(Course.class, name);
 		for(Course item : list) {
 			try {
 				mapper.insertCourse(item);

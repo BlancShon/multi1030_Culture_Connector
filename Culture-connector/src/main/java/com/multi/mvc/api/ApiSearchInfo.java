@@ -14,18 +14,23 @@ public class ApiSearchInfo {
 //	public static final String KOJAE_KEY3="EOhQWsO5B8yK%2FBsejXeqdcGFxsrVBGaLRymdYxQjlXBhmIZWF0BEt5NiAMGk08XMTUMEMseUO1ngMzre4RueNg%3D%3D";
 	public static final String KOJAE_KEY3="EOhQWsO5B8yK/BsejXeqdcGFxsrVBGaLRymdYxQjlXBhmIZWF0BEt5NiAMGk08XMTUMEMseUO1ngMzre4RueNg==";
 	
-	
 	// 장성희님 서비스키
 	public static final String JANGSUNG_KEY="p%2BFVc5OsZMt6%2FY2XE0P8H0C1yMbOJNO1uhCrn4dNsKVyYG6lt0DxS%2Fsv4Gkw0Mpeu4AEoRzZ6b9zbhxajBR9%2FQ%3D%3D";
 	// 이병집님 서비스키
 	public static final String LEEBYUNG_KEY="Wo73FahwmDVG3dBFuSoGkal0zxWVm3bLc51YH6ZsjlDF6AchfxQXRi5jlaWqlqntkMCU7TUF8e6CcKY3vDzaew%3D%3D";
+	// 이병집님 서비스키2
+	public static final String LEEBYUNG_KEY2="VBQGCLfGnH2S3jVRJUQcv9nbs2txqxC2fS%2FuN910CFNTCR%2FnQ2xS7dI3ecKRApq1d%2FLcEHvFTTN%2Fxgpn40ZNyw%3D%3D";
+	
 	// 김진경님 서비스키
 	public static final String KIMJIN_KEY="QUTEmhGKzYJJsg44vsO8qEM2FRolXGXxh9IJDu6zCewqNMvT1wKBCshsL38%2FLplwjaEKmMQngsdJZ9VkZ%2BW8cw%3D%3D";
 	// 김진경님 서비스키 2
 	public static final String KIMJIN_KEY2="oW%2FrS%2BFT6fgy036VPTpERN4pM3sBFCi2BwpZKn0nVfCts2U4npVDdN%2Fh152OFXPOP1Kt4APjeqSmJhVFbAE7uA%3D%3D";
+	// 김진경님 서비스키 3
+	public static final String KIMJIN_KEY3="+KM/zmfultQnxuyRkJFCTDcj9tOQ0unicZIq/NQtBgM/jMDcR8lmNyI+xIXsrUY6UQ6keWOj6rJ28Gw7nHlbjA==";
 	// 박현님 서비스키
 	public static final String PARKHYUN_KEY="yX2RtRptCoLL/kspIFHuDPrRpow4DHVtbw+NJDatd/cuSRWrPN4IcIivuC6y+O68h2uzkJOdWltsrYjQbiEqaA==";
-	
+	// 박현님 서비스키2
+	public static final String PARKHYUN_KEY2="HcE8N9eWY9tpSh2ZILTk+jjJ4nRFOdcKemzv5D3NOPd9+/nM/xvovMPbK0dRwcc83nOImT2koKh44kILXLLUZA==";
 	
 	// 페스티벌 기본 url 입니다
 	public static final String FESTIVAL_URL = "https://apis.data.go.kr/B551011/KorService1/searchFestival1?";
@@ -41,9 +46,13 @@ public class ApiSearchInfo {
 	public static final String IMAGE_INFO_URL = "http://apis.data.go.kr/B551011/KorService1/detailImage1?subImageYN=Y&";
 	// 오버뷰 홈페이지 가져오는 기본 url
 	public static final String OVERVIEW_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&overviewYN=Y&_type=json&defaultYN=Y";
+	// 디테일 가져오는 기본 url
+	public static final String DETAIL_URL = "https://apis.data.go.kr/B551011/KorService1/detailInfo1?MobileOS=etc&MobileApp=test&_type=json";
+	// 공통정보
+	public static final String COMMON_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&_type=json&contentId=128803&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=10";
+	public static String numOfRows = "numOfRows=100"; 
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
@@ -121,12 +130,18 @@ public class ApiSearchInfo {
 			serviceKey = JANGSUNG_KEY;
 		} else if (name.equals("이병집")) {
 			serviceKey = LEEBYUNG_KEY;
+		} else if (name.equals("이병집2")) {
+			serviceKey = LEEBYUNG_KEY2;
 		} else if (name.equals("김진경")) {
 			serviceKey = KIMJIN_KEY;
 		} else if (name.equals("김진경2")) { 
 			serviceKey = KIMJIN_KEY2;
+		} else if (name.equals("김진경3")) {
+			serviceKey = KIMJIN_KEY3;
 		}else if (name.equals("박현")) {
 			serviceKey = PARKHYUN_KEY;
+		}else if (name.equals("박현2")) {
+			serviceKey = PARKHYUN_KEY2;
 		} else if (name.equals("고재목2")) {
 			serviceKey = KOJAE_KEY2;
 		} else if (name.equals("고재목3")) {
@@ -136,8 +151,8 @@ public class ApiSearchInfo {
 		return "&serviceKey="+serviceKey;
 	}
 	
-	public static String pageNo(String num) {
-		return "&pageNo=" + num;
+	public static String pageNo(int page) {
+		return "&pageNo=" + page;
 	}
 	
 	public static String areaCode(String areaCode) {
@@ -170,7 +185,7 @@ public class ApiSearchInfo {
 		return "&arrange="+code;
 	}
 	
-//	관광타입(12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점) ID
+	//	관광타입(12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점) ID
 	public static String contentTypeId(String contentType) {
 		return "&contentTypeId=" + contentType;
 	}
