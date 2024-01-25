@@ -142,7 +142,7 @@
 	</insert>
 
 	<insert id="insertLeports" parameterType="LeisureSports">
-	    INSERT INTO LEPORTS (
+	    INSERT IGNORE INTO LEPORTS (
 	        contentid, contenttypeid, addr1, addr2, areacode, booktour, cat1, cat2, cat3,
 	        createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime,
 	        sigungucode, tel, title, zipcode, openPeriod, reservation, infoCenterLeports,

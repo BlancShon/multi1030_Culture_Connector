@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.EventMapper;
-import com.multi.mvc.culture.model.vo.Culture;
-import com.multi.mvc.culture.model.vo.CultureParam;
 import com.multi.mvc.culture.model.vo.Event;
 import com.multi.mvc.culture.model.vo.EventParam;
 
@@ -61,9 +59,9 @@ public class EventService {
 	}
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
-//	 @Transactional(noRollbackFor = SQLException.class)
-	public void saveData(String name) {
-		List<Event> list = ApiParsing.parseAndExportToTheListAdvanced(Event.class, name);
+//	 @Transactional(noRollbackFor = Exception.class)
+	public void saveData(String name, String page) {
+		List<Event> list = ApiParsing.parseAndExportToTheListAdvanced(Event.class, name, page);
 		for(Event item : list) {
 			try {
 				mapper.insertEvent(item);

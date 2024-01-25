@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.CourseMapper;
@@ -57,10 +58,10 @@ public class CourseService {
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
-	public void saveData(String name) {
+	public void saveData(@RequestParam("name") String name, @RequestParam("page") String page) {
 		
 //		List<Course> list =ApiParsing.parseAndExportToTheListAdvanced(Course.class);
-		List<Course> list = ApiParsing.courseParser(Course.class, name);
+		List<Course> list = ApiParsing.courseParser(Course.class, name, page);
 		for(Course item : list) {
 			try {
 				mapper.insertCourse(item);

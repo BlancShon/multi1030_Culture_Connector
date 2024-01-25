@@ -20,11 +20,13 @@
 </head>
 <body>
 		<h3><a href="${path}/mvc">홈</a></h3>
+		
+	        <h4>키 목록</h4>
+	        <h5>고재목, 고재목2, 고재목3<br>장성희, 이병집, 이병집2<br>감잔경,김진경2, 김진경3<br>박현, 박현2</h5>
 
 	<div>
 	    <div class="card">
-	        <h2>문화시설</h2>
-	
+			<h2>문화시설</h2>
 	        <!-- 테이블 생성 버튼 -->
 	        <button onclick="window.location='${path}/mvc/culture/createTable'">테이블 생성</button>
 	
@@ -33,6 +35,8 @@
 	            <label for="data">이름을 입력하세요:</label>
 	           	<input type="text" id="name" name="name" required>
 	            <br>
+	             <label for="data">페이지 입력 1 ~:</label>
+	            <input type="text" id="page" name="page" required>
 	            <input type="submit" value="데이터 받기">
 	        </form>
 	
@@ -51,6 +55,9 @@
 	        <form action="${path}/mvc/event/dataSave" method="post">
 	            <label for="data">이름을 입력하세요:</label>
 	           	<input type="text" id="name" name="name" required>
+	           	<br>
+	             <label for="data">페이지 입력 1 ~:</label>
+	            <input type="text" id="page" name="page" required>
 	            <br>
 	            <input type="submit" value="데이터 받기">
 	        </form>
@@ -71,6 +78,9 @@
 	        <form action="${path}/mvc/touristAttraction/dataSave" method="post">
 	            <label for="data">이름을 입력하세요:</label>
 	           	<input type="text" id="name" name="name" required>
+	           	<br>
+	           	 <label for="data">페이지 입력 1 ~:</label>
+	            <input type="text" id="page" name="page" required>
 	            <br>
 	            <input type="submit" value="데이터 받기">
 	        </form>
@@ -90,6 +100,9 @@
 	        <form action="${path}/mvc/leports/dataSave" method="post">
 	            <label for="data">이름을 입력하세요:</label>
 	           	<input type="text" id="name" name="name" required>
+	             	<br>
+	           	 <label for="data">페이지 입력 1 ~:</label>
+	            <input type="text" id="page" name="page" required>
 	            <br>
 	            <input type="submit" value="데이터 받기">
 	        </form>
@@ -109,6 +122,9 @@
 	        <form action="${path}/mvc/course/dataSave" method="post">
 	            <label for="data">이름을 입력하세요:</label>
 	           	<input type="text" id="name" name="name" required>
+	           	 	<br>
+	           	 <label for="data">페이지 입력 1 ~:</label>
+	            <input type="text" id="page" name="page" required>
 	            <br>
 	            <input type="submit" value="데이터 받기">
 	        </form>
@@ -127,6 +143,9 @@
 	        <form action="${path}/mvc/festival/dataSave" method="post">
 	            <label for="data">이름을 입력하세요:</label>
 	           	<input type="text" id="name" name="name" required>
+	           	 	<br>
+	           	 <label for="data">페이지 입력 1 ~:</label>
+	            <input type="text" id="page" name="page" required>
 	            <br>
 	            <input type="submit" value="데이터 받기">
 	        </form>

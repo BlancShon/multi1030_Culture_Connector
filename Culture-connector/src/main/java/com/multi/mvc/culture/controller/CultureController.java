@@ -40,10 +40,9 @@ public class CultureController {
 
 	// 아래 두개는 디비 주입 확인을 위한 메소드입니다
 	@PostMapping("/culture/dataSave")
-	public String dataSaveForDB(@RequestParam("name") String name) {
-		if(service.count() == 0) {
-			service.saveData(name);
-		}
+	public String dataSaveForDB(@RequestParam("name") String name, @RequestParam("page") String page) {
+			service.createTable();
+			service.saveData(name, page);
 		return "redirect:/dbsave";
 	}
 	@GetMapping("/culture/listForDB")

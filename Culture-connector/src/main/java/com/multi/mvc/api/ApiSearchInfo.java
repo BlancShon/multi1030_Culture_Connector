@@ -49,10 +49,10 @@ public class ApiSearchInfo {
 	// 디테일 가져오는 기본 url
 	public static final String DETAIL_URL = "https://apis.data.go.kr/B551011/KorService1/detailInfo1?MobileOS=etc&MobileApp=test&_type=json";
 	// 공통정보
-	public static final String COMMON_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&_type=json&contentId=128803&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y";
+	public static final String COMMON_URL = "https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=etc&MobileApp=test&_type=json&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y";
 	
 	// 최대 몇개의 데이터를 가져올것인지 정하시면 됩니다. 
-	public static String numOfRows = "numOfRows=100"; 
+	public static String numOfRows = "numOfRows=50"; 
 	// json 원하지 않으신다면 지워버리시면 됩니다
 	public static String type = "&_type=json";
 	public static String mobileOs = "&MobileOS=etc";
@@ -151,7 +151,7 @@ public class ApiSearchInfo {
 		return "&serviceKey="+serviceKey;
 	}
 	
-	public static String pageNo(int page) {
+	public static String pageNo(String page) {
 		return "&pageNo=" + page;
 	}
 	

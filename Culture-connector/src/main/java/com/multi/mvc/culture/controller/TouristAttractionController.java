@@ -34,10 +34,9 @@ public class TouristAttractionController {
     
     // 아래 세개는 디비 주입 확인을 위한 메소드입니다
  	@PostMapping("/touristAttraction/dataSave")
- 	public String dataSaveForDB(@RequestParam("name") String name) {
- 		if(service.count() == 0) {
- 			service.saveData(name);
- 		}
+ 	public String dataSaveForDB(@RequestParam("name") String name, @RequestParam("page") String page) {
+ 		service.createTable();	
+ 		service.saveData(name, page);
  		return "redirect:/dbsave";
  	}
  	@GetMapping("/touristAttraction/listForDB")

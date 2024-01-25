@@ -12,13 +12,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.multi.mvc.culture.model.vo.Course;
 import com.multi.mvc.culture.model.vo.CultureParent;
+import com.multi.mvc.culture.model.vo.Event;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -143,7 +142,7 @@ public class ApiParsing {
 					String contentTypeId = itemNode.get("contenttypeid").asText();
 					try {
 						// 기본 정보들 받아오는 바구니
-						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						T common = objMapper.treeToValue(itemNode, targetClass);
 						// 이미지 정보들 받아오는 리스트
 						List<String> imgList = getImgList(contentId, contentTypeId, whosKey);
 						// 오버뷰, 홈페이지 받아오는 메소드
@@ -179,7 +178,7 @@ public class ApiParsing {
 	}
 
 	// 분류없이 타겟에 상세정보까지 주입하는 메서드222 이름 넣는 버전
-	public static <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name) {
+	public static <T extends CultureParent> List<T> parseAndExportToTheListAdvanced(Class<T> targetClass, String name, String page) {
 		String className = targetClass.getSimpleName();
 		String contentType = null;
 
@@ -197,11 +196,11 @@ public class ApiParsing {
 
 		String targetUrl = null;
 		if (className.equals("Event")) {
-			targetUrl = ApiSearchInfo.getEventURL() + ApiSearchInfo.getServiceKey(name);
+			targetUrl = ApiSearchInfo.getEventURL() + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);
 		} else if (className.equals("Festival")) {
-			targetUrl = ApiSearchInfo.getFestivalURL() + ApiSearchInfo.getServiceKey(name);
+			targetUrl = ApiSearchInfo.getFestivalURL() + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);;
 		} else {
-			targetUrl = ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name);
+			targetUrl = ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);;
 		}
 
 		log.info("{} 의 키 사용, 이름 넣는 버전 타겟 유알엘 정보입니다 {}", name, targetUrl);
@@ -236,6 +235,7 @@ public class ApiParsing {
 				JsonNode itemsNode = rootNode.path("response").path("body").path("items").path("item");
 
 				int count = 0;
+				int keyConsumption = 0;
 				for (JsonNode itemNode : itemsNode) {
 					log.info("{} 번째 데이터", ++count);
 					String contentId = itemNode.get("contentid").asText();
@@ -243,7 +243,7 @@ public class ApiParsing {
 
 					try {
 						// 기본 정보들 받아오는 바구니
-						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						T common = objMapper.treeToValue(itemNode, targetClass);
 						// 이미지 정보들 받아오는 리스트
 						List<String> imgList = getImgList(contentId, contentTypeId, name);
 						// 오버뷰, 홈페이지 받아오는 메소드
@@ -255,8 +255,15 @@ public class ApiParsing {
 						if (target != null) {
 							list.add(target);
 						}
-					} catch (JsonParseException | NullPointerException jno) {
-						jno.printStackTrace();
+					} catch (JsonParseException je) {
+						keyConsumption++;
+						if(keyConsumption == 7) {
+							log.info("키값을 다 쓴걸로 예상됩니다.");
+							break;
+						}
+							je.printStackTrace();
+					} catch (NullPointerException ne) {
+						ne.printStackTrace();
 					}
 				}
 
@@ -276,6 +283,7 @@ public class ApiParsing {
 		}
 		return list;
 	}
+	
 
 	// 이미지 정보 받아오는 메소드
 	private static List<String> getImgList(String contentId, String contentTypeId, String name)
@@ -337,12 +345,12 @@ public class ApiParsing {
 	}
 
 	// 하나로 합쳐주는 메소드
-	private static <T extends CultureParent> T commonInjection(T target, CultureParent common, List<String> imgList,
+	private static <T extends CultureParent> T commonInjection(T target, T common, List<String> imgList,
 			Map<String, String> overAndHomepage) throws NullPointerException {
-
-		if (target == null || common == null) {
-			return target = null;
-		}
+			
+			if(target == null) {
+				return common;
+			}
 
 		int size = imgList.size();
 		if (size > 20) {
@@ -366,6 +374,7 @@ public class ApiParsing {
 			}
 
 		}
+		
 
 		target.setOverview(overAndHomepage.get("overview"));
 		target.setHomepage(overAndHomepage.get("homepage"));
@@ -399,6 +408,7 @@ public class ApiParsing {
 			throws JsonParseException {
 		T target = null;
 		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId) + ApiSearchInfo.getServiceKey(name);
+		log.info("디테일 url 정보 : {}", targetUrl);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -719,8 +729,8 @@ public class ApiParsing {
 	}
 
 	// 코스 파싱 지옥
-	public static <T extends CultureParent> List<T> courseParser(Class<T> targetClass, String name){
-		String targetUrl =  ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey(name);
+	public static <T extends CultureParent> List<T> courseParser(Class<T> targetClass, String name, String page){
+		String targetUrl =  ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);;
 		log.info("{} 의 키 사용, 코스 파싱 유알엘 정보입니다 {}",name, targetUrl);
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
@@ -758,7 +768,7 @@ public class ApiParsing {
 					String contentTypeId = itemNode.get("contenttypeid").asText();
 					try {
 						// 몸통
-						CultureParent common = objMapper.treeToValue(itemNode, CultureParent.class);
+						T common = objMapper.treeToValue(itemNode, targetClass);
 						// 디테일 정보져오기
 						T target = getDetail(targetClass, contentId, contentTypeId, name);
 						// 서브 콘텐츠들 가져오기
@@ -791,7 +801,7 @@ public class ApiParsing {
 
 
 	// 맵에서 서브 컨텐츠 이름 세팅하고 맵주입까지 하는 메소드
-	private static <T extends CultureParent> T injectionSubConName(T target, CultureParent common ,Map<String, CultureParent> map) {
+	private static <T extends CultureParent> T injectionSubConName(T target, T common ,Map<String, CultureParent> map) {
 		if(map.size() == 0) {
 			return null;
 		}
@@ -881,6 +891,7 @@ public class ApiParsing {
 		Map<String, CultureParent> map = new LinkedHashMap<>();
 		String targetUrl = new StringBuffer(ApiSearchInfo.DETAIL_URL).append(ApiSearchInfo.contentId(contentId))
 				.append(ApiSearchInfo.contentTypeId(contentTypeId)).append(ApiSearchInfo.getServiceKey(name)).toString();
+		log.info("몹 가져오는 곳 url 정보 : {}",targetUrl);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -934,12 +945,12 @@ public class ApiParsing {
 		return map;
 	}
 
-	
+	// 하나 가져오는거
 	private static <T> T getOnething(Class<T> targetClass, String subcontentid, String name) {
 		T target = null;
 		String targetUrl = new StringBuffer(ApiSearchInfo.COMMON_URL)
 				.append(ApiSearchInfo.contentId(subcontentid)).append(ApiSearchInfo.getServiceKey(name)).toString();
-		
+		log.info("하나 가져오는거 url 정보 : {}",targetUrl);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -983,4 +994,6 @@ public class ApiParsing {
 		}
 		return target;
 	}
+	
+	
 }

@@ -45,8 +45,8 @@ public class FestivalService {
 
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
-	public void saveData(String name) {
-		List<Festival> list = ApiParsing.parseAndExportToTheListAdvanced(Festival.class, name);
+	public void saveData(String name, String page) {
+		List<Festival> list = ApiParsing.parseAndExportToTheListAdvanced(Festival.class, name, page);
 		for(Festival item : list) {
 			try {
 				mapper.insertFestival(item);

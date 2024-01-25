@@ -37,8 +37,8 @@ public class TouristAttractionService {
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
-	public void saveData(String name) {
-		List<TouristAttraction> list = ApiParsing.parseAndExportToTheListAdvanced(TouristAttraction.class, name);
+	public void saveData(String name, String page) {
+		List<TouristAttraction> list = ApiParsing.parseAndExportToTheListAdvanced(TouristAttraction.class, name, page);
 		for(TouristAttraction item : list) {
 			try {
 				mapper.insertTouristAttraction(item);

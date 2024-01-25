@@ -64,8 +64,8 @@ public class CultureService {
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
-	public void saveData(String name) {
-		List<Culture> list = ApiParsing.parseAndExportToTheListAdvanced(Culture.class, name);
+	public void saveData(String name, String page) {
+		List<Culture> list = ApiParsing.parseAndExportToTheListAdvanced(Culture.class, name, page);
 		for(Culture item : list) {
 			try {
 				mapper.insertCulture(item);
