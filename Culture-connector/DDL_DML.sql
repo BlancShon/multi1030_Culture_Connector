@@ -418,6 +418,7 @@ SELECT * FROM FESTIVAL;
 ------------------------------------------------------------------
 
 CREATE TABLE FOOD (
+	CFNO INT AUTO_INCREMENT, 
     CONTENTID INT,
     CONTENTTYPEID INT,
     HOMEPAGE VARCHAR(600),

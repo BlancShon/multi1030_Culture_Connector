@@ -120,10 +120,17 @@
 						</ul>
 					</li>
 
-          <!-- Nav item 음식 투어  -->
-					<li class="nav-item">
-			            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/food">음식 투어</a>	
-		            </li>
+         <!-- Nav item 음식 투어  -->
+          
+					<li class="nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/food" id="pagesMenu" data-bs-toggle="dropdown" >음식투어</a>
+						  <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+			  
+							  <li> <a class="dropdown-item" href="${pageContext.request.contextPath}/food">통합 검색</a></li>
+							  <li> <a class="dropdown-item" href="${pageContext.request.contextPath}/foodSearch">상세 검색</a></li>
+			  
+						  </ul>
+						</li>
 
           <!-- Nav item 문화 소식 -->
 					<li class="nav-item dropdown">
