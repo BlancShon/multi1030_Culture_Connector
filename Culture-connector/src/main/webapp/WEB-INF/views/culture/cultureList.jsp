@@ -350,16 +350,14 @@ $(".form-check-input").change(function(){
 </script>
 
 <script type="text/javascript">
-<script>
-$(function(){
-	var SelectedcheckBox = $(".SelectedcheckBox").val();
-		console.log(SelectedcheckBox);
-	$('input:checkbox[name="checkBox"]').each(function() {
-		if( SelectedcheckBox.indexOf(this.value) > -1){  
-			$(this).prop('checked', true); 
-		   }
-	});
-  });
+
+
+</script>
+
+<script type="text/javascript">
+
+
+
 
 </script>
 	

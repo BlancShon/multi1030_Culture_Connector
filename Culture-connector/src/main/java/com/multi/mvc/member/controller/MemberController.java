@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -25,10 +26,12 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.google.service.GoogleService;
 import com.multi.mvc.kakao.service.KaKaoService;
 import com.multi.mvc.member.model.service.MemberService;
 import com.multi.mvc.member.model.vo.Member;
+import com.multi.mvc.member.model.vo.WishList;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,20 +46,37 @@ public class MemberController {
 	private MemberService service;
 	
 	
+	
+	private WishList wishList;
+	
+	private Culture culture;
+
+	private Member member;
+	
+	
 	@Autowired
 	private KaKaoService kakaoService;
 	
 	@Autowired
 	private GoogleService googleService;
 	
+	
+	@GetMapping("/wishList/createTable")
+	public String createTable() {
+		log.debug("wishList 테이블 생성");
+		service.createTable();
+		return "redirect:/dbsave";
+	}
+	
+	
+	
+	
+	
 	@GetMapping("/loginForm")
 	public String loginForm() {
 		log.debug("로그인 요청");
 		return "loginForm";
 	}
-	
-	
-	
 
 	// action : /login, method : POST
 	// 파라메터 : memberId, memberPwd
@@ -298,6 +318,59 @@ public class MemberController {
             return "redirect:/loginForm";
         }
     }
+	
+	
+	
+	@RequestMapping("member/addWishList")
+	public String addWishList(Model model,@SessionAttribute(name="loginMember", required = false) Member loginMember, @RequestParam("contentid") int contentid) {
+		
+		String userId = loginMember.getId();
+	 
+		
+		System.out.println("userId = " + userId);
+		System.out.println("contentid = " + contentid);
+		int count = service.countWishList(userId,contentid);
+		
+		if(count != 0) {
+		
+			
+			model.addAttribute("msg", "해당 콘텐츠는 이미  추가되어있습니다.");
+			model.addAttribute("location", "/culture/detail");
+			model.addAttribute("contentid", contentid);
+			model.addAttribute("count", count);
+			return "redirect:/culture/detail";
+		}
+		System.out.println("memberId343535 = " + userId);
+		service.addWishList(userId,contentid);
+
+		/* model.addAttribute("list", wishList); */
+		model.addAttribute("contentid", contentid);
+		model.addAttribute("count", count);
+		model.addAttribute("msg", "해당 콘텐츠를 위시리스트에 추가했습니다.");
+		return "redirect:/culture/detail";
+		
+		
+		
+	}
+	
+	@GetMapping("member/viewWishList")
+	public String viewWishList(Model model, @SessionAttribute(name="loginMember", required = false) Member loginMember) {
+		String userId = loginMember.getId();
+		List<Culture> culture = service.viewWishList(userId);
+		System.out.println("컨트롤러 = " + culture);
+		model.addAttribute("culture", culture);
+		for(int i = 0; i< culture.size(); i++) {
+			culture.get(i).getTitle();
+			System.out.println("장소명" + culture.get(i).getTitle());
+		}
+			
+		
+		return "member/wishList";
+		
+		
+	}
+	
+	
 		
 }
 

@@ -12,8 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.member.model.mapper.MemberMapper;
 import com.multi.mvc.member.model.vo.Member;
+import com.multi.mvc.member.model.vo.WishList;
 
 @Service
 public class MemberService {
@@ -30,6 +32,22 @@ public class MemberService {
 	@Autowired
 	private BCryptPasswordEncoder pwEncoder; //  SHA-256 hash code로 패스워드 일방향 암호 지원 모듈
 	// 1234 -> nsikldvnisoldjhv2423jo23 (평문 -> hashCode)
+	
+	public Map<String, String> wishMap = new HashMap<>();
+	
+	public void createTable() {
+		
+		mapper.createTableWishList();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public Member login(String id, String pwd) {
 		Member member = mapper.selectMemberById(id);
@@ -171,6 +189,45 @@ public class MemberService {
 
         return member;
     }
+	
+	
+	
+	public void addWishList(String userId, int contentId) {
+		
+		wishMap.put("userId", userId);
+		wishMap.put("contentId", "" + contentId);
+		System.out.println("서비스단에서의 userId = " + userId);
+		System.out.println("서비스단에서의 contentId = " + contentId);
+		System.out.println("서비스단에서의 wishMap = " + wishMap);
+		mapper.addWishList(wishMap);
+		
+	}
+	
+	
+	public List<Culture> viewWishList(String userId) {
+		List<Culture> culture = mapper.selectCultureWishList(userId);
+		System.out.println("서비스단에서의 culture = " + culture);
+		return culture;
+		
+	}
+	
+	
+	
+	public int countWishList(String memberId, int contentId) {
+		
+		wishMap.put("memberId", memberId);
+		wishMap.put("contentId", "" + contentId);
+		
+		
+		 mapper.countWishList(wishMap);
+		
+		return mapper.countWishList(wishMap);
+	}
+	
+	
+	
+	
+	
 }
 
 

@@ -200,7 +200,7 @@
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/inform">내 정보</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
-							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
+							<li> <a class="dropdown-item" href="${path}/member/viewWishList">북마크/리뷰 관리</a></li>
 							<li> <a class="dropdown-item" href="${path}/logout">로그아웃</a></li>
 
 						</ul>

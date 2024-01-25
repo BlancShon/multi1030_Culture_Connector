@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.multi.mvc.member.model.mapper.MemberMapper">
+
+
+
+<insert id="createTableWishList">
+
+	CREATE TABLE IF NOT EXISTS WishList (
+		
+		CARTID INT AUTO_INCREMENT,
+		CONTENTID INT NOT NULL,
+		USERID VARCHAR(30) NOT NULL,
+		STATUS  VARCHAR(30), 
+	
+		foreign key (USERID) references Member(ID),
+		foreign key (CONTENTID) references Culture(CONTENTID),
+    	primary key (CARTID)
+	);
+
+</insert>
+
+<insert id="addWishList" parameterType="map">
+	
+		insert into wishList (CartId,contentId,userId,STATUS)
+	
+		values 
+		
+		
+		(0, #{contentId}, #{userId}, default)
+	
+</insert>
+
+
+
+
+
+
+
+<select id="selectCultureWishList" parameterType="String" resultType="Culture">
+	SELECT c.title, c.image0, c.addr1,c.contentid FROM WishList w
+		INNER JOIN Culture c ON w.contentID = c.contentId
+		INNER JOIN Member m ON w.USERID = m.id
+		where m.id= #{userId};
+</select>
+
+
+<select id="countWishList"  parameterType="map" resultType="int">
+	select count(*)
+	from wishlist
+	where USERID = #{memberId}
+	and CONTENTID = #{contentId}
+
+</select>
+
+
+
+
+
+</mapper>

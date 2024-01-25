@@ -71,6 +71,7 @@
 				<div class="card bg-light p-0 pb-0">
 					<!-- Card body -->
 					<div class="card-body d-flex justify-content-between flex-wrap">
+						
 						<!-- Title and badge -->
 						<div><img src="">
 							<!-- Badge -->
@@ -85,11 +86,15 @@
 						
 						</div>
 						<!-- Buttons -->
+						<form action="${path}/member/addWishList" method="post">
 						<ul class="list-inline mb-0">
 							<!-- wishlist -->
+							
 							<li class="list-inline-item">
-								<a href="#" class="btn btn-sm btn-white px-2"><img src="${pageContext.request.contextPath}/resources/images/heart.svg" style="width: 20px;"></a>
+								<a href="${path}/member/addWishList?contentid=${culture.contentid}" class="btn btn-sm btn-white px-2" id="addWishList"><img src="${pageContext.request.contextPath}/resources/images/heart.svg" style="width: 20px;"></a>
+								
 							</li>
+							
 							<li class="list-inline-item">
 								<a href="javascript:;" class="btn btn-sm btn-white px-2" id="kakaotalk-sharing-btn"><img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" style="width: 20px;"></a>
 							</li>
@@ -103,6 +108,8 @@
 								<a href="#" class="btn btn-sm btn-white px-2"><img src="${pageContext.request.contextPath}/resources/images/triangle.svg" style="width: 20px;"></a>
 							</li>
 						</ul>
+						</form>
+						
 					</div>
 					<!-- Card footer -->
 				
@@ -551,7 +558,24 @@ Kakao.Share.createDefaultButton({
 </script>
 
 
+<script type="text/javascript">
 
+/* document.getElementById("addWishList").click(function() {
+	if(document.getElementById("countValue").value === 0) {
+		alert("위시리스트에 추가되었습니다.")
+	}else {
+		alert("이미 위시리스트에 존재합니다.")
+	}
+})
+  */
+
+
+
+
+
+
+
+</script>
 	
 
 
