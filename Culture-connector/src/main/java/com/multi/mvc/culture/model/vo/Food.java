@@ -47,7 +47,9 @@ public class Food {
 	private String smoking;
 	private String treatMenu;
 	private String lcnsNo;
-	private String originImgurl;
+	private String originImgurl1;
+	private String originImgurl2;
 	private String smallImgurl;
+//	private int status;
 
 }

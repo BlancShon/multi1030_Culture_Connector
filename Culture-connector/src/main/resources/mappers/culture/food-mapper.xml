@@ -31,17 +31,20 @@
 		<result property="kidsFacility" column="KIDSFACILITY"/> 
 		<result property="opendateFood" column="OPENDATEFOOD"/> 
 		<result property="opentimeFood" column="OPENTIMEFOOD"/> 
-		<result property="packing" column="PACKING "/> 
+		<result property="packing" column="PACKING"/> 
 		<result property="parkingFood" column="PARKINGFOOD"/> 
-		<result property="reservationFood" column="RESERVATIONFOOD "/> 
+		<result property="reservationFood" column="RESERVATIONFOOD"/> 
 		<result property="restdateFood" column="RESTDATEFOOD"/> 
-		<result property="scaleFood" column="SCALEFOOD "/> 
+		<result property="scaleFood" column="SCALEFOOD"/> 
 		<result property="seat" column="SEAT"/> 
 		<result property="smoking" column="SMOKING"/> 
 		<result property="treatMenu" column="TREATMENU"/> 
 		<result property="lcnsNo" column="LCNSNO"/> 
-		<result property="originImgurl" column="ORIGINIMGURL"/> 
+		<result property="originImgurl1" column="ORIGINIMGURL1"/> 
+		<result property="originImgurl2" column="ORIGINIMGURL2"/> 
 		<result property="smallImgurl" column="SMALLIMGURL"/> 
+<!-- 		<result property="status" column="STATUS" /> -->
+
 
 	</resultMap>
 	
@@ -85,8 +88,10 @@
 		    SMOKING VARCHAR(100),
 		    TREATMENU VARCHAR(100),
 		    LCNSNO VARCHAR(100),
-		    ORIGINIMGURL VARCHAR(1000),
-		    SMALLIMGURL VARCHAR(1000),
+		    ORIGINIMGURL1 TEXT,
+		    ORIGINIMGURL2 TEXT,
+		    SMALLIMGURL VARCHAR(100),
+<!--    		 	STATUS VARCHAR(1) DEFAULT 'Y' CHECK (STATUS IN('Y', 'N')), -->
 		    CONSTRAINT PK_FOOD PRIMARY KEY(CFNO)
 		);
 				
@@ -104,7 +109,7 @@
    		DISCOUNTINFOFOOD, FIRSTMENU, INFOCENTERFOOD, KIDSFACILITY, OPENDATEFOOD, 
    		OPENTIMEFOOD, PACKING, PARKINGFOOD, RESERVATIONFOOD, RESTDATEFOOD, 
    		SCALEFOOD, SEAT, SMOKING, TREATMENU, LCNSNO, 
-   		ORIGINIMGURL, SMALLIMGURL
+   		ORIGINIMGURL1, ORIGINIMGURL2, SMALLIMGURL
     )
     VALUES
     <foreach collection="list" index="index" item="item" separator=","> 
@@ -117,7 +122,7 @@
   		#{item.discountinfoFood}, #{item.firstMenu}, #{item.infocenterFood}, #{item.kidsFacility}, #{item.opendateFood},
   		#{item.opentimeFood}, #{item.packing}, #{item.parkingFood}, #{item.reservationFood}, #{item.restdateFood},
   		#{item.scaleFood}, #{item.seat}, #{item.smoking}, #{item.treatMenu}, #{item.lcnsNo}, 
-  		#{item.originImgurl}, #{item.smallImgurl}
+  		#{item.originImgurl1}, #{item.originImgurl2}, #{item.smallImgurl}
   		
   		)
 	</foreach>

@@ -132,10 +132,12 @@ public class OpenApiManagerForXml_food {
 						String smoking = getStrData(eElement, "smoking");
 						String treatMenu = getStrData(eElement, "treatmenu");
 						String lcnsNo = getStrData(eElement, "lcnsno");
-						String originImgurl = getStrData(eElement, "originimgurl");
+						String originImgurl1 = getStrData(eElement, "originimgurl");
+						String originImgurl2 = getStrData(eElement, "originimgurl");
 						String smallImgurl = getStrData(eElement, "smallimgurl");
 						
-						Food food = new Food(0, contentId, contentTypeId, homePage, tel, title, firstImage, firstImage2, areaCode, siGunGuCode, cat1, cat2, cat3, addr1, addr2, zipCode, mapX, mapY, overView, mlevel, chkcreditcardFood, discountinfoFood, firstMenu, infocenterFood, kidsFacility, opendateFood, opentimeFood, packing, parkingFood, reservationFood, restdateFood, scaleFood, seat, smoking, treatMenu, lcnsNo, originImgurl, smallImgurl);
+						Food food = new Food(0, contentId, contentTypeId, homePage, tel, title, firstImage, firstImage2, areaCode, siGunGuCode, cat1, cat2, cat3, addr1, addr2, zipCode, mapX, mapY, overView, mlevel, chkcreditcardFood, discountinfoFood, firstMenu, infocenterFood, kidsFacility, opendateFood, opentimeFood, packing, parkingFood, reservationFood, 
+								restdateFood, scaleFood, seat, smoking, treatMenu, lcnsNo, originImgurl1, originImgurl2, smallImgurl);
 						
 						
 					
@@ -386,14 +388,16 @@ public class OpenApiManagerForXml_food {
 			doc.getDocumentElement().normalize();
 			
 			// 이아래는 필요없음 // 어차피 배열로 나오는 것이 아니기 때문에
-//			NodeList nList = doc.getElementsByTagName("item");
-//			for (int i = 0; i < nList.getLength(); i++) {
-//				Node node = nList.item(i);
-////				System.out.println("\nCurrent Element : " + node.getNodeName());
-//				if (node.getNodeType() == Node.ELEMENT_NODE) {
-//					try {
+			NodeList nList = doc.getElementsByTagName("item");
+			for (int i = 0; i < nList.getLength(); i++) {
+				Node node = nList.item(i);
+//				System.out.println("\nCurrent Element : " + node.getNodeName());
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+					try {
+						Element eElement = (Element) node;   // item의 안에 있는게 아닌 그 상위를 갖고와야함  
 			
-			Element eElement = (Element) doc.getElementsByTagName("item").item(0);  // 그래서여기도 node가 아니라 doc 그대로?
+//			Element eElement = (Element) doc.getElementsByTagName("item").item(0);  // 그래서여기도 node가 아니라 doc 그대로?
+//			Element eElement1 = (Element) doc.getElementsByTagName("item").item(1);  // 그래서여기도 node가 아니라 doc 그대로?
 			
 			//System.out.println("DIV    : " + getStrData(eElement, "DIV"));
 			//System.out.println("SERVICE : " + getStrData(eElement, "SERVICE"));
@@ -404,23 +408,25 @@ public class OpenApiManagerForXml_food {
 			//System.out.println("SVCOPNBGNDT: " + getDateData(eElement, "SVCOPNBGNDT"));
 			
 			// 필요 데이터들 파싱
-			String originImgurl = getStrData(eElement, "originimgurl");
-			String smallImgurl = getStrData(eElement, "smallimgurl");
+			String originImgurl1 = getStrData(eElement, "originimgurl");
+			String originImgurl2 = getStrData(eElement, "originimgurl");
+			String smallImgurl = getStrData(eElement, "smallimageurl");
+//			String originImgurl2 = getStrData(eElement1, "originimgurl");
 			
-			food.setOriginImgurl(originImgurl);
+			food.setOriginImgurl1(originImgurl1);
 			food.setSmallImgurl(smallImgurl);  // 푸드에있는 kidsFac 데이터는 빈값이었ㄴㄴ데, 여기서 파싱된 데이터를 세팅해줌
+			food.setOriginImgurl2(originImgurl2);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
+			} catch (Exception e) {
+				System.out.println("데이터가 잘못되었습니다!");
+			}
 		}
-		
-		return food;
-		
-		
 	}
-	
-	
+	} catch (Exception e) {
+	e.printStackTrace();
+	}
+	return food;
+	}
 
 	private static String getStrData(Element eElement, String tagName) {
 		try {

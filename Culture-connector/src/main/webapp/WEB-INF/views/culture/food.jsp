@@ -1002,6 +1002,43 @@ Title and Tabs END -->
 
 <!-- 					</div> Row END -->
 
+	<!-- page부 시작 -->
+			<div align="center">
+				<!-- 가장 단순화된 버전 = 검색어가 없는 경우 -->
+<!-- 			처음 페이지로 이동하는 코드 -->
+<%-- 	 			<button onclick="location.href='${path}/board/list?page=1'">&lt;&lt;</button>  --%>
+<!-- 			이전 페이지로 이동하는 코드 -->
+<%-- 	 			<button onclick="location.href='${path}/board/list?page=${pageInfo.prevPage}'">&lt;</button>  --%>
+				
+				<!-- 처음 페이지 -->
+				<button onclick="movePage(1);">&lt;&lt;</button>
+				<!-- 이전 페이지 -->
+				<button onclick="movePage(${pageInfo.prevPage});">&lt;</button>
+				
+				<!-- 10개의 페이지가 보이는 영역 -->
+				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+					<!-- 현재 페이지 일때 button을 다르게 표기 하기 위한 영역 -->
+					<c:if test="${status.current == pageInfo.currentPage}">
+						<button disabled >
+							${status.current}
+						</button>
+					</c:if>
+					<c:if test="${status.current != pageInfo.currentPage}">
+						<button onclick="movePage(${status.current});">
+							${status.current}
+						</button>
+					</c:if>
+				</c:forEach>
+				
+				<!-- 다음 페이지 -->
+				<button onclick="movePage(${pageInfo.nextPage});">&gt;</button>
+				<!-- 마지막 페이지 -->
+				<button onclick="movePage(${pageInfo.maxPage});">&gt;&gt;</button>
+			</div>
+		<!-- page부 끝 -->
+	</div>
+</section>
+
 <!-- 					Pagination -->
 <!-- 					<div class="row"> -->
 <!-- 						<div class="col-12"> -->
@@ -1020,7 +1057,6 @@ Title and Tabs END -->
 <!-- 						</div> -->
 <!-- 					</div> -->
 <!-- 				</div> -->
-			</section>
 			<!-- =======================
 Hotel grid END -->
 
@@ -1073,3 +1109,10 @@ Footer START -->
 
 </body>
 </html>
+
+<script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>

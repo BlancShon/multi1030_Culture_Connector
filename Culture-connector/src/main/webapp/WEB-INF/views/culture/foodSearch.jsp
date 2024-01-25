@@ -250,10 +250,10 @@ Main Banner START -->
 
 
 										<!-- List -->
-										<ul class="nav nav-divider mb-2 mb-sm-3">
-											<li class="nav-item">${item.addr1}<br></li>
-											<li class="nav-item">${item.title}<br></li>
-											<li class="nav-item"><c:out value="${item.firstMenu}"/></li>
+										<ul>
+											<li class="nav-item">${item.addr1}</li>
+											<li class="nav-item">${item.title}</li>
+											<li class="nav-item">${item.firstMenu}</li>
 										</ul>
 									</div>
 									<!-- Card body END -->

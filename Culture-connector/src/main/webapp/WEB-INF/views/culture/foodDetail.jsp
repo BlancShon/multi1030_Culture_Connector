@@ -311,10 +311,10 @@ Content START -->
 							</div>
 						</div>
 						<div class="card-body" >
-								<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="${food.firstImage}">
+								<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="${food.originImgurl1}">
 									<div class="card card-element-hover card-overlay-hover overflow-hidden">
 										<!-- Image -->
-										<img src="${food.firstImage}" class="card-img" alt="">
+										<img src="${food.originImgurl1}" class="card-img" alt="">
 										<!-- Full screen button -->
 										<div class="hover-element w-100 h-100">
 											<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -324,10 +324,10 @@ Content START -->
 						</div>
 						<br>
 						<div class="card-body">
-								<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="${food.firstImage2}">
+								<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="${food.originImgurl2}">
 									<div class="card card-element-hover card-overlay-hover overflow-hidden">
 										<!-- Image -->
-										<img src="${food.firstImage2}" class="card-img" alt="">
+										<img src="${food.originImgurl2}" class="card-img" alt="">
 										<!-- Full screen button -->
 										<div class="hover-element w-100 h-100">
 											<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>

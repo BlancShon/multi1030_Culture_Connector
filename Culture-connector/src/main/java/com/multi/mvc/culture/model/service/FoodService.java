@@ -80,10 +80,6 @@ public class FoodService {
 		return mapper.selectFoodList(param);
 	}
 	
-	public List<Food> getFoodSearchSample(FoodParam param){
-		
-		return mapper.selectFoodSample(param);
-	}
 //	
 
 	public int getFoodCount(FoodParam param) {
