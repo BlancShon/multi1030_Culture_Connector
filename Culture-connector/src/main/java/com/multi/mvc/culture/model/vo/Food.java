@@ -2,8 +2,8 @@ package com.multi.mvc.culture.model.vo;
 
 import java.util.Date;
 
-import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Food {
 	
+	private int cfno;
 	private int contentId;
 	private int contentTypeId;
 	private String homePage;
@@ -46,5 +47,7 @@ public class Food {
 	private String smoking;
 	private String treatMenu;
 	private String lcnsNo;
+	private String originImgurl;
+	private String smallImgurl;
 
 }
