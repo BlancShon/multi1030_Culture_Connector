@@ -77,7 +77,10 @@
 	<select id="selectCount" resultType="int">
 		SELECT COUNT(*) FROM EVENT;
 	</select>
-
+	
+	<select id="selectTable" resultType="Event">
+		SELECT * FROM EVENT;
+	</select>
 
 	<insert id="createTableEvent">
 
@@ -108,16 +111,16 @@
 		    SPONSOR1TEL VARCHAR(255),
 		    SPONSOR2 VARCHAR(255),
 		    SPONSOR2TEL VARCHAR(255),
-		    EVENTENDDATE DATE,
+		    EVENTENDDATE VARCHAR(255),
 		    PLAYTIME VARCHAR(255),
 		    EVENTPLACE VARCHAR(255),
 		    EVENTHOMEPAGE VARCHAR(255),
 		    AGELIMIT VARCHAR(255),
 		    BOOKINGPLACE VARCHAR(255),
-		    PLACEINFO TEXT,
+		    PLACEINFO VARCHAR(255),
 		    SUBEVENT VARCHAR(255),
 		    PROGRAM VARCHAR(255),
-		    EVENTSTARTDATE DATE,
+		    EVENTSTARTDATE VARCHAR(255),
 		    USETIMEFESTIVAL TEXT,
 		    DISCOUNTINFOFESTIVAL VARCHAR(255),
 		    SPENDTIMEFESTIVAL VARCHAR(255),
@@ -188,8 +191,114 @@
 
 	</insert>
 
-	<select id="selectTable" resultType="Event">
-		select * from event;
+	
+	<select id="selectEventList" parameterType="EventParam" resultMap="eventResultMap">
+		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+		FROM EVENT
+		 
+			
+			<if test="searchType == 'title'">
+			    where TITLE LIKE '%${searchValue}%' 
+			</if>
+			<if test="searchType == 'address'">
+			   where ADDR1 LIKE '%${searchValue}%' 
+			</if>
+			<if test="checkBox == 'seoul'">
+			    where ADDR1 LIKE '%서울%' 
+			</if>
+			<if test="checkBox == 'gyeonggi'">
+			    where ADDR1 LIKE '%경기%' 
+			</if>
+			<if test="checkBox == 'chungnam'">
+			    where ADDR1 LIKE '%충청남도%' 
+			</if>
+			<if test="checkBox == 'chugbuk'">
+			    where ADDR1 LIKE '%충청북도%' 
+			</if>
+			<if test="checkBox == 'kangwon'">
+			    where ADDR1 LIKE '%강원%' 
+			</if>
+			<if test="checkBox == 'Jeonbuk'">
+			    where ADDR1 LIKE '%전라북도%' 
+			</if>
+			<if test="checkBox == 'Jeonnam'">
+			    where ADDR1 LIKE '%전라남도%' 
+			</if>
+			<if test="checkBox == 'jeju'">
+			    where ADDR1 LIKE '%제주%' 
+			</if>
+			
+		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
+	</select>
+	
+	<select id="selectEventCount" parameterType="EventParam" resultType="int">
+		SELECT COUNT(*)
+		FROM EVENT 
+
+			<if test="searchType == 'title'">
+			    where TITLE LIKE '%${searchValue}%' 
+			</if>
+			<if test="searchType == 'address'">
+			    where ADDR1 LIKE '%${searchValue}%' 
+			</if>
+			
+			<if test="checkBox == 'seoul'">
+			    where ADDR1 LIKE '%서울%' 
+			</if>
+			<if test="checkBox == 'gyeonggi'">
+			    where ADDR1 LIKE '%경기%' 
+			</if>
+			<if test="checkBox == 'chungnam'">
+			    where ADDR1 LIKE '%충청남도%' 
+			</if>
+			<if test="checkBox == 'chugbuk'">
+			    where ADDR1 LIKE '%충청북도%' 
+			</if>
+			<if test="checkBox == 'kangwon'">
+			    where ADDR1 LIKE '%강원%' 
+			</if>
+			<if test="checkBox == 'Jeonbuk'">
+			    where ADDR1 LIKE '%전라북도%' 
+			</if>
+			<if test="checkBox == 'Jeonnam'">
+			    where ADDR1 LIKE '%전라남도%' 
+			</if>
+			<if test="checkBox == 'jeju'">
+			    where ADDR1 LIKE '%제주%' 
+			</if>
+	</select>
+	
+	<select id="selectEventByContentId" parameterType="int" resultMap="eventResultMap">
+		SELECT  
+			contentid, TITLE, ADDR1, firstimage, firstimage2, MAPX, MAPY, tel, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+			
+			FROM EVENT where contentid = #{contentid}
+	</select>
+	
+	<!-- 새로 개최된 최신순 10개만 가져오기 -->
+	<select id="selectEventListWithTime" resultMap="eventResultMap">
+	    SELECT
+	        contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        firstimage2,
+	        MODIFIEDTIME,
+	        CREATEDTIME,
+	        EVENTSTARTDATE,
+	        EVENTENDDATE
+	    FROM
+	        EVENT
+	    ORDER BY
+	        COALESCE(MODIFIEDTIME, CREATEDTIME) DESC
+	    LIMIT 10; <!-- 원하는 갯수로 변경 -->
+	</select>
+	
+	<!-- 가장 가까운 1개 이벤트 -->
+	<select id="getEventDetailsByAreacode" parameterType="string" resultMap="eventResultMap">
+    SELECT * FROM EVENT WHERE areacode = #{areacode}
+    ORDER BY EVENTSTARTDATE DESC
+    LIMIT 1;
 	</select>
 	
 

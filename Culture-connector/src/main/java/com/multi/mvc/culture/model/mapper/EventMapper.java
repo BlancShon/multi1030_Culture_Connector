@@ -3,7 +3,9 @@ package com.multi.mvc.culture.model.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import com.multi.mvc.culture.model.vo.EventParam;
 import com.multi.mvc.culture.model.vo.Event;
 
 @Mapper
@@ -18,4 +20,17 @@ public interface EventMapper {
 	
 	int selectCount();
 
+	Event selectEventByContentId(int contentid);
+	
+	List<Event> selectEventList(EventParam param);
+	
+	int selectEventCount(EventParam param);
+	
+	// 최신 10개만 가져오기
+	List<Event> selectEventListWithTime();
+	
+	// 가장 근접한 이벤트 가져오기
+	Event getEventDetailsByAreacode(@Param("areacode") String areacode);
+
+	
 }

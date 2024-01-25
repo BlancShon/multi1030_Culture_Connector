@@ -10,11 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class CultureThemeController {
 
-	@RequestMapping(value = "/cultureTheme2", method = RequestMethod.GET)
-	public String cultureTheme2() {
-	    log.info("cultureTheme2 request");
-	    return "/culture/cultureTheme2";
-	}
+//	@RequestMapping(value = "/cultureTheme2", method = RequestMethod.GET)
+//	public String cultureTheme2() {
+//	    log.info("cultureTheme2 request");
+//	    return "/culture/cultureTheme2";
+//	}
 
 	@RequestMapping(value = "/cultureTheme3", method = RequestMethod.GET)
 	public String cultureTheme3() {
