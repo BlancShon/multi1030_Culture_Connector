@@ -100,7 +100,8 @@
 	</select>
 	
 	<select id="selectTable" resultType="Course">
-		select * from course;
+		select title, firstimage, contentid  
+		from course;
 	</select>
 
 	<insert id="createTableCourse">
@@ -198,53 +199,86 @@
 	
 	
 	<insert id="insertCourse" parameterType="Course">
-    INSERT INTO COURSE (
-        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
-        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
-        FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
-        SIGUNGUCODE, TEL, TITLE, ZIPCODE,
-        INFOCENTERTOURCOURSE, SCHEDULE, TAKETIME, THEME, DISTANCE,
-        SUBCONTENTID0, SUBCONTENTTYPEID0, SUBCONTENTTITLE0, SUBCONTENTFIRSTIMAGE0,
-        SUBCONTENTADD10, SUBCONTENTADD20, SUBCONTENTADDMAPX0, SUBCONTENTADDMAPY0,
-        SUBCONTENTADDOVERVIEW0, SUBCONTENTADDHOMEPAGE0,
-        SUBCONTENTID1, SUBCONTENTTYPEID1, SUBCONTENTTITLE1, SUBCONTENTFIRSTIMAGE1,
-        SUBCONTENTADD11, SUBCONTENTADD21, SUBCONTENTADDMAPX1, SUBCONTENTADDMAPY1,
-        SUBCONTENTADDOVERVIEW1, SUBCONTENTADDHOMEPAGE1,
-        SUBCONTENTID2, SUBCONTENTTYPEID2, SUBCONTENTTITLE2, SUBCONTENTFIRSTIMAGE2,
-        SUBCONTENTADD12, SUBCONTENTADD22, SUBCONTENTADDMAPX2, SUBCONTENTADDMAPY2,
-        SUBCONTENTADDOVERVIEW2, SUBCONTENTADDHOMEPAGE2,
-        SUBCONTENTID3, SUBCONTENTTYPEID3, SUBCONTENTTITLE3, SUBCONTENTFIRSTIMAGE3,
-        SUBCONTENTADD13, SUBCONTENTADD23, SUBCONTENTADDMAPX3, SUBCONTENTADDMAPY3,
-        SUBCONTENTADDOVERVIEW3, SUBCONTENTADDHOMEPAGE3,
-        SUBCONTENTID4, SUBCONTENTTYPEID4, SUBCONTENTTITLE4, SUBCONTENTFIRSTIMAGE4,
-        SUBCONTENTADD14, SUBCONTENTADD24, SUBCONTENTADDMAPX4, SUBCONTENTADDMAPY4,
-        SUBCONTENTADDOVERVIEW4, SUBCONTENTADDHOMEPAGE4,
-        OVERVIEW, HOMEPAGE
-    ) VALUES (
-        #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
-        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
-        #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel},
-        #{modifiedtime}, #{sigungucode}, #{tel},
-        #{title}, #{zipcode},
-        #{infocentertourcourse}, #{schedule}, #{taketime}, #{theme}, #{distance},
-        #{subcontentid0}, #{subcontenttypeid0}, #{subcontenttitle0}, #{subcontentfirstimage0},
-        #{subcontentadd10}, #{subcontentadd20}, #{subcontentaddmapx0}, #{subcontentaddmapy0},
-        #{subcontentaddoverview0}, #{subcontentaddhomepage0},
-        #{subcontentid1}, #{subcontenttypeid1}, #{subcontenttitle1}, #{subcontentfirstimage1},
-        #{subcontentadd11}, #{subcontentadd21}, #{subcontentaddmapx1}, #{subcontentaddmapy1},
-        #{subcontentaddoverview1}, #{subcontentaddhomepage1},
-        #{subcontentid2}, #{subcontenttypeid2}, #{subcontenttitle2}, #{subcontentfirstimage2},
-        #{subcontentadd12}, #{subcontentadd22}, #{subcontentaddmapx2}, #{subcontentaddmapy2},
-        #{subcontentaddoverview2}, #{subcontentaddhomepage2},
-        #{subcontentid3}, #{subcontenttypeid3}, #{subcontenttitle3}, #{subcontentfirstimage3},
-        #{subcontentadd13}, #{subcontentadd23}, #{subcontentaddmapx3}, #{subcontentaddmapy3},
-        #{subcontentaddoverview3}, #{subcontentaddhomepage3},
-        #{subcontentid4}, #{subcontenttypeid4}, #{subcontenttitle4}, #{subcontentfirstimage4},
-        #{subcontentadd14}, #{subcontentadd24}, #{subcontentaddmapx4}, #{subcontentaddmapy4},
-        #{subcontentaddoverview4}, #{subcontentaddhomepage4},
-        #{overview}, #{homepage}
-    );
-</insert>
+	    INSERT INTO COURSE (
+	        ADDR1, ADDR2, AREACODE, BOOKTOUR, CAT1, CAT2,
+	        CAT3, CONTENTID, CONTENTTYPEID, CREATEDTIME, FIRSTIMAGE,
+	        FIRSTIMAGE2, CPYRHTDIVCD, MAPX, MAPY, MLEVEL, MODIFIEDTIME,
+	        SIGUNGUCODE, TEL, TITLE, ZIPCODE,
+	        INFOCENTERTOURCOURSE, SCHEDULE, TAKETIME, THEME, DISTANCE,
+	        SUBCONTENTID0, SUBCONTENTTYPEID0, SUBCONTENTTITLE0, SUBCONTENTFIRSTIMAGE0,
+	        SUBCONTENTADD10, SUBCONTENTADD20, SUBCONTENTADDMAPX0, SUBCONTENTADDMAPY0,
+	        SUBCONTENTADDOVERVIEW0, SUBCONTENTADDHOMEPAGE0,
+	        SUBCONTENTID1, SUBCONTENTTYPEID1, SUBCONTENTTITLE1, SUBCONTENTFIRSTIMAGE1,
+	        SUBCONTENTADD11, SUBCONTENTADD21, SUBCONTENTADDMAPX1, SUBCONTENTADDMAPY1,
+	        SUBCONTENTADDOVERVIEW1, SUBCONTENTADDHOMEPAGE1,
+	        SUBCONTENTID2, SUBCONTENTTYPEID2, SUBCONTENTTITLE2, SUBCONTENTFIRSTIMAGE2,
+	        SUBCONTENTADD12, SUBCONTENTADD22, SUBCONTENTADDMAPX2, SUBCONTENTADDMAPY2,
+	        SUBCONTENTADDOVERVIEW2, SUBCONTENTADDHOMEPAGE2,
+	        SUBCONTENTID3, SUBCONTENTTYPEID3, SUBCONTENTTITLE3, SUBCONTENTFIRSTIMAGE3,
+	        SUBCONTENTADD13, SUBCONTENTADD23, SUBCONTENTADDMAPX3, SUBCONTENTADDMAPY3,
+	        SUBCONTENTADDOVERVIEW3, SUBCONTENTADDHOMEPAGE3,
+	        SUBCONTENTID4, SUBCONTENTTYPEID4, SUBCONTENTTITLE4, SUBCONTENTFIRSTIMAGE4,
+	        SUBCONTENTADD14, SUBCONTENTADD24, SUBCONTENTADDMAPX4, SUBCONTENTADDMAPY4,
+	        SUBCONTENTADDOVERVIEW4, SUBCONTENTADDHOMEPAGE4,
+	        OVERVIEW, HOMEPAGE
+	    ) VALUES (
+	        #{addr1}, #{addr2}, #{areacode}, #{booktour}, #{cat1}, #{cat2},
+	        #{cat3}, #{contentid}, #{contenttypeid}, #{createdtime},
+	        #{firstimage}, #{firstimage2}, #{cpyrhtDivCd}, #{mapx}, #{mapy}, #{mlevel},
+	        #{modifiedtime}, #{sigungucode}, #{tel},
+	        #{title}, #{zipcode},
+	        #{infocentertourcourse}, #{schedule}, #{taketime}, #{theme}, #{distance},
+	        #{subcontentid0}, #{subcontenttypeid0}, #{subcontenttitle0}, #{subcontentfirstimage0},
+	        #{subcontentadd10}, #{subcontentadd20}, #{subcontentaddmapx0}, #{subcontentaddmapy0},
+	        #{subcontentaddoverview0}, #{subcontentaddhomepage0},
+	        #{subcontentid1}, #{subcontenttypeid1}, #{subcontenttitle1}, #{subcontentfirstimage1},
+	        #{subcontentadd11}, #{subcontentadd21}, #{subcontentaddmapx1}, #{subcontentaddmapy1},
+	        #{subcontentaddoverview1}, #{subcontentaddhomepage1},
+	        #{subcontentid2}, #{subcontenttypeid2}, #{subcontenttitle2}, #{subcontentfirstimage2},
+	        #{subcontentadd12}, #{subcontentadd22}, #{subcontentaddmapx2}, #{subcontentaddmapy2},
+	        #{subcontentaddoverview2}, #{subcontentaddhomepage2},
+	        #{subcontentid3}, #{subcontenttypeid3}, #{subcontenttitle3}, #{subcontentfirstimage3},
+	        #{subcontentadd13}, #{subcontentadd23}, #{subcontentaddmapx3}, #{subcontentaddmapy3},
+	        #{subcontentaddoverview3}, #{subcontentaddhomepage3},
+	        #{subcontentid4}, #{subcontenttypeid4}, #{subcontenttitle4}, #{subcontentfirstimage4},
+	        #{subcontentadd14}, #{subcontentadd24}, #{subcontentaddmapx4}, #{subcontentaddmapy4},
+	        #{subcontentaddoverview4}, #{subcontentaddhomepage4},
+	        #{overview}, #{homepage}
+	    );
+	</insert>
+	
+	<select id="selectCourseList" parameterType="CourseParam" resultMap="courseResultMap">
+	 	select contentid, firstimage, title
+			from course
+			where 
+				1=1
+				<if test="typeList != null">
+					and cat2 in 
+					<foreach item="item" collection="typeList" open="(" separator="," close=")">
+						#{item}
+					</foreach>
+				</if>
+			    <if test="area != null and area != ''">
+			    	and areacode = '${area}'
+			    </if>
+		   ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
+	</select>
+       
+	<select id="selectCourseCount" parameterType="CourseParam" resultType="int">
+	 	select count(*)
+			from course
+			where 
+				1=1
+				<if test="typeList != null">
+					and cat2 in 
+					<foreach item="item" collection="typeList" open="(" separator="," close=")">
+						#{item}
+					</foreach>
+				</if>
+			    <if test="area != null and area != ''">
+			    	and areacode = '${area}'
+			    </if>
+	</select>
        
 	
 

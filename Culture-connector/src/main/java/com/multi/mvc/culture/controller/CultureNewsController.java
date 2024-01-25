@@ -17,11 +17,11 @@ public class CultureNewsController {
 		return "/culture/cultureNews1";
 	}
 
-	@RequestMapping(value = "/cultureNews2", method = RequestMethod.GET)
-	public String cultureNews2() {
-		log.info("cultureNews2 request");
-		return "/culture/cultureNews2";
-	}
+//	@RequestMapping(value = "/cultureNews2", method = RequestMethod.GET)
+//	public String cultureNews2() {
+//		log.info("cultureNews2 request");
+//		return "/culture/cultureNews2";
+//	}
 
 	@RequestMapping(value = "/cultureNews3", method = RequestMethod.GET)
 	public String cultureNews3() {

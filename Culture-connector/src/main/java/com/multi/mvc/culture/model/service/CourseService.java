@@ -1,6 +1,7 @@
 package com.multi.mvc.culture.model.service;
 
 import java.util.List;
+import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.CourseMapper;
 import com.multi.mvc.culture.model.vo.Course;
+import com.multi.mvc.culture.model.vo.course.CourseCategory;
+import com.multi.mvc.culture.model.vo.course.CourseParam;
 
 @Service
 public class CourseService {
@@ -16,6 +19,18 @@ public class CourseService {
 	
 	@Autowired
 	private CourseMapper mapper;
+	
+	private static  Vector<CourseCategory> categoryList;
+	
+	static {
+		categoryList = new Vector<>();
+		categoryList.add(new CourseCategory("가족코스","C0112"));
+		categoryList.add(new CourseCategory("나홀로코스","C0113"));
+		categoryList.add(new CourseCategory("힐링코스","C0114"));
+		categoryList.add(new CourseCategory("도보코스","C0115"));
+		categoryList.add(new CourseCategory("캠핑코스","C0116"));
+		categoryList.add(new CourseCategory("맛코스","C0117"));
+	}
 	
 	public void createTable() {
 		mapper.createTableCourse();
@@ -57,6 +72,18 @@ public class CourseService {
 	// 데이터 리스트를 보여주는 메소드 임시입니다
 	public List<Course> getListForDB() {
 		return mapper.selectTable();
+	}
+
+	public Vector<CourseCategory> getCategoryList() {
+		return categoryList;
+	}
+
+	public List<Course> getCourseList(CourseParam param) {
+		return mapper.selectCourseList(param);
+	}
+
+	public int getCourseCount(CourseParam param) {
+		return mapper.selectCourseCount(param);
 	}
 }
 
