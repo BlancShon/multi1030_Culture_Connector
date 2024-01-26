@@ -203,7 +203,6 @@ public class ApiParsing {
 			targetUrl = ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);;
 		}
 
-		log.info("{} 의 키 사용, 이름 넣는 버전 타겟 유알엘 정보입니다 {}", name, targetUrl);
 
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
@@ -408,7 +407,6 @@ public class ApiParsing {
 			throws JsonParseException {
 		T target = null;
 		String targetUrl = ApiSearchInfo.getDetailURL(contentId, contentTypeId) + ApiSearchInfo.getServiceKey(name);
-		log.info("디테일 url 정보 : {}", targetUrl);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -731,7 +729,6 @@ public class ApiParsing {
 	// 코스 파싱 지옥
 	public static <T extends CultureParent> List<T> courseParser(Class<T> targetClass, String name, String page){
 		String targetUrl =  ApiSearchInfo.getContentTypeURL("25") + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);;
-		log.info("{} 의 키 사용, 코스 파싱 유알엘 정보입니다 {}",name, targetUrl);
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
 		try {
