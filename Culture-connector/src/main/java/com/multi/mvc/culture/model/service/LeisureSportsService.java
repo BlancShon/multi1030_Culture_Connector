@@ -67,8 +67,8 @@ public class LeisureSportsService {
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)
-	public void saveData(String name) {
-		List<LeisureSports> list = ApiParsing.parseAndExportToTheListAdvanced(LeisureSports.class, name);
+	public void saveData(String name, String page) {
+		List<LeisureSports> list = ApiParsing.parseAndExportToTheListAdvanced(LeisureSports.class, name, page);
 		for(LeisureSports item : list) {
 			try {
 				mapper.insertLeports(item);

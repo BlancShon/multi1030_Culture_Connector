@@ -37,13 +37,11 @@ public class LeisureSportsController {
 
 	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
 	@PostMapping("/leports/dataSave")
-	public String dataSaveForDB(@RequestParam("name") String name) {
-		if (service.count() == 0) {
-			service.saveData(name);
-		}
-		return "redirect:/dbsave";
-	}
-
+	public String dataSaveForDB(@RequestParam("name") String name, @RequestParam("page") String page) {
+ 		service.createTable();	
+ 		service.saveData(name, page);
+ 		return "redirect:/dbsave";
+ 	}
 	@GetMapping("/listForDB")
 	public String listForDB(Model model) {
 		List<LeisureSports> list = service.getListForDB();
