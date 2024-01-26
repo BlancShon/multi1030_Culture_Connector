@@ -167,6 +167,8 @@
 		SELECT * FROM FOOD ORDER BY CFNO
 	</select>
 	
+	
+	<!--검색용도  -->
 	<select id="selectFoodList" parameterType="FoodParam" resultMap="FoodResultMap">
 		SELECT  *
 		FROM FOOD 

@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.FestivalService;
 import com.multi.mvc.culture.model.vo.Event;
 import com.multi.mvc.culture.model.vo.Festival;
+import com.multi.mvc.culture.model.vo.FestivalParam;
+import com.multi.mvc.culture.model.vo.Food;
+import com.multi.mvc.culture.model.vo.FoodParam;
 import com.multi.mvc.culture.model.vo.SearchForm;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +42,34 @@ public class FestivalController {
 //			service.initFestival();
 //		}
 	}
+	
+	@RequestMapping("/FestivalSearch")
+	public String FestivalList(Model model, FestivalParam param) {
+		System.out.println("@@ festival list 요청 param : " + param);
+		
+		int festivalCount = service.getFestivalCount(param);
+//			PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 10, festivalCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		param.setLimit(pageInfo.getListLimit());
+		param.setOffset(pageInfo.getStartList() - 1);
+		List<Festival> list = service.getFestivalSearchList(param);
+		
+		System.out.println(list);
+		System.out.println(param.getFestivaltypeList());
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("list", list);
+		model.addAttribute("localtypeList", param.getLocaltypeList());
+		model.addAttribute("festivaltypeList", param.getFestivaltypeList());
+		model.addAttribute("size", list.size());		
+		model.addAttribute("param", param);
+		
+		return "/culture/cultureTheme3";
+	}
+	
+	
+	
+	
+	
 	
 	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
 		@PostMapping("/dataSave")

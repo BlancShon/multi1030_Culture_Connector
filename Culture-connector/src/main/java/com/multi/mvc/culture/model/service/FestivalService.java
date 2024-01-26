@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.FestivalMapper;
 import com.multi.mvc.culture.model.vo.Festival;
+import com.multi.mvc.culture.model.vo.FestivalParam;
+import com.multi.mvc.culture.model.vo.Food;
+import com.multi.mvc.culture.model.vo.FoodParam;
 import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Service
@@ -58,5 +61,16 @@ public class FestivalService {
 	// 데이터 리스트를 보여주는 메소드 임시입니다
 	public List<Festival> getListForDB() {
 		return mapper.selectTable();
+	}
+
+
+	
+	public int getFestivalCount(FestivalParam param) {
+		return mapper.selectFestivalCount(param);
+	}
+
+
+	public List<Festival> getFestivalSearchList(FestivalParam param) {
+		return mapper.selectFestivalList(param);
 	}
 }

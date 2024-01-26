@@ -7,6 +7,8 @@
 	<jsp:param value="Culture Connector" name="title"/>
 </jsp:include>
 
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <section class="d-flex align-items-center dark-overlay bg-cover" style="background-image: url(https://d2k5miyk6y5zf0.cloudfront.net/article/MYH/20221219/MYH20221219019300641.jpg); background-size: cover; background-position: center;">
 	<div class="container py-6 py-lg-7 text-white overlay-content text-left ml-lg-0 ml-md-0 ml-0"> <!-- Updated text alignment and added margin-left classes -->
 		<div class="row">
@@ -26,7 +28,8 @@
 <div class="row mt-n7">
 <div class="col-11 mx-auto">
 	<!-- Booking from START -->
-	<form class="bg-mode shadow rounded-3 p-4">
+	<form class="bg-mode shadow rounded-3 p-4"name="festivalSearch" action="${pageContext.request.contextPath}/festivalSearch" method="get">
+		<input type="hidden" name="page" value="1">
 		<div class="row g-4 align-items-center">
 			<!-- 셀렉트 + 검색창-->
 			<div class="col-xl-10">
@@ -36,11 +39,11 @@
 						<label class="h6 fw-normal mb-0"><i class="bi bi-geo-alt text-primary me-1"></i>여행 지역</label>
 						<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 							<!-- Input field -->
-							<select class="form-select js-choice" data-search-enabled="true">
+							<select class="form-select js-choice" data-search-enabled="true" name="festivaltypes">
 								<option value="">지역을 선택해주세요</option>
-								<option>서울</option>
-								<option>경기</option>
-								<option>인천</option>
+								<option value="서울">서울</option>
+								<option value="경기">경기</option>
+								<option value="인천">인천</option>
 								<!-- Add more options as needed -->
 							</select>
 						</div>
@@ -52,7 +55,7 @@
 						<!-- Input field -->
 						<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 							<input type="text" class="form-control flatpickr py-2 flatpickr-input"
-								data-date-format="Y년 M월 d일" placeholder="날짜를 선택해주세요" readonly="readonly">
+								data-date-format="y/m/d" placeholder="날짜를 선택해주세요" readonly="readonly" name="searchDate">
 						</div>
 					</div>
 
@@ -61,10 +64,8 @@
 					<!-- Ongoing Festivals Checkbox -->
 					<div class="col-md-6 col-lg-6">
 						<div class="form-check mt-3">
-							<input class="form-check-input" type="checkbox" value="" id="ongoingCheckbox">
-							<label class="form-check-label" for="ongoingCheckbox">
-								진행중인 축제
-							</label>
+							<input class="form-check-input" type="checkbox" value="" id="Checkbox" name="localtypes" value="진행">
+							<label class="form-check-label" for="ongoingCheckbox"> 진행중인 축제 </label>
 						   
 						</div>
 					</div>
@@ -72,10 +73,8 @@
 					<!-- Finished Festivals Checkbox -->
 					<div class="col-md-6 col-lg-6">
 						<div class="form-check mt-3">
-							<input class="form-check-input" type="checkbox" value="" id="finishedCheckbox">
-							<label class="form-check-label" for="finishedCheckbox">
-								종료된 축제
-							</label>
+							<input class="form-check-input" type="checkbox" value="" id="Checkbox" name="localtypes" value="종료">
+							<label class="form-check-label" for="finishedCheckbox"> 종료된 축제 </label>
 						</div>
 					</div>
 
@@ -85,7 +84,8 @@
 			<!-- Button -->
 			<div class="col-xl-2">
 				<div class="d-grid">
-					<a href="#" class="btn btn-lg btn-dark mb-0">검색</a>
+<%-- 					<a href="${path}/festivalSearch" class="btn btn-lg btn-dark mb-0">검색</a> --%>
+					<button class="btn btn-lg btn-dark mb-0" style="font-size: x-large;">검색</button>
 				</div>
 			</div>
 		</div>

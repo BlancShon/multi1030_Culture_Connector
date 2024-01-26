@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.multi.mvc.culture.model.vo.Festival;
+import com.multi.mvc.culture.model.vo.FestivalParam;
 import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Mapper
@@ -19,4 +20,9 @@ public interface FestivalMapper {
 	List<Festival> selectTable();
 
 	void insertFestival(Festival item);
+	
+	List<Festival> selectFestivalList(FestivalParam param);
+	
+	int selectFestivalCount(FestivalParam param);
+	
 }

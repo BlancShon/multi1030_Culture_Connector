@@ -3,7 +3,6 @@
 
 <mapper namespace="com.multi.mvc.culture.model.mapper.FestivalMapper">
 	<resultMap type="Festival" id="festivalResultMap">
-	
 		<result property="contentid" column="CONTENTID"/>
 	    <result property="contenttypeid" column="CONTENTTYPEID"/>
 	    <result property="addr1" column="ADDR1"/>
@@ -191,7 +190,95 @@
 	     );
 	</insert>
 	
+	<!--페스티벌 검색  !!!!! -->
+	<select id="selectFestivalList" parameterType="FestivalParam" resultMap="festivalResultMap">
+		SELECT *
+		FROM FESTIVAL
+		WHERE 1=1
+		<if test="festivaltypeList != null">
+			 AND  
+			<foreach  item="item" collection="festivaltypeList" open="(" separator="or" close=")">  
+			    ADDR1 LIKE '%${item}%'
+			</foreach>
+			
+		</if>
+		<if test="searchDate != null">
+		    AND EVENTSTARTDATE &lt; '${searchDate}'
+		</if>
+		<if test="localtypes == '진행'"> <!-- 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ? -->
+	    	AND EVENTSTARTDATE &gt; CURDATE()
+		</if>
+		<if test="localtypes == '종료"> <!-- 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ? -->
+		    AND EVENTSTARTDATE &lt; CURDATE()
+		</if>
+	</select>
 	
+	<select id="selectFestivalCount" parameterType="FestivalParam" resultType="int">
+		SELECT  COUNT(*)
+		FROM FESTIVAL
+		WHERE 1=1
+<!-- 		<if test="festivaltypeList != null"> -->
+<!-- 			 AND   -->
+<!-- 			<foreach  item="item" collection="festivaltypeList" open="(" separator="or" close=")">   -->
+<!-- 			    ADDR1 LIKE '%${item}%' -->
+<!-- 			</foreach> -->
+			
+<!-- 		</if> -->
+		<if test="festivaltypeList != null">
+		    AND ADDR1 LIKE '%${item}%'
+		</if>
+		<if test="searchDate != null">
+		    AND EVENTSTARTDATE &lt; '${searchDate}'
+		</if>
+			
+		
+		<if test="localtypes == ongoing"> 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ?
+		    AND EVENTSTARTDATE &lt; CURDATE()
+		</if>
+		<if test="localtypes == finished"> 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ?
+		    AND EVENTSTARTDATE &lt; CURDATE()
+		</if>
+	</select>
+			
+<!-- 			<if test="progress != null"> -->
+<!-- 				<choose> -->
+<!-- 					<when test="progress == 'ongoing'"> -->
+<!-- 						AND EVENTSTARTDATE &lt; curdate() -->
+<!-- 					</when> -->
+<!-- 					<when test="progress == 'planed'"> -->
+<!-- 						AND EVENTSTARTDATE &gt; curdate() -->
+<!-- 					</when> -->
+<!-- 					<when test="progress == 'over'"> -->
+<!-- 						AND EVENTENDDATE &lt; curdate() -->
+<!-- 					</when> -->
+<!-- 					<otherwise></otherwise>						 -->
+<!-- 				</choose> -->
+<!-- 			</if> -->
+		   		 
+<!-- 		   		  <if test="foodTypes != null and foodTypes.size() > 0"> -->
+<!-- 	        	AND ( -->
+<!-- 					<foreach collection="foodTypes" item="foodType" separator="OR"> -->
+<!-- 						<if test="foodType == '한식'"> -->
+<!-- 							CAT3 = 'A05020100' -->
+<!-- 						</if> -->
+<!-- 						<if test="foodType == '양식'"> -->
+<!-- 							CAT3 = 'A05020200' -->
+<!-- 						</if> -->
+<!-- 						<if test="foodType == '일식'"> -->
+<!-- 							CAT3 = 'A05020300' -->
+<!-- 						</if> -->
+<!-- 						<if test="foodType == '중식'"> -->
+<!-- 							CAT3 = 'A05020400' -->
+<!-- 						</if> -->
+<!-- 						<if test="foodType == '카페'"> -->
+<!-- 							CAT3 = 'A05020900' -->
+<!-- 						</if> -->
+<!-- 					</foreach> -->
+<!-- 	        	) -->
+<!-- 	        </if> -->
+	   		 
+
+
 	
 	<!--  통합 검색 !!!!! -->
 	<select id="testList" resultMap="FestivalminResult" parameterType="SearchForm">
@@ -243,10 +330,7 @@
 					</foreach>
 	        	)
 	        </if>
-	   		 
 		</where>	
-		
-		
 		<if test="upToDate != null">
             <choose>
                 <when test="upToDate == 'asc'">
