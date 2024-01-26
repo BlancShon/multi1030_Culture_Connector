@@ -138,7 +138,7 @@
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews1">문화 기사</a></li>
-							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews2">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/course/list">문화 코스</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews3">쿠폰/혜택</a></li>
 
 						</ul>
