@@ -72,6 +72,10 @@
 	<select id="selectCount" resultType="int">
 		SELECT COUNT(*) FROM LEPORTS;
 	</select>
+		<select id="selectTable" resultType="LeisureSports">
+		SELECT * FROM LEPORTS;
+	</select>
+	
 
 	<insert id="createTableLeports">
 
@@ -142,7 +146,7 @@
 	</insert>
 
 	<insert id="insertLeports" parameterType="LeisureSports">
-	    INSERT IGNORE INTO LEPORTS (
+	    INSERT INTO LEPORTS (
 	        contentid, contenttypeid, addr1, addr2, areacode, booktour, cat1, cat2, cat3,
 	        createdtime, firstimage, firstimage2, cpyrhtDivCd, mapx, mapy, mlevel, modifiedtime,
 	        sigungucode, tel, title, zipcode, openPeriod, reservation, infoCenterLeports,
@@ -173,14 +177,90 @@
 	</insert>
 
 	
-	<select id="selectTable" resultType="LeisureSports">
-		SELECT * FROM LEPORTS;
+
+	<select id="selectLeportsList" parameterType="LeisureSportsParam" resultMap="leportsResultMap">
+		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+		FROM LEPORTS
+		 
+			
+			<if test="searchType == 'title'">
+			    where TITLE LIKE '%${searchValue}%' 
+			</if>
+			<if test="searchType == 'address'">
+			   where ADDR1 LIKE '%${searchValue}%' 
+			</if>
+			<if test="checkBox == 'seoul'">
+			    where ADDR1 LIKE '%서울%' 
+			</if>
+			<if test="checkBox == 'gyeonggi'">
+			    where ADDR1 LIKE '%경기%' 
+			</if>
+			<if test="checkBox == 'chungnam'">
+			    where ADDR1 LIKE '%충청남도%' 
+			</if>
+			<if test="checkBox == 'chugbuk'">
+			    where ADDR1 LIKE '%충청북도%' 
+			</if>
+			<if test="checkBox == 'kangwon'">
+			    where ADDR1 LIKE '%강원%' 
+			</if>
+			<if test="checkBox == 'Jeonbuk'">
+			    where ADDR1 LIKE '%전라북도%' 
+			</if>
+			<if test="checkBox == 'Jeonnam'">
+			    where ADDR1 LIKE '%전라남도%' 
+			</if>
+			<if test="checkBox == 'jeju'">
+			    where ADDR1 LIKE '%제주%' 
+			</if>
+			
+		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	
+	<select id="selectLeportsCount" parameterType="LeisureSportsParam" resultType="int">
+		SELECT COUNT(*)
+		FROM CULTURE 
+
+			<if test="searchType == 'title'">
+			    where TITLE LIKE '%${searchValue}%' 
+			</if>
+			<if test="searchType == 'address'">
+			    where ADDR1 LIKE '%${searchValue}%' 
+			</if>
+			
+			<if test="checkBox == 'seoul'">
+			    where ADDR1 LIKE '%서울%' 
+			</if>
+			<if test="checkBox == 'gyeonggi'">
+			    where ADDR1 LIKE '%경기%' 
+			</if>
+			<if test="checkBox == 'chungnam'">
+			    where ADDR1 LIKE '%충청남도%' 
+			</if>
+			<if test="checkBox == 'chugbuk'">
+			    where ADDR1 LIKE '%충청북도%' 
+			</if>
+			<if test="checkBox == 'kangwon'">
+			    where ADDR1 LIKE '%강원%' 
+			</if>
+			<if test="checkBox == 'Jeonbuk'">
+			    where ADDR1 LIKE '%전라북도%' 
+			</if>
+			<if test="checkBox == 'Jeonnam'">
+			    where ADDR1 LIKE '%전라남도%' 
+			</if>
+			<if test="checkBox == 'jeju'">
+			    where ADDR1 LIKE '%제주%' 
+			</if>
+	</select>
 	
-	
-	
+<select id="selectLeportsByLeportsId" parameterType="int" resultMap="leportsResultMap">
+    SELECT  
+        contentid, TITLE, ADDR1, firstimage, firstimage2, MAPX, MAPY, tel, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+    FROM culture where contentid = #{contentid}
+</select>
+
 	
 	
 	

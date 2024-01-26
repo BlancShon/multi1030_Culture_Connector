@@ -115,7 +115,7 @@
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/culture/list">문화 관광지</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme2">문화 예술 공연</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme3">지역 문화 축제</a></li>
-							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureTheme4">액티비티/원데이 클래스</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/leports/list">액티비티/원데이 클래스</a></li>
 
 						</ul>
 					</li>
@@ -138,7 +138,7 @@
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews1">문화 기사</a></li>
-							<li> <a class="dropdown-item" href="${path}/course/list">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews2">문화 코스</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews3">쿠폰/혜택</a></li>
 
 						</ul>
@@ -200,7 +200,7 @@
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/inform">내 정보</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">비밀번호 변경</a></li>
 							<li> <a class="dropdown-item" href="review-talk2.html">SNS 로그인 연동</a></li>
-							<li> <a class="dropdown-item" href="${path}/member/viewWishList">북마크/리뷰 관리</a></li>
+							<li> <a class="dropdown-item" href="review-talk2.html">북마크/리뷰 관리</a></li>
 							<li> <a class="dropdown-item" href="${path}/logout">로그아웃</a></li>
 
 						</ul>

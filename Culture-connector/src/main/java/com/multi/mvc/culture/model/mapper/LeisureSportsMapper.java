@@ -5,9 +5,13 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.multi.mvc.culture.model.vo.LeisureSports;
+import com.multi.mvc.culture.model.vo.LeisureSportsParam;
 
 @Mapper
-public interface LeisureSportsMapper {
+public interface LeisureSportsMapper { 
+	
+	
+	List<LeisureSports> selectTable();
 	
 	void createTableLeports();
 	
@@ -15,5 +19,10 @@ public interface LeisureSportsMapper {
 	
 	int selectCount();
 	
-	List<LeisureSports> selectTable();
+	LeisureSports selectLeportsByLeportsId(int leportsId);
+
+    List<LeisureSports> selectLeportsList(LeisureSportsParam param);
+
+    int selectLeportsCount(LeisureSportsParam param);
+	
 }

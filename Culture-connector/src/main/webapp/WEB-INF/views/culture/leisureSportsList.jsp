@@ -4,113 +4,440 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<style>
-	section#board-list-container{width:600px; margin:0 auto; text-align:center;}
-	section#board-list-container h2{margin:10px 0;}
-	table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
-	table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
-	input#btn-add{float:right; margin: 0 0 15px;}
-	div#pageBar{margin-top:10px; text-align:center; background-color:rgba(0, 188, 212, 0.3);}
-    .blue_window { display: inline-block; width: 366px;  border: 3px solid #6ccaf5; }
-    .input_text { width: calc( 100% - 14px); margin: 6px 7px; border: 0;  background: #007dd100; font-weight: bold;font-size: 16px; outline: none;}
-    .sch_smit {width: 54px; height: 40px; margin: 0; border: 0; vertical-align: top; background: #007dd1; color: white; font-weight: bold; border-radius: 1px; cursor: pointer;}
-    .sch_smit:hover {background: #007dd1;}
-    #board-list-container h2{text-align: center; margin-top: 5px; margin-bottom: 5px}
-</style>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="공연 행사 목록" name="title"/>
+<jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
+	<jsp:param value="Culture Connector" name="title"/>
 </jsp:include>
 
-		
-		<table border="1">
-    <thead>
-        <tr>
-            <th>컨텐츠 ID</th>
-            <th>컨텐츠 타입 ID</th>
-            <th>주소1</th>
-            <th>주소2</th>
-            <th>지역 코드</th>
-            <th>북투어</th>
-            <th>카테고리1</th>
-            <th>카테고리2</th>
-            <th>카테고리3</th>
-            <th>생성 시간</th>
-            <th>첫 번째 이미지</th>
-            <th>두 번째 이미지</th>
-            <th>저작권 구분 코드</th>
-            <th>지도 X 좌표</th>
-            <th>지도 Y 좌표</th>
-            <th>M 레벨</th>
-            <th>수정 시간</th>
-            <th>시군구 코드</th>
-            <th>전화번호</th>
-            <th>제목</th>
-            <th>우편번호</th>
-            <th>오픈 기간</th>
-			<th>예약 여부</th>
-			<th>문의 및 안내</th>
-			<th>규모</th>
-			<th>수용 인원</th>
-			<th>휴무일</th>
-			<th>이용 시간</th>
-			<th>이용 요금</th>
-			<th>체험 가능 연령</th>
-			<th>주차 시설</th>
-			<th>주차 요금</th>
-			<th>유모차 대여 여부</th>
-			<th>애완동물 동반 가능 여부</th>
-			<th>신용 카드 사용 가능 여부</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="item" items="${LeportsList}">
-            <tr>
-                <td>${item.contentid}</td>
-                <td>${item.contenttypeid}</td>
-                <td>${item.addr1}</td>
-                <td>${item.addr2}</td>
-                <td>${item.areacode}</td>
-                <td>${item.booktour}
-                <td>${item.cat1}</td>
-                <td>${item.cat2}</td>
-                <td>${item.cat3}</td>
-                <td><fmt:formatDate type="date" value="${item.createdtime}"/></td>
-                <td>${item.firstimage}</td>
-                <td>${item.firstimage2}</td>
-                <td>${item.cpyrhtDivCd}</td>
-                <td>${item.mapx}</td>
-                <td>${item.mapy}</td>
-                <td>${item.mlevel}</td>
-                <td><fmt:formatDate type="date" value="${item.modifiedtime}"/></td>
-                <td>${item.sigungucode}</td>
-                <td>${item.tel}</td>
-                <td>${item.title}</td>
-                <td>${item.zipcode}</td>
-                <td>${item.openperiod}</td>
-				<td>${item.reservation}</td>
-				<td>${item.infocenterleports}</td>
-				<td>${item.scaleleports}</td>
-				<td>${item.accomcountleports}</td>
-				<td>${item.restdateleports}</td>
-				<td>${item.usetimeleports}</td>
-				<td>${item.usefeeleports}</td>
-				<td>${item.expagerangeleports}</td>
-				<td>${item.parkingleports}</td>
-				<td>${item.parkingfeeleports}</td>
-				<td>${item.chkbabycarriageleports}</td>
-				<td>${item.chkpetleports}</td>
-				<td>${item.chkcreditcardleports}</td>
-                
-            </tr>
+<style>
+.row.g-4 .card {
+    width: 100%;
+   
+}
+</style>
+<section class="d-flex align-items-center dark-overlay bg-cover" style="background-image: url(https://www.nzski.com/media/2270/2017_coronetpeak_hero_0508-edit.jpg?center=0.63970588235294112,0.57024793388429751&quality=90&width=1920&height=1080&mode=crop); background-size: cover; background-position: center;">
+	<div class="container py-6 py-lg-7 text-white overlay-content text-left ml-lg-0 ml-md-0 ml-0"> 
+		<div class="row">
+			<div class="col-xl-10 mx-auto">
+				<h2 class="text-uppercase fs-1 mt-8" style="color:white;  top: -50px;"><span>액티비티 / 원데이 클래스</span> <br> </h2>
+				<h5 class="text-white" style=" top: -30px;">친구와 가족들과 함께 즐기는 활동</h5>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<div class="container">
+
+  <!-- Search START -->
+<!-- Booking from START -->
+<div class="container">
+<div class="bg-mode shadow rounded-3 p-4" >
+	  <!--서치바-->
+        <div class="row g-4 align-items-center">
+            
+            
+            <form action="${path}/leports/list" method="get" name="searchForm">
+            <input type="hidden" name="page" value="1">
+            	<div class="col-md-12 col-lg-12"">
+            	<label class="h6 fw-normal mb-0"><i class="bi bi-search text-primary me-1"></i>액티비티/원데이클래스</label>
+            	<label style="margin-left: 40px"><input type="radio" name="searchType" value="title" 
+											<%-- ${searchType == 'title' ? 'checked' : ''} --%> /> 제목</label>
+				<label style=""><input type="radio" name="searchType" value="address"
+											${searchType == 'address' ? 'checked' : ''} /> 주소</label>
+				
+				<input style="border: none; width: 300px;"  placeholder="(검색할 카테고리를 선택하세요.)">
+				</div>	
+				
+									
+                <div class="mx-auto mt-3 search-bar input-group mb-3 z-index-1 px-4" style="font-family: 'SUIT-Medium'"
+                    id="search">
+                    
+                    <input onkeyup="filter()" id="serchinput" type="text" name="searchValue" value="${param.searchValue}"
+                        class="form-control" placeholder="여행지를 입력하세요. ex)서울, 부산 등">
+                    <button class="btn btn-lg btn-dark mb-0" type="submit"
+                        style="margin-left: -80px;">검색</button>
+                </div>              
+         		
+                <div class="container mx-4 mt-n1">
+                    <div class="filter-block">
+                        <h6 class="mb-3">지역</h6>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                	<input type="hidden" class="SelectedcheckBox" value="${checkBox}" >
+                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul" 
+											${checkBox == 'seoul' ? 'checked' : ''}  />서울</label>
+											
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="gyeonggi" 
+											${checkBox == 'gyeonggi' ? 'checked' : ''} />경기</label>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="chungnam" 
+											${checkBox == 'chungnam' ? 'checked' : ''}/>충남</label>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="chugbuk" 
+											${checkBox == 'chugbuk' ? 'checked' : ''} />충북</label>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="kangwon" 
+											${checkBox == 'kangwon' ? 'checked' : ''} />강원</label>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                   <label><input class="form-check-input" type="checkbox" name="checkBox" value="Jeonbuk" 
+											${checkBox == 'Jeonbuk' ? 'checked' : ''} />전북</label>
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="Jeonnam" 
+											${checkBox == 'Jeonnam' ? 'checked' : ''} />전남</label>
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <div class="form-check">
+                                   <label><input class="form-check-input" type="checkbox" name="checkBox" value="jeju" 
+											${checkBox == 'jeju' ? 'checked' : ''} />제주</label>
+                                </div>
+                            </li>
+                        </ul> 
+                         
+                    </div>
+                    <br>
+                 
+                </div>
+            </form>
+        </div>
+        <!--서치바 끝-->
+
+</div>
+
+	<!-- Booking from END -->
+</div>
+
+
+<!-- Search END -->
+
+
+
+<!-- =======================
+Featured Hotels START -->
+<section>
+	<div class="container">
+
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-12 text-center">
+				<h3 class="mb-0 fs-4">문화커넥트 Pick!</h3>
+
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Hotel item -->
+			<div class="col-sm-6 col-xl-3">
+				<!-- Card START -->
+				<div class="card card-img-scale overflow-hidden bg-transparent">
+					<!-- Image and overlay -->
+					<div class="card-img-scale-wrapper rounded-3">
+						<!-- Image -->
+						<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=e6b8ff5b-1ff4-43d5-a1f5-571846b3cbb5" class="card-img" alt="hotel image">
+						<!-- Badge -->
+						<div class="position-absolute bottom-0 start-0 p-3">
+							<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>부산</div>
+						</div>
+					</div>
+
+					<!-- Card body -->
+					<div class="card-body px-2">
+						<!-- Title -->
+						<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">2024 스카마켓</a></h5>
+						<!-- 기간 -->
+						<div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-success mb-0">2024. 2. 1. ~ 2024. 2. 4.</h6>  
+						</div>
+					</div>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Hotel item -->
+			<div class="col-sm-6 col-xl-3">
+				<!-- Card START -->
+				<div class="card card-img-scale overflow-hidden bg-transparent">
+					<!-- Image and overlay -->
+					<div class="card-img-scale-wrapper rounded-3">
+						<!-- Image -->
+						<img src="http://tong.visitkorea.or.kr/cms/resource/57/3062257_image2_1.jpg" class="card-img" alt="hotel image">
+						<!-- Badge -->
+						<div class="position-absolute bottom-0 start-0 p-3">
+							<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>인천</div>
+						</div>
+					</div>
+
+					<!-- Card body -->
+					<div class="card-body px-2">
+						<!-- Title -->
+						<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">만수천 빛의 거리</a></h5>
+						<!-- 기간 -->
+						<div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-success mb-0">2023.12.08~2024.01.31</h6>  
+						</div>
+					</div>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Hotel item -->
+			<div class="col-sm-6 col-xl-3">
+				<!-- Card START -->
+				<div class="card card-img-scale overflow-hidden bg-transparent">
+					<!-- Image and overlay -->
+					<div class="card-img-scale-wrapper rounded-3">
+						<!-- Image -->
+						<img src="http://tong.visitkorea.or.kr/cms/resource/86/3054486_image2_1.png" class="card-img" alt="hotel image">
+						<!-- Badge -->
+						<div class="position-absolute bottom-0 start-0 p-3">
+							<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>영동</div>
+						</div>
+					</div>
+
+					<!-- Card body -->
+					<div class="card-body px-2">
+						<!-- Title -->
+						<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">영동 곶감 축제</a></h5>
+						<!-- 기간 -->
+						<div class="d-flex justify-content-between align-items-center">
+							<h6 class="text-success mb-0">2024.1.19~1.21</h6>  
+							
+						</div>
+					</div>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Hotel item -->
+			<div class="col-sm-6 col-xl-3">
+				<!-- Card START -->
+				<div class="card card-img-scale overflow-hidden bg-transparent">
+					<!-- Image and overlay -->
+					<div class="card-img-scale-wrapper rounded-3">
+						<!-- Image -->
+						<img src="http://tong.visitkorea.or.kr/cms/resource/23/3047123_image2_1.jpg" class="card-img" alt="hotel image">
+						<!-- Badge -->
+						<div class="position-absolute bottom-0 start-0 p-3">
+							<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>경상남도</div>
+						</div>
+					</div>
+
+					<!-- Card body -->
+					<div class="card-body px-2">
+						<!-- Title -->
+						<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">씨파크 스노우 페스티벌</a></h5>
+						<!-- 기간 -->
+						<div class="d-flex justify-content-between align-items-center">
+							<h6 class="text-success mb-0">2023.12.23~2024.02.28</h6>  
+							
+						</div>
+					
+					</div>
+				</div>
+				<!-- Card END -->
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+
+
+
+
+<!-- Featured Hotels START -->
+<section>
+   <div class="container">
+
+    <!-- Title -->
+    <div class="row mb-4" style="margin-left: -15px;">
+    <div class="col-12 text-center">
+        <h5 class="mb-0 text-primary">[현재 페이지] <span class="text-info">${list.size()}</span>개가 검색되었습니다.</h5>
+    </div>
+</div>
+
+
+    <div class="row g-4">
+        <!-- Festival item -->
+        <c:forEach var="item" items="${list}">
+            <div class="col-md-6 col-xl-4 mb-4">
+                <div class="card">
+                    <!-- Image -->
+                    <img src="${empty item.firstimage and empty item.firstimage2 ? pageContext.request.contextPath + '/resources/images/library.jpg' : item.firstimage}" class="card-img-top img-fluid rounded" alt="${item.firstimage2}" style="width: 100%; height: auto;">
+
+                    <!-- Overlay -->
+                    <div class="card-img-overlay d-flex flex-column p-4 z-index-1">
+                        <!-- Card overlay top -->
+                        <div>
+                            <span class="badge text-bg-dark">개최중</span>
+                        </div>
+                    </div>
+
+                    <!-- Card body START -->
+                    <div class="card-body px-3">
+                        <!-- Title -->
+                        <h5 class="card-title mb-0"><a href="${path}/leports/detail?contentid=${item.contentid}" class="stretched-link">${item.title}</a></h5>
+                        <span class="small"><i class="far fa-calendar-alt me-2">${item.restdateleports}</i></span>
+                    </div>
+                    <!-- Card body END -->
+
+                    <!-- Card footer START-->
+                    <div class="card-footer pt-0">
+                        <!-- Price and Button -->
+                        <div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
+
+                            <!-- Button -->
+                            <div class="mt-2 mt-sm-0">
+                                <a href="#" class="btn btn-sm btn-dark mb-0">더보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </c:forEach>
-    </tbody>
-</table>
-		
-	
+    </div>
+</div>
+   
+    
+
+    <!-- Pagination -->
+                   
+                    
+                </div> <!-- Row END -->
+
+                	<!-- page부 시작 -->
+                	
+                	 <nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+                        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
+                                    </a>
+                            </li>
+                             <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+                             <c:if test="${status.current == pageInfo.currentPage}">
+								<li class="page-item active"><a class="page-link" href="#"><button style="border: none; background: none;">${status.current}</button></a></li>
+						    </c:if> 
+						    <c:if test="${status.current != pageInfo.currentPage}">
+							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
+							</c:if>
+                            </c:forEach>
+                             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                           		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
+                             	</a>
+                           	</li>
+                                        
+                      
+                        </ul>
+                    </nav>
+<%-- 			<div align="center">
+				<!-- 가장 단순화된 버전 = 검색어가 없는 경우 -->
+<!-- 			처음 페이지로 이동하는 코드 -->
+	 			<button onclick="location.href='${path}/board/list?page=1'">&lt;&lt;</button> 
+<!-- 			이전 페이지로 이동하는 코드 -->
+	 			<button onclick="location.href='${path}/board/list?page=${pageInfo.prevPage}'">&lt;</button> 
+				
+				<!-- 처음 페이지 -->
+				<button onclick="movePage(1);">&lt;&lt;</button>
+				<!-- 이전 페이지 -->
+				<button onclick="movePage(${pageInfo.prevPage});">&lt;</button>
+				
+				<!-- 10개의 페이지가 보이는 영역 -->
+				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+					<!-- 현재 페이지 일때 button을 다르게 표기 하기 위한 영역 -->
+					<c:if test="${status.current == pageInfo.currentPage}">
+						<button disabled >
+							${status.current}
+						</button>
+					</c:if>
+					<c:if test="${status.current != pageInfo.currentPage}">
+						<button onclick="movePage(${status.current});">
+							${status.current}
+						</button>
+					</c:if>
+				</c:forEach>
+				
+				<!-- 다음 페이지 -->
+				<button onclick="movePage(${pageInfo.nextPage});">&gt;</button>
+				<!-- 마지막 페이지 -->
+				<button onclick="movePage(${pageInfo.maxPage});">&gt;&gt;</button>
+			</div> --%>
+		<!-- page부 끝 -->
+
+    </section>
+
+
+
+
+
+</body>
+		 
+		 
+
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+
+<script type="text/javascript">
+    function movePage(page){
+        searchForm.page.value = page;
+        searchForm.submit();
+    }
+</script>
+
+<script type="text/javascript">
+$(".form-check-input").change(function(){
+    if($(this).prop('checked') == true){
+        searchForm.submit();
+        $(".form-check-input").prop('selected', true);
+    }
+});
+
+</script>
+
+<script type="text/javascript">
+    $(function(){
+        var SelectedcheckBox = $(".SelectedcheckBox").val();
+        console.log(SelectedcheckBox);
+        $('input:checkbox[name="checkBox"]').each(function() {
+            if(SelectedcheckBox.indexOf(this.value) > -1){  
+                $(this).prop('checked', true); 
+            }
+        });
+    });
+</script>
+
+
+<!-- =======================
+Tour grid END -->
+
+
+
+
 
 
 
