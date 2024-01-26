@@ -128,6 +128,22 @@ Footer START -->
 
 <!-- ThemeFunctions -->
 <script src="${pageContext.request.contextPath}/resources/js/functions.js"></script>
+
+<!-- 페이지 상단에 아래 스크립트를 포함시킵니다. -->
+<script>
+  // 페이지 로드 시 스크롤 위치를 가져와서 설정
+  document.addEventListener("DOMContentLoaded", function () {
+    var scrollPosition = localStorage.getItem("scrollPosition");
+    if (scrollPosition) {
+      window.scrollTo(0, scrollPosition);
+    }
+  });
+
+  // 페이지를 떠날 때 스크롤 위치를 저장
+  window.addEventListener("beforeunload", function () {
+    localStorage.setItem("scrollPosition", window.scrollY);
+  });
+</script>
 	
 </body>
 </html>

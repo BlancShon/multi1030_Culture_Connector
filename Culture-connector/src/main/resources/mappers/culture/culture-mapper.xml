@@ -28,19 +28,19 @@
 	    <result property="title" column="TITLE"/>
 	    <result property="zipcode" column="ZIPCODE"/>
 	    
-		<result property="scale" column="HERITAGE1"/>
-	    <result property="useFee" column="HERITAGE2"/>
-	    <result property="discountInfo" column="HERITAGE3"/>
-	    <result property="spendTime" column="INFOCENTER"/>
-	    <result property="parkingFee" column="OPENDATE"/>
-	    <result property="infoCenterCulture" column="RESTDATE"/>
-	    <result property="accomCountCulture" column="EXPGUIDE"/>
-	    <result property="useTimeCulture" column="EXPAGERANGE"/>
-	    <result property="restDateCulture" column="ACCOMCOUNT"/>
-	    <result property="parkingCulture" column="USESEASON"/>
-	    <result property="chkBabyCarriageCulture" column="USETIME"/>
-	    <result property="chkPetCulture" column="PARKING"/>
-	    <result property="chkCreditCardCulture" column="CHKBABYCARRIAGE"/>
+		<result property="scale" column="SCALE"/>
+	    <result property="useFee" column="USEFEE"/>
+	    <result property="discountInfo" column="DISCOUNTINFO"/>
+	    <result property="spendTime" column="SPENDTIME"/>
+	    <result property="parkingFee" column="PARKINGFEE"/>
+	    <result property="infoCenterCulture" column="INFOCENTERCULTURE"/>
+	    <result property="accomCountCulture" column="ACCOMCOUNTCULTURE"/>
+	    <result property="useTimeCulture" column="USETIMECULTURE"/>
+	    <result property="restDateCulture" column="RESTDATECULTURE"/>
+	    <result property="parkingCulture" column="PARKINGCULTURE"/>
+	    <result property="chkBabyCarriageCulture" column="CHKBABYCARRIAGECULTURE"/>
+	    <result property="chkPetCulture" column="CHKPETCULTURE"/>
+	    <result property="chkCreditCardCulture" column="CHKCREDITCARDCULTURE"/>
 
 		<result property="image0" column="IMAGE0"/>
 	    <result property="image1" column="IMAGE1"/>

@@ -36,7 +36,7 @@ public class LeisureSportsController {
 	}
 
 	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
-	@PostMapping("/leports/dataSave")
+	@PostMapping("/dataSave")
 	public String dataSaveForDB(@RequestParam("name") String name, @RequestParam("page") String page) {
  		service.createTable();	
  		service.saveData(name, page);

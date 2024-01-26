@@ -20,7 +20,7 @@ public class Festival extends CultureParent  {
     private String sponsor1tel;
     private String sponsor2;
     private String sponsor2tel;
-    private Date eventenddate;
+    private String eventenddate;
     private String playtime;
     private String eventplace;
     private String eventhomepage;
@@ -29,7 +29,7 @@ public class Festival extends CultureParent  {
     private String placeinfo;
     private String subevent;
     private String program;
-    private Date eventstartdate;
+    private String eventstartdate;
     private String usetimefestival;
     private String discountinfofestival;
     private String spendtimefestival;

@@ -155,6 +155,7 @@ public class ApiParsing {
 							list.add(target);
 						}
 					} catch (JsonParseException | NullPointerException jno) {
+						log.error("키 다쓴걸로 예상됨", jno);
 					}
 
 				}
@@ -182,6 +183,7 @@ public class ApiParsing {
 		String className = targetClass.getSimpleName();
 		String contentType = null;
 
+		
 		if (className.equals("Culture")) {
 			contentType = "14";
 		} else if (className.equals("Course")) {
@@ -203,7 +205,8 @@ public class ApiParsing {
 			targetUrl = ApiSearchInfo.getContentTypeURL(contentType) + ApiSearchInfo.getServiceKey(name) + ApiSearchInfo.pageNo(page);;
 		}
 
-
+		log.info("누구의 키인가 {}  url 정보 : {}",name, targetUrl);
+		
 		List<T> list = new ArrayList<>();
 		HttpURLConnection conn = null;
 		try {
@@ -254,15 +257,8 @@ public class ApiParsing {
 						if (target != null) {
 							list.add(target);
 						}
-					} catch (JsonParseException je) {
-						keyConsumption++;
-						if(keyConsumption == 7) {
-							log.info("키값을 다 쓴걸로 예상됩니다.");
-							break;
-						}
-							je.printStackTrace();
-					} catch (NullPointerException ne) {
-						ne.printStackTrace();
+					} catch (JsonParseException | NullPointerException jno) {
+						log.error("키 다쓴걸로 예상됨", jno);
 					}
 				}
 
@@ -770,8 +766,10 @@ public class ApiParsing {
 						T target = getDetail(targetClass, contentId, contentTypeId, name);
 						// 서브 콘텐츠들 가져오기
 						Map<String, CultureParent> map = getSubConMap(contentId, contentTypeId, name);
+						// 오버뷰 받아오기
+						Map<String, String> overviewMap = getOverview(contentId, name);
 						
-						target = injectionSubConName(target, common, map);
+						target = injectionSubConName(target, common, map, overviewMap);
 						
 						if(target != null) {
 							list.add(target);
@@ -798,7 +796,7 @@ public class ApiParsing {
 
 
 	// 맵에서 서브 컨텐츠 이름 세팅하고 맵주입까지 하는 메소드
-	private static <T extends CultureParent> T injectionSubConName(T target, T common ,Map<String, CultureParent> map) {
+	private static <T extends CultureParent> T injectionSubConName(T target, T common ,Map<String, CultureParent> map, Map<String, String> overviewMap) {
 		if(map.size() == 0) {
 			return null;
 		}
@@ -857,8 +855,8 @@ public class ApiParsing {
 		    }
 		    count++;
 		}
-		
-		
+		target.setOverview(overviewMap.get("overview"));
+		target.setHomepage(overviewMap.get("homepage"));
 		target.setAddr1(common.getAddr1());
 		target.setAddr2(common.getAddr2());
 		target.setAreacode(common.getAreacode());
@@ -888,7 +886,6 @@ public class ApiParsing {
 		Map<String, CultureParent> map = new LinkedHashMap<>();
 		String targetUrl = new StringBuffer(ApiSearchInfo.DETAIL_URL).append(ApiSearchInfo.contentId(contentId))
 				.append(ApiSearchInfo.contentTypeId(contentTypeId)).append(ApiSearchInfo.getServiceKey(name)).toString();
-		log.info("몹 가져오는 곳 url 정보 : {}",targetUrl);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
@@ -947,7 +944,6 @@ public class ApiParsing {
 		T target = null;
 		String targetUrl = new StringBuffer(ApiSearchInfo.COMMON_URL)
 				.append(ApiSearchInfo.contentId(subcontentid)).append(ApiSearchInfo.getServiceKey(name)).toString();
-		log.info("하나 가져오는거 url 정보 : {}",targetUrl);
 		HttpURLConnection conn = null;
 		try {
 			URL url = new URL(targetUrl);
