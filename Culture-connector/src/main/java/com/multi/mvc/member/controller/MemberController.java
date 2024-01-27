@@ -359,10 +359,10 @@ public class MemberController {
 		List<Culture> culture = service.viewWishList(userId);
 		System.out.println("컨트롤러 = " + culture);
 		model.addAttribute("culture", culture);
-		for(int i = 0; i< culture.size(); i++) {
-			culture.get(i).getTitle();
-			System.out.println("장소명" + culture.get(i).getTitle());
-		}
+//		for(int i = 0; i< culture.size(); i++) {
+//			culture.get(i).getTitle();
+//			System.out.println("장소명" + culture.get(i).getTitle());
+//		}
 			
 		
 		return "member/wishList";

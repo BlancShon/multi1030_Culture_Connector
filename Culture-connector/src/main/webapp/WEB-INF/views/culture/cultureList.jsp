@@ -72,9 +72,9 @@
             <input type="hidden" name="page" value="1">
             	<div style="margin-top: 30px">
             	
-            	<label style="margin-left: 40px"><input type="radio" name="searchType" value="title" 
+            	<label style="margin-left: 40px"><input type="checkbox" name="searchType" value="title" class="search"
 											${param.searchType == 'title' ? 'checked' : ''} /> 제목</label>
-				<label style=""><input type="radio" name="searchType" value="address"
+				<label style=""><input type="checkbox" name="searchType" value="address" class="search"
 											${param.searchType == 'address' ? 'checked' : ''} /> 주소</label>
 				
 				<input style="border: none; width: 300px;"  placeholder="(검색할 카테고리를 선택하세요.)">
@@ -87,6 +87,7 @@
                         class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등">
                     <button class="btn btn-primary rounded-pill h-100 px-5  z-index-9" type="submit"
                         style="margin-left: -80px;">Search</button>
+                   <button type="reset" class="btn btn-primary rounded-pill h-100 px-5 ">초기화</button>      
                 </div>              
          		
                 <div class="container mx-4 mt-n1">
@@ -163,7 +164,7 @@
                         <div>
                             <hr>
                             <div class="count" style="float: left;">
-                                총 <span class="count text-primary" style=" text-align: left;">40,725</span>
+                                총 <span class="count text-primary" style=" text-align: left;">${cultureCount}</span>
                             </div>
                          
                         </div>
@@ -327,17 +328,22 @@
 
 <script type="text/javascript">
 
-/*   $(".form-check-input").change(function(){
-	  if($(this).prop('checked') == true){
-		  searchForm.submit();
-		  
-	  }
-	});  */  
+</script>
+
+
+
+<script type="text/javascript">
+ 
 	
 
 </script>
 
 
-	
+	<!-- $(".form-check-input").change(function(){
+	  if($(this).prop('checked') == true){
+		  searchForm.submit();
+		  
+	  }
+	}); -->
 
 
