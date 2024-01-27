@@ -2,10 +2,14 @@ package com.multi.mvc.culture.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,8 +61,10 @@ public class CultureController {
 		return "redirect:/dbsave";
 	}
 	
-	@GetMapping("/culture/list")
+	@RequestMapping("/culture/list")
 	public String list(Model model, CultureParam param) {
+		log.debug("@@ culture list 요청 param : " + param);
+		
 		int cultureCount = service.getCultureCount(param);
 //		PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
 		PageInfo pageInfo = new PageInfo(param.getPage(), 6, cultureCount, 8); // page가 보여질 갯수 : 10, 게시글 목록은 12개
@@ -75,6 +81,20 @@ public class CultureController {
 		// model.addAttribute("typeMap", typeMap);
 		model.addAttribute("param", param);
 		model.addAttribute("typeList", param.getTypeList());
+	
+//		String searchType = param.getSearchType();
+//		String checkBox = param.getCheckBox();
+//		
+//		if(searchType != null ) {
+//			session.setAttribute("searchType", searchType);
+//			
+//		}
+//		
+//		if(checkBox != null ) {
+//			session.setAttribute("checkBox", checkBox);
+//			
+//		}
+		
 		
 		// 공지사항 분류하는 법
 //		if(param.getTypeList() != null && param.getTypeList().size() == 1 && param.getTypeList().get(0).equals("NBOARD")) {

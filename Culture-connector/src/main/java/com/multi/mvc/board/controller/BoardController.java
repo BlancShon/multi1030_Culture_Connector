@@ -71,7 +71,7 @@ public class BoardController {
 		
 		int boardCount = service.getBoardCount(param);
 //		PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
-		PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 6); // page가 보여질 갯수 : 10, 게시글 목록은 12개
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Board> list = service.getBoardList(param);

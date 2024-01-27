@@ -93,15 +93,7 @@ Content START -->
 									<li class="nav-item">
 										<a class="nav-link" href="account-profile.html"><i class="bi bi-person fa-fw me-2"></i>My Profile</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-bookings.html"><i class="bi bi-ticket-perforated fa-fw me-2"></i>My Bookings</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-travelers.html"><i class="bi bi-people fa-fw me-2"></i>Travelers</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-payment-details.html"><i class="bi bi-wallet fa-fw me-2"></i>Payment Details</a>
-									</li>
+								
 									<li class="nav-item">
 										<a class="nav-link active" href="account-wishlist.html"><i class="bi bi-heart fa-fw me-2"></i>Wishlist</a>
 									</li>
@@ -155,10 +147,11 @@ Content START -->
 									<option>Most popular</option>
 									<option>Top rated</option>
 								</select>
+								
 							</div>
 							<!-- Button -->
+							<button class="btn btn-danger-soft mb-0" style="margin-left: 600px; width: 200px;"><i class="fas fa-trash me-2"></i>Remove all</button>
 							
-							<button class="btn btn-danger-soft mb-0"><i class="fas fa-trash me-2"></i>Remove all</button>
 						
 
 						<!-- Wishlist item START -->

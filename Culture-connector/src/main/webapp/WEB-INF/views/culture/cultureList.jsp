@@ -33,19 +33,6 @@
 </jsp:include>
 
 
-<style>
-
-.navbar navbar-expand-xl {
-
-background-color: white !important;
-
-
-
-}
-
-
-</style>
-
 
 
 		<!--  <title>문화 테마 - 문화 관광지 html입니다.</title> -->
@@ -84,10 +71,11 @@ background-color: white !important;
             <form action="${path}/culture/list" method="get" name="searchForm">
             <input type="hidden" name="page" value="1">
             	<div style="margin-top: 30px">
+            	
             	<label style="margin-left: 40px"><input type="radio" name="searchType" value="title" 
-											<%-- ${searchType == 'title' ? 'checked' : ''} --%> /> 제목</label>
+											${param.searchType == 'title' ? 'checked' : ''} /> 제목</label>
 				<label style=""><input type="radio" name="searchType" value="address"
-											${searchType == 'address' ? 'checked' : ''} /> 주소</label>
+											${param.searchType == 'address' ? 'checked' : ''} /> 주소</label>
 				
 				<input style="border: none; width: 300px;"  placeholder="(검색할 카테고리를 선택하세요.)">
 				</div>	
@@ -107,54 +95,54 @@ background-color: white !important;
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                	<input type="hidden" class="SelectedcheckBox" value="${checkBox}" >
+                               
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul" 
-											${checkBox == 'seoul' ? 'checked' : ''}  />서울</label>
+											${param.checkBox == 'seoul' ? 'checked' : ''}  />서울</label>
 											
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="gyeonggi" 
-											${checkBox == 'gyeonggi' ? 'checked' : ''} />경기</label>
+											${param.checkBox == 'gyeonggi' ? 'checked' : ''} />경기</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="chungnam" 
-											${checkBox == 'chungnam' ? 'checked' : ''}/>충남</label>
+											${param.checkBox == 'chungnam' ? 'checked' : ''}/>충남</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
                                      <label><input class="form-check-input" type="checkbox" name="checkBox" value="chugbuk" 
-											${checkBox == 'chugbuk' ? 'checked' : ''} />충북</label>
+											${param.checkBox == 'chugbuk' ? 'checked' : ''} />충북</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="kangwon" 
-											${checkBox == 'kangwon' ? 'checked' : ''} />강원</label>
+											${param.checkBox == 'kangwon' ? 'checked' : ''} />강원</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="Jeonbuk" 
-											${checkBox == 'Jeonbuk' ? 'checked' : ''} />전북</label>
+											${param.checkBox == 'Jeonbuk' ? 'checked' : ''} />전북</label>
                                 </div>
                             </li>
 
                             <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="Jeonnam" 
-											${checkBox == 'Jeonnam' ? 'checked' : ''} />전남</label>
+											${param.checkBox == 'Jeonnam' ? 'checked' : ''} />전남</label>
                                 </div>
                             </li>
 
                             <li class="list-inline-item">
                                 <div class="form-check">
                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="jeju" 
-											${checkBox == 'jeju' ? 'checked' : ''} />제주</label>
+											${param.checkBox == 'jeju' ? 'checked' : ''} />제주</label>
                                 </div>
                             </li>
                         </ul> 
@@ -263,7 +251,7 @@ background-color: white !important;
                             </li>
                              <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
                              <c:if test="${status.current == pageInfo.currentPage}">
-								<li class="page-item active"><a class="page-link" href="#"><button style="border: none; background: none;">${status.current}</button></a></li>
+								<li class="page-item active"><a class="page-link" href=""><button style="border: none; background: none;">${status.current}</button></a></li>
 						    </c:if> 
 						    <c:if test="${status.current != pageInfo.currentPage}">
 							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
@@ -339,27 +327,17 @@ background-color: white !important;
 
 <script type="text/javascript">
 
-$(".form-check-input").change(function(){
+/*   $(".form-check-input").change(function(){
 	  if($(this).prop('checked') == true){
 		  searchForm.submit();
-		  document.getElementByClass('form-check-input').selected = true;
+		  
 	  }
-	});
+	});  */  
 	
 
 </script>
 
-<script type="text/javascript">
 
-
-</script>
-
-<script type="text/javascript">
-
-
-
-
-</script>
 	
 
 
