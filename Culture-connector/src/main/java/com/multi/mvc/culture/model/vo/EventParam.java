@@ -15,7 +15,7 @@ public class EventParam {
 	private String searchValue;
 	private String[] types;
 	private List<String> typeList;
-	private String checkBox;
+	private List<String> checkBoxes;
 
 	// 페이징 인자
 	private int page;
@@ -27,13 +27,13 @@ public class EventParam {
 		page = 1; 
 	}
 
-	public EventParam(String searchType, String searchValue, String[] types, String checkBox, int page, int limit,
+	public EventParam(String searchType, String searchValue, String[] types, List<String> checkBoxes, int page, int limit,
 			int offset) {
 		super();
 		this.searchType = searchType;
 		this.searchValue = searchValue;
 		setTypes(types);
-		this.checkBox = checkBox;
+		this.checkBoxes = checkBoxes;
 		this.page = page;
 		this.limit = limit;
 		this.offset = offset;
@@ -42,7 +42,7 @@ public class EventParam {
 	@Override
 	public String toString() {
 		return "BoardParam [searchType=" + searchType + ", searchValue=" + searchValue + ", types="
-				+ Arrays.toString(types) + ", checkBox=" + checkBox + ", typeList=" + typeList + ", page=" + page + ", limit=" + limit
+				+ Arrays.toString(types) + ", checkBox=" + checkBoxes + ", typeList=" + typeList + ", page=" + page + ", limit=" + limit
 				+ ", offset=" + offset + "]";
 	}
 
@@ -78,15 +78,13 @@ public class EventParam {
 		return typeList;
 	}
 	
-	
+	public List<String> getCheckBoxes() {
+        return checkBoxes;
+    }
 
-	public String getCheckBox() {
-		return checkBox;
-	}
-
-	public void setCheckBox(String checkBox) {
-		this.checkBox = checkBox;
-	}
+    public void setCheckBoxes(List<String> checkBoxes) {
+        this.checkBoxes = checkBoxes;
+    }
 
 	public void setTypeList(List<String> typeList) {
 		this.typeList = typeList;
@@ -115,5 +113,4 @@ public class EventParam {
 	public void setOffset(int offset) {
 		this.offset = offset;
 	}
-
 }

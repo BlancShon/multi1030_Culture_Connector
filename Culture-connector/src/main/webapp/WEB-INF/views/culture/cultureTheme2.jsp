@@ -75,53 +75,72 @@ Main Banner END -->
 
 <!-- =======================
 Special offer START -->
+
 <section class="pb-0">
-<div class="container">
-    <!-- Title -->
-    <div class="row mb-4">
-        <div class="col-12 text-center">
-            <h3 class="mb-0">최신 공연 바로 보기</h3>
-        </div>
+    <!--서치바-->
+    <div class="container">
+    <form action="${path}/cultureTheme2Search" method="GET">
+          <div class="mx-auto search_ex mt-5 mb-3"
+              style="font-family: 'SUIT-Medium'">
+              <h4>
+                  <b>떠나고 싶은 지역을 검색하세요.</b>
+              </h4>
+          </div>
+          <div class="mx-auto mt-5 search-bar input-group mb-3"
+              style="font-family: 'SUIT-Medium'" id="search">
+              <input type="text" name="searchValue" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등"> 
+              <button class="btn btn-primary rounded-pill h-100 px-5  z-index-9" type="submit"
+                        style="margin-left: -80px;">Search</button>
+          </div>
+      </form>
     </div>
+    <!--서치바 끝-->
+    <br><br><br><br>
 
-    <!-- Slider START -->
-    <form name="eventList" action="${path}/cultureTheme2" method="get">
-	    <input type="hidden" name="useLatest" value="true"/>
-        <c:if test="${not empty lists}">
-            <!-- Card item START -->
-            <div class="tiny-slider arrow-round arrow-blur arrow-hover">
-                <div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
-                    <c:forEach var="item" items="${lists}">
-                        <div>
-                            <div class="card">
+    <!--메인 스타트-->
+    <div class="container">
+        <!-- Title -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h3 class="mb-0">최신 공연 바로 보기</h3>
+            </div>
+        </div>
 
-                                <c:choose> 
-                                <c:when test="${empty item.firstimage and empty item.firstimage2}">
-                                <img src="http://tong.visitkorea.or.kr/cms/resource/70/2952070_image2_1.jpg" class="card-img" alt="">
-                                </c:when> 
-                                <c:otherwise>
-                                <img src="${item.firstimage}" class="card-img" alt="${item.firstimage2}" style="width: 368.656px; height: 525.047px;">
-                                </c:otherwise>
-                                </c:choose>   
-                                <!-- Card body -->
-                                <div class="position-absolute top-100 start-50 translate-middle w-100">
-                                    <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-                                        <h6 class="card-title mb-1"><a href="${path}/event/detail?contentid=${item.contentid}">${item.title}</a></h6>
-                                        <h6 class="card-eventstartdate mb-1"><a>${item.eventstartdate}</a></h6>
-                                        <h6 class="card-eventenddate mb-1"><a>${item.eventenddate}</a></h6>
-                                        <div class="mt-2"><a href="${path}/event/detail?contentid=${item.contentid}" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+        <!-- Slider START -->
+            <c:if test="${not empty list10}">
+                <!-- Card item START -->
+                <div class="tiny-slider arrow-round arrow-blur arrow-hover">
+                    <div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
+                        <c:forEach var="item" items="${list10}">
+                            <div>
+                                <div class="card">
+
+                                    <c:choose> 
+                                    <c:when test="${empty item.firstimage and empty item.firstimage2}">
+                                    <img src="http://tong.visitkorea.or.kr/cms/resource/70/2952070_image2_1.jpg" class="card-img" alt="">
+                                    </c:when> 
+                                    <c:otherwise>
+                                    <img src="${item.firstimage}" class="card-img" alt="${item.firstimage2}" style="width: 368.656px; height: 525.047px;">
+                                    </c:otherwise>
+                                    </c:choose>   
+                                    <!-- Card body -->
+                                    <div class="position-absolute top-100 start-50 translate-middle w-100">
+                                        <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
+                                            <h6 class="card-title mb-1"><a href="${path}/event/detail?contentid=${item.contentid}">${item.title}</a></h6>
+                                            <h6 class="card-eventstartdate mb-1"><a>${item.eventstartdate}</a></h6>
+                                            <h6 class="card-eventenddate mb-1"><a>${item.eventenddate}</a></h6>
+                                            <div class="mt-2"><a href="${path}/event/detail?contentid=${item.contentid}" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </div>
                 </div>
-            </div>
-            <!-- Card item END -->
-        </c:if>
-    </form>
-    <!-- Slider END -->
-</div>
+                <!-- Card item END -->
+            </c:if>
+        <!-- Slider END -->
+    </div>
 </section>
 <!-- =======================
 Special offer END -->
@@ -139,12 +158,12 @@ About START -->
     </div>
     
     <!-- 지역 이름 선택 -->
-    <div class="row g-4 g-md-5">
+    <div class="row">
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="1">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="1">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/main/11.jpg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/main/11.jpg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="1">서울</a></h5>
                 </div>
@@ -153,10 +172,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="2">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="2">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/main/14.jpg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/main/14.jpg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="2">인천</a></h5>
                 </div>
@@ -165,10 +184,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="3">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="3">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/daejeon.jpeg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/daejeon.jpeg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="3">대전</a></h5>
                 </div>
@@ -177,10 +196,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="4">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="4">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/main/15.jpg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/main/15.jpg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="4">대구</a></h5>
                 </div>
@@ -189,10 +208,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="5">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="5">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/main/12.jpg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/main/12.jpg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="5">광주</a></h5>
                 </div>
@@ -201,10 +220,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="6">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="6">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/gyungbuk.jpeg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/gyungbuk.jpeg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="6">부산</a></h5>
                 </div>
@@ -213,10 +232,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="7">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="7">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/chungbuk.jpeg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/chungbuk.jpeg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="7">울산</a></h5>
                 </div>
@@ -225,10 +244,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="8">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="8">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/jeonnam.jpeg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/jeonnam.jpeg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="8">세종</a></h5>
                 </div>
@@ -237,10 +256,10 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="31">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="31">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/main/16.jpg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/main/16.jpg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="31">경기</a></h5>
                 </div>
@@ -249,17 +268,17 @@ About START -->
         <!-- Card item END -->
 
         <!-- Card item START -->
-        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <div class="card bg-transparent text-center p-1 h-100" data-areacode="32">
+        <div class="col">
+            <div class="card bg-transparent text-center p-1 h-50" data-areacode="32">
                 <!-- Image -->
-                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/chungnam.jpg" class="rounded-circle" alt="">
+                <img src="${pageContext.request.contextPath}/resources/images/category/locationIMG/chungnam.jpg" class="rounded-circle" alt="" style="width: 75px; height: 75px; align-self: center;">
                 <div class="card-body p-0 pt-3">
                     <h5 class="card-title"><a href="#" class="region-link" data-areacode="32">강원</a></h5>
                 </div>
             </div>
         </div>
         <!-- Card item END -->
-        
+
     </div>
     <!-- 지역 고르기 끝 -->
 </div>
@@ -557,13 +576,47 @@ Gallery END -->
 
 <!-- 최신 데이터 10개 가져오기 -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    if (!sessionStorage.getItem('formSubmitted')) {
-        sessionStorage.setItem('formSubmitted', 'true');
-        document.forms['eventList'].submit();
-    }
-});
+    $(document).ready(function() {
+        // 세션 스토리지를 확인하여 페이지가 처음 로드될 때만 요청을 보냅니다.
+        if (!sessionStorage.getItem('latestEventsLoaded')) {
+            sessionStorage.setItem('latestEventsLoaded', 'true');
+    
+            // AJAX 요청을 사용하여 최신 이벤트 데이터를 불러옵니다.
+            $.ajax({
+                url: "${path}/latestEvents", // 최신 이벤트를 불러오는 서버 경로
+                type: "GET", // HTTP 요청 방식
+                success: function(response) {
+                    // 성공 시, 응답으로 받은 HTML을 페이지에 삽입합니다.
+                    // 이를 위해 서버 측에서는 최신 이벤트 데이터를 포함한 HTML 조각을 응답으로 보내야 합니다.
+                    $('#latestEventsContainer').html(response);
+                },
+                error: function(xhr, status, error) {
+                    // 요청 실패 시, 콘솔에 오류 메시지를 출력합니다.
+                    console.error("Latest events loading failed:", status, error);
+                }
+            });
+        }
+    });
+    </script>
+
+
+<script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
 </script>
 
 
+
+<script type="text/javascript">
+$(".form-check-input").change(function(){
+	  if($(this).prop('checked') == true){
+		  searchForm.submit();
+		  document.getElementByClass('form-check-input').selected = true;
+	  }
+	});
+</script>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
