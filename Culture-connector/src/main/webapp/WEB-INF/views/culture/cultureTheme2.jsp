@@ -113,6 +113,7 @@ Special offer START -->
                     <div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
                         <c:forEach var="item" items="${list10}">
                             <div>
+                                <a href="${path}/cultureTheme2Detail?contentid=${item.contentid}" style="text-decoration: none; color: inherit;">
                                 <div class="card">
 
                                     <c:choose> 
@@ -126,13 +127,14 @@ Special offer START -->
                                     <!-- Card body -->
                                     <div class="position-absolute top-100 start-50 translate-middle w-100">
                                         <div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-                                            <h6 class="card-title mb-1"><a href="${path}/event/detail?contentid=${item.contentid}">${item.title}</a></h6>
+                                            <h6 class="card-title mb-1">${item.title}</a></h6>
                                             <h6 class="card-eventstartdate mb-1"><a>${item.eventstartdate}</a></h6>
                                             <h6 class="card-eventenddate mb-1"><a>${item.eventenddate}</a></h6>
-                                            <div class="mt-2"><a href="${path}/event/detail?contentid=${item.contentid}" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                                            <div class="mt-2"><button type="button" class="btn btn-sm btn-dark mb-0" onclick="location.href='${path}/cultureTheme2Detail?contentid=${item.contentid}'">자세히</button></div>
                                         </div>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </c:forEach>
                     </div>
@@ -334,10 +336,12 @@ Services START -->
             </div>
 
             <div class="col-lg-6">
+                <a href="${path}/cultureTheme2Detail?contentid=${3021762}" style="text-decoration: none; color: inherit;">
                 <div class="card">
                     <!-- Image -->
                     <img src="http://tong.visitkorea.or.kr/cms/resource/70/2952070_image2_1.jpg" class="card-img" id="firstimage" alt="Event Image" style="width: 572.203px; height: 807.609px;">
                 </div>
+                </a>
             </div>
         </div>
     </form>

@@ -118,32 +118,35 @@
             <div class="row mt-5">
                 <!-- Card item START -->
                 <c:forEach var="item" items="${list8}">
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body pt-2">
-                            <div class="row g-2 g-sm-4 ">
-                                <!-- Card image -->
-                                <div class="col-md-6 col-xl-6">
-                                    <div>
-                                        <c:choose> 
-                                        <c:when test="${empty item.firstimage and empty item.firstimage2}">
-                                        <img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
-                                        </c:when> 
-                                        <c:otherwise>
-                                        <img src="${item.firstimage}" class="rounded" alt="${item.firstimage2}"
-                                            style="width: 400px; height: 200px;">
-                                        </c:otherwise> 
-                                        </c:choose>     
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body pt-2">
+                                <div class="row g-0 g-sm-0 ">
+                                    <!-- Card image -->
+                                    <div class="col-md-6 col-xl-6">
+                                        <a href="${path}/cultureTheme2Detail?contentid=${item.contentid}" style="text-decoration: none; color: inherit;">
+                                            <div>
+                                                <c:choose> 
+                                                <c:when test="${empty item.firstimage and empty item.firstimage2}">
+                                                <img alt="" src="${pageContext.request.contextPath}/resources/images/library.jpg">
+                                                </c:when> 
+                                                <c:otherwise>
+                                                <img src="${item.firstimage}" class="rounded" alt="${item.firstimage2}"
+                                                    style="width: 400px; height: 200px;">
+                                                </c:otherwise> 
+                                                </c:choose>     
+                                            </div>
+                                        </a>
                                     </div>
-                                </div>
 
                                 <!-- Card title and rating -->
                                 <div class="col-sm-6 col-md-4 col-xl-6">
-                                    <h5 class="card-title mb-2">
-                                    <a href="${path}/cultureTheme2Detail?contentid=${item.contentid}">
-                                    <c:out value="${item.title}"/></a>
-                                    </h5>
-                                    <!-- Nav divider -->
+                                    <a href="${path}/cultureTheme2Detail?contentid=${item.contentid}" style="text-decoration: none; color: inherit;">
+                                        <h5 class="card-title mb-2">
+                                        <c:out value="${item.title}"/></a>
+                                        </h5>
+                                        <!-- Nav divider -->
+                                    </a>
                                 
                                     <ul class="nav nav-divider h6 fw-normal mb-2">
                                         <li>${item.addr1}&nbsp</li>
@@ -173,7 +176,6 @@
                 <!-- Card item END -->
                 </c:forEach>
             </div>
-            ----
             
             </c:if>
             </form>
@@ -182,28 +184,59 @@
     </div> <!-- Row END -->
 
     <!-- page부 시작 -->
-    <form action="${path}/cultureTheme2Search" name="paginationForm" method="get">
-     <nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+    <nav class="d-flex justify-content-center mt-3" aria-label="navigation">
         <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
-                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
-                    </a>
+            <li class="page-item mb-0">
+                <a class="page-link" href="javascript:void(0);" onclick="movePage(${pageInfo.prevPage});">
+                    <img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px">
+                </a>
             </li>
-             <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
-             <c:if test="${status.current == pageInfo.currentPage}">
-                <li class="page-item active"><a class="page-link" href="#"><button style="border: none; background: none;">${status.current}</button></a></li>
-            </c:if> 
-            <c:if test="${status.current != pageInfo.currentPage}">
-            <li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
-            </c:if>
+            <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status">
+                <li class="page-item ${status.current == pageInfo.currentPage ? 'active' : ''}" aria-current="page">
+                    <a class="page-link" href="javascript:void(0);" onclick="movePage(${status.current});">${status.current}</a>
+                </li>
             </c:forEach>
-             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
-                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
-                 </a>
-               </li>
-            </ul>
-        </nav>
-    </form>
+            <li class="page-item mb-0">
+                <a class="page-link" href="javascript:void(0);" onclick="movePage(${pageInfo.nextPage});">
+                    <img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px">
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- <nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+            <li class="page-item mb-0">
+                <a class="page-link" href="#" tabindex="-1">
+                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});">
+                        <img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px">
+                    </button>
+                </a>
+            </li>
+            <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+                <c:if test="${status.current == pageInfo.currentPage}">
+                    <li class="page-item active">
+                        <a class="page-link" href="">
+                            <button style="border: none; background: none;">${status.current}</button>
+                        </a>
+                    </li>
+                </c:if> 
+                <c:if test="${status.current != pageInfo.currentPage}">
+                    <li class="page-item " aria-current="page"> 
+                        <a class="page-link" href="#">
+                            <button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button>
+                        </a>
+                    </li>
+                </c:if>
+            </c:forEach>
+            <li class="page-item mb-0">
+                <a class="page-link" href="#" tabindex="-1">
+                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});">
+                        <img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px">
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav> -->
     <!-- page부 끝 -->
 </section>
 
@@ -211,8 +244,8 @@
 
 <script type="text/javascript">
     function movePage(page){
-        document.paginationForm.page.value = page;
-        document.paginationForm.submit();
+        document.searchForm.page.value = page;
+        document.searchForm.submit();
     }
 </script>
 

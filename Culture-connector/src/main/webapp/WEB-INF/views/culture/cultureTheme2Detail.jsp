@@ -423,3 +423,4 @@ Kakao.Share.createDefaultButton({
 
 </script>
 
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
