@@ -8,13 +8,6 @@
     <jsp:param value="Culture Connector" name="title"/>
 </jsp:include>
 
-<c:if test="${not empty selectedCheckBoxes}">
-    Selected Checkboxes: 
-    <c:forEach items="${selectedCheckBoxes}" var="checkbox">
-        <c:out value="${checkbox}"/><br/>
-    </c:forEach>
-</c:if>
-
 <!--서치바-->
 <section>
     <div class="container ">
@@ -43,16 +36,16 @@
                 <div class="filter-block">
                     <h6 class="mb-3">지역</h6>
                     <ul class="list-inline mb-0">
+                        <c:set var="isSeoulChecked" value="${false}" scope="request"/>
+                        <c:set var="isGyeonggiChecked" value="${false}" scope="request"/>
+                        <c:set var="isChungnamChecked" value="${false}" scope="request"/>
+                        <c:set var="isChugbukChecked" value="${false}" scope="request"/>
+                        <c:set var="isKangwonChecked" value="${false}" scope="request"/>
+                        <c:set var="isJeonbukChecked" value="${false}" scope="request"/>
+                        <c:set var="isJeonnamChecked" value="${false}" scope="request"/>
+                        <c:set var="isJejuChecked" value="${false}" scope="request"/>
+                        
                         <c:forEach items="${selectedCheckBoxes}" var="checkedValue">
-                            <c:set var="isSeoulChecked" value="${false}" scope="request"/>
-                            <c:set var="isGyeonggiChecked" value="${false}" scope="request"/>
-                            <c:set var="isChungnamChecked" value="${false}" scope="request"/>
-                            <c:set var="isChugbukChecked" value="${false}" scope="request"/>
-                            <c:set var="isKangwonChecked" value="${false}" scope="request"/>
-                            <c:set var="isJeonbukChecked" value="${false}" scope="request"/>
-                            <c:set var="isJeonnamChecked" value="${false}" scope="request"/>
-                            <c:set var="isJejuChecked" value="${false}" scope="request"/>
-
                             <c:if test="${checkedValue == 'seoul'}"><c:set var="isSeoulChecked" value="${true}" scope="request"/></c:if>
                             <c:if test="${checkedValue == 'gyeonggi'}"><c:set var="isGyeonggiChecked" value="${true}" scope="request"/></c:if>
                             <c:if test="${checkedValue == 'chungnam'}"><c:set var="isChungnamChecked" value="${true}" scope="request"/></c:if>
@@ -147,7 +140,7 @@
                                 <!-- Card title and rating -->
                                 <div class="col-sm-6 col-md-4 col-xl-6">
                                     <h5 class="card-title mb-2">
-                                    <a href="${path}/event/detail?contentid=${item.contentid}">
+                                    <a href="${path}/cultureTheme2Detail?contentid=${item.contentid}">
                                     <c:out value="${item.title}"/></a>
                                     </h5>
                                     <!-- Nav divider -->
@@ -237,3 +230,5 @@
         });
     });
 </script>
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -86,7 +86,7 @@ public class EventController {
 	
 	// eventSearch에서 실행되야하는 부분
 	@GetMapping("/cultureTheme2Search")
-	public String cultureTheme2(Model model, EventParam param, @RequestParam("searchValue") Optional<String> searchValue, @RequestParam Optional<String> searchType, @RequestParam(value = "checkBox", required = false) List<String> checkBoxes){
+	public String cultureTheme2(Model model, EventParam param, @RequestParam("searchValue") Optional<String> searchValue, @RequestParam Optional<String> searchType, @RequestParam(value = "checkBox[]", required = false) List<String> checkBoxes){
 		
 		// Set searchType and searchValue in EventParam if present
 	    searchType.ifPresent(param::setSearchType);
@@ -135,7 +135,7 @@ public class EventController {
 	}
 	
 	
-	@RequestMapping("/event/detail")
+	@RequestMapping("/cultureTheme2Detail")
 	public String detailView(Model model, @RequestParam("contentid") int contentid) {
 		
 		try {
@@ -150,7 +150,7 @@ public class EventController {
 		model.addAttribute("contentid", event.getContentid());
 		model.addAttribute("overview", event.getOverview());
 		
-		return "culture/eventDetail";
+		return "culture/cultureTheme2Detail";
 	}
 	
 	
