@@ -259,9 +259,10 @@
 						#{item}
 					</foreach>
 				</if>
-			    <if test="area != null and area != ''">
+			   <if test="area != null and area != ''">
 			    	and areacode = '${area}'
 			    </if>
+			    
 		   ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
        
@@ -276,8 +277,8 @@
 						#{item}
 					</foreach>
 				</if>
-			    <if test="area != null and area != ''">
-			    	and areacode = '${area}'
+			    <if test="area != '' and area != null">
+			    	and areacode = "${area}"
 			    </if>
 	</select>
 	
