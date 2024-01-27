@@ -179,7 +179,7 @@
 	
 
 	<select id="selectLeportsList" parameterType="LeisureSportsParam" resultMap="leportsResultMap">
-		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, restdateleports
 		FROM LEPORTS
 		 
 			
@@ -258,6 +258,7 @@
 <select id="selectLeportsByLeportsId" parameterType="int" resultMap="leportsResultMap">
     SELECT  
         contentid, TITLE, ADDR1, firstimage, firstimage2, MAPX, MAPY, tel, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+    , restdateleports 
     FROM culture where contentid = #{contentid}
 </select>
 

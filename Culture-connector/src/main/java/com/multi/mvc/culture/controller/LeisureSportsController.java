@@ -58,7 +58,7 @@ public class LeisureSportsController {
 	@GetMapping("/list")
 	public String leportsList(Model model, LeisureSportsParam param) {
 		int leisureCount = service.getLeportsCount(param);
-		PageInfo pageInfo = new PageInfo(param.getPage(), 6, leisureCount, 8);
+		PageInfo pageInfo = new PageInfo(param.getPage(), 6, leisureCount, 9);
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<LeisureSports> list = service.getLeportsList(param);

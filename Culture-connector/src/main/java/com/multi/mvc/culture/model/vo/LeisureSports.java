@@ -15,10 +15,10 @@ public class LeisureSports extends CultureParent{
 	
 	private String openperiod;
 	private String reservation;
+	private String restdateleports;
 	private String infocenterleports;
 	private String scaleleports;
 	private String accomcountleports;
-	private String restdateleports;
 	private String usetimeleports;
 	private String usefeeleports;
 	private String expagerangeleports;
