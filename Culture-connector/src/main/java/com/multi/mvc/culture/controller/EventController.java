@@ -1,6 +1,9 @@
 package com.multi.mvc.culture.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,33 +71,59 @@ public class EventController {
 	}
 	
 	// 아래는 event 관련데이터를 cultureTheme2.jsp에 보내는 메소드
-
 	@GetMapping("/cultureTheme2")
-	public String cultureTheme2(Model model, EventParam param, @RequestParam(name = "useLatest", required = false) Boolean useLatest) {
-		log.info("cultureTheme2 request");
-		
-		if (Boolean.TRUE.equals(useLatest)) {
-	        // If the condition is met, fetch the latest 10 events
-	        List<Event> latestEvents = service.selectEventListWithTime();
-	        if (latestEvents != null) { // 추가된 null 체크
-	            model.addAttribute("lists", latestEvents);
-	        }
+	public String latestEvents(Model model) {
+	    log.info("Fetching latest events");
+	    List<Event> latestEvents = service.selectEventListWithTime();
+	    if (latestEvents != null) {
+	        log.info("Latest events fetched successfully. Number of events: {}", latestEvents.size());
+	        model.addAttribute("list10", latestEvents);
 	    } else {
-			int eventCount = service.getEventCount(param);
-			PageInfo pageInfo = new PageInfo(param.getPage(), 6, eventCount, 8); // page가 보여질 갯수 : 10, 게시글 목록은 12개
-			param.setLimit(pageInfo.getListLimit());
-			param.setOffset(pageInfo.getStartList() - 1);
-			List<Event> list = service.getEventList(param);
-			
-			if (list != null) { // 추가된 null 체크
-	            model.addAttribute("pageInfo", pageInfo);
-	            model.addAttribute("lists", list);
-	        }
+	        log.info("No latest events found");
 	    }
-		model.addAttribute("param", param);
-		model.addAttribute("typeList", param.getTypeList());
+	    return "culture/cultureTheme2"; // 최신 이벤트를 보여주는 뷰 이름
+	}
+	
+	// eventSearch에서 실행되야하는 부분
+	@GetMapping("/cultureTheme2Search")
+	public String cultureTheme2(Model model, EventParam param, @RequestParam("searchValue") Optional<String> searchValue, @RequestParam Optional<String> searchType, @RequestParam(value = "checkBox", required = false) List<String> checkBoxes){
 		
-		return "culture/cultureTheme2";
+		// Set searchType and searchValue in EventParam if present
+	    searchType.ifPresent(param::setSearchType);
+	    searchValue.ifPresent(param::setSearchValue);
+	    
+	    // checkBoxes를 EventParam에 설정
+	    if (checkBoxes != null) {
+	    	param.setCheckBoxes(checkBoxes); // EventParam 클래스에 checkBoxes 필드와 해당 setter 메소드를 추가해야 합니다.
+	    	log.info("Received checkBoxes: {}", checkBoxes);
+	    } else {
+	        log.info("No checkBoxes received");
+	    }
+	    
+	    int eventCount = service.getEventCount(param);
+	    PageInfo pageInfo = new PageInfo(param.getPage(), 5, eventCount, 8);
+	    param.setLimit(pageInfo.getListLimit());
+	    param.setOffset(pageInfo.getStartList() - 1);
+	    
+	    // Initialize the search results list
+	    List<Event> searchResults = service.getEventList(param);
+	    
+	    if (searchResults != null) {
+	        log.info("Events fetched successfully. Number of events: {}", searchResults.size());
+	        model.addAttribute("pageInfo", pageInfo);
+	        model.addAttribute("list8", searchResults);
+	    } else {
+	        log.info("No events found for given parameters");
+	        model.addAttribute("list8", Collections.emptyList()); // Ensure a non-null model attribute
+	    }
+	    model.addAttribute("selectedCheckBoxes", checkBoxes);
+	    log.info("selectedCheckBoxes: " + checkBoxes);
+	    model.addAttribute("param", param);
+	    model.addAttribute("typeList", param.getTypeList());
+	    // 검색 쿼리도 모델에 추가하여 뷰에서 사용할 수 있도록 함
+	    searchValue.ifPresent(q -> model.addAttribute("query", q));
+	    
+	    return "culture/cultureTheme2Search"; // 기존의 이벤트 리스트를 보여주는 뷰 이름
 	}
 	
 	@GetMapping("/getEventDetails")

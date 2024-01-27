@@ -191,81 +191,82 @@
 
 	</insert>
 
-	
+	<!-- Updated to search in both title and address if searchType is not specified -->
 	<select id="selectEventList" parameterType="EventParam" resultMap="eventResultMap">
-		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
-		FROM EVENT
-		 
-			
-			<if test="searchType == 'title'">
-			    where TITLE LIKE '%${searchValue}%' 
-			</if>
-			<if test="searchType == 'address'">
-			   where ADDR1 LIKE '%${searchValue}%' 
-			</if>
-			<if test="checkBox == 'seoul'">
-			    where ADDR1 LIKE '%서울%' 
-			</if>
-			<if test="checkBox == 'gyeonggi'">
-			    where ADDR1 LIKE '%경기%' 
-			</if>
-			<if test="checkBox == 'chungnam'">
-			    where ADDR1 LIKE '%충청남도%' 
-			</if>
-			<if test="checkBox == 'chugbuk'">
-			    where ADDR1 LIKE '%충청북도%' 
-			</if>
-			<if test="checkBox == 'kangwon'">
-			    where ADDR1 LIKE '%강원%' 
-			</if>
-			<if test="checkBox == 'Jeonbuk'">
-			    where ADDR1 LIKE '%전라북도%' 
-			</if>
-			<if test="checkBox == 'Jeonnam'">
-			    where ADDR1 LIKE '%전라남도%' 
-			</if>
-			<if test="checkBox == 'jeju'">
-			    where ADDR1 LIKE '%제주%' 
-			</if>
-			
-		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
+	    SELECT contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+	    FROM EVENT
+	    <where>
+	        <choose>
+	            <when test="searchType == 'title'">
+	                TITLE LIKE '%${searchValue}%'
+	            </when>
+	            <when test="searchType == 'address'">
+	                ADDR1 LIKE '%${searchValue}%'
+	            </when>
+	            <otherwise>
+	                <!-- Handles case where no specific searchType is selected but searchValue is provided -->
+	                (TITLE LIKE '%${searchValue}%' OR ADDR1 LIKE '%${searchValue}%')
+	            </otherwise>
+	        </choose>
+	        
+				<!-- Handling multiple checkBoxes conditions -->
+	        <if test="checkBoxes != null and !checkBoxes.isEmpty()">
+	            AND (
+	            <foreach collection="checkBoxes" item="checkBox" separator=" OR ">
+	                ADDR1 LIKE
+	                <choose>
+	                    <when test="checkBox == 'seoul'"> '%서울%' </when>
+	                    <when test="checkBox == 'gyeonggi'"> '%경기%' </when>
+	                    <when test="checkBox == 'chungnam'"> '%충청남도%' </when>
+	                    <when test="checkBox == 'chugbuk'"> '%충청북도%' </when>
+	                    <when test="checkBox == 'kangwon'"> '%강원%' </when>
+	                    <when test="checkBox == 'Jeonbuk'"> '%전라북도%' </when>
+	                    <when test="checkBox == 'Jeonnam'"> '%전라남도%' </when>
+	                    <when test="checkBox == 'jeju'"> '%제주%' </when>
+	                </choose>
+	            </foreach>
+	            )
+	        </if>
+	    </where>
+	    ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	<select id="selectEventCount" parameterType="EventParam" resultType="int">
 		SELECT COUNT(*)
 		FROM EVENT 
-
-			<if test="searchType == 'title'">
-			    where TITLE LIKE '%${searchValue}%' 
-			</if>
-			<if test="searchType == 'address'">
-			    where ADDR1 LIKE '%${searchValue}%' 
-			</if>
-			
-			<if test="checkBox == 'seoul'">
-			    where ADDR1 LIKE '%서울%' 
-			</if>
-			<if test="checkBox == 'gyeonggi'">
-			    where ADDR1 LIKE '%경기%' 
-			</if>
-			<if test="checkBox == 'chungnam'">
-			    where ADDR1 LIKE '%충청남도%' 
-			</if>
-			<if test="checkBox == 'chugbuk'">
-			    where ADDR1 LIKE '%충청북도%' 
-			</if>
-			<if test="checkBox == 'kangwon'">
-			    where ADDR1 LIKE '%강원%' 
-			</if>
-			<if test="checkBox == 'Jeonbuk'">
-			    where ADDR1 LIKE '%전라북도%' 
-			</if>
-			<if test="checkBox == 'Jeonnam'">
-			    where ADDR1 LIKE '%전라남도%' 
-			</if>
-			<if test="checkBox == 'jeju'">
-			    where ADDR1 LIKE '%제주%' 
-			</if>
+		<where>
+		        <choose>
+		            <when test="searchType == 'title'">
+		                TITLE LIKE '%${searchValue}%'
+		            </when>
+		            <when test="searchType == 'address'">
+		                ADDR1 LIKE '%${searchValue}%'
+		            </when>
+		            <otherwise>
+		                <!-- Handles case where no specific searchType is selected but searchValue is provided -->
+		                (TITLE LIKE '%${searchValue}%' OR ADDR1 LIKE '%${searchValue}%')
+		            </otherwise>
+		        </choose>
+		        
+		        <!-- Handling multiple checkBoxes conditions -->
+		        <if test="checkBoxes != null and !checkBoxes.isEmpty()">
+		            AND (
+		            <foreach collection="checkBoxes" item="checkBox" separator=" OR ">
+		                ADDR1 LIKE
+		                <choose>
+		                    <when test="checkBox == 'seoul'"> '%서울%' </when>
+		                    <when test="checkBox == 'gyeonggi'"> '%경기%' </when>
+		                    <when test="checkBox == 'chungnam'"> '%충청남도%' </when>
+		                    <when test="checkBox == 'chugbuk'"> '%충청북도%' </when>
+		                    <when test="checkBox == 'kangwon'"> '%강원%' </when>
+		                    <when test="checkBox == 'Jeonbuk'"> '%전라북도%' </when>
+		                    <when test="checkBox == 'Jeonnam'"> '%전라남도%' </when>
+		                    <when test="checkBox == 'jeju'"> '%제주%' </when>
+		                </choose>
+		            </foreach>
+		            )
+		        </if>
+		    </where>
 	</select>
 	
 	<select id="selectEventByContentId" parameterType="int" resultMap="eventResultMap">
@@ -300,6 +301,8 @@
     ORDER BY EVENTSTARTDATE DESC
     LIMIT 1;
 	</select>
+	
+	
 	
 
 </mapper>
