@@ -80,6 +80,7 @@ public class CultureController {
 		// model.addAttribute("categoryList", categoryList);
 		// model.addAttribute("typeMap", typeMap);
 		model.addAttribute("param", param);
+		model.addAttribute("cultureCount", cultureCount);
 		model.addAttribute("typeList", param.getTypeList());
 	
 //		String searchType = param.getSearchType();

@@ -43,6 +43,8 @@
 	    <result property="discountinfofestival" column="DISCOUNTINFOFESTIVAL"/>
 	    <result property="spendtimefestival" column="SPENDTIMEFESTIVAL"/>
 	    <result property="festivalgrade" column="FESTIVALGRADE"/>
+	   <!--  <result property="formattedDate1" column="FORMATTEDDATE1"/>
+	    <result property="formattedDate2" column="FORMATTEDDATE2"/> -->
 	    
 	    <result property="image0" column="IMAGE0"/>
 	    <result property="image1" column="IMAGE1"/>
@@ -124,6 +126,8 @@
 		    DISCOUNTINFOFESTIVAL VARCHAR(255),
 		    SPENDTIMEFESTIVAL VARCHAR(255),
 		    FESTIVALGRADE VARCHAR(255),
+	<!-- 	    FORMATTEDDATE VARCHAR(255),
+		    FORMATTEDDATE2 VARCHAR(255), -->
 		    
 		    IMAGE0 VARCHAR(255),
 		    IMAGE1 VARCHAR(255),
@@ -165,7 +169,7 @@
 	        EVENTENDDATE, PLAYTIME, EVENTPLACE, EVENTHOMEPAGE,
 	        AGELIMIT, BOOKINGPLACE, PLACEINFO, SUBEVENT,
 	        PROGRAM, EVENTSTARTDATE, USETIMEFESTIVAL,
-	        DISCOUNTINFOFESTIVAL, SPENDTIMEFESTIVAL, FESTIVALGRADE,
+	        DISCOUNTINFOFESTIVAL, SPENDTIMEFESTIVAL, FESTIVALGRADE, <!-- FORMATTEDDATE1, FORMATTEDDATE2, -->
 	        IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4,
 	        IMAGE5, IMAGE6, IMAGE7, IMAGE8, IMAGE9, IMAGE10,
 	        IMAGE11, IMAGE12, IMAGE13, IMAGE14, IMAGE15,
@@ -181,7 +185,7 @@
 	        #{eventenddate}, #{playtime}, #{eventplace}, #{eventhomepage},
 	        #{agelimit}, #{bookingplace}, #{placeinfo}, #{subevent},
 	        #{program}, #{eventstartdate}, #{usetimefestival},
-	        #{discountinfofestival}, #{spendtimefestival}, #{festivalgrade},
+	        #{discountinfofestival}, #{spendtimefestival}, #{festivalgrade},<!--  #{formattedDate2}, #{formattedDate2}, -->
 	        #{image0}, #{image1}, #{image2}, #{image3}, #{image4},
 	        #{image5}, #{image6}, #{image7}, #{image8}, #{image9}, #{image10},
 	        #{image11}, #{image12}, #{image13}, #{image14}, #{image15},
@@ -195,49 +199,58 @@
 		SELECT *
 		FROM FESTIVAL
 		WHERE 1=1
-		<if test="festivaltypeList != null">
+		<!-- 지역검색 -->
+		<if test="localtypeList != null">
 			 AND  
-			<foreach  item="item" collection="festivaltypeList" open="(" separator="or" close=")">  
+			<foreach  item="item" collection="localtypeList" open="(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
 			</foreach>
-			
 		</if>
+		<!-- 날짜 검색 -->
 		<if test="searchDate != null">
-		    AND EVENTSTARTDATE &lt; '${searchDate}'
+<!-- 		    AND EVENTSTARTDATE LIKE '%${searchDate}%' -->
+<!-- 	      	AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') LIKE STR_TO_DATE(%#{searchDate}%, '%Y-%m-%d') -->
+	      	AND (EVENTSTARTDATE <![CDATA[<=]]> #{searchDate} <![CDATA[<=]]> EVENTENDDATE   )
+		<!-- 진행or종료  -->
 		</if>
-		<if test="localtypes == '진행'"> <!-- 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ? -->
-	    	AND EVENTSTARTDATE &gt; CURDATE()
+		<if test="festivaltypes == '진행'"> 
+	    	AND EVENTSTARTDATE <![CDATA[>=]]> CURDATE()
+<!--     		AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') &gt;= CURDATE() -->
+		</if> 
+		<if test="festivaltypes == '종료'"> 
+		    AND EVENTENDDATE <![CDATA[<=]]> CURDATE()
+<!-- 		    AND STR_TO_DATE(EVENTENDDATE, '%Y-%m-%d')  &lt;= CURDATE() -->
 		</if>
-		<if test="localtypes == '종료"> <!-- 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ? -->
-		    AND EVENTSTARTDATE &lt; CURDATE()
-		</if>
+		ORDER BY EVENTSTARTDATE DESC LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	<select id="selectFestivalCount" parameterType="FestivalParam" resultType="int">
 		SELECT  COUNT(*)
 		FROM FESTIVAL
 		WHERE 1=1
-<!-- 		<if test="festivaltypeList != null"> -->
-<!-- 			 AND   -->
-<!-- 			<foreach  item="item" collection="festivaltypeList" open="(" separator="or" close=")">   -->
-<!-- 			    ADDR1 LIKE '%${item}%' -->
-<!-- 			</foreach> -->
-			
-<!-- 		</if> -->
-		<if test="festivaltypeList != null">
-		    AND ADDR1 LIKE '%${item}%'
+		<!-- 지역검색 -->
+		<if test="localtypeList != null">
+			 AND  
+			<foreach  item="item" collection="localtypeList" open="(" separator="or" close=")">  
+			    ADDR1 LIKE '%${item}%'
+			</foreach>
 		</if>
+		<!-- 날짜 검색 -->
 		<if test="searchDate != null">
-		    AND EVENTSTARTDATE &lt; '${searchDate}'
+<!-- 		    AND EVENTSTARTDATE LIKE '%${searchDate}%' -->
+<!-- 	      	AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') LIKE STR_TO_DATE(%#{searchDate}%, '%Y-%m-%d') -->
+	      	AND (EVENTSTARTDATE <![CDATA[<=]]> #{searchDate} <![CDATA[<=]]> EVENTENDDATE   )
+		<!-- 진행or종료  -->
 		</if>
-			
-		
-		<if test="localtypes == ongoing"> 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ?
-		    AND EVENTSTARTDATE &lt; CURDATE()
+		<if test="festivaltypes == '진행'"> 
+	    	AND EVENTSTARTDATE <![CDATA[>=]]> CURDATE()
+<!--     		AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') &gt;= CURDATE() -->
+		</if> 
+		<if test="festivaltypes == '종료'"> 
+		    AND EVENTENDDATE <![CDATA[<=]]> CURDATE()
+<!-- 		    AND STR_TO_DATE(EVENTENDDATE, '%Y-%m-%d')  &lt;= CURDATE() -->
 		</if>
-		<if test="localtypes == finished"> 체크박스 타입이 addr1 (지역) 이면 ADDR1에서 검색 ?
-		    AND EVENTSTARTDATE &lt; CURDATE()
-		</if>
+<!-- 		ORDER BY EVENTSTARTDATE DESC LIMIT ${limit} OFFSET ${offset}; -->
 	</select>
 			
 <!-- 			<if test="progress != null"> -->
@@ -282,7 +295,7 @@
 	
 	<!--  통합 검색 !!!!! -->
 	<select id="testList" resultMap="FestivalminResult" parameterType="SearchForm">
-		select title, firstimage, eventstartdate, eventenddate, addr1, modifiedtime
+		select title, firstimage, EVENTSTARTDATE, EVENTSTARTDATE, addr1, modifiedtime
 		from festival
 		<where>
 			
@@ -295,7 +308,7 @@
 						AND EVENTSTARTDATE &gt; curdate()
 					</when>
 					<when test="progress == 'over'">
-						AND EVENTENDDATE &lt; curdate()
+						AND EVENTSTARTDATE &lt; curdate()
 					</when>
 					<otherwise></otherwise>						
 				</choose>

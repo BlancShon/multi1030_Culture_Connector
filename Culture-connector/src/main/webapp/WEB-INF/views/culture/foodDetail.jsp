@@ -23,7 +23,10 @@
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" ></script> 
 	
 	<!-- 카카오맵 기능 사용하는데 필요한 자바스크립트 파일/ appkey는 kakaoDeveloper 사이트에서 생성한 고유 javaScript 키를 입력하면 됩니다. -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3209ad17db60f2bfe7a8c0129f6fd91e&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee850f3227ff38fdb5e4924011797d01"></script>
+
+
+
     
 <!-- **************** MAIN CONTENT START **************** -->
 	
@@ -223,45 +226,58 @@ Content START -->
 									<iframe>
 										<div id="map" style="width:100%;height:350px; border-style: dashed;" height="200" style="border:0;" aria-hidden="false" tabindex="0"></div>
 								 	</iframe>
-									<script>
-								      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-								           mapOption = {
-								               center: new kakao.maps.LatLng(${food.mapX}, ${food.mapY}), // 지도의 중심좌표
-								               level: 1 // 지도의 확대 레벨
-								           };  
-								      
 								
-								       // 지도를 생성합니다    
-								       var map = new kakao.maps.Map(mapContainer, mapOption); 
+							<script>
+								var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+								mapOption = { 
+								    center: new kakao.maps.LatLng(${food.mapX}, ${food.mapY}), // 지도의 중심좌표
+								    level: 3 // 지도의 확대 레벨
+								};
 								
-								       // 주소-좌표 변환 객체를 생성합니다
-								       var geocoder = new kakao.maps.services.Geocoder();
+								var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 								
-								       // 주소로 좌표를 검색합니다
-								       geocoder.addressSearch('대구광역시 북구 구리로 183-8 오늘잡은소', function(result, status) {
+								//마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+								var positions = [
+										{
+										    content: '<div>${food.title}</div>', 
+										    latlng: new kakao.maps.LatLng(${food.mapX}, ${food.mapY})
+										},
+								];
 								
-								           // 정상적으로 검색이 완료됐으면 
-								           if (status === kakao.maps.services.Status.OK) {
+								for (var i = 0; i < positions.length; i ++) {
+								// 마커를 생성합니다
+								var marker = new kakao.maps.Marker({
+								    map: map, // 마커를 표시할 지도
+								    position: positions[i].latlng // 마커의 위치
+								});
 								
-								               var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+								// 마커에 표시할 인포윈도우를 생성합니다 
+								var infowindow = new kakao.maps.InfoWindow({
+								    content: positions[i].content // 인포윈도우에 표시할 내용
+								});
 								
-								               // 결과값으로 받은 위치를 마커로 표시합니다
-								               var marker = new kakao.maps.Marker({
-								                   map: map,
-								                   position: coords
-								               });
+								// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+								// 이벤트 리스너로는 클로저를 만들어 등록합니다 
+								// for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+								kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+								kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+								}
 								
-								               // 인포윈도우로 장소에 대한 설명을 표시합니다
-								               var infowindow = new kakao.maps.InfoWindow({
-								                   content: '<div style="width:150px;text-align:center;padding:6px 0;">오늘 잡은 소 대구 칠곡점</div>'
-								               });
-								               infowindow.open(map, marker);
+								//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+								function makeOverListener(map, marker, infowindow) {
+								return function() {
+								    infowindow.open(map, marker);
+								};
+								}
 								
-								               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								               map.setCenter(coords);
-								           } 
-								       });    
-								   </script>
+								//인포윈도우를 닫는 클로저를 만드는 함수입니다 
+								function makeOutListener(infowindow) {
+								return function() {
+								    infowindow.close();
+								};
+								}
+							</script>
+								
 								
 								<!-- Info -->
 								<ul class="list-group list-group-borderless my-3">

@@ -935,7 +935,6 @@ public class ApiParsing {
 			}
 		}
 		
-		System.out.println("맵 확인 : "+map);
 		return map;
 	}
 
