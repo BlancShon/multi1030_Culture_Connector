@@ -32,9 +32,9 @@
                 <input type="hidden" name="page" value="1">
                 <div class="col-md-12 col-lg-12">
                     <label class="h6 fw-normal mb-0"><i class="bi bi-search text-primary me-1"></i>액티비티/원데이클래스</label>
-                    <label style="margin-left: 40px"><input type="radio" name="searchType" value="title" ${searchType == 'title' ? 'checked' : ''} /> 제목</label>
-                    <label style=""><input type="radio" name="searchType" value="address" ${searchType == 'address' ? 'checked' : ''} /> 주소</label>
-                    <input style="border: none; width: 300px;" placeholder="(검색할 카테고리를 선택하세요.)">
+                    <label style="margin-left: 40px"><input type="radio" name="searchType" value="title" ${ param.searchType == 'title' || empty param.searchType ? 'checked' : ''} /> 제목</label>
+                    <label style=""><input type="radio" name="searchType" value="address" ${param.searchType == 'address' ? 'checked' : ''} /> 주소</label>
+                     <label class="h6 fw-normal mb-0">(검색할 카테고리를 선택하세요.)</label>
                 </div>
                 
                 <div class="mx-auto mt-3 search-bar input-group mb-3 z-index-1 px-4" style="font-family: 'SUIT-Medium'" id="search">
@@ -43,59 +43,50 @@
                         <button class="btn btn-lg btn-dark mb-0" type="submit">검색</button>
                     </div>
                 </div>
-
                 <div class="container mx-4 mt-n1">
                     <div class="filter-block">
                         <h6 class="mb-3">지역</h6>
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                    <input type="hidden" class="selectedCheckBox" value="${checkBox}">
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul" ${checkBox == 'seoul' ? 'checked' : ''}  />서울</label>
+                                    <label><input class="form-check-input" type="checkbox" name="locations" value="서울" ${fn:contains(locationList, '서울') ? 'checked' : ''} />서울</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="gyeonggi" 
-											${checkBox == 'gyeonggi' ? 'checked' : ''} />경기</label>
+                                    <label><input class="form-check-input" type="checkbox" name="locations" value="경기" ${fn:contains(locationList, '경기') ? 'checked' : ''} />경기</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="chungnam" 
-											${checkBox == 'chungnam' ? 'checked' : ''}/>충남</label>
+                                    <label><input class="form-check-input" type="checkbox" name="locations" value="충남" ${fn:contains(locationList, '충남') ? 'checked' : ''} />충남</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="chugbuk" 
-											${checkBox == 'chugbuk' ? 'checked' : ''} />충북</label>
+                                     <label><input class="form-check-input" type="checkbox" name="locations" value="충북" ${fn:contains(locationList, '충북') ? 'checked' : ''} />충북</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="kangwon" 
-											${checkBox == 'kangwon' ? 'checked' : ''} />강원</label>
+                                    <label><input class="form-check-input" type="checkbox" name="locations" value="강원" ${fn:contains(locationList, '강원') ? 'checked' : ''}  />강원</label>
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                   <label><input class="form-check-input" type="checkbox" name="checkBox" value="Jeonbuk" 
-											${checkBox == 'Jeonbuk' ? 'checked' : ''} />전북</label>
+                                      <label><input class="form-check-input" type="checkbox" name="locations" value="전북" ${fn:contains(locationList, '전북') ? 'checked' : ''} />전북</label>
                                 </div>
                             </li>
 
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="Jeonnam" 
-											${checkBox == 'Jeonnam' ? 'checked' : ''} />전남</label>
+                                    <label><input class="form-check-input" type="checkbox" name="locations" value="전남" ${fn:contains(locationList, '전남') ? 'checked' : ''}  />전남</label>
                                 </div>
                             </li>
 
                             <li class="list-inline-item">
                                 <div class="form-check">
-                                   <label><input class="form-check-input" type="checkbox" name="checkBox" value="jeju" 
-											${checkBox == 'jeju' ? 'checked' : ''} />제주</label>
+                                   <label><input class="form-check-input" type="checkbox" name="locations" value="제주" ${fn:contains(locationList, '제주') ? 'checked' : ''} />제주</label>
                                 </div>
                             </li>
                         </ul> 
@@ -140,12 +131,7 @@
         <br>
       
         			
-            	<select class="form-select js-choice">
-                		<option value="">최신순</option>
-                		<option value="">오래된순</option>
-                		
-                
-           		 </select>
+            	
         		</form>
     		</div>
 			</div>
@@ -228,19 +214,19 @@
                 	
                 	 <nav class="d-flex justify-content-center mt-3" aria-label="navigation">
                         <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-                            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                            <li class="page-item mb-0"><a class="page-link" onclick="movePage(${pageInfo.prevPage});" tabindex="-1">
                                     <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
                                     </a>
                             </li>
                              <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
                              <c:if test="${status.current == pageInfo.currentPage}">
-								<li class="page-item active"><a class="page-link" href="#"><button style="border: none; background: none;">${status.current}</button></a></li>
+								<li class="page-item active"><a class="page-link" ><button style="border: none; background: none;">${status.current}</button></a></li>
 						    </c:if> 
 						    <c:if test="${status.current != pageInfo.currentPage}">
-							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
+							<li class="page-item " aria-current="page"> <a class="page-link" ><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
 							</c:if>
                             </c:forEach>
-                             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                             <li class="page-item mb-0"><a class="page-link" onclick="movePage(${pageInfo.nextPage});" tabindex="-1">
                            		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
                              	</a>
                            	</li>
@@ -272,12 +258,12 @@
 </script>
 
 <script type="text/javascript">
-$(".form-check-input").change(function(){
-    if($(this).prop('checked') == true){
-        searchForm.submit();
-        $(".form-check-input").prop('selected', true);
-    }
-});
+// $(".form-check-input").change(function(){
+//     if($(this).prop('checked') == true){
+//         searchForm.submit();
+//         $(".form-check-input").prop('selected', true);
+//     }
+// });
 
 </script>
 

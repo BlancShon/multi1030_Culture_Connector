@@ -31,7 +31,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
     />
-
     <!-- Plugins CSS -->
     <link
       rel="stylesheet"

@@ -26,13 +26,12 @@
 	    <result property="tel" column="TEL"/>
 	    <result property="title" column="TITLE"/>
 	    <result property="zipcode" column="ZIPCODE"/>
-	    
 	    <result property="openperiod" column="OPENPERIOD"/>
 	    <result property="reservation" column="RESERVATION"/>
 	    <result property="infocenterleports" column="INFOCENTERLEPORTS"/>
 	    <result property="scaleleports" column="SCALELEPORTS"/>
 	    <result property="accomcountleports" column="ACCOMCOUNTLEPORTS"/>
-	    <result property="restdateleports" column="RESTDATESLEPORTS"/>
+	    <result property="restdateleports" column="restdateleports"/>
 	    <result property="usetimeleports" column="USETIMELEPORTS"/>
 	    <result property="usefeeleports" column="USEFEELEPORTS"/>
 	    <result property="expagerangeleports" column="EXPAGERANGELEPORTS"/>
@@ -179,103 +178,49 @@
 	
 
 	<select id="selectLeportsList" parameterType="LeisureSportsParam" resultMap="leportsResultMap">
-		SELECT  contentid, TITLE, ADDR1, firstimage, firstimage2, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5, restdateleports
+		SELECT  *
 		FROM LEPORTS
-		 
-			
-			<if test="searchType == 'title'">
-			    where TITLE LIKE '%${searchValue}%' 
-			</if>
-			<if test="searchType == 'address'">
-			   where ADDR1 LIKE '%${searchValue}%' 
-			</if>
-			<if test="checkBox == 'seoul'">
-			    where ADDR1 LIKE '%서울%' 
-			</if>
-			<if test="checkBox == 'gyeonggi'">
-			    where ADDR1 LIKE '%경기%' 
-			</if>
-			<if test="checkBox == 'chungnam'">
-			    where ADDR1 LIKE '%충청남도%' 
-			</if>
-			<if test="checkBox == 'chugbuk'">
-			    where ADDR1 LIKE '%충청북도%' 
-			</if>
-			<if test="checkBox == 'kangwon'">
-			    where ADDR1 LIKE '%강원%' 
-			</if>
-			<if test="checkBox == 'Jeonbuk'">
-			    where ADDR1 LIKE '%전라북도%' 
-			</if>
-			<if test="checkBox == 'Jeonnam'">
-			    where ADDR1 LIKE '%전라남도%' 
-			</if>
-			<if test="checkBox == 'jeju'">
-			    where ADDR1 LIKE '%제주%' 
-			</if>
-			
+		where 1=1
+		<if test="searchType == 'title'">
+		    and  TITLE LIKE '%${searchValue}%' 
+		</if>
+		<if test="searchType == 'address'">
+		    and ADDR1 LIKE '%${searchValue}%' 
+		</if>
+		<if test="locationList != null">
+			 AND  
+			<foreach  item="item" collection="locationList" open="(" separator="or" close=")">  
+			    ADDR1 LIKE '%${item}%'
+			</foreach>
+		</if>
 		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	
 	<select id="selectLeportsCount" parameterType="LeisureSportsParam" resultType="int">
 		SELECT COUNT(*)
-		FROM CULTURE 
-
-			<if test="searchType == 'title'">
-			    where TITLE LIKE '%${searchValue}%' 
-			</if>
-			<if test="searchType == 'address'">
-			    where ADDR1 LIKE '%${searchValue}%' 
-			</if>
-			
-			<if test="checkBox == 'seoul'">
-			    where ADDR1 LIKE '%서울%' 
-			</if>
-			<if test="checkBox == 'gyeonggi'">
-			    where ADDR1 LIKE '%경기%' 
-			</if>
-			<if test="checkBox == 'chungnam'">
-			    where ADDR1 LIKE '%충청남도%' 
-			</if>
-			<if test="checkBox == 'chugbuk'">
-			    where ADDR1 LIKE '%충청북도%' 
-			</if>
-			<if test="checkBox == 'kangwon'">
-			    where ADDR1 LIKE '%강원%' 
-			</if>
-			<if test="checkBox == 'Jeonbuk'">
-			    where ADDR1 LIKE '%전라북도%' 
-			</if>
-			<if test="checkBox == 'Jeonnam'">
-			    where ADDR1 LIKE '%전라남도%' 
-			</if>
-			<if test="checkBox == 'jeju'">
-			    where ADDR1 LIKE '%제주%' 
-			</if>
+		FROM LEPORTS
+		where 1=1 
+		<if test="searchType == 'title'">
+		    and  TITLE LIKE '%${searchValue}%' 
+		</if>
+		<if test="searchType == 'address'">
+		   and  ADDR1 LIKE '%${searchValue}%' 
+		</if>
+		<if test="locationList != null">
+			 AND  
+			<foreach  item="item" collection="locationList" open="(" separator="or" close=")">  
+			    ADDR1 LIKE '%${item}%'
+			</foreach>
+		</if>
 	</select>
 	
 <select id="selectLeportsByLeportsId" parameterType="int" resultMap="leportsResultMap">
     SELECT  
-        contentid, TITLE, ADDR1, firstimage, firstimage2, MAPX, MAPY, tel, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
-    , restdateleports 
+        *
     FROM culture where contentid = #{contentid}
 </select>
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 </mapper>
