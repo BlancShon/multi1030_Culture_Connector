@@ -74,3 +74,16 @@ public class FestivalService {
 		return mapper.selectFestivalList(param);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,6 @@
 package com.multi.mvc.culture.model.vo;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class FestivalParam {
@@ -14,7 +13,7 @@ public class FestivalParam {
 
 	// html - form의 name과 일치하는 파라메터
 	private String searchValue;
-	private Date searchDate;
+	private String searchDate;
 	private String[] festivaltypes;
 	private List<String> festivaltypeList;
 	
@@ -31,7 +30,7 @@ public class FestivalParam {
 		page = 1; 
 	}
 
-	public FestivalParam(String searchValue, Date searchDate, String[] festivaltypes, List<String> festivaltypeList,
+	public FestivalParam(String searchValue, String searchDate, String[] festivaltypes, List<String> festivaltypeList,
 			String[] localtypes, List<String> localtypeList, int page, int limit, int offset) {
 		super();
 		this.searchValue = searchValue;
@@ -61,11 +60,11 @@ public class FestivalParam {
 		this.searchValue = searchValue;
 	}
 
-	public Date getSearchDate() {
+	public String getSearchDate() {
 		return searchDate;
 	}
 
-	public void setSearchDate(Date searchDate) {
+	public void setSearchDate(String searchDate) {
 		this.searchDate = searchDate;
 	}
 
