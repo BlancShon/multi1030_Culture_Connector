@@ -317,13 +317,13 @@
 				<div class="row g-4">
 					<!-- Item -->
 					<div class="col-sm-6">
-						<div class="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle"><i class="bi bi-shield-fill-check"></i></div>
+						<div class="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle"><i class="bi bi-list-check"></i></div>
 						<h5 class="mt-2">테 마</h5>
 						<p class="mb-0"><c:out value="${course.theme }"/> </p>
 					</div>
 					<!-- Item -->
 					<div class="col-sm-6">
-						<div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle"><i class="bi bi-lightning-fill"></i></div>
+						<div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle"><i class="bi bi-calendar-date"></i></div>
 						<h5 class="mt-2">스케쥴</h5>
 						<p class="mb-0"><c:out value="${course.schedule }"/></p>
 					</div>		
@@ -332,14 +332,14 @@
 				<div class="row g-4">
 					<!-- Item -->
 					<div class="col-sm-6">
-						<div class="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle"><i class="bi bi-shield-fill-check"></i></div>
+						<div class="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle"><i class="bi bi-smartwatch"></i></div>
 						<h5 class="mt-2">소요 시간</h5>
 						<p class="mb-0"><c:out value="${course.taketime }"/> </p>
 					</div>
 					<!-- Item -->
 					<div class="col-sm-6">
-						<div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle"><i class="bi bi-lightning-fill"></i></div>
-						<h5 class="mt-2">거리</h5>
+						<div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle"><i class="bi bi-geo-alt-fill"></i></div>
+						<h5 class="mt-2">총 거리</h5>
 						<p class="mb-0"><c:out value="${course.distance }"/> </p>
 					</div>		
 				</div>
@@ -356,8 +356,8 @@
 
 
 <section>
-	<div class="container text-center">
-		<div class="row mb-5 col-10 text-center">
+	<div class="container" style="text-align: center;">
+		<div class="row mx-auto mb-5 col-10">
 	        
 	         <!-- blog item-->
 	          <c:if test="${not empty course.subcontenttitle0}">
@@ -365,6 +365,7 @@
 		            <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top" src="${course.subcontentfirstimage0 }">
 		              <div class="card-body">
 		                <h5 class="my-2">	<c:out value="${course.subcontenttitle0}"/></h5>
+		                  <h6 class="my-2">	<c:out value="${course.subcontentadd10}"/></h6>
 		                <p class="my-2 text-muted text-sm" id="truncateText0"> <c:out value="${course.subcontentaddoverview0}"/></p>
 		              </div>
 		            </div>
@@ -377,6 +378,7 @@
 		            <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top" src="${course.subcontentfirstimage1 }">
 		              <div class="card-body">
 		                <h5 class="my-2">	<c:out value="${course.subcontenttitle1}"/></h5>
+		                  <h6 class="my-2">	<c:out value="${course.subcontentadd11}"/></h6>
 		                <p class="my-2 text-muted text-sm" id="truncateText1" > <c:out value="${course.subcontentaddoverview1}"/></p>
 		              </div>
 		            </div>
@@ -389,6 +391,7 @@
 		            <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top" src="${course.subcontentfirstimage2 }">
 		              <div class="card-body">
 		                <h5 class="my-2">	<c:out value="${course.subcontenttitle2}"/></h5>
+		                  <h6 class="my-2">	<c:out value="${course.subcontentadd12}"/></h6>
 		                <p class="my-2 text-muted text-sm" id="truncateText2"> <c:out value="${course.subcontentaddoverview2}"/></p>
 		              </div>
 		            </div>
@@ -401,6 +404,7 @@
 		            <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top" src="${course.subcontentfirstimage3 }">
 		              <div class="card-body">
 		                <h5 class="my-2">	<c:out value="${course.subcontenttitle3}"/></h5>
+		                  <h6 class="my-2">	<c:out value="${course.subcontentadd13}"/></h6>
 		                <p class="my-2 text-muted text-sm" id="truncateText3"> <c:out value="${course.subcontentaddoverview3}"/></p>
 		              </div>
 		            </div>
@@ -413,6 +417,7 @@
 		            <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top" src="${course.subcontentfirstimage4 }">
 		              <div class="card-body">
 		                <h5 class="my-2">	<c:out value="${course.subcontenttitle4}"/></h5>
+		                  <h6 class="my-2">	<c:out value="${course.subcontentadd14}"/></h6>
 		                <p class="my-2 text-muted text-sm" id="truncateText4"> <c:out value="${course.subcontentaddoverview4}"/></p>
 		              </div>
 		            </div>

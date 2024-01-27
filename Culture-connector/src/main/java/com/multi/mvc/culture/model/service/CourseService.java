@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.CourseMapper;
 import com.multi.mvc.culture.model.vo.Course;
+import com.multi.mvc.culture.model.vo.course.AreaCodes;
 import com.multi.mvc.culture.model.vo.course.CourseCategory;
 import com.multi.mvc.culture.model.vo.course.CourseParam;
 
@@ -21,16 +22,12 @@ public class CourseService {
 	@Autowired
 	private CourseMapper mapper;
 	
-	private static  Vector<CourseCategory> categoryList;
+	private static Vector<CourseCategory> categoryList;
+	private static Vector<AreaCodes> areaList;
 	
 	static {
-		categoryList = new Vector<>();
-		categoryList.add(new CourseCategory("가족코스","C0112"));
-		categoryList.add(new CourseCategory("나홀로코스","C0113"));
-		categoryList.add(new CourseCategory("힐링코스","C0114"));
-		categoryList.add(new CourseCategory("도보코스","C0115"));
-		categoryList.add(new CourseCategory("캠핑코스","C0116"));
-		categoryList.add(new CourseCategory("맛코스","C0117"));
+		categoryList = CourseCategory.getCategoryList();
+		areaList = AreaCodes.getAreaList();
 	}
 	
 	public void createTable() {
@@ -78,6 +75,10 @@ public class CourseService {
 	public Vector<CourseCategory> getCategoryList() {
 		return categoryList;
 	}
+	
+	public Vector<AreaCodes> getAreaList() {
+		return areaList;
+	}
 
 	public List<Course> getCourseList(CourseParam param) {
 		return mapper.selectCourseList(param);
@@ -90,5 +91,6 @@ public class CourseService {
 	public Course getCourse(int contentid) {
 		return mapper.selectById(contentid);
 	}
+
 }
 

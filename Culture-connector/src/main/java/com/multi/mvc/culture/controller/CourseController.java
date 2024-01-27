@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.CourseService;
 import com.multi.mvc.culture.model.vo.Course;
+import com.multi.mvc.culture.model.vo.course.AreaCodes;
 import com.multi.mvc.culture.model.vo.course.CourseCategory;
 import com.multi.mvc.culture.model.vo.course.CourseParam;
 
@@ -30,7 +31,9 @@ public class CourseController {
 	private CourseService service;
 	
 	private static Vector<CourseCategory> categoryList;
+	private static Vector<AreaCodes> areaList;
 	private static ConcurrentHashMap<String, String> typeMap; 
+	private static ConcurrentHashMap<String, String> areaMap;
 	
 	@Bean(initMethod = "initCourse")
 	public void initCourse() {
@@ -40,10 +43,13 @@ public class CourseController {
 		for(CourseCategory item : categoryList) {
 			typeMap.put(item.getName(), item.getCode());
 		}
-//		service.createTable();
-//		if(service.count() == 0) {
-//			service.initCourse();
-//		}
+		
+		areaList = service.getAreaList();
+		areaMap = new ConcurrentHashMap<String, String>();
+		for(AreaCodes item : areaList) {
+			areaMap.put(item.getName(), item.getCode());
+		}
+		
 	}
 	
 	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
@@ -76,9 +82,13 @@ public class CourseController {
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
 		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("areaList", areaList);
+		model.addAttribute("areaMap", areaMap);
 		model.addAttribute("typeMap", typeMap);
-		model.addAttribute("param", param);
 		model.addAttribute("typeList", param.getTypeList());
+		model.addAttribute("localTypeList", param.getLocalTypeList());
+		model.addAttribute("param", param);
+		
 		model.addAttribute("courseCount", courseCount);
 		
 		return "/culture/cultureNews2";

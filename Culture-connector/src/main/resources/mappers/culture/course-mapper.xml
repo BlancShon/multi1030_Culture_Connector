@@ -259,9 +259,15 @@
 						#{item}
 					</foreach>
 				</if>
-			   <if test="area != null and area != ''">
-			    	and areacode = '${area}'
-			    </if>
+				<if test="localTypeList != null">
+					and areacode in 
+					<foreach item="item" collection="localTypeList" open="(" separator="," close=")">
+						#{item}
+					</foreach>
+				</if>
+				<if test="searchValue != null">
+					AND TITLE LIKE '%${searchValue}%' 
+				</if>
 			    
 		   ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
@@ -277,19 +283,25 @@
 						#{item}
 					</foreach>
 				</if>
-			    <if test="area != '' and area != null">
-			    	and areacode = "${area}"
-			    </if>
+			    <if test="localTypeList != null">
+					and areacode in 
+					<foreach item="item" collection="localTypeList" open="(" separator="," close=")">
+						#{item}
+					</foreach>
+				</if>
+				<if test="searchValue != null">
+					AND TITLE LIKE '%${searchValue}%' 
+				</if>
 	</select>
 	
 	<select id="selectById" parameterType="int" resultType="Course">
 		select 
 		title, overview, distance, theme, firstimage, taketime, schedule,
-		subcontenttitle0, subcontentfirstimage0, subcontentaddmapx0, subcontentaddmapy0, subcontentaddoverview0,
-		subcontenttitle1, subcontentfirstimage1, subcontentaddmapx1, subcontentaddmapy1, subcontentaddoverview1,
-		subcontenttitle2, subcontentfirstimage2, subcontentaddmapx2, subcontentaddmapy2, subcontentaddoverview2,
-		subcontenttitle3, subcontentfirstimage3, subcontentaddmapx3, subcontentaddmapy3, subcontentaddoverview3,
-		subcontenttitle4, subcontentfirstimage4, subcontentaddmapx4, subcontentaddmapy4, subcontentaddoverview4 
+		subcontenttitle0, subcontentfirstimage0, subcontentaddmapx0, subcontentaddmapy0, subcontentaddoverview0,subcontentadd10,
+		subcontenttitle1, subcontentfirstimage1, subcontentaddmapx1, subcontentaddmapy1, subcontentaddoverview1,subcontentadd11,
+		subcontenttitle2, subcontentfirstimage2, subcontentaddmapx2, subcontentaddmapy2, subcontentaddoverview2,subcontentadd12,
+		subcontenttitle3, subcontentfirstimage3, subcontentaddmapx3, subcontentaddmapy3, subcontentaddoverview3,subcontentadd13,
+		subcontenttitle4, subcontentfirstimage4, subcontentaddmapx4, subcontentaddmapy4, subcontentaddoverview4, subcontentadd14
 		from course
 		where contentid = #{contentid};
 	</select>

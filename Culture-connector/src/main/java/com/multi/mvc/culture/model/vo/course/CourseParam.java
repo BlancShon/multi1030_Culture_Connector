@@ -8,6 +8,8 @@ public class CourseParam {
 	private String searchType;
 	private String searchValue;
 	private String area;
+	private String[] localTypes;
+	private List<String> localTypeList;
 	private String[] types;
 	private List<String> typeList;
 	
@@ -24,21 +26,24 @@ public class CourseParam {
 	
 	
 
-	public CourseParam(String searchType, String searchValue, String area, String[] types,
+	public String getArea() {
+		return area;
+	}
+
+	public CourseParam(String searchType, String searchValue, String area, String[] localTypes, String[] types,
 			int page, int limit, int offset) {
 		super();
 		this.searchType = searchType;
 		this.searchValue = searchValue;
 		this.area = area;
-		this.types = types;
 		setTypes(types);
+		setLocalTypes(localTypes);
 		this.page = page;
 		this.limit = limit;
 		this.offset = offset;
 	}
-	public String getArea() {
-		return area;
-	}
+
+
 
 	public void setArea(String area) {
 		this.area = area;
@@ -52,6 +57,25 @@ public class CourseParam {
 		this.types = types;
 		if(types != null) {
 			typeList = List.of(types);
+		}
+	}
+	
+	public String[] getLocalTypes() {
+		return localTypes;
+	}
+
+
+
+	public List<String> getLocalTypeList() {
+		return localTypeList;
+	}
+
+
+
+	public void setLocalTypes(String[] localTypes) {
+		this.localTypes = localTypes;
+		if(localTypes != null) {
+			localTypeList = List.of(localTypes);
 		}
 	}
 
