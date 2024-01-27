@@ -101,25 +101,82 @@
                 <h4 class="text-white">함께하는 문화여행</h4>
                 <a href="#" class="btn btn-link text-light text-decoration-none fs-6 mt-5 d-block" style="font-weight: bold; border-bottom: solid transparent; transition: border-bottom 0.3s ease; text-align: left;">Culture Connector</a>
             </div>
+          
+		</div>
         </div>
-    </div>
+
     
 <!--서치바-->
 <div class="container">
-  <form action="https://www.google.com/search" method="GET">
-		<div class="mx-auto search_ex mt-5 mb-3"
-			style="font-family: 'SUIT-Medium'">
-			<h4>
-				<b>떠나고 싶은 지역을 검색하세요.</b>
-			</h4>
-		</div>
-		<div class="mx-auto mt-5 search-bar input-group mb-3"
-			style="font-family: 'SUIT-Medium'" id="search">
-			<input onkeyup="filter()" id="serchinput" type="text" name="query" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등"> 
-		</div>
-	</form>
-
+  <form action="" method="GET">
+    <div class="mx-auto search_ex mt-5 mb-3" style="font-family: 'SUIT-Medium'">
+      <h4>
+        <b></b>
+      </h4>
+    </div>
+   
+    <div class="mx-auto mt-5 search-bar input-group mb-3" style="font-family: 'SUIT-Medium'" id="search">
+      <!-- Category Dropdown -->
+      <div class="input-group-append">
+        <select class="form-select rounded-pill" id="category" name="category">
+          <option value="" selected>전체</option>
+          <option value="culture">문화관광지</option>
+          <option value="culture_theme">지역문화축제</option>
+          <option value="activity_class">액티비티/원데이 클래스</option>
+          <option value="food_tour">음식투어</option>
+          <option value="culture_course">문화코스</option>
+        </select>
+      </div>
+      
+      <!-- Search Input -->
+      <input onkeyup="filter()" id="searchinput" type="text" name="query" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등">
+      
+       <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">검색</button>
+      </div>
+         </div>
+  </form>
+      <!-- Region Checkboxes -->
+      <div class="input-group-append">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="seoul" name="region" value="seoul">
+          <label class="form-check-label" for="seoul">서울</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="gyeonggi" name="region" value="gyeonggi">
+          <label class="form-check-label" for="gyeonggi">경기</label>
+        </div>
+          <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="chungnam" name="region" value="chungnam">
+          <label class="form-check-label" for="chungnam">충남</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="chungbuk" name="region" value="chungbuk">
+          <label class="form-check-label" for="chungbuk">충북</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="gangwon" name="region" value="gangwon">
+          <label class="form-check-label" for="gangwon">강원</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="jeonbuk" name="region" value="jeonbuk">
+          <label class="form-check-label" for="jeonbuk">전북</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="jeonnam" name="region" value="jeonnam">
+          <label class="form-check-label" for="jeonnam">전남</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="jeju" name="region" value="jeju">
+          <label class="form-check-label" for="jeju">제주</label>
+        </div>
+      </div>
+      
+     
+ 
 </div>
+
+
 
 
   <!--메인 스타트-->
@@ -174,7 +231,7 @@ Packages START -->
           <div class="card-body px-2">
             <!-- Title -->
             <h5 class="card-title">
-              <a href="cluture-theme1.html" class="stretched-link"
+              <a href="${pageContext.request.contextPath}/culture/list" class="stretched-link"
                 >경복궁</a
               >
             </h5>
@@ -195,6 +252,7 @@ Packages START -->
           <div class="card-img-scale-wrapper rounded-3">
             <!-- Card Image -->
             <img
+             	
               src="${pageContext.request.contextPath}/resources/images/category/main/04.jpg"
               class="card-img"
               alt=""
@@ -225,7 +283,7 @@ Packages START -->
           <div class="card-body px-2">
             <!-- Title -->
             <h5 class="card-title">
-              <a href="cluture-theme1.html" class="stretched-link"
+             <a href="${pageContext.request.contextPath}/cultureTheme2" class="stretched-link"
                 >부산 미디어 아트</a
               >
             </h5>
@@ -275,7 +333,7 @@ Packages START -->
           <div class="card-body px-2">
             <!-- Title -->
             <h5 class="card-title">
-              <a href="cluture-theme1.html" class="stretched-link"
+              <a href="${pageContext.request.contextPath}/cultureTheme3" class="stretched-link"
                 >화천 산천어 축제</a
               >
             </h5>
@@ -324,7 +382,7 @@ Packages START -->
           <div class="card-body px-2">
             <!-- Title -->
             <h5 class="card-title">
-              <a href="cluture-theme1.html" class="stretched-link"
+                   <a href="${pageContext.request.contextPath}/leports/list" class="stretched-link"
                 >원데이 클래스</a
               >
             </h5>
@@ -364,10 +422,7 @@ Packages END -->
           </h5>
         </div>
 
-        <!-- Button -->
-        <a href="cluture-news3.html" class="btn btn-lg btn-primary-soft mb-0 mt-4"
-          >여행코스 보러가기 <i class="bi fa-fw bi-arrow-right ms-2"></i
-        ></a>
+        
       </div>
 
       <div class="col-lg-8">
@@ -375,11 +430,11 @@ Packages END -->
           <div class="col-md-6">
             <!-- Card item -->
             <div
-              class="card card-element-hover card-overlay-hover overflow-hidden"
+              class="card  overflow-hidden"
             >
-              <!-- Image -->
+               <!-- Image -->
               <img
-                src="${pageContext.request.contextPath}/resources/images/category/main/06.jpg"
+                src="http://tong.visitkorea.or.kr/cms/resource/04/2684004_image2_1.jpg"
                 class="rounded-3"
                 alt=""
               />
@@ -388,75 +443,22 @@ Packages END -->
                 class="hover-element position-absolute w-100 h-100"
                 data-glightbox
                 data-gallery="gallery"
-                href="assets/images/category/main/06.jpg"
+                href="${pageContext.request.contextPath}/course/list"
               >
-                <i
-                  class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"
-                ></i>
+              
+                 
+                </span>
               </a>
+              <!-- Button -->
+          <a href="${pageContext.request.contextPath}/course/list" class="btn btn-lg btn-primary-soft mb-0 mt-4"
+          >여행코스 보러가기 <i class="bi fa-fw bi-arrow-right ms-2"></i
+        ></a>
             </div>
+         
+ 
+           
 
-            <!-- Testimonials START -->
-            <div
-              class="tiny-slider arrow-round arrow-blur arrow-hover arrow-xs my-4 mb-md-0"
-            >
-              <div
-                class="tiny-slider-inner pb-1"
-                data-autoplay="true"
-                data-arrow="true"
-                data-dots="false"
-                data-items="1"
-              >
-                <!-- Testimonial item -->
-                <div class="card bg-transparent">
-                  <div class="row align-items-center">
-                    <!-- Image -->
-                    <div class="col-4">
-                      <img
-                        src="${pageContext.request.contextPath}/resources/images/category/main/07.jpg"
-                        class="card-img"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Card body -->
-                    <div class="col-8">
-                      <div class="card-body p-0">
-                        <p class="mb-0">
-                         인사동&한옥마을 막걸리 투어
-                        </p>
-                        <h6 class="card-title mb-0 mt-2">
-                          2024/01/01 ~ 
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Testimonial item -->
-                <div class="card bg-transparent">
-                  <div class="row align-items-center">
-                    <!-- Image -->
-                    <div class="col-4">
-                      <img
-                        src="${pageContext.request.contextPath}/resources/images/category/main/08.jpg"
-                        class="card-img"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Card body -->
-                    <div class="col-8">
-                      <div class="card-body p-0">
-                        <p class="mb-0">
-                          한식식당 투어 & 김밥요리
-                        </p>
-                        <h6 class="card-title mb-0 mt-2">2023/11/23~</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Testimonials END -->
+               
           </div>
 
           <div class="col-md-6">
@@ -497,7 +499,7 @@ Packages END -->
 Stories END-->
 
 <!-- ============문화커넥터 액티비티 더보기 바=========== -->
-<section class="py-0" >
+<section class="py-0 mb-4" >
   <div class="container position-relative">
     <div class="bg-light rounded-3 position-relative p-4 p-sm-5">
       <!-- Svg decoration -->
@@ -528,7 +530,7 @@ Stories END-->
         </div>
         <!-- Content and input -->
         <div class="col-lg-4 text-lg-end">
-          <a href="cluture-theme4.html" class="btn btn-lg btn-dark mb-0"
+          <a href="${pageContext.request.contextPath}/leports/list" class="btn btn-lg btn-dark mb-0"
             >액티비티 더보기</a
           >
         </div>
@@ -550,7 +552,7 @@ Stories END-->
           현재 위치를 기반으로 맛집, 카페 및 다양한 정보를 제공해 드려요
         </p>
       <!-- Button -->
-<a href="cluture-tour-map.html" class="btn btn-dark mb-4">더보기</a>
+<a href="${pageContext.request.contextPath}/clutureTourMap" class="btn btn-dark mb-4">더보기</a>
 
 <!-- Services -->
 <div class="row g-sm-4">
@@ -698,8 +700,8 @@ Special offer START -->
           <!-- Card body START -->
           <div class="card-body mt-4 p-0">
             <span class="mb-1">2024/01~</span>
-            <h4 class="mb-1">5000원 쿠폰</h4>
-            <h6 class="fw-normal">한국 관광공사 면세점</h6>
+            <h4 class="mb-1">15% 최대할인</h4>
+            <h6 class="fw-normal">문화 커넥터</h6>
 
             <div
               class="d-flex justify-content-between align-items-center mt-4"
@@ -707,11 +709,11 @@ Special offer START -->
               <div
                 class="bg-primary bg-opacity-10 border border-2 border-primary border-dashed rounded-2 px-3 py-2"
               >
-                <h5 class="fw-normal user-select-all mb-0">LOG125F</h5>
+                <h5 class="fw-normal user-select-all mb-0">MON203</h5>
               </div>
-              <a href="cluture-news2.html" class="btn btn-lg btn-white btn-round mb-0"
+              <a href= "${pageContext.request.contextPath}/cultureNews3" class="btn btn-lg btn-white btn-round mb-0"
                 ><i class="bi bi-arrow-right"></i
-              ></a>
+              > </a>
             </div>
           </div>
           <!-- Card body END -->
@@ -737,7 +739,7 @@ Special offer START -->
               >
                 <h5 class="fw-normal user-select-all mb-0">LOG125F</h5>
               </div>
-              <a href="cluture-news2.html" class="btn btn-lg btn-white btn-round mb-0"
+              <a href="${pageContext.request.contextPath}/cultureNews3" class="btn btn-lg btn-white btn-round mb-0"
                 ><i class="bi bi-arrow-right"></i
               ></a>
             </div>
@@ -763,9 +765,9 @@ Special offer START -->
               <div
                 class="bg-primary bg-opacity-10 border border-2 border-primary border-dashed rounded-2 px-3 py-2"
               >
-                <h5 class="fw-normal user-select-all mb-0">LOG125F</h5>
+                <h5 class="fw-normal user-select-all mb-0">LOG126F</h5>
               </div>
-              <a href="cluture-news2.html" class="btn btn-lg btn-white btn-round mb-0"
+              <a href="${pageContext.request.contextPath}/cultureNews3" class="btn btn-lg btn-white btn-round mb-0"
                 ><i class="bi bi-arrow-right"></i
               ></a>
             </div>
