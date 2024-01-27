@@ -24,7 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 public class LeisureSportsController {
 	@Autowired
 	private LeisureSportsService service;
-
+	
+	private LeisureSports leisure;
 //	@Bean(initMethod = "initLeports")
 	public void initLeports() {
 		log.debug("initLeports Controller 확인");
@@ -57,20 +58,48 @@ public class LeisureSportsController {
 
 	@GetMapping("/list")
 	public String leportsList(Model model, LeisureSportsParam param) {
+		log.debug("LeisureSports Controller list 확인 param : " + param);
 		int leisureCount = service.getLeportsCount(param);
 		PageInfo pageInfo = new PageInfo(param.getPage(), 6, leisureCount, 9);
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<LeisureSports> list = service.getLeportsList(param);
-		log.debug("LeisureSports Controller list 확인");
+		for(LeisureSports item : list) {
+			System.out.println("@@@@ LeisureSports: " + item);
+		}
+		
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
-		// model.addAttribute("categoryList", categoryList);
 		// model.addAttribute("typeMap", typeMap);
 		model.addAttribute("param", param);
-		model.addAttribute("typeList", param.getTypeList());
+		model.addAttribute("locationList", param.getLocationList());
 
 		return "culture/leisureSportsList";
 	}
+	
+	
+	@RequestMapping("/leisureSports/detail")
+	public String detailView(Model model, @RequestParam("contentid") int contentid) {
+	    
+	    try {
+	        leisure = service.findLeportsByLeportsId(contentid);  
+	        System.out.println("leisure = " + leisure);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    if (leisure == null) {
+	        return "redirect:error";
+	    }
+	    
+	    model.addAttribute("leisure", leisure);
+	    model.addAttribute("contentid", leisure.getContentid());
+	    model.addAttribute("overview", leisure.getOverview());
+	    
+	    return "culture/leisureDetail";
+	}
+
+	
+	
 }
 

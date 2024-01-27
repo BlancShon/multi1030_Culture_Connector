@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+
 
 <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="Culture Connector" name="title"/>
@@ -108,7 +113,7 @@
     
 <!--서치바-->
 <div class="container">
-  <form action="" method="GET">
+  <form name="mainSearchForm" action="" method="GET">
     <div class="mx-auto search_ex mt-5 mb-3" style="font-family: 'SUIT-Medium'">
       <h4>
         <b></b>
@@ -118,8 +123,7 @@
     <div class="mx-auto mt-5 search-bar input-group mb-3" style="font-family: 'SUIT-Medium'" id="search">
       <!-- Category Dropdown -->
       <div class="input-group-append">
-        <select class="form-select rounded-pill" id="category" name="category">
-          <option value="" selected>전체</option>
+        <select class="form-select rounded-pill" id="mainCategory" name="mainCategory">
           <option value="culture">문화관광지</option>
           <option value="culture_theme">지역문화축제</option>
           <option value="activity_class">액티비티/원데이 클래스</option>
@@ -129,48 +133,44 @@
       </div>
       
       <!-- Search Input -->
-      <input onkeyup="filter()" id="searchinput" type="text" name="query" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등">
-      
+      <input  id="mainSearchValue" type="text" name="mainSearchValue" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등">
        <div class="input-group-append">
-        <button type="submit" class="btn btn-primary">검색</button>
+        <button type="button" onclick="mainSearch();" class="btn btn-primary">검색</button>
       </div>
-         </div>
+        </div>
   </form>
-      <!-- Region Checkboxes -->
-      <div class="input-group-append">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="seoul" name="region" value="seoul">
-          <label class="form-check-label" for="seoul">서울</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="gyeonggi" name="region" value="gyeonggi">
-          <label class="form-check-label" for="gyeonggi">경기</label>
-        </div>
-          <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="chungnam" name="region" value="chungnam">
-          <label class="form-check-label" for="chungnam">충남</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="chungbuk" name="region" value="chungbuk">
-          <label class="form-check-label" for="chungbuk">충북</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="gangwon" name="region" value="gangwon">
-          <label class="form-check-label" for="gangwon">강원</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="jeonbuk" name="region" value="jeonbuk">
-          <label class="form-check-label" for="jeonbuk">전북</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="jeonnam" name="region" value="jeonnam">
-          <label class="form-check-label" for="jeonnam">전남</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="jeju" name="region" value="jeju">
-          <label class="form-check-label" for="jeju">제주</label>
-        </div>
-      </div>
+  
+  <script type="text/javascript">
+  	function mainSearch() {
+  		var categoryObj = document.getElementById('mainCategory');
+  		var selectCategory = categoryObj.options[categoryObj.selectedIndex].value;
+  		var selectCategory = categoryObj.options[categoryObj.selectedIndex].value;
+		var searchValue = document.getElementById('mainSearchValue').value;
+		alert('selectCategory : ' + selectCategory);
+		alert('searchValue : ' + searchValue);
+		
+		if(selectCategory == 'culture'){
+			var path='${path}/culture/list?searchValue=';
+			path += searchValue;
+			location.href = path;
+		}
+		if(selectCategory=='culture_theme'){
+			
+		}
+		if(selectCategory == 'activity_class'){
+			var path = '${path}/leports/list?searchType=title&searchValue=';
+			path += searchValue;
+			location.href = path;
+		}
+		if(selectCategory=='food_tour'){
+			
+		}
+		if(selectCategory=='culture_course'){
+			
+		}
+	}
+  </script>
+    
       
      
  
