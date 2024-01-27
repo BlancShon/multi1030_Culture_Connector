@@ -131,23 +131,24 @@
 		                <div class="col-sm-6 col-lg-4">
 		                    <!-- Card START -->
 		                    <div class="card card-img-scale overflow-hidden bg-transparent">
-		    	
-		                        <!-- Image -->
-		                        <div class="card-img-scale-wrapper rounded-3">
-		                            <img src="${item.firstimage }" class="card-img" alt="hotel image">
-		                        </div>
-		    
-		                        <!-- Card body -->
-		                        <div class="card-body px-2">
-		                            <!-- Title -->
-		                            <div class="d-flex justify-content-between align-items-center">
-		                                <h6 class="card-title">
-		                                	<a href="flight-list.html" class="stretched-link">
-		                                		<c:out value="${item.title}"/>
-		                             		 </a>
-		                                </h6>
-		                            </div>
-		                        </div>
+		    				
+			                        <!-- Image -->
+			                        <div class="card-img-scale-wrapper rounded-3">
+			                            <img src="${item.firstimage }" class="card-img" alt="hotel image">
+			                        </div>
+			    
+			                        <!-- Card body -->
+			                        <div class="card-body px-2">
+			                            <!-- Title -->
+			                            <div class="d-flex justify-content-between align-items-center">
+			                                <h6 class="card-title">
+			                                	<a href="${path}/mvc/course/detail?contentid=${item.contentid}" class="stretched-link">
+			                                		<c:out value="${item.title}"/>
+			                             		 </a>
+			                                </h6>
+			                            </div>
+			                        </div>
+		                        
 		                    </div>
 		                    <!-- Card END -->
 	                    

@@ -84,6 +84,13 @@ public class CourseController {
 		return "/culture/cultureNews2";
 	}
 	
+	@GetMapping("/detail")
+	public String courseDetail(Model model, @RequestParam("contentid") int contentid) {
+		Course course = service.getCourse(contentid);
+		model.addAttribute("course", course);
+		return "/culture/courseDetail";
+	}
+	
 	
 	
 	

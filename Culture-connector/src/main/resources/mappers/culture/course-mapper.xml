@@ -94,6 +94,7 @@
 	    <result property="subcontentaddhomepage4" column="SUBCONTENTADDHOMEPAGE4"/>
 	    
 	</resultMap>
+	
 
 	<select id="selectCount" resultType="int">
 		SELECT COUNT(*) FROM COURSE;
@@ -278,6 +279,18 @@
 			    <if test="area != null and area != ''">
 			    	and areacode = '${area}'
 			    </if>
+	</select>
+	
+	<select id="selectById" parameterType="int" resultType="Course">
+		select 
+		title, overview, distance, theme, firstimage, taketime, schedule,
+		subcontenttitle0, subcontentfirstimage0, subcontentaddmapx0, subcontentaddmapy0, subcontentaddoverview0,
+		subcontenttitle1, subcontentfirstimage1, subcontentaddmapx1, subcontentaddmapy1, subcontentaddoverview1,
+		subcontenttitle2, subcontentfirstimage2, subcontentaddmapx2, subcontentaddmapy2, subcontentaddoverview2,
+		subcontenttitle3, subcontentfirstimage3, subcontentaddmapx3, subcontentaddmapy3, subcontentaddoverview3,
+		subcontenttitle4, subcontentfirstimage4, subcontentaddmapx4, subcontentaddmapy4, subcontentaddoverview4 
+		from course
+		where contentid = #{contentid};
 	</select>
        
 	

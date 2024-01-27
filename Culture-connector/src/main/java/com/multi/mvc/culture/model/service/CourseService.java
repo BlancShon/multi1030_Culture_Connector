@@ -86,5 +86,9 @@ public class CourseService {
 	public int getCourseCount(CourseParam param) {
 		return mapper.selectCourseCount(param);
 	}
+
+	public Course getCourse(int contentid) {
+		return mapper.selectById(contentid);
+	}
 }
 

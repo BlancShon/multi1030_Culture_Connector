@@ -22,5 +22,6 @@ public interface CourseMapper {
 
 	int selectCourseCount(CourseParam param);
 	
-	Course selectCourseById(int contentid);
+	Course selectById(int contentid);
+
 }
