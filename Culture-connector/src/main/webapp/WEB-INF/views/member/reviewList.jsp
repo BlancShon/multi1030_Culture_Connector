@@ -95,10 +95,10 @@ Content START -->
 									</li>
 								
 									<li class="nav-item">
-										<a class="nav-link active" href="account-wishlist.html"><i class="bi bi-heart fa-fw me-2"></i>북마크 목록</a>
+										<a class="nav-link" href="${path}/member/viewWishList"><i class="bi bi-heart fa-fw me-2"></i>북마크 목록</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="${path}/member/ViewReviewList"><i class="bi bi-book fa-fw me-2"></i>리뷰 목록</a>
+										<a class="nav-link active" href="${path}/member/ViewReviewList"><i class="bi bi-book fa-fw me-2"></i>리뷰 목록</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="account-settings.html"><i class="bi bi-gear fa-fw me-2"></i>설정</a>
@@ -135,7 +135,7 @@ Content START -->
 				<div class="card border bg-transparent">
 					<!-- Card header -->
 					<div class="card-header bg-transparent border-bottom">
-						<h4 class="card-header-title">북마크 목록</h4>
+						<h4 class="card-header-title">리뷰 목록</h4>
 					</div>
 
 					<!-- Card body START -->
@@ -160,15 +160,12 @@ Content START -->
 						<!-- Wishlist item START -->
 						
 						<div class="card shadow p-2">
-						<form class="" action="${path}/member/viewWishList" method="post">
+						<form class="" action="${path}/member/ViewReviewList" method="post">
 							<div class="row g-0">
 								<!-- Card img -->
 								
-								<c:forEach var="item" items="${culture}">
-								<div class="col-md-3">
-									<img src="${item.image0}" class="card-img rounded-2" alt="Card image">
-								</div>
-	
+								<c:forEach var="item" items="${board}">
+		
 								<!-- Card body -->
 								<div class="col-md-9">
 									<div class="card-body py-md-2 d-flex flex-column h-100">
@@ -185,9 +182,7 @@ Content START -->
 	
 											<ul class="list-inline mb-0">
 												<!-- Heart icon -->
-												<li class="list-inline-item">
-													<a href="#" class="btn btn-sm btn-round btn-danger mb-0"><i class="fa-solid fa-fw fa-heart"></i></a>
-												</li>
+											
 												<!-- Share icon -->
 												<li class="list-inline-item dropdown">
 													<!-- Share button -->
@@ -206,16 +201,12 @@ Content START -->
 										</div>
 	
 										<!-- Title -->
-										<h5 class="card-title mb-1"><a href="${path}/culture/detail?contentid=${item.contentid}">${item.title}</a></h5>
-										<small><i class="bi bi-geo-alt me-2"></i>${item.addr1}</small>
+										<h5 class="card-title mb-1"><a href="${path}/board/view?no=${item.bno}">${item.title}</a></h5>
+										<small><i class=""></i>조회수 : ${item.readCount}</small>
 										
 										<!-- Price and Button -->
 										<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-											<!-- Button -->
-											<div class="d-flex align-items-center">
-												<h5 class="fw-bold mb-0 me-1">$980</h5>
-												<span class="mb-0 me-2">/day</span>
-											</div>
+										
 										               
 										</div>
 									</div>
@@ -266,19 +257,4 @@ Content END -->
 
 
 </body>
-
-
-<script type="text/javascript">
-
-
-
-
-
-</script>
-
-
-
-
-
-
 </html>

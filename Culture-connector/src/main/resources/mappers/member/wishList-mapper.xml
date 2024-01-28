@@ -53,7 +53,14 @@
 
 </select>
 
-
+<select id="selectReviewById" parameterType="String" resultType="Board">
+		SELECT  B.BNO, B.TYPE, B.TITLE, M.ID, M.NAME, B.READCOUNT, B.ATTACHCOUNT, B.CREATE_DATE
+		FROM BOARD B
+		JOIN MEMBER M ON (B.MNO = M.MNO)
+		JOIN BOARD_CATEGORY C ON (B.TYPE = C.TYPE)
+        where M.ID = #{userId};
+	
+	</select>
 
 
 

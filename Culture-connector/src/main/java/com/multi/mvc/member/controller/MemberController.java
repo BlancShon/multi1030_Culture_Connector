@@ -26,6 +26,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.multi.mvc.board.model.vo.Board;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.google.service.GoogleService;
 import com.multi.mvc.kakao.service.KaKaoService;
@@ -357,8 +358,11 @@ public class MemberController {
 	public String viewWishList(Model model, @SessionAttribute(name="loginMember", required = false) Member loginMember) {
 		String userId = loginMember.getId();
 		List<Culture> culture = service.viewWishList(userId);
+		
 		System.out.println("컨트롤러 = " + culture);
+		
 		model.addAttribute("culture", culture);
+		
 //		for(int i = 0; i< culture.size(); i++) {
 //			culture.get(i).getTitle();
 //			System.out.println("장소명" + culture.get(i).getTitle());
@@ -371,7 +375,15 @@ public class MemberController {
 	}
 	
 	
+	@GetMapping("member/ViewReviewList")
+	public String viewRevie(Model model, @SessionAttribute(name="loginMember", required = false) Member loginMember) {
+		String userId = loginMember.getId();
+		List<Board> board = service.selectReviewById(userId);
+		model.addAttribute("board", board);
 		
+		return "member/reviewList";
+		
+	}
 }
 
 

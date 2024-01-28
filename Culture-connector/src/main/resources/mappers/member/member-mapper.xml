@@ -50,6 +50,9 @@
 	</select>
 	
 	
+	
+	
+	
 	 <select id="selectMemberByKakaoToken" parameterType="string" resultMap="memberResultMap">
 		SELECT
 			mNO, ID, PASSWORD, ROLE, NAME,  

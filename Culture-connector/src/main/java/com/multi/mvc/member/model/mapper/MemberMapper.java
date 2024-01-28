@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.multi.mvc.board.model.vo.Board;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.member.model.vo.Member;
 import com.multi.mvc.member.model.vo.WishList;
@@ -40,7 +41,7 @@ public interface MemberMapper {
 	void createTableWishList();
 	
 	
-	
+	public List<Board> selectReviewById(String userId);
 	
 	Member selectMemberByKakaoToken(String token);
 	Member selectMemberByGoogleToken(String googleToken);

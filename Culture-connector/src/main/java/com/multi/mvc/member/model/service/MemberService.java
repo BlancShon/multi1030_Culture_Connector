@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.multi.mvc.board.model.vo.Board;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.member.model.mapper.MemberMapper;
 import com.multi.mvc.member.model.vo.Member;
@@ -225,6 +226,12 @@ public class MemberService {
 	}
 	
 	
+	public List<Board> selectReviewById(String userId) {
+		List<Board> board = mapper.selectReviewById(userId);
+		
+		return board;
+		
+	}
 	
 	
 	
