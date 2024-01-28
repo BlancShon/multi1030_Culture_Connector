@@ -29,6 +29,7 @@ public class CourseController {
 	
 	@Autowired
 	private CourseService service;
+	private Course course;
 	
 	private static Vector<CourseCategory> categoryList;
 	private static Vector<AreaCodes> areaList;
@@ -96,7 +97,16 @@ public class CourseController {
 	
 	@GetMapping("/detail")
 	public String courseDetail(Model model, @RequestParam("contentid") int contentid) {
-		Course course = service.getCourse(contentid);
+		try {
+			course = service.getCourse(contentid);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    if (course == null) {
+	        return "redirect:error";
+	    }
+	
 		model.addAttribute("course", course);
 		return "/culture/courseDetail";
 	}

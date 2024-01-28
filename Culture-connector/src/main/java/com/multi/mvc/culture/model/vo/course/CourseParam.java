@@ -5,7 +5,8 @@ import java.util.List;
 
 public class CourseParam {
 
-	private String searchType;
+	private String[] searchType;
+	private List<String> searchTypeList;
 	private String searchValue;
 	private String area;
 	private String[] localTypes;
@@ -30,10 +31,11 @@ public class CourseParam {
 		return area;
 	}
 
-	public CourseParam(String searchType, String searchValue, String area, String[] localTypes, String[] types,
+	public CourseParam(String[] searchType, String searchValue, String area, String[] localTypes, String[] types,
 			int page, int limit, int offset) {
 		super();
 		this.searchType = searchType;
+		
 		this.searchValue = searchValue;
 		this.area = area;
 		setTypes(types);
@@ -117,13 +119,22 @@ public class CourseParam {
 				+ page + ", limit=" + limit + ", offset=" + offset + "]";
 	}
 
-	public String getSearchType() {
+	public String[] getSearchType() {
 		return searchType;
 	}
 
-	public void setSearchType(String searchType) {
+	public void setSearchType(String[] searchType) {
 		this.searchType = searchType;
+		if(searchType != null) {
+			searchTypeList = Arrays.asList(searchType);
+		}
 	}
+
+	public List<String> getSearchTypeList() {
+		return searchTypeList;
+	}
+
+
 
 	public String getSearchValue() {
 		return searchValue;

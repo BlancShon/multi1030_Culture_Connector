@@ -50,7 +50,7 @@
 
 </head>
 <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
-<jsp:param value="문화시설 상세" name="title"/>
+<jsp:param value="여행 코스 상세" name="title"/>
 </jsp:include>
 <body>
 
@@ -354,7 +354,7 @@
 
 
 
-
+<!--  여행 코스 카드 시작 -->
 <section>
 	<div class="container" style="text-align: center;">
 		<div class="row mx-auto mb-5 col-10">
@@ -429,7 +429,7 @@
 	        </div>
 		</div>
 </section>
-
+<!--  여행 코스 카드 끝 -->
 
 <!--  지도 시작 -->
 <section>
@@ -444,152 +444,11 @@
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-<!-- =======================
-Footer START -->
-<footer class="bg-dark pt-5">
-  <div class="container">
-      <!-- Row START -->
-      <div class="row g-4">
-          <!-- Widget 1 START -->
-          <div class="col-lg-3">
-              <!-- logo -->
-              <a href="index.html">
-                  <img class="h-40px" src="assets/images/logo-culture-light.png" alt="로고">
-              </a>
-              <p class="my-3 text-body-secondary">
-                  문화커넥터와 함께 떠나는 문화여행
-              </p>
-             
-          </div>
-          <!-- Widget 1 END -->
-
-          <!-- Widget 2 START -->
-          <div class="col-lg-8 ms-auto">
-              <div class="row g-4">
-                  <!-- Link block -->
-                  <div class="col-6 col-md-3">
-                      <h5 class="text-white mb-2 mb-md-4">페이지</h5>
-                      <ul class="nav flex-column text-primary-hover">
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="main.html"
-                              >홈</a
-                              >
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cluture-theme1.html"
-                              >문화 테마</a
-                              >
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cuisine-tour.html"
-                              >음식 투어</a
-                              >
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cluture-news1.html"
-                              >문화 소식</a
-                              >
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="review-talk1.html"
-                              >리뷰(수다톡)</a
-                              >
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cluture-tour-map.html"
-                              >문화(여행) 지도</a
-                              >
-                          </li>
-                      </ul>
-                  </div>
-
-                  <!-- Link block -->
-                  <div class="col-6 col-md-3">
-                      <h5 class="text-white mb-2 mb-md-4">회원정보</h5>
-                      <ul class="nav flex-column text-primary-hover">
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="#">가입하기</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="sign-in.html">로그인</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="#"
-                              >내정보</a
-                              >
-                          </li>
-                         
-                      </ul>
-                  </div>
-                  
-
-              
-           
-          </div>
-          <!-- Widget 2 END -->
-      </div>
-      <!-- Row END -->
-
-     
-  </div>
-     <!-- Bottom footer -->
-  <div class="row">
-    <div class="container">
-      <div
-        class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start"
-      >
-        <!-- copyright text -->
-        <div class="text-body-secondary text-primary-hover">
-          저작권 ©2024 멀티캠퍼스 문화커넥터
-       
-        </div>
-     
-      </div>
-    </div>
-  </div>
-</div>
-</footer>
-<!-- Footer END -->
-
-
-
-<!-- Back to top -->
-<div class="back-top"></div>
-
-<!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Vendors -->
-<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
-<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.js"></script>
-<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
-<script src="assets/vendor/choices/js/choices.min.js"></script>
-<script src="assets/vendor/jarallax/jarallax.min.js"></script>
-<script src="assets/vendor/jarallax/jarallax-video.min.js"></script>
-
-<!-- ThemeFunctions -->
-<script src="assets/js/functions.js"></script>
-
-
-<script type="text/javascript">
-
-/* Kakao.init('bb83919493996c6c554671877067a90a');
-console.log(location.href) */
-</script>
-
-
-
-<!-- <script>
-Kakao.init('bb83919493996c6c554671877067a90a'); // 사용하려는 앱의 JavaScript 키 입력
-</script>
- -->
 
 
 <script>
-
-
 
 <!-- 카카오톡 공유 썸네일에 사용할 변수 -->
 var thumbImg = document.getElementById("mainImage").value; //이미지 주소
@@ -708,11 +567,11 @@ if (title0 !== "") {
 	});
 }
 	
-
+ 
 
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    
+
 for (var i = 0; i < positions.length; i ++) {
     
     // 마커 이미지의 이미지 크기 입니다
@@ -728,8 +587,8 @@ for (var i = 0; i < positions.length; i ++) {
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage // 마커 이미지 
     });
-   
-   
+    
+
 }
 </script>
 

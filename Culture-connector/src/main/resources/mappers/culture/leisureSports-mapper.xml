@@ -193,6 +193,12 @@
 			    ADDR1 LIKE '%${item}%'
 			</foreach>
 		</if>
+		<if test="leportsTypeList != null">
+			and cat3 in 
+			<foreach item="item" collection="leportsTypeList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
 		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
@@ -213,12 +219,18 @@
 			    ADDR1 LIKE '%${item}%'
 			</foreach>
 		</if>
+		<if test="leportsTypeList != null">
+			and cat3 in 
+			<foreach item="item" collection="leportsTypeList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
 	</select>
 	
 <select id="selectLeportsByLeportsId" parameterType="int" resultMap="leportsResultMap">
     SELECT  
         *
-    FROM culture where contentid = #{contentid}
+    FROM leports where contentid = #{contentid}
 </select>
 
 	

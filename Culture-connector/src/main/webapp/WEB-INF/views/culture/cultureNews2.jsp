@@ -3,9 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+
 <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="Culture Connector" name="title"/>
 </jsp:include>
+
 
 
         <!-- 히어로 이미지 + 검색 창 시작 -->
@@ -23,76 +25,90 @@
                     </div>
                 </div>
         
-                <!-- Search START -->
+                 <!--  검색창 시작!  -->
                 <div class="row mt-n7">
-                    <div class="col-9 mx-auto">		
-                    		
-                        <!-- Booking from START -->
-                        <form class="bg-mode shadow rounded-3 p-4" name="searchForm" action="${path}/mvc/course/list" method="get">
-                        	 <input type="hidden" name="page" value="1">
-                            <div class="row g-4 align-items-center">
-    
-                              
-                              <!-- 설렉트 + 검색창-->
-                                <div class="col-xl-8"  style="text-align: center;">
-                                  <div class="row g-4">
-                                      <!-- Location -->
-                                      <div class="col-md-12 col-lg-12">
-                                          <label class="h6 fw-normal mb-0"><i class="bi bi-geo-alt text-primary me-1"></i>여행 지역</label>
-                                          <div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-                                            <!-- Input field -->
-                                           <select class="form-select js-choice" data-search-enabled="true" name="area">
-                                             <option value="" ${param.area == '' ? 'selected' : ''}>지역을 선택해주세요</option>
-                                              <option value="1" ${param.area == '1' ? 'selected' : ''}>서울</option>
-											  <option value="31" ${param.area == '31' ? 'selected' : ''}>경기</option>
-											  <option value="2" ${param.area == '2' ? 'selected' : ''}>인천</option>
-											  <option value="3" ${param.area == '3' ? 'selected' : ''}>대전</option>
-											  <option value="4" ${param.area == '4' ? 'selected' : ''}>대구</option>
-											  <option value="5" ${param.area == '5' ? 'selected' : ''}>광주</option>
-											  <option value="8" ${param.area == '8' ? 'selected' : ''}>세종</option>
-											  <option value="32" ${param.area == '32' ? 'selected' : ''}>강원</option>
-											  <option value="37" ${param.area == '37' ? 'selected' : ''}>전북</option>
-											  <option value="35" ${param.area == '35' ? 'selected' : ''}>경북</option>
-											  <option value="33" ${param.area == '33' ? 'selected' : ''}>충북</option>
-											  <option value="38" ${param.area == '38' ? 'selected' : ''}>전남</option>
-											  <option value="36" ${param.area == '36' ? 'selected' : ''}>경남</option>
-											  <option value="34" ${param.area == '34' ? 'selected' : ''}>충남</option>
-											  <option value="7" ${param.area == '7' ? 'selected' : ''}>울산</option>
-											  <option value="6" ${param.area == '6' ? 'selected' : ''}>부산</option>
-											  <option value="39" ${param.area == '39' ? 'selected' : ''}>제주</option>
-                                            </select>
-                                          </div>
-                                      </div>
-      
-                     		 <div style="text-align: center;">
-								<c:forEach var="item" items="${categoryList}">
-									<label>
-										<input type="checkbox" name="types" value="${item.code}"
-											${fn:contains(typeList, item.code) ? 'checked' : ''} >
-										${item.name}
-									</label>
-								</c:forEach>
+                    <div class="col-10 mx-auto">		
+                    
+                  
+                    
+                    
+			<div div class="container mt-5">
+				<div class="row height d-flex justify-content-center align-items-center">
+					<div class="col-md-12 ">
+			
+						<div class="row height d-flex justify-content-center align-items-center">
+							<div class="col-md-12">
+								<h5 class="fw-normal mb-0"></h5>
+								 <form class="bg-mode shadow rounded-3 p-4" name="searchForm" action="${path}/mvc/course/list" method="get">
+									<input type="hidden" name="page" value="1">
+									<div class="col-md-12 col-lg-12">
+					                   	<label style="margin-left: 40px"><input type="checkbox" name="searchType" value="title" class="search"
+											${param.searchType == 'title' ? 'checked' : ''} /> 키워드</label>
+										<label style=""><input type="checkbox" name="searchType" value="address" class="search"
+											${param.searchType == 'address' ? 'checked' : ''} /> 장소</label>
+					                </div>
+									
+									<div class="search mt-0">
+										<i class="fa fa-search"></i>
+											<input type="text" id="searchName" name="searchValue" class="form-control" style="font-size: large" placeholder="검색해주세요" value="${param.searchValue}">
+												<!-- <button class="btn btn-primary" style="font-size: x-large;">검색</button> -->
+											<button type="submit" class="btn btn-lg btn-dark mb-0">검색</button>
+									</div>
+										<br>
+									<div class="container mt-2">
+										<div class="filter-block">
+											<h5 class="mb-3"><i class="fa-solid bi bi-geo-alt-fill text-primary me-2"></i>지역</h5>
+													<div>
+												
+												<c:forEach var="item" items="${areaList}">
+												    <label class="form-check-label" style="margin-right: 10px;">
+												        <input class="form-check-input" type="checkbox" name="localTypes" value="${item.code}"
+												            <c:forEach var="localType" items="${localTypeList}">
+												                <c:choose>
+												                    <c:when test="${localType eq item.code}">
+												                        checked
+												                    </c:when>
+												                </c:choose>
+												            </c:forEach>
+												        />  ${item.name}
+												    </label>
+												</c:forEach>
+												
+											
+												
+											</div>
+												
+										</div>
+										<br>
+										<div class="filter-block">
+											<h5 class="mb-3"><i class="bi bi-image-alt text-primary me-2"></i>카테고리</h5>
+											
+										
+											<div>
+												<c:forEach var="item" items="${categoryList}">
+													<label class="form-check-label"  style="margin-right: 10px;">
+														<input  class="form-check-input" type="checkbox" name="types" value="${item.code}"
+															${fn:contains(typeList, item.code) ? 'checked' : ''} >
+														${item.name}
+													</label>
+												</c:forEach>
+											</div>
+											
+										</div>
+									</div>
+								</form>
 							</div>
-                                      <!-- Guest -->
-                                  </div>
-                              </div>
-                              
-                               <!-- 셀렉트 + 검색창 끝-->
-    
-                                <!-- Button -->
-                              
-	                             <div class="col-xl-2">
-	                                    <div class="d-grid">
-                                    		<button type="submit" class="btn btn-lg btn-dark mb-0">검색</button>
-                                 </div>
-                                </div>
-                            </div>
-                               
-                        </form>
-                        <!-- Booking from END -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+                    
+                    
                     </div>
                 </div>
-                <!-- Search END -->
+           <!--서치바 끝-->
         
         
             </div>
@@ -128,7 +144,7 @@
 				</c:if>
                  <c:if test="${not empty list}">
 					<c:forEach var="item" items="${list}">
-		                <div class="col-sm-6 col-lg-4">
+		                <div class="col-4">
 		                    <!-- Card START -->
 		                    <div class="card card-img-scale overflow-hidden bg-transparent">
 		    				
