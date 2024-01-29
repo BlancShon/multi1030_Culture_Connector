@@ -1,6 +1,7 @@
 package com.multi.mvc.culture.model.service;
 
 import java.util.List;
+import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.CultureMapper;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
-import com.multi.mvc.culture.model.vo.Event;
+
 
 
 @Service
@@ -20,6 +22,21 @@ public class CultureService {
 	
 	@Autowired
 	private  CultureMapper mapper;
+	
+	
+	
+	private static Vector<AreaCodes> areaList;
+	
+	static {
+		
+		areaList = AreaCodes.getAreaList();
+	}
+	
+	
+	
+	
+	
+	
 	
 
 	public int save() {
@@ -62,6 +79,16 @@ public class CultureService {
 	
 		return culture;
 	}
+	
+	
+	
+	public Vector<AreaCodes> getAreaList() {
+		return areaList;
+	}
+	
+	
+	
+	
 	
 	// 아래 두개는 데이터 주입용으로 임시로 만들었습니다
 //	 @Transactional(noRollbackFor = SQLException.class)

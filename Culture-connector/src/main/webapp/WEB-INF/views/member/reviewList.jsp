@@ -107,7 +107,7 @@ Content START -->
 										<a class="nav-link" href="account-delete.html"><i class="bi bi-trash fa-fw me-2"></i>회원 탈퇴</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>로그아웃</a>
+										<a class="nav-link text-danger bg-danger-soft-hover" href="${path}/logout"><i class="fas fa-sign-out-alt fa-fw me-2"></i>로그아웃</a>
 									</li>
 								</ul>
 								<!-- Sidebar menu item END -->

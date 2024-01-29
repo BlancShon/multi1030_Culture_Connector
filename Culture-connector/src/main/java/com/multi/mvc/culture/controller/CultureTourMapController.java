@@ -22,6 +22,7 @@ import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.Event;
 import com.multi.mvc.culture.model.vo.Festival;
 import com.multi.mvc.culture.model.vo.Food;
+import com.multi.mvc.culture.model.vo.FoodDTO;
 import com.multi.mvc.culture.model.vo.LeisureSports;
 
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +56,7 @@ public class CultureTourMapController {
             List<Culture> cultures = cultureService.getListForMap();
             List<Festival> festivals = festivalService.getListForMap();
             List<LeisureSports> leisureSports = leisureSportsService.getListForMap();
-            List<Food> foods = foodService.getListForMap();
+            List<FoodDTO> foods = foodService.getListForMap();
             
             model.addAttribute("events", events);
             model.addAttribute("cultures", cultures);
@@ -102,7 +103,7 @@ public class CultureTourMapController {
                 data.put("leisureSports", leisureSports);
                 log.debug("LeisureSports data: {}", leisureSports); // 문화 데이터 로깅
             } else if ("food".equals(category)) {
-            	List<Food> foods = foodService.getListForMap();
+            	List<FoodDTO> foods = foodService.getListForMap();
                 data.put("foods", foods);
                 log.debug("foods data: {}", foods); // 문화 데이터 로깅
             }
