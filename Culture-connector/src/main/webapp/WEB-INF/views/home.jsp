@@ -791,7 +791,7 @@ Blog START-->
     <!-- 타이틀 시작 -->
     <div class="row mb-3 mb-sm-4">
       <div class="col-12 text-center">
-        <h4 class="mb-4" style="margin-top: 20px;"><a href="review-talk1.html">여행후기 ></a></h4>
+        <h4 class="mb-4" style="margin-top: 20px;"><a href="${pageContext.request.contextPath}/board/list">여행후기 ></a></h4>
       </div>
     </div>
 
