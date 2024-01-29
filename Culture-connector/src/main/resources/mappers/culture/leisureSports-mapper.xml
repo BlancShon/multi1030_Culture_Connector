@@ -245,6 +245,18 @@
     FROM leports where contentid = #{contentid}
 </select>
 
+	<select id="getListForMap" resultMap="leportsResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	leports
+	</select>
 	
 
 </mapper>

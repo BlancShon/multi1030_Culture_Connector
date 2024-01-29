@@ -130,5 +130,9 @@ public class LeisureSportsService {
 	public ConcurrentHashMap<String, String> getCategoryCodeMap() {
 		return LeportsCategory.getCategoryCodeMap();
 	}
+
+	public List<LeisureSports> getListForMap() {
+		return mapper.getListForMap();
+	}
 }
 

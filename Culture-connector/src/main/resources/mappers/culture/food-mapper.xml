@@ -270,4 +270,18 @@
  		ORDER BY C.LEVEL, B.BNO  -->
 	</select>
 	
+	<select id="getListForMap" resultMap="FoodResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	food
+	</select>
+	
+	
 </mapper>

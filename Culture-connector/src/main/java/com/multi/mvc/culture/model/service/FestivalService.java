@@ -73,6 +73,13 @@ public class FestivalService {
 	public List<Festival> getFestivalSearchList(FestivalParam param) {
 		return mapper.selectFestivalList(param);
 	}
+
+
+	public List<Festival> getListForMap() {
+		return mapper.getListForMap();
+	}
+
+
 }
 
 

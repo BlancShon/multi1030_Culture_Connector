@@ -24,5 +24,8 @@ public interface LeisureSportsMapper {
     List<LeisureSports> selectLeportsList(LeisureSportsParam param);
 
     int selectLeportsCount(LeisureSportsParam param);
+
+	List<LeisureSports> getListForMap();
+	
 	
 }

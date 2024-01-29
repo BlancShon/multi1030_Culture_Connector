@@ -15,8 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.multi.mvc.culture.model.service.CultureService;
 import com.multi.mvc.culture.model.service.EventService;
+import com.multi.mvc.culture.model.service.FestivalService;
+import com.multi.mvc.culture.model.service.FoodService;
+import com.multi.mvc.culture.model.service.LeisureSportsService;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.Event;
+import com.multi.mvc.culture.model.vo.Festival;
+import com.multi.mvc.culture.model.vo.Food;
+import com.multi.mvc.culture.model.vo.LeisureSports;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,12 +33,17 @@ public class CultureTourMapController {
 	
 	private final EventService eventService;
 	private final CultureService cultureService;
+	private final FestivalService festivalService;
+	private final LeisureSportsService leisureSportsService;
+	private final FoodService foodService;
     
 	@Autowired
-	public CultureTourMapController(EventService eventService, CultureService cultureService) {
+	public CultureTourMapController(EventService eventService, CultureService cultureService, FestivalService festivalService, LeisureSportsService leisureSportsService, FoodService foodService) {
 		this.eventService = eventService;
 		this.cultureService = cultureService;
-		log.info("CultureTourMapController initialized with EventService and CultureService");
+		this.festivalService = festivalService;
+		this.leisureSportsService = leisureSportsService;
+		this.foodService = foodService;
 	}
     
 	@GetMapping("/cultureTourMap")
@@ -42,9 +53,15 @@ public class CultureTourMapController {
 		try {
             List<Event> events = eventService.getListForMap();
             List<Culture> cultures = cultureService.getListForMap();
+            List<Festival> festivals = festivalService.getListForMap();
+            List<LeisureSports> leisureSports = leisureSportsService.getListForMap();
+            List<Food> foods = foodService.getListForMap();
             
             model.addAttribute("events", events);
             model.addAttribute("cultures", cultures);
+            model.addAttribute("festivals", festivals);
+            model.addAttribute("leisureSports", leisureSports);
+            model.addAttribute("foods", foods);
             
             log.info("CultureTourMap data added to model");
             return "culture/cultureTourMap";
@@ -76,6 +93,18 @@ public class CultureTourMapController {
                 List<Culture> cultures = cultureService.getListForMap();
                 data.put("cultures", cultures);
                 log.debug("Cultures data: {}", cultures); // 문화 데이터 로깅
+            } else if ("festival".equals(category)) {
+            	List<Festival> festivals = festivalService.getListForMap();
+                data.put("festivals", festivals);
+                log.debug("Festivals data: {}", festivals); // 문화 데이터 로깅
+            } else if ("leisureSport".equals(category)) {
+            	List<LeisureSports> leisureSports = leisureSportsService.getListForMap();
+                data.put("leisureSports", leisureSports);
+                log.debug("LeisureSports data: {}", leisureSports); // 문화 데이터 로깅
+            } else if ("food".equals(category)) {
+            	List<Food> foods = foodService.getListForMap();
+                data.put("foods", foods);
+                log.debug("foods data: {}", foods); // 문화 데이터 로깅
             }
             // 로그에 전체 데이터 구조 기록
             log.debug("Data sent to client: {}", data);

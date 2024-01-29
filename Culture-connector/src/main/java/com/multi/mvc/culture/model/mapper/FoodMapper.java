@@ -24,6 +24,8 @@ public interface FoodMapper {
 
 	Food selectFoodByNo(int cfno);
 
+	List<Food> getListForMap();
+
 //	Food selectFoodByAddr1(Food addr1);
 
 //	List<Food> selectFoodSample(FoodParam param);

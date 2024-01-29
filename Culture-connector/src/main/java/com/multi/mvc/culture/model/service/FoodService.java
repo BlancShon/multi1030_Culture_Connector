@@ -93,6 +93,11 @@ public class FoodService {
 		
 		return food;
 	}
+
+
+	public List<Food> getListForMap() {
+		return mapper.getListForMap();
+	}
 	
 //	@Transactional(rollbackFor = Exception.class)
 //	public Food findFoodByAddr1(Food addr1) {

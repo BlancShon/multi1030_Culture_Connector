@@ -71,6 +71,12 @@
                                         <label for="cultureRadio">문화시설</label><br>
                                         <input type="radio" id="eventRadio" name="category" value="event" checked>
                                         <label for="eventRadio">공연예술</label>
+                                        <input type="radio" id="festivalRadio" name="category" value="festival">
+                                        <label for="festivalRadio">축제</label>
+                                        <input type="radio" id="leisureSportRadio" name="category" value="leisureSport">
+                                        <label for="leisureSportRadio">레저스포츠</label>
+                                        <input type="radio" id="foodRadio" name="category" value="food">
+                                        <label for="foodRadio">음식점</label>
                                         
                                         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 									</div>
@@ -183,13 +189,24 @@
     // Function to display markers
     function displayMarkers(data) {
         console.log("displayMarkers called - Data received:", JSON.stringify(data, null, 2));
-        // console.log("Data to display:", data); // 데이터 로그 출력
-        if (!data || (!data.events && !data.cultures)) {
-            console.log("displayMarkers - No valid data found");
-            return;
-        }
-        var items = data.events || data.cultures;
-        console.log("displayMarkers - Items to be displayed:", items);
+        var items = [];
+
+        // 기존 데이터 집합과 추가적인 데이터 집합을 확인
+        if (data.events) items = items.concat(data.events);
+        if (data.cultures) items = items.concat(data.cultures);
+        // 추가적인 데이터 집합
+        if (data.festivals) items = items.concat(data.festivals);
+        if (data.leisureSports) items = items.concat(data.leisureSports);
+        if (data.foods) items = items.concat(data.foods);
+
+
+
+
+
+
+        
+        // 여기에 더 많은 데이터 집합을 추가할 수 있습니다.
+
         if (items.length === 0) {
             console.log("displayMarkers - No items to display");
             return; // Exit if there are no items

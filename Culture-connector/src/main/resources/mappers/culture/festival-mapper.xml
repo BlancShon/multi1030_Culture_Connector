@@ -362,6 +362,19 @@
 		select * from festival;
 	</select>
 	
+	
+	<select id="getListForMap" resultMap="festivalResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	FESTIVAL
+	</select>
 
 </mapper>
 
