@@ -10,6 +10,7 @@ import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.CultureMapper;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
+import com.multi.mvc.culture.model.vo.Event;
 
 
 @Service
@@ -79,5 +80,8 @@ public class CultureService {
 		return mapper.selectTable();
 	}
 
+	public List<Culture> getListForMap() {
+		return mapper.getListForMap();
+	}
 
 }

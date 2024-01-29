@@ -85,4 +85,8 @@ public class EventService {
 		return mapper.getEventDetailsByAreacode(areacode);
 	}
 
+	public List<Event> getListForMap() {
+		return mapper.getListForMap();
+	}
+
 }

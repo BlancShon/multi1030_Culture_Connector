@@ -258,5 +258,18 @@
 		
 	</select>
 	
+	<select id="getListForMap" resultMap="cultureResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	culture
+	</select>
+	
 	
 </mapper>
