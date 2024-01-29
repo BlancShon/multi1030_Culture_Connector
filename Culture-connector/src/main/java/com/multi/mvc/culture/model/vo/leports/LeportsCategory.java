@@ -15,9 +15,11 @@ public class LeportsCategory {
 	private String name;
 	private String code;
 	private static ConcurrentHashMap<String, Vector<LeportsCategory>> categoryMap;
+	private static ConcurrentHashMap<String, String> codeToNameMap;
 	
 	static {
 		categoryMap = new ConcurrentHashMap<>();
+		codeToNameMap = new ConcurrentHashMap<>();
 		categoryMap.put("레포츠소개", new Vector<>(Arrays.asList(
 				new LeportsCategory("수상레포츠","A03010200"),
 				new LeportsCategory("항공레포츠","A03010300")
@@ -71,6 +73,25 @@ public class LeportsCategory {
 		categoryMap.put("복합레포츠", new Vector<>(Arrays.asList(
 				new LeportsCategory("복합레포츠","A03050100")
 				)));
+		
+		categoryMap.put("쇼핑",new Vector<>(Arrays.asList(
+				new LeportsCategory("5일장","A04010100"),
+				new LeportsCategory("상설시장","A04010200"),
+				new LeportsCategory("백화점","A04010300"),
+				new LeportsCategory("면세점","A04010400"),
+				new LeportsCategory("대형마트","A04010500"),
+				new LeportsCategory("전문매장/상가","A04010600"),
+				new LeportsCategory("공예/공방","A04010700"),
+				new LeportsCategory("특산물판매점","A04010900"),
+				new LeportsCategory("사후면세점","A04011000")
+				)));
+		
+		for(String key :categoryMap.keySet()) {
+			for(LeportsCategory category : categoryMap.get(key)) {
+				codeToNameMap.put(category.getCode(), category.getName());
+			}
+		}
+		
 	}
 	
 	public LeportsCategory(String name, String code) {
@@ -80,6 +101,9 @@ public class LeportsCategory {
 	}
 	public static ConcurrentHashMap<String, Vector<LeportsCategory>> getCategoryMap(){
 		return categoryMap;
+	}
+	public static ConcurrentHashMap<String, String> getCategoryCodeMap(){
+		return codeToNameMap; 
 	}
 
 }

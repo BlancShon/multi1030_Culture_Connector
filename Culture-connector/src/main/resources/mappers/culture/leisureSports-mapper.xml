@@ -178,7 +178,7 @@
 	
 
 	<select id="selectLeportsList" parameterType="LeisureSportsParam" resultMap="leportsResultMap">
-		SELECT  *
+		SELECT  contentid, title, cat3, restdateleports, firstimage, addr1 
 		FROM LEPORTS
 		where 1=1
 		<if test="searchType == 'title'">
@@ -187,10 +187,16 @@
 		<if test="searchType == 'address'">
 		    and ADDR1 LIKE '%${searchValue}%' 
 		</if>
-		<if test="locationList != null">
+		<!-- <if test="locationList != null">
 			 AND  
 			<foreach  item="item" collection="locationList" open="(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
+			</foreach>
+		</if> -->
+		 <if test="locationList != null">
+			and areacode in 
+			<foreach item="item" collection="locationList" open="(" separator="," close=")">
+				#{item}
 			</foreach>
 		</if>
 		<if test="leportsTypeList != null">
@@ -213,10 +219,16 @@
 		<if test="searchType == 'address'">
 		   and  ADDR1 LIKE '%${searchValue}%' 
 		</if>
-		<if test="locationList != null">
+		<!-- <if test="locationList != null">
 			 AND  
 			<foreach  item="item" collection="locationList" open="(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
+			</foreach>
+		</if> -->
+		 <if test="locationList != null">
+			and areacode in 
+			<foreach item="item" collection="locationList" open="(" separator="," close=")">
+				#{item}
 			</foreach>
 		</if>
 		<if test="leportsTypeList != null">

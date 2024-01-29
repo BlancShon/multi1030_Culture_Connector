@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.LeisureSportsService;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.LeisureSports;
 import com.multi.mvc.culture.model.vo.LeisureSportsParam;
-import com.multi.mvc.culture.model.vo.course.AreaCodes;
 import com.multi.mvc.culture.model.vo.leports.LeportsCategory;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +32,7 @@ public class LeisureSportsController {
 	private LeisureSports leisure;
 	Vector<AreaCodes> areaList;
 	private ConcurrentHashMap<String, Vector<LeportsCategory>> categoryMap;
+	private ConcurrentHashMap<String, String> categoryCodeMap;
 	
 	@Bean(initMethod = "initLeports")
 	public void initLeports() {
@@ -39,6 +40,7 @@ public class LeisureSportsController {
 		
 		areaList = service.getAreaList();
 		categoryMap = service.getCategoryMap();
+		categoryCodeMap = service.getCategoryCodeMap();
 	}
 
 	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
@@ -70,18 +72,17 @@ public class LeisureSportsController {
 		List<LeisureSports> list = service.getLeportsList(param);
 		
 		model.addAttribute("categoryMap",categoryMap);
+		model.addAttribute("categoryCodeMap",categoryCodeMap);
 		model.addAttribute("leisureCount", leisureCount);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
+		model.addAttribute("areaList",areaList);
 		// model.addAttribute("typeMap", typeMap);
 		model.addAttribute("param", param);
 		model.addAttribute("locationList", param.getLocationList());
+		model.addAttribute("leportsTypeList", param.getLeportsTypeList());
 		
-		System.out.println("leportsTypes !!!***********&&&&&&&&&&&&&" + param.getLeportsTypes());
-		System.out.println("leportsTypeList !!!***********&&&&&&&&&&&&&" + param.getLeportsTypeList());
-		System.out.println("locations !!!***********&&&&&&&&&&&&&" + param.getLocations());
-		System.out.println("locationList !!!***********&&&&&&&&&&&&&" + param.getLocationList());
-		
+		log.info("여기 맵 정보다여기 &&&&&&&&&&&&&&&&& {}", categoryCodeMap);
 
 		return "culture/leisureSportsList";
 	}

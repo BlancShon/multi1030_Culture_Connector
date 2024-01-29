@@ -43,9 +43,9 @@
 									<input type="hidden" name="page" value="1">
 									<div class="col-md-12 col-lg-12">
 					                   	<label style="margin-left: 40px"><input type="checkbox" name="searchType" value="title" class="search"
-											${param.searchType == 'title' ? 'checked' : ''} /> 키워드</label>
+											${fn:contains(searchTypeList, 'title') ? 'checked' : ''} /> 키워드</label>
 										<label style=""><input type="checkbox" name="searchType" value="address" class="search"
-											${param.searchType == 'address' ? 'checked' : ''} /> 장소</label>
+											${fn:contains(searchTypeList, 'address') ? 'checked' : ''} /> 장소</label>
 					                </div>
 									
 									<div class="search mt-0">

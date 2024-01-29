@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.LeisureSportsMapper;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.LeisureSports;
 import com.multi.mvc.culture.model.vo.LeisureSportsParam;
-import com.multi.mvc.culture.model.vo.course.AreaCodes;
 import com.multi.mvc.culture.model.vo.leports.LeportsCategory;
 
 import lombok.extern.slf4j.Slf4j;
@@ -125,6 +125,10 @@ public class LeisureSportsService {
 	
 	public Vector<AreaCodes> getAreaList() {
 		return AreaCodes.getAreaList();
+	}
+
+	public ConcurrentHashMap<String, String> getCategoryCodeMap() {
+		return LeportsCategory.getCategoryCodeMap();
 	}
 }
 

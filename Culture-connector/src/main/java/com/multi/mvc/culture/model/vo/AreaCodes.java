@@ -1,4 +1,4 @@
-package com.multi.mvc.culture.model.vo.course;
+package com.multi.mvc.culture.model.vo;
 
 import java.util.Vector;
 

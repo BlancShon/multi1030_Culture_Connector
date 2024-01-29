@@ -43,9 +43,10 @@
                     <input onkeyup="filter()" id="serchinput" type="text" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="액티비티 제목을 입력하세요">
                     <div class="input-group-append">
                         <button class="btn btn-lg btn-dark mb-0" type="submit">검색</button>
+                         <button type="reset" class="btn btn-dark rounded-pill h-100 px-5 ">초기화</button>     
                     </div>
                 </div>
-                <div class="container mx-4 mt-n1">
+                <%-- <div class="container mx-4 mt-n1">
                     <div class="filter-block">
                         <h6 class="mb-3">지역</h6>
                         <ul class="list-inline mb-0">
@@ -93,7 +94,22 @@
                             </li>
                         </ul> 
                          
-                    </div>
+                    </div> --%>
+                    
+                    <c:forEach var="item" items="${areaList}">
+					    <label class="form-check-label" style="margin-right: 10px;">
+					        <input class="form-check-input" type="checkbox" name=locations value="${item.code}"
+					            <c:forEach var="localType" items="${locationList}">
+					                <c:choose>
+					                    <c:when test="${localType eq item.code}">
+					                        checked
+					                    </c:when>
+					                </c:choose>
+					            </c:forEach>
+					        />  ${item.name}
+					    </label>
+					</c:forEach>
+                    
                     <hr>
                     
                     <div class="filter-block">
@@ -101,7 +117,7 @@
 						<c:forEach var="item" items="${categoryMap['레포츠소개']}">
 							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
 								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
-									${fn:contains(typeList, item.code) ? 'checked' : ''} >
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
 								${item.name}
 							</label>
 						</c:forEach>
@@ -111,7 +127,7 @@
 						<c:forEach var="item" items="${categoryMap['육상레포츠']}">
 							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
 								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
-									${fn:contains(typeList, item.code) ? 'checked' : ''} >
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
 								${item.name}
 							</label>
 						</c:forEach>
@@ -121,7 +137,7 @@
 						<c:forEach var="item" items="${categoryMap['수상레포츠']}">
 							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
 								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
-									${fn:contains(typeList, item.code) ? 'checked' : ''} >
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
 								${item.name}
 							</label>
 						</c:forEach>
@@ -131,7 +147,7 @@
 						<c:forEach var="item" items="${categoryMap['항공레포츠']}">
 							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
 								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
-									${fn:contains(typeList, item.code) ? 'checked' : ''} >
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
 								${item.name}
 							</label>
 						</c:forEach>
@@ -141,7 +157,7 @@
 						<c:forEach var="item" items="${categoryMap['복합레포츠']}">
 							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
 								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
-									${fn:contains(typeList, item.code) ? 'checked' : ''} >
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
 								${item.name}
 							</label>
 						</c:forEach>
@@ -225,9 +241,11 @@
                 <!-- Card body START -->
                 <div class="card-body px-3">
                     <!-- Title -->
-                    <h5 class="card-title mb-0"><a href="${path}/leports/detail?contentid=${item.contentid}"class="stretched-link">${item.title}</a></h5>
+                    <h5 class="card-title mb-2"><a href="${path}/leports/detail?contentid=${item.contentid}"class="stretched-link">${item.title}</a></h5>
+                    <h6><c:out value="${categoryCodeMap[item.cat3]}"></c:out></h6>
+                    <h7><c:out value="${item.addr1 }"/><br></h7>
                     <span class="small"><i class="far fa-calendar-alt me-2"></i>${item.restdateleports}</span>
-
+					
                 </div>
                 <!-- Card body END -->
                 <!-- Card footer START-->
