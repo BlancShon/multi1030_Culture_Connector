@@ -133,7 +133,7 @@
       </div>
       
       <!-- Search Input -->
-      <input  id="mainSearchValue" type="text" name="mainSearchValue" value="" class="form-control rounded-pill" placeholder="여행지를 입력하세요. ex)서울, 부산 등">
+      <input  id="mainSearchValue" type="text" name="mainSearchValue" value="" class="form-control rounded-pill" placeholder="키워드를 입력해주세요 ex) 떡볶이, 스키">
        <div class="input-group-append">
         <button type="button" onclick="mainSearch();" class="btn btn-primary">검색</button>
       </div>
@@ -146,16 +146,17 @@
   		var selectCategory = categoryObj.options[categoryObj.selectedIndex].value;
   		var selectCategory = categoryObj.options[categoryObj.selectedIndex].value;
 		var searchValue = document.getElementById('mainSearchValue').value;
-		alert('selectCategory : ' + selectCategory);
-		alert('searchValue : ' + searchValue);
+		
 		
 		if(selectCategory == 'culture'){
-			var path='${path}/culture/list?searchValue=';
+			var path = '${path}/culture/list?searchType=title&searchValue=';
 			path += searchValue;
 			location.href = path;
 		}
 		if(selectCategory=='culture_theme'){
-			
+			var path = '${path}/cultureTheme2Search?searchType=title&searchValue=';
+			path += searchValue;
+			location.href = path;
 		}
 		if(selectCategory == 'activity_class'){
 			var path = '${path}/leports/list?searchType=title&searchValue=';
@@ -163,10 +164,14 @@
 			location.href = path;
 		}
 		if(selectCategory=='food_tour'){
-			
+			 var path = '${path}/foodSearch?=food_tour&searchValue=';
+			    path += searchValue;
+			    location.href = path;
 		}
 		if(selectCategory=='culture_course'){
-			
+			var path = '${path}/course/list?searchType=title&searchValue=';
+			path += searchValue;
+			location.href = path;
 		}
 	}
   </script>
