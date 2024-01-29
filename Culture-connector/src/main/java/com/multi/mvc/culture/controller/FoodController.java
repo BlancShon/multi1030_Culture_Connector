@@ -73,12 +73,15 @@ public class FoodController {
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Food> list = service.getFoodSearchList(param);
+		List<Food> Randlist = service.getFoodRandList(param);
 		
 		System.out.println(list);
 		
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
+		model.addAttribute("Randlist", Randlist);
 		model.addAttribute("size", list.size());		
+		model.addAttribute("Randlistsize", Randlist.size());		
 		model.addAttribute("param", param);
 		
 		return "/culture/food";
@@ -95,14 +98,17 @@ public class FoodController {
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Food> list = service.getFoodSearchList(param);
+		List<Food> Randlist = service.getFoodRandList(param);
 		
 		System.out.println(list);
 		System.out.println(param.getFoodtypeList());
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
+		model.addAttribute("Randlist", Randlist);
 		model.addAttribute("localtypeList", param.getLocaltypeList());
 		model.addAttribute("foodtypeList", param.getFoodtypeList());
 		model.addAttribute("size", list.size());		
+		model.addAttribute("Randlistsize", Randlist.size());
 		model.addAttribute("param", param);
 		
 		return "/culture/foodSearch";

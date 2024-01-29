@@ -81,104 +81,114 @@ Main Banner START -->
 					<br><br>
 					
 
-					<!-- Slider START -->
-					<div class="tiny-slider arrow-round arrow-blur arrow-hover">
-						<div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2"
-							data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
+				<!-- Slider START -->
+				<div class="tiny-slider arrow-round arrow-blur arrow-hover">
+					<div class="tiny-slider-inner mb-8" data-autoplay="true" data-arrow="true" data-edge="2"
+						data-dots="false" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-sm="1">
+
 
 
 								<!-- Offer card START -->
-								<div>
-<%-- 									<c:forEach var="item" items="${list}"> --%>
+<!-- 								<div> -->
+<!-- <!-- 										<div class="card"> -->
+<!-- 											<div class="row g-4"> -->
+<!-- 									  		  	<div class="row"> -->
+<%-- 									  		 	 <c:forEach var="item" items="${Randlist}" begin="0" end="3"> --%>
+<!-- 									  		  		<div class="card"> -->
+<%-- 													<img src="${item.firstImage}" class="card-img" alt="" style="height: 200px"> --%>
+<!-- 														Card body -->
+<!-- 														<div class="position-absolute top-100 start-50 translate-middle w-100"> -->
+<!-- 															<div class="card-body text-center bg-mode shadow rounded mx-4 p-3"> -->
+<!-- 																<h6 class="card-title mb-1"> -->
+<%-- 																	<a href="${path}/food/detail?cfno=9999" style="text-align: left;">${item.title}</a><br> --%>
+<!-- 																</h6> -->
+<!-- 																<medium style="color: black;">인기메뉴</medium><br> -->
+<%-- 																	<small>${item.firstMenu }</small><br> --%>
+<!-- 																		<div class="mt-2"> -->
+<%-- 																			<a href="${path}/food/detail?cfno=9999" class="btn btn-sm btn-dark mb-0">메뉴 보기</a> --%>
+<!-- 																		</div> -->
+<!-- 															</div> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<%-- 												</c:forEach> --%>
+<!-- 												</div> -->
+<!-- 										</div> -->
+<!-- <!-- 									</div> --> 
+<!-- 								</div> -->
+								
+<!-- 									Offer card START -->
+										<c:forEach var="item" items="${Randlist}" begin="0" end="3">
+									<div>
 										<div class="card">
-											<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=95edda88-107b-4809-b969-ad3029828e17" class="card-img" alt="">
-											<!-- Card body -->
+											<img src="${item.firstImage}" class="card-img" alt="" style="height: 200px">
+<!-- 											Card body -->
 											<div class="position-absolute top-100 start-50 translate-middle w-100">
 												<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-												
-													<h6 class="card-title mb-1"><a href="${path}/food/detail?cfno=9999" style="text-align: left;">신당동 떡볶이</a><br>
-											
-												
+													<h6 class="card-title mb-1">
+														<a href="${path}/food/detail?cfno=${item.cfno}" style="text-align: left;">${item.title}</a><br>
 													</h6>
 													<medium style="color: black;">인기메뉴</medium><br>
-														<small>모둠 떡볶이</small><br>
-															<div class="mt-2"><a href="${path}/food/detail?cfno=9999" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
-															</div>
-<%-- 													</c:forEach>) --%>
+													<small>${item.firstMenu }</small><br>
+		
+													<div class="mt-2">
+													<a href="${path}/food/detail?cfno=${item.cfno}" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
+													</div>
 												</div>
 											</div>
 										</div>
-<%-- 									</c:forEach>	 --%>
-								</div>
+									</div>
+											</c:forEach>
+							</div>
+						</div>
+					</div>
+				</section>
+			</form>
 									
 									<!-- Offer card END -->
 								
-									<!-- Offer card START -->
-									<div>
-										<div class="card">
-											<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=b6ba00f5-5906-4a53-a255-a93e5ffa8c8d" class="card-img" alt="">
-											<!-- Card body -->
-											<div class="position-absolute top-100 start-50 translate-middle w-100">
-												<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-													<h6 class="card-title mb-1"><a href="#"
-															style="text-align: left;">뱀부 15-8</a><br>
-												
-													</h6>
-													<medium style="color: black;">인기메뉴</medium><br>
-													<small>판다 티라미수</small><br>
-		
-													<div class="mt-2"><a href="${path}/food/detail?cfno=8888" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+
 		
 									
-									<div>
-										<div class="card">
-											<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6a83f4cd-f102-4caf-b8fc-1e030a47a1ec" class="card-img" alt="">
-											<!-- Card body -->
-											<div class="position-absolute top-100 start-50 translate-middle w-100">
-												<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-													<h6 class="card-title mb-1"><a href="#"
-															style="text-align: center;">생선회</a><br>
+<!-- 									<div> -->
+<!-- 										<div class="card"> -->
+<!-- 											<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=6a83f4cd-f102-4caf-b8fc-1e030a47a1ec" class="card-img" alt=""> -->
+<!-- 											Card body -->
+<!-- 											<div class="position-absolute top-100 start-50 translate-middle w-100"> -->
+<!-- 												<div class="card-body text-center bg-mode shadow rounded mx-4 p-3"> -->
+<!-- 													<h6 class="card-title mb-1"><a href="#" -->
+<!-- 															style="text-align: center;">생선회</a><br> -->
 														
-													</h6>
-													<medium style="color: black;">인기 메뉴</medium><br>
-													<small> 매운탕, 회</small><br>
+<!-- 													</h6> -->
+<!-- 													<medium style="color: black;">인기 메뉴</medium><br> -->
+<!-- 													<small> 매운탕, 회</small><br> -->
 		
-													<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+<!-- 													<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
 									<!-- Offer card END -->
-									<div>
-										<div class="card">
-											<img src="${pageContext.request.contextPath}/resources/images/스시마츠모토.png" class="card-img" alt="">
-											<!-- Card body -->
-											<div class="position-absolute top-100 start-50 translate-middle w-100">
-												<div class="card-body text-center bg-mode shadow rounded mx-4 p-3">
-													<h6 class="card-title mb-1"><a href="#"
-															style="text-align: center;">스시마츠모토</a><br>
+<!-- 									<div> -->
+<!-- 										<div class="card"> -->
+<%-- 											<img src="${pageContext.request.contextPath}/resources/images/스시마츠모토.png" class="card-img" alt=""> --%>
+<!-- 											Card body -->
+<!-- 											<div class="position-absolute top-100 start-50 translate-middle w-100"> -->
+<!-- 												<div class="card-body text-center bg-mode shadow rounded mx-4 p-3"> -->
+<!-- 													<h6 class="card-title mb-1"><a href="#" -->
+<!-- 															style="text-align: center;">스시마츠모토</a><br> -->
 														
-													</h6>
-													<medium style="color: black;">인기 메뉴</medium><br>
-													<small>런치 오마카세</small><br>
+<!-- 													</h6> -->
+<!-- 													<medium style="color: black;">인기 메뉴</medium><br> -->
+<!-- 													<small>런치 오마카세</small><br> -->
 		
-													<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-				</form>
+<!-- 													<div class="mt-2"><a href="#" class="btn btn-sm btn-dark mb-0">메뉴 보기</a> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+		
 						<!-- Slider END -->
 			<!-- =======================추천 맛집  END -->
 

@@ -23,6 +23,8 @@ public interface FoodMapper {
 	int selectFoodCount(FoodParam param);
 
 	Food selectFoodByNo(int cfno);
+	
+	List<Food> selectFoodRand(FoodParam param);
 
 //	Food selectFoodByAddr1(Food addr1);
 

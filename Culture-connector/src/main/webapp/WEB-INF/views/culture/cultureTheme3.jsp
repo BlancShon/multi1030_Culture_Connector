@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+
 <jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="Culture Connector" name="title"/>
 </jsp:include>
@@ -45,6 +46,18 @@
 								<option value="서울">서울</option>
 								<option value="경기">경기</option>
 								<option value="인천">인천</option>
+								<option value="대전">대전</option>
+								<option value="대구">대구</option>
+								<option value="전라북도">전라북도</option>
+								<option value="경상북도">경상북도</option>
+								<option value="충청북도">충청북도</option>
+								<option value="전라남도">전라남도</option>
+								<option value="경상남도">경상남도</option>
+								<option value="충청남도">충청남도</option>
+								<option value="강원">강원</option>
+								<option value="울산">울산</option>
+								<option value="부산">부산</option>
+								<option value="제주">제주</option>
 								<!-- Add more options as needed -->
 							</select>
 						</div>
@@ -56,7 +69,7 @@
 						<!-- Input field -->
 						<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 							<input type="text" class="form-control flatpickr py-2 flatpickr-input"
-								data-date-format="YYYY-MM-DD" placeholder="날짜를 선택해주세요" readonly="readonly" name="searchDate">
+								data-date-format="YYYY-MM-DD" placeholder="날짜를 선택해주세요" readonly="readonly" name="searchDate" >
 								<script>
 								document.addEventListener('DOMContentLoaded', function() {
 								    // Flatpickr 초기화
@@ -114,125 +127,129 @@ Featured Hotels START -->
 <div class="container">
 
 	<!-- Title -->
-	<div class="row mb-4">
-		<div class="col-12 text-center">
-			<h3 class="mb-0 fs-4">현재 인기 있는 축제는?</h3>
-
-		</div>
-	</div>
-
-	<div class="row g-4">
-		<!-- Hotel item -->
-		<div class="col-sm-6 col-xl-3">
-			<!-- Card START -->
-			<div class="card card-img-scale overflow-hidden bg-transparent">
-				<!-- Image and overlay -->
-				<div class="card-img-scale-wrapper rounded-3">
-					<!-- Image -->
-					<img src="http://tong.visitkorea.or.kr/cms/resource/19/2987119_image2_1.jpg" class="card-img" alt="hotel image">
-					<!-- Badge -->
-					<div class="position-absolute bottom-0 start-0 p-3">
-						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>강원도</div>
-					</div>
-				</div>
-
-				<!-- Card body -->
-				<div class="card-body px-2">
-					<!-- Title -->
-					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">강원 동계청소년 올림픽 대회</a></h5>
-					<!-- 기간 -->
-					<div class="d-flex justify-content-between align-items-center">
-						<h6 class="text-success mb-0">2024.01.19~02.01</h6>  
-					</div>
-				</div>
-			</div>
-			<!-- Card END -->
-		</div>
-
-		<!-- Hotel item -->
-		<div class="col-sm-6 col-xl-3">
-			<!-- Card START -->
-			<div class="card card-img-scale overflow-hidden bg-transparent">
-				<!-- Image and overlay -->
-				<div class="card-img-scale-wrapper rounded-3">
-					<!-- Image -->
-					<img src="http://tong.visitkorea.or.kr/cms/resource/57/3062257_image2_1.jpg" class="card-img" alt="hotel image">
-					<!-- Badge -->
-					<div class="position-absolute bottom-0 start-0 p-3">
-						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>인천</div>
-					</div>
-				</div>
-
-				<!-- Card body -->
-				<div class="card-body px-2">
-					<!-- Title -->
-					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">만수천 빛의 거리</a></h5>
-					<!-- 기간 -->
-					<div class="d-flex justify-content-between align-items-center">
-						<h6 class="text-success mb-0">2023.12.08~2024.01.31</h6>  
-					</div>
-				</div>
-			</div>
-			<!-- Card END -->
-		</div>
-
-		<!-- Hotel item -->
-		<div class="col-sm-6 col-xl-3">
-			<!-- Card START -->
-			<div class="card card-img-scale overflow-hidden bg-transparent">
-				<!-- Image and overlay -->
-				<div class="card-img-scale-wrapper rounded-3">
-					<!-- Image -->
-					<img src="http://tong.visitkorea.or.kr/cms/resource/86/3054486_image2_1.png" class="card-img" alt="hotel image">
-					<!-- Badge -->
-					<div class="position-absolute bottom-0 start-0 p-3">
-						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>영동</div>
-					</div>
-				</div>
-
-				<!-- Card body -->
-				<div class="card-body px-2">
-					<!-- Title -->
-					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">영동 곶감 축제</a></h5>
-					<!-- 기간 -->
-					<div class="d-flex justify-content-between align-items-center">
-						<h6 class="text-success mb-0">2024.1.19~1.21</h6>  
+							<div class="row mb-4">
+								<div class="col-12 text-center">
+									<h3 class="mb-0 fs-4">현재 인기 있는 축제는?</h3>
 						
-					</div>
-				</div>
-			</div>
-			<!-- Card END -->
-		</div>
+								</div>
+							</div>
+					<div class="row g-4">
+					<c:if test="${not empty Randlist}">
+						</c:if>
+						<c:forEach var="item" items="${Randlist}" begin="0" end="3">
 
-		<!-- Hotel item -->
-		<div class="col-sm-6 col-xl-3">
-			<!-- Card START -->
-			<div class="card card-img-scale overflow-hidden bg-transparent">
-				<!-- Image and overlay -->
-				<div class="card-img-scale-wrapper rounded-3">
-					<!-- Image -->
-					<img src="http://tong.visitkorea.or.kr/cms/resource/23/3047123_image2_1.jpg" class="card-img" alt="hotel image">
-					<!-- Badge -->
-					<div class="position-absolute bottom-0 start-0 p-3">
-						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>경상남도</div>
-					</div>
-				</div>
-
-				<!-- Card body -->
-				<div class="card-body px-2">
-					<!-- Title -->
-					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">씨파크 스노우 페스티벌</a></h5>
-					<!-- 기간 -->
-					<div class="d-flex justify-content-between align-items-center">
-						<h6 class="text-success mb-0">2023.12.23~2024.02.28</h6>  
-						
-					</div>
+						<!-- Hotel item -->
+						<div class="col-sm-6 col-xl-3">
+							<!-- Card START -->
+							<div class="card card-img-scale overflow-hidden bg-transparent">
+								<!-- Image and overlay -->
+								<div class="card-img-scale-wrapper rounded-3">
+									<!-- Image -->
+									<img src="${item.firstimage}" class="card-img" alt="hotel image" style="height:200px">
+									<!-- Badge -->
+				<!-- 					<div class="position-absolute bottom-0 start-0 p-3"> -->
+				<!-- 						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>강원도</div> -->
+				<!-- 					</div> -->
+								</div>
 				
-				</div>
-			</div>
-			<!-- Card END -->
-		</div>
-	</div> <!-- Row END -->
+								<!-- Card body -->
+								<div class="card-body px-2">
+									<!-- Title -->
+									<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">${item.title}</a></h5>
+									<!-- 기간 -->
+									<div class="d-flex justify-content-between align-items-center">
+										<h6 class="text-success mb-0">${item.eventstartdate}<span> ~ ${item.eventenddate}</span></h6>  
+									</div>
+								</div>
+							</div>
+							<!-- Card END -->
+						</div>
+				</c:forEach>
+				</div> <!-- Row END -->
+		<!-- Hotel item -->
+<!-- 		<div class="col-sm-6 col-xl-3"> -->
+<!-- 			<!-- Card START --> 
+<!-- 			<div class="card card-img-scale overflow-hidden bg-transparent"> -->
+<!-- 				Image and overlay -->
+<!-- 				<div class="card-img-scale-wrapper rounded-3"> -->
+<!-- 					Image -->
+<!-- 					<img src="http://tong.visitkorea.or.kr/cms/resource/57/3062257_image2_1.jpg" class="card-img" alt="hotel image"> -->
+<!-- 					Badge -->
+<!-- 					<div class="position-absolute bottom-0 start-0 p-3"> -->
+<!-- 						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>인천</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+<!-- 				Card body -->
+<!-- 				<div class="card-body px-2"> -->
+<!-- 					Title -->
+<!-- 					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">만수천 빛의 거리</a></h5> -->
+<!-- 					기간 -->
+<!-- 					<div class="d-flex justify-content-between align-items-center"> -->
+<!-- 						<h6 class="text-success mb-0">2023.12.08~2024.01.31</h6>   -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<!-- Card END --> 
+<!-- 		</div> -->
+
+<!-- 		<!-- Hotel item --> 
+<!-- 		<div class="col-sm-6 col-xl-3"> -->
+<!-- 			<!-- Card START --> 
+<!-- 			<div class="card card-img-scale overflow-hidden bg-transparent"> -->
+<!-- 				Image and overlay -->
+<!-- 				<div class="card-img-scale-wrapper rounded-3"> -->
+<!-- 					Image -->
+<!-- 					<img src="http://tong.visitkorea.or.kr/cms/resource/86/3054486_image2_1.png" class="card-img" alt="hotel image"> -->
+<!-- 					Badge -->
+<!-- 					<div class="position-absolute bottom-0 start-0 p-3"> -->
+<!-- 						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>영동</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+<!-- 				Card body -->
+<!-- 				<div class="card-body px-2"> -->
+<!-- 					Title -->
+<!-- 					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">영동 곶감 축제</a></h5> -->
+<!-- 					기간 -->
+<!-- 					<div class="d-flex justify-content-between align-items-center"> -->
+<%-- 						<h6 class="text-success mb-0">${item.eventstartdate}<span> ~ ${item.eventenddate}</span></h6>   --%>
+						
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<!-- Card END --> 
+<!-- 		</div> -->
+
+<!-- 		<!-- Hotel item --> 
+<!-- 		<div class="col-sm-6 col-xl-3"> -->
+<!-- 			<!-- Card START --> 
+<!-- 			<div class="card card-img-scale overflow-hidden bg-transparent"> -->
+<!-- 				Image and overlay -->
+<!-- 				<div class="card-img-scale-wrapper rounded-3"> -->
+<!-- 					Image -->
+<!-- 					<img src="http://tong.visitkorea.or.kr/cms/resource/23/3047123_image2_1.jpg" class="card-img" alt="hotel image"> -->
+<!-- 					Badge -->
+<!-- 					<div class="position-absolute bottom-0 start-0 p-3"> -->
+<!-- 						<div class="badge text-bg-dark fs-6 rounded-pill stretched-link"><i class="bi bi-geo-alt me-2"></i>경상남도</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+<!-- 				Card body -->
+<!-- 				<div class="card-body px-2"> -->
+<!-- 					Title -->
+<!-- 					<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">씨파크 스노우 페스티벌</a></h5> -->
+<!-- 					기간 -->
+<!-- 					<div class="d-flex justify-content-between align-items-center"> -->
+<!-- 						<h6 class="text-success mb-0">2023.12.23~2024.02.28</h6>   -->
+						
+<!-- 					</div> -->
+				
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<!-- Card END --> 
+<!-- 		</div> -->
+
 </div>
 </section>
 <!-- =======================
@@ -244,80 +261,81 @@ Featured Hotels END -->
 Tour grid START -->
 <section class="pt-0">
 <div class="container">
-
-<!-- Filter and content START -->
-<div class="row g-4 align-items-center justify-content-between mb-4">
 <!-- Content -->
-<div class="col-12 col-xl-6 order-xl-1">
+<div class="col-12 col-xl-6 order-xl-1 mg-2">
 	<h5 class="mb-0 text-primary"><span class="text-info">${size}</span>개의 축제가 검색되었습니다.</h5>
 </div>
 
+<!-- Filter and content START -->
+<div class="row g-4 align-items-center justify-content-between mb-4">
+
 <!-- Select option -->
-<div class="col-12 col-xl-2 order-xl-2 mt-3 mt-xl-0 ">
-	<form class="form-control-bg-light" action="${path}/festival/searchTestList" method="get">
-		 <select id="upToDate" name="upToDate">
-            <option value="asc">최신순</option>
-            <option value="desc">오래된순</option>
-        </select>
-	</form>
-</div>
+<!-- <div class="col-12 col-xl-2 order-xl-2 mt-3 mt-xl-0 "> -->
+<%-- 	<form class="form-control-bg-light" action="${path}/festival/searchTestList" method="get"> --%>
+<!-- 		 <select id="upToDate" name="upToDate"> -->
+<!--             <option value="asc">최신순</option> -->
+<!--             <option value="desc">오래된순</option> -->
+<!--         </select> -->
+<!-- 	</form> -->
+<!-- </div> -->
 		
 
 	<!-- Filter and content END -->
 
-	<div class="row g-4">
-						
-		<!-- Card item START -->
-		<c:if test="${empty Flist}">
-			﻿결과가 없습니다.
-		</c:if>
-			<c:forEach var="item" items="${Flist}">
-				<div class="col-md-6 col-xl-4">
-					<div class="card card-hover-shadow pb-0 h-100">
-							<!-- Overlay item -->
-							<div class="position-relative">
-								<!-- Image -->
-								<img src="${item.firstimage}" class="card-img-top" alt="Card image" style="height:200px">
-								<!-- Overlay -->
-								<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-									<!-- Card overlay top -->
-									<div>
+				<div class="row g-4">
+						<!-- Card item START -->
+						<c:if test="${empty list}">
+							﻿결과가 없습니다.
+						</c:if>
+						<c:forEach var="item" items="${list}">
+					<div class="col-md-6 col-xl-4">
+						<div class="card card-hover-shadow pb-0 h-100">
+								<!-- Overlay item -->
+								<div class="position-relative">
+									<!-- Image -->
+									<img src="${item.firstimage}" class="card-img-top" alt="Card image" style="height:200px">
+									<!-- Overlay -->
+									<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
+										<!-- Card overlay top -->
+										<div>
+											
+											<span class="badge text-bg-dark">개최중</span>
+										</div>
+										<!-- Card overlay bottom -->
 										
-										<span class="badge text-bg-dark">개최중</span>
 									</div>
-									<!-- Card overlay bottom -->
-									
 								</div>
-							</div>
-							
-							<!-- Image -->
-					
-							<!-- Card body START -->
-							<div class="card-body px-3">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="${item.firstimage2}" class="stretched-link">${item.title}</a></h5>
-								<span class="small"><i class="far fa-calendar-alt me-2"></i>${item.eventstartdate}</span><span> ~ ${item.eventenddate}</span>
-							</div>
-							<!-- Card body END -->
-
-							<!-- Card footer START-->
-							<div class="card-footer pt-0">
-								<!-- Price and Button -->
-								<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-									<!-- Price -->
-									<div class="hstack gap-2">
-										<h6 class="mb-0 fs-5">${item.addr1}</h6>
-									</div>
-									
-									<!-- Button -->
-									<div class="mt-2 mt-sm-0">
-										<a href="${path}/festival/Detail" class="btn btn-sm btn-dark mb-0">더보기</a>
+								
+								<!-- Image -->
+						
+								<!-- Card body START -->
+								<div class="card-body px-3">
+									<!-- Title -->
+									<h5 class="card-title mb-0"><a href="${item.firstimage2}" class="stretched-link">${item.title}</a></h5>
+									<span class="small"><i class="far fa-calendar-alt me-2"></i>${item.eventstartdate}</span><span> ~ ${item.eventenddate}</span><br>
+										<span class="small"><i class="fa-solid bi bi-geo-alt-fill me-2"></i>${item.addr1}</span></span>
+								</div>
+								<!-- Card body END -->
+	
+								<!-- Card footer START-->
+								<div class="card-footer pt-0">
+									<!-- Price and Button -->
+									<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
+										<!-- Price -->
+										<div class="hstack gap-2">
+<%-- 											<h7 class="mb-0 fs-5">${item.addr1}</h7> --%>
+										</div>
+										
+										<!-- Button -->
+										<div class="mt-2 mt-sm-0">
+											<a href="${path}/festival/Detail" class="btn btn-sm btn-dark mb-0">더보기</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-			</c:forEach>
+				</c:forEach>
+
 						<!-- Card item END -->
 
 		

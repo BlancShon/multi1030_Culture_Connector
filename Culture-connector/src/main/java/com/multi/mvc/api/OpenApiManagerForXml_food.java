@@ -408,14 +408,20 @@ public class OpenApiManagerForXml_food {
 			//System.out.println("SVCOPNBGNDT: " + getDateData(eElement, "SVCOPNBGNDT"));
 			
 			// 필요 데이터들 파싱
-			String originImgurl1 = getStrData(eElement, "originimgurl");
-			String originImgurl2 = getStrData(eElement, "originimgurl");
+			String originImgurl = getStrData(eElement, "originimgurl");
+//			String originImgurl2 = getStrData(eElement, "originimgurl");
 			String smallImgurl = getStrData(eElement, "smallimageurl");
 //			String originImgurl2 = getStrData(eElement1, "originimgurl");
 			
-			food.setOriginImgurl1(originImgurl1);
+		     if (i == 0) {
+		            food.setOriginImgurl1(originImgurl);
+		        } else if (i == 1) {
+		            food.setOriginImgurl2(originImgurl);
+		        }
+			
+//			food.setOriginImgurl1(originImgurl);
 			food.setSmallImgurl(smallImgurl);  // 푸드에있는 kidsFac 데이터는 빈값이었ㄴㄴ데, 여기서 파싱된 데이터를 세팅해줌
-			food.setOriginImgurl2(originImgurl2);
+//			food.setOriginImgurl2(originImgurl);
 			
 			} catch (Exception e) {
 				System.out.println("데이터가 잘못되었습니다!");

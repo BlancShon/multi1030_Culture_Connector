@@ -200,55 +200,62 @@
 		FROM FESTIVAL
 		WHERE 1=1
 		<!-- 지역검색 -->
-		<if test="localtypeList != null">
-			 AND  
-			<foreach  item="item" collection="localtypeList" open="(" separator="or" close=")">  
+		<if test="localtypeList != null and localtypeList.size() != 0 ">
+			<foreach  item="item" collection="localtypeList" open="and(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
 			</foreach>
 		</if>
 		<!-- 날짜 검색 -->
-		<if test="searchDate != null">
+		<if test="searchDate != null and searchDate != '' ">
 <!-- 		    AND EVENTSTARTDATE LIKE '%${searchDate}%' -->
 <!-- 	      	AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') LIKE STR_TO_DATE(%#{searchDate}%, '%Y-%m-%d') -->
-	      	AND (EVENTSTARTDATE <![CDATA[<=]]> #{searchDate} <![CDATA[<=]]> EVENTENDDATE   )
+				AND (EVENTSTARTDATE <![CDATA[<=]]> #{searchDate} AND #{searchDate} <![CDATA[<=]]> EVENTENDDATE   )
+<!-- 	      	AND (EVENTSTARTDATE &lt;= #{searchDate} AND #{searchDate} &lt;= EVENTENDDATE) -->
+<!--    	   				2024 1 1						2024 0102  						2024 01 01  											 -->
+		</if>
+		<if test="searchDate == null">
+   			 AND CURDATE() BETWEEN EVENTSTARTDATE AND EVENTENDDATE
+		</if>
 		<!-- 진행or종료  -->
+		<if test="festivaltypeList != null"> 
+			<if test="festivaltypeList == '진행'"> 
+	   			 AND EVENTENDDATE <![CDATA[>=]]> CURDATE() 
+			</if>
+			<if test="festivaltypeList == '종료'"> 
+	   			 AND EVENTENDDATE <![CDATA[<=]]> CURDATE()
+			</if>
 		</if>
-		<if test="festivaltypes == '진행'"> 
-	    	AND EVENTSTARTDATE <![CDATA[>=]]> CURDATE()
-<!--     		AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') &gt;= CURDATE() -->
-		</if> 
-		<if test="festivaltypes == '종료'"> 
-		    AND EVENTENDDATE <![CDATA[<=]]> CURDATE()
-<!-- 		    AND STR_TO_DATE(EVENTENDDATE, '%Y-%m-%d')  &lt;= CURDATE() -->
-		</if>
-		ORDER BY EVENTSTARTDATE DESC LIMIT ${limit} OFFSET ${offset};
+		ORDER BY RAND() DESC LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	<select id="selectFestivalCount" parameterType="FestivalParam" resultType="int">
 		SELECT  COUNT(*)
 		FROM FESTIVAL
-		WHERE 1=1
-		<!-- 지역검색 -->
-		<if test="localtypeList != null">
-			 AND  
-			<foreach  item="item" collection="localtypeList" open="(" separator="or" close=")">  
+		WHERE 1=1	<!-- 지역검색 -->
+		<if test="localtypeList != null and localtypeList.size() != 0 ">
+			<foreach  item="item" collection="localtypeList" open="and(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
 			</foreach>
 		</if>
 		<!-- 날짜 검색 -->
-		<if test="searchDate != null">
+		<if test="searchDate != null and searchDate != '' ">
 <!-- 		    AND EVENTSTARTDATE LIKE '%${searchDate}%' -->
 <!-- 	      	AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') LIKE STR_TO_DATE(%#{searchDate}%, '%Y-%m-%d') -->
-	      	AND (EVENTSTARTDATE <![CDATA[<=]]> #{searchDate} <![CDATA[<=]]> EVENTENDDATE   )
-		<!-- 진행or종료  -->
+			  	AND (EVENTSTARTDATE <![CDATA[<=]]> #{searchDate} AND #{searchDate} <![CDATA[<=]]> EVENTENDDATE   )
+<!-- 	      	AND (EVENTSTARTDATE &lt;= #{searchDate} AND #{searchDate} &lt;= EVENTENDDATE) -->
+<!--    	   				2024 1 1						2024 0102  						2024 01 01  											 -->
 		</if>
-		<if test="festivaltypes == '진행'"> 
-	    	AND EVENTSTARTDATE <![CDATA[>=]]> CURDATE()
-<!--     		AND STR_TO_DATE(EVENTSTARTDATE, '%Y-%m-%d') &gt;= CURDATE() -->
-		</if> 
-		<if test="festivaltypes == '종료'"> 
-		    AND EVENTENDDATE <![CDATA[<=]]> CURDATE()
-<!-- 		    AND STR_TO_DATE(EVENTENDDATE, '%Y-%m-%d')  &lt;= CURDATE() -->
+		<if test="searchDate == null">
+   			 AND CURDATE() BETWEEN EVENTSTARTDATE AND EVENTENDDATE
+		</if>
+		<!-- 진행or종료  -->
+		<if test="festivaltypeList != null"> 
+			<if test="festivaltypeList == '진행'"> 
+	   			 AND EVENTENDDATE <![CDATA[>=]]> CURDATE() 
+			</if>
+			<if test="festivaltypeList == '종료'"> 
+	   			 AND EVENTENDDATE <![CDATA[<=]]> CURDATE()
+			</if>
 		</if>
 <!-- 		ORDER BY EVENTSTARTDATE DESC LIMIT ${limit} OFFSET ${offset}; -->
 	</select>
@@ -360,6 +367,12 @@
 	
 	<select id="selectTable" resultType="Festival">
 		select * from festival;
+	</select>
+	
+	<select id="selectFestivalRand" parameterType="FestivalParam" resultMap="festivalResultMap">
+		SELECT * 
+		FROM FESTIVAL
+		ORDER BY RAND() DESC LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 

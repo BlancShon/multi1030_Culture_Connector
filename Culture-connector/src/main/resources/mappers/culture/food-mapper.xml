@@ -216,7 +216,7 @@
  			    AND B.CONTENT LIKE '%${searchValue}%'  
  			</if> 
  		ORDER BY C.LEVEL, B.BNO  -->
-		ORDER BY CFNO DESC LIMIT ${limit} OFFSET ${offset};
+		ORDER BY RAND() DESC LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 	<select id="selectFoodCount" parameterType="FoodParam" resultType="int">
@@ -268,6 +268,12 @@
  			    AND B.CONTENT LIKE '%${searchValue}%'  
  			</if> 
  		ORDER BY C.LEVEL, B.BNO  -->
+	</select>
+	
+		<select id="selectFoodRand" parameterType="FoodParam" resultMap="FoodResultMap">
+		SELECT * 
+		FROM FOOD
+		ORDER BY RAND() DESC LIMIT ${limit} OFFSET ${offset};
 	</select>
 	
 </mapper>

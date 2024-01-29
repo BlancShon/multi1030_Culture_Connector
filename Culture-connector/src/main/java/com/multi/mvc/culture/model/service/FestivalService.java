@@ -9,8 +9,6 @@ import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.FestivalMapper;
 import com.multi.mvc.culture.model.vo.Festival;
 import com.multi.mvc.culture.model.vo.FestivalParam;
-import com.multi.mvc.culture.model.vo.Food;
-import com.multi.mvc.culture.model.vo.FoodParam;
 import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Service
@@ -63,6 +61,10 @@ public class FestivalService {
 		return mapper.selectTable();
 	}
 
+	public List<Festival> getListRand(FestivalParam param){
+		return mapper.selectFestivalRand(param);
+	}
+
 
 	
 	public int getFestivalCount(FestivalParam param) {
@@ -73,6 +75,8 @@ public class FestivalService {
 	public List<Festival> getFestivalSearchList(FestivalParam param) {
 		return mapper.selectFestivalList(param);
 	}
+
+
 }
 
 

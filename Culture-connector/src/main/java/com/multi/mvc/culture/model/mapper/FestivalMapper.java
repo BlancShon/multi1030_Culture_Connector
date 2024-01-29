@@ -19,10 +19,11 @@ public interface FestivalMapper {
 
 	List<Festival> selectTable();
 
+	List<Festival> selectFestivalRand(FestivalParam param);
+
 	void insertFestival(Festival item);
 	
 	List<Festival> selectFestivalList(FestivalParam param);
 	
 	int selectFestivalCount(FestivalParam param);
-	
 }

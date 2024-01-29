@@ -23,7 +23,7 @@
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js" ></script> 
 	
 	<!-- 카카오맵 기능 사용하는데 필요한 자바스크립트 파일/ appkey는 kakaoDeveloper 사이트에서 생성한 고유 javaScript 키를 입력하면 됩니다. -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee850f3227ff38fdb5e4924011797d01"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3209ad17db60f2bfe7a8c0129f6fd91e"></script>
 
 
 
@@ -223,24 +223,24 @@ Content START -->
 								<!-- Map START -->
 <!-- 								<iframe class="w-100 " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin" height="200" style="border:0;" aria-hidden="false" tabindex="0"></iframe> -->
 									
-									<iframe>
-										<div id="map" style="width:100%;height:350px; border-style: dashed;" height="200" style="border:0;" aria-hidden="false" tabindex="0"></div>
-								 	</iframe>
-								
+								<section id="container">
+									<div id="map" style="width:100%;height:400px;"></div>
+								</section>
+
 							<script>
-								var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-								mapOption = { 
-								    center: new kakao.maps.LatLng(${food.mapX}, ${food.mapY}), // 지도의 중심좌표
-								    level: 3 // 지도의 확대 레벨
-								};
+								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							    mapOption = { 
+								        center: new kakao.maps.LatLng(${food.mapY}, ${food.mapX}), // 지도의 중심좌표
+								        level: 4 // 지도의 확대 레벨
+								    };
 								
-								var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+								var map = new kakao.maps.Map(mapContainer, mapOption);
 								
 								//마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 								var positions = [
 										{
 										    content: '<div>${food.title}</div>', 
-										    latlng: new kakao.maps.LatLng(${food.mapX}, ${food.mapY})
+										    latlng: new kakao.maps.LatLng(${food.mapY}, ${food.mapX})
 										},
 								];
 								
@@ -405,7 +405,7 @@ Content START -->
 									<li class="list-group-item d-flex justify-content-between">
 										<span>예약 안내</span>
 										<!-- reservationfood -->
-										<span>${food.reservationFood}(${food.infocenterFood})</span>
+										<span>${food.reservationFood}</span>
 									</li>
 
 									<li class="list-group-item py-0"><hr class="my-1"></li> 

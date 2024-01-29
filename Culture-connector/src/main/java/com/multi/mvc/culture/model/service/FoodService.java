@@ -79,6 +79,11 @@ public class FoodService {
 		
 		return mapper.selectFoodList(param);
 	}
+
+	public List<Food> getFoodRandList(FoodParam param){
+		
+		return mapper.selectFoodRand(param);
+	}
 	
 //	
 

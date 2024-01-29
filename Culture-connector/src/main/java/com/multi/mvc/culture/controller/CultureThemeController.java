@@ -31,12 +31,39 @@ public class CultureThemeController {
 //	    return "/culture/cultureTheme2";
 //	}
 
-	@GetMapping("/cultureTheme3")
-    public String cultureTheme3() {
-        log.info("cultureTheme3 request");
-        
-        return "/culture/cultureTheme3";
-    }
+//	@GetMapping("/cultureTheme3")
+//    public String cultureTheme3() {
+//        log.info("cultureTheme3 request");
+//        
+//        return "/culture/cultureTheme3";
+//    }
+	
+	@RequestMapping("/cultureTheme3")
+	public String FestivalListMain(Model model, FestivalParam param) {
+		System.out.println("@@ festival list 요청 param : " + param);
+		
+		int festivalCount = service.getFestivalCount(param);
+//			PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 10, festivalCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		param.setLimit(pageInfo.getListLimit());
+		param.setOffset(pageInfo.getStartList() - 1);
+		List<Festival> list = service.getFestivalSearchList(param);
+		List<Festival> Randlist = service.getListRand(param);
+		
+		System.out.println("@@@@@@@@@@@@@@@@@@@FList@@@@@@@@@@@@" + list);
+		System.out.println(param.getFestivaltypeList());
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("list", list);
+		model.addAttribute("Randlist", Randlist);
+		model.addAttribute("localtypeList", param.getLocaltypeList());
+		model.addAttribute("festivaltypeList", param.getFestivaltypeList());
+		model.addAttribute("searchValue", param.getSearchValue());
+		model.addAttribute("searchDate", param.getSearchDate());
+		model.addAttribute("size", list.size());		
+		model.addAttribute("param", param);
+		
+		return "/culture/cultureTheme3";
+	}
 	
 	@RequestMapping("/cultureTheme3Search")
 	public String FestivalList(Model model, FestivalParam param) {
@@ -47,15 +74,19 @@ public class CultureThemeController {
 		PageInfo pageInfo = new PageInfo(param.getPage(), 10, festivalCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
-		List<Festival> Flist = service.getFestivalSearchList(param);
+		List<Festival> list = service.getFestivalSearchList(param);
+		List<Festival> Randlist = service.getListRand(param);
 		
-		System.out.println("@@@@@@@@@@@@@@@@@@@FList@@@@@@@@@@@@" + Flist);
+		System.out.println("@@@@@@@@@@@@@@@@@@@FList@@@@@@@@@@@@" + list);
 		System.out.println(param.getFestivaltypeList());
 		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("Flist", Flist);
+		model.addAttribute("list", list);
+		model.addAttribute("Randlist", Randlist);
 		model.addAttribute("localtypeList", param.getLocaltypeList());
 		model.addAttribute("festivaltypeList", param.getFestivaltypeList());
-		model.addAttribute("size", Flist.size());		
+		model.addAttribute("searchValue", param.getSearchValue());
+		model.addAttribute("searchDate", param.getSearchDate());
+		model.addAttribute("size", list.size());		
 		model.addAttribute("param", param);
 		
 		return "/culture/cultureTheme3";
