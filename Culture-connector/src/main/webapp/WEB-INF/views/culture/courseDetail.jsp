@@ -589,8 +589,7 @@ for (var i = 0; i < positions.length; i ++) {
     });
     // ---------------------------------------------
     // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	var content = '<div class="customoverlay">' +
-	    '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+	var content = '<div class="customoverlay" style="color: blue;>' +
 	    '    <span class="title">'+ (i + 1) + '번째 코스<br>' + positions[i].title + '</span>' +
 	    '  </a>' +
 	    '</div>';
