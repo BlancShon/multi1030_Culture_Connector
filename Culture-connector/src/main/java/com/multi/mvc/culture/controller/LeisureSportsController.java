@@ -82,8 +82,6 @@ public class LeisureSportsController {
 		model.addAttribute("locationList", param.getLocationList());
 		model.addAttribute("leportsTypeList", param.getLeportsTypeList());
 		
-		log.info("여기 맵 정보다여기 &&&&&&&&&&&&&&&&& {}", categoryCodeMap);
-
 		return "culture/leisureSportsList";
 	}
 	

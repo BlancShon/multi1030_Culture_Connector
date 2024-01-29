@@ -45,7 +45,7 @@
 			<div class="row">
 	
 				<!-- Left sidebar START -->
-				<aside class="col-2">
+				<aside class="col-2" style="height=1000;">
 					<div data-sticky data-margin-top="80" data-sticky-for="1199">
 						<!-- Responsive offcanvas body START -->
 						<div class="offcanvas-xl offcanvas-end" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
@@ -55,33 +55,49 @@
 							</div>
 							<!-- Offcanvas body -->
 							<div class="offcanvas-body flex-column p-3 p-xl-0">
+								  <hr class="my-4">
+								  <h5> Category</h5>
+								  <hr>
 								<form class="rounded-3 shadow">
-									<!-- 서치바 시작 -->
-	
-									<!-- 서치바 끝 -->
-	
-									<hr class="my-0"> <!-- Divider -->
-	
-									<!-- 시설별 선택 START -->
-									<div class="card card-body rounded-0 rounded-bottom p-4">
-										<!-- Title -->
-										<h6 class="mb-2">카테고리</h6>
-										<!-- Radio buttons -->
-                                        <input type="radio" id="cultureRadio" name="category" value="culture">
-                                        <label for="cultureRadio">문화시설</label><br>
-                                        <input type="radio" id="eventRadio" name="category" value="event" checked>
-                                        <label for="eventRadio">공연예술</label>
-                                        <input type="radio" id="festivalRadio" name="category" value="festival">
-                                        <label for="festivalRadio">축제</label>
-                                        <input type="radio" id="leisureSportRadio" name="category" value="leisureSport">
-                                        <label for="leisureSportRadio">레저스포츠</label>
-                                        <input type="radio" id="foodRadio" name="category" value="food">
-                                        <label for="foodRadio">음식점</label>
-                                        
-                                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-									</div>
-									<!-- 시설별 선택 END -->
-								</form><!-- Form End -->
+						            <div class="form-check">
+						              <input class="form-check-input" type="radio" name="category" id="cultureRadio" value="culture">
+						              <label class="form-check-label mb-2" for="cultureRadio">
+						               문화시설
+						              </label>
+						            </div>
+						            <div class="form-check">
+						              <input class="form-check-input" type="radio" name="category" id="eventRadio" value="event" checked>
+						              <label class="form-check-label mb-2" for="eventRadio">
+						              공연예술
+						              </label>
+						            </div>
+						            <div class="form-check">
+						              <input class="form-check-input" type="radio" name="category" id="festivalRadio" value="festival">
+						              <label class="form-check-label mb-2" for="festivalRadio">
+						               축제
+						              </label>
+						            </div>
+						            <div class="form-check">
+						              <input class="form-check-input" type="radio" name="category" id="leisureSportRadio" value="leisureSport">
+						              <label class="form-check-label mb-2" for="leisureSportRadio">
+						               레저스포츠
+						              </label>
+						            </div>
+						            <div class="form-check">
+						              <input class="form-check-input" type="radio" name="category" id="foodRadio" value="food">
+						              <label class="form-check-label mb-2" for="foodRadio">
+						                음식점
+						              </label>
+						            </div>
+						          </form>
+								 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+								
+								
+								
+								
+								
+								
+								
 							</div>
 						</div>
 						<!-- Responsive offcanvas body END -->
