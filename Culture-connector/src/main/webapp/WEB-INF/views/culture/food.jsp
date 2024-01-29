@@ -1144,7 +1144,7 @@ Footer START -->
 </html>
 <script type="text/javascript">
 	function movePage(page){
-		searchForm.page.value = page;
-		searchForm.submit();
+		foodSearch.page.value = page;
+		foodSearch.submit();
 	}
 </script>
