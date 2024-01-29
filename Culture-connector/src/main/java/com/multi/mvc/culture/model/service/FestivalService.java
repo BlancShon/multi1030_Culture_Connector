@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.FestivalMapper;
 import com.multi.mvc.culture.model.vo.Festival;
 import com.multi.mvc.culture.model.vo.FestivalParam;
+import com.multi.mvc.culture.model.vo.Food;
 import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Service
@@ -82,6 +84,12 @@ public class FestivalService {
 	}
 
 
+	@Transactional(rollbackFor = Exception.class)
+	public Festival getfindFestivalNo(int contentid) {
+		Festival festival = mapper.selectFestivalByNo(contentid);
+		
+		return festival;
+	}
 }
 
 

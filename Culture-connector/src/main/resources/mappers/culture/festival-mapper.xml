@@ -388,6 +388,11 @@
         FROM
         	FESTIVAL
 	</select>
+	
+		<select id="selectFestivalByNo" parameterType="int" resultMap="festivalResultMap">
+		SELECT * FROM FESTIVAL 
+		WHERE CONTENTID = #{contentid}
+	</select>
 </mapper>
 
 

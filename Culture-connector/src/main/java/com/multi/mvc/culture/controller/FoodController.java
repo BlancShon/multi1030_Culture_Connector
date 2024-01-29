@@ -85,7 +85,7 @@ public class FoodController {
 		model.addAttribute("foodCount", foodCount);		
 		model.addAttribute("param", param);
 		
-		return "/culture/food";
+		return "culture/food";
 	}
 	
 	//http://localhost:8085/mvc/foodSearch?searchValue=search&localtypes=%EC%9D%B8%EC%B2%9C&localtypes=%EA%B2%BD%EB%B6%81&localtypes=%EB%B6%80%EC%82%B0&localtypes=%EC%A0%9C%EC%A3%BC&foodtypes=on
@@ -113,7 +113,7 @@ public class FoodController {
 		model.addAttribute("Randlistsize", Randlist.size());
 		model.addAttribute("param", param);
 		
-		return "/culture/foodSearch";
+		return "culture/foodSearch";
 	}
 	
 //	@RequestMapping("/food/foodSearch3")

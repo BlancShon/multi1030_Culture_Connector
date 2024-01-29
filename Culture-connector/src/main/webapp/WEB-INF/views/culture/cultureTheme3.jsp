@@ -29,7 +29,7 @@
 <div class="row mt-n7">
 <div class="col-11 mx-auto">
 	<!-- Booking from START -->
-	<form class="bg-mode shadow rounded-3 p-4"name="cultureTheme3Search" action="${pageContext.request.contextPath}/cultureTheme3Search" method="get">
+	<form class="bg-mode shadow rounded-3 p-4" name="cultureTheme3Search" action="${pageContext.request.contextPath}/cultureTheme3Search" method="get">
 <%-- 	<form name="cultureTheme3Search" action="${pageContext.request.contextPath}/cultureTheme3Search" method="get"> --%>
 		<input type="hidden" name="page" value="1">
 		<div class="row g-4 align-items-center">
@@ -155,7 +155,7 @@ Featured Hotels START -->
 								<!-- Card body -->
 								<div class="card-body px-2">
 									<!-- Title -->
-									<h5 class="card-title"><a href="culture-theme2-detail.html" class="stretched-link">${item.title}</a></h5>
+									<h5 class="card-title"><a href="${path}/cultureTheme3/detail?contentid=${item.contentid}" class="stretched-link">${item.title}</a></h5>
 									<!-- 기간 -->
 									<div class="d-flex justify-content-between align-items-center">
 										<h6 class="text-success mb-0">${item.eventstartdate}<span> ~ ${item.eventenddate}</span></h6>  
@@ -260,14 +260,14 @@ Featured Hotels END -->
 <!-- =======================
 Tour grid START -->
 <section class="pt-0">
-<div class="container">
-<!-- Content -->
-<div class="col-12 col-xl-6 order-xl-1 mg-2">
-	<h5 class="mb-0 text-primary"><span class="text-info">${size}</span>개의 축제가 검색되었습니다.</h5>
-</div>
+		<div class="container">
+				<!-- Content -->
+				<div class="col-12 col-xl-6 order-xl-1 mg-2">
+					<h5 class="mb-0 text-primary"><span class="text-info">${festivalCount}</span>개의 축제가 검색되었습니다.</h5>
+				</div>
 
-<!-- Filter and content START -->
-<div class="row g-4 align-items-center justify-content-between mb-4">
+				<!-- Filter and content START -->
+			<div class="row g-4 align-items-center justify-content-between mb-4">
 
 <!-- Select option -->
 <!-- <div class="col-12 col-xl-2 order-xl-2 mt-3 mt-xl-0 "> -->
@@ -311,7 +311,7 @@ Tour grid START -->
 								<!-- Card body START -->
 								<div class="card-body px-3">
 									<!-- Title -->
-									<h5 class="card-title mb-0"><a href="${item.firstimage2}" class="stretched-link">${item.title}</a></h5>
+									<h5 class="card-title mb-0"><a href="${path}/cultureTheme3/detail?contentid=${item.contentid}" class="stretched-link">${item.title}</a></h5>
 									<span class="small"><i class="far fa-calendar-alt me-2"></i>${item.eventstartdate}</span><span> ~ ${item.eventenddate}</span><br>
 										<span class="small"><i class="fa-solid bi bi-geo-alt-fill me-2"></i>${item.addr1}</span></span>
 								</div>
@@ -328,7 +328,7 @@ Tour grid START -->
 										
 										<!-- Button -->
 										<div class="mt-2 mt-sm-0">
-											<a href="${path}/festival/Detail" class="btn btn-sm btn-dark mb-0">더보기</a>
+											<a href="${path}/cultureTheme3/detail?contentid=${item.contentid}" class="btn btn-sm btn-dark mb-0">더보기</a>
 										</div>
 									</div>
 								</div>
@@ -591,20 +591,30 @@ Tour grid START -->
 	</div> <!-- Row END -->
 
 	<!-- Pagination -->
-	<div class="row">
-		<div class="col-12">
-			<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-				<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-					<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-					<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-					<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-					<li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
-					<li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
-					<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+	<nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+                        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
+                                    </a>
+                                    <!-- 여기까지 이전페이지 버튼 -->
+                            </li>
+                             <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+                             <c:if test="${status.current == pageInfo.currentPage}">
+								<li class="page-item active"><a class="page-link" href=""><button style="border: none; background: none;">${status.current}</button></a></li>
+						    </c:if> 
+						    <c:if test="${status.current != pageInfo.currentPage}">
+							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
+							</c:if>
+                            </c:forEach>
+                            <!-- 여기는 이후 페이지 버튼 -->
+                             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                           		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
+                             	</a>
+                           	</li>
+                                        
+                      
+                        </ul>
+                    </nav>
 </div>
 </section>
 <!-- =======================
@@ -613,9 +623,11 @@ Tour grid END -->
 
 
 
-
-</div>
-</section>
-
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+<script type="text/javascript">
+	function movePage(page){
+		cultureTheme3Search.page.value = page;
+		cultureTheme3Search.submit();
+	}
+</script>

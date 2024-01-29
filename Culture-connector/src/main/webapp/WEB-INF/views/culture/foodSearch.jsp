@@ -215,7 +215,7 @@ Main Banner START -->
 			<div class="container">
 				<hr>
 					<div class="count">
-						총 <span class="count text-primary" style="text-align: left;">${size}</span>
+						총 <span class="count text-primary" style="text-align: left;">${foodCount}</span>
 					</div>
 					<br>
 					
@@ -653,22 +653,30 @@ Main Banner START -->
 					</div> <!-- Row END -->
 
 					<!-- Pagination -->
-					<div class="row">
-						<div class="col-12">
-							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-								<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-									<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i
-												class="fa-solid fa-angle-left"></i></a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-									<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#"><i
-												class="fa-solid fa-angle-right"></i></a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
+					<nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+                        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
+                                    </a>
+                                    <!-- 여기까지 이전페이지 버튼 -->
+                            </li>
+                             <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+                             <c:if test="${status.current == pageInfo.currentPage}">
+								<li class="page-item active"><a class="page-link" href=""><button style="border: none; background: none;">${status.current}</button></a></li>
+						    </c:if> 
+						    <c:if test="${status.current != pageInfo.currentPage}">
+							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
+							</c:if>
+                            </c:forEach>
+                            <!-- 여기는 이후 페이지 버튼 -->
+                             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                           		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
+                             	</a>
+                           	</li>
+                                        
+                      
+                        </ul>
+                    </nav>
 				</div>
 			</section>
 			<!-- =======================
@@ -723,3 +731,9 @@ Footer START -->
 
 </body>
 </html>
+<script type="text/javascript">
+	function movePage(page){
+		foodSearch.page.value = page;
+		foodSearch.submit();
+	}
+</script>

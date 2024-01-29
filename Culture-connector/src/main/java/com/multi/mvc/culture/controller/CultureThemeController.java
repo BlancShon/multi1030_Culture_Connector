@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.FestivalService;
@@ -44,7 +44,7 @@ public class CultureThemeController {
 		
 		int festivalCount = service.getFestivalCount(param);
 //			PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
-		PageInfo pageInfo = new PageInfo(param.getPage(), 10, festivalCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 6, festivalCount, 9); // page가 보여질 갯수 : 10, 게시글 목록은 12개
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Festival> list = service.getFestivalSearchList(param);
@@ -55,6 +55,7 @@ public class CultureThemeController {
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
 		model.addAttribute("Randlist", Randlist);
+		model.addAttribute("festivalCount", festivalCount);	
 		model.addAttribute("localtypeList", param.getLocaltypeList());
 		model.addAttribute("festivaltypeList", param.getFestivaltypeList());
 		model.addAttribute("searchValue", param.getSearchValue());
@@ -71,25 +72,44 @@ public class CultureThemeController {
 		
 		int festivalCount = service.getFestivalCount(param);
 //			PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
-		PageInfo pageInfo = new PageInfo(param.getPage(), 10, festivalCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 6, festivalCount, 9); // page가 보여질 갯수 : 10, 게시글 목록은 12개
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Festival> list = service.getFestivalSearchList(param);
 		List<Festival> Randlist = service.getListRand(param);
 		
 		System.out.println("@@@@@@@@@@@@@@@@@@@FList@@@@@@@@@@@@" + list);
+		System.out.println("@@@@@@@@@@@@@@@@@@@Fcount@@@@@@@@@@@@" + festivalCount);
 		System.out.println(param.getFestivaltypeList());
+		
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
 		model.addAttribute("Randlist", Randlist);
 		model.addAttribute("localtypeList", param.getLocaltypeList());
 		model.addAttribute("festivaltypeList", param.getFestivaltypeList());
 		model.addAttribute("searchValue", param.getSearchValue());
+		model.addAttribute("festivalCount", festivalCount);	
 		model.addAttribute("searchDate", param.getSearchDate());
 		model.addAttribute("size", list.size());		
 		model.addAttribute("param", param);
 		
-		return "/culture/cultureTheme3";
+		return "culture/cultureTheme3";
+	}
+	
+	@RequestMapping("/cultureTheme3/detail")
+	public String FestivalView(Model model, @RequestParam("contentid") int contentid) {
+		Festival festival = null;
+		try {
+			festival = service.getfindFestivalNo(contentid);
+		} catch (Exception e) {}
+		if(festival == null) {
+			return "redirect:error";
+		}
+		
+//		model.addAttribute("typeMap", typeMap);
+		model.addAttribute("festival", festival);
+		
+		return "culture/cultureTheme3Detail";
 	}
 	
 	@RequestMapping(value = "/cultureTheme4", method = RequestMethod.GET)

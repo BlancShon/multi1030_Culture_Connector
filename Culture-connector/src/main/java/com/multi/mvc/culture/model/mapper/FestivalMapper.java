@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.multi.mvc.culture.model.vo.Festival;
 import com.multi.mvc.culture.model.vo.FestivalParam;
+import com.multi.mvc.culture.model.vo.Food;
 import com.multi.mvc.culture.model.vo.SearchForm;
 
 @Mapper
@@ -28,5 +29,7 @@ public interface FestivalMapper {
 	int selectFestivalCount(FestivalParam param);
 
 	List<Festival> getListForMap();
+	
+	Festival selectFestivalByNo(int contentid);
 	
 }
