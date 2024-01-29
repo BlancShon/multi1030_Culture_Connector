@@ -72,9 +72,9 @@
             <input type="hidden" name="page" value="1">
             	<div style="margin-top: 30px">
             	
-            	<label style="margin-left: 40px"><input type="checkbox" name="searchType" value="title" class="search"
+            	<label style="margin-left: 40px"><input type="radio" name="searchType" value="title" class="search"
 											${param.searchType == 'title' ? 'checked' : ''} /> 제목</label>
-				<label style=""><input type="checkbox" name="searchType" value="address" class="search"
+				<label style=""><input type="radio" name="searchType" value="address" class="search"
 											${param.searchType == 'address' ? 'checked' : ''} /> 주소</label>
 				
 				<input style="border: none; width: 300px;"  placeholder="(검색할 카테고리를 선택하세요.)">
