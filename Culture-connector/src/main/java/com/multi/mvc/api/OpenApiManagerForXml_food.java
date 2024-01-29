@@ -36,7 +36,7 @@ public class OpenApiManagerForXml_food {
 		List<Food> list = new ArrayList<>();
  
 		StringBuilder urlBuffer = new StringBuilder(KoreaRestaurantLists_XML_URL);
-		urlBuffer.append("?" + "numOfRows=" + "20");
+		urlBuffer.append("?" + "numOfRows=" + "50");
 		urlBuffer.append("&" + "pageNo=" + "1");
 		urlBuffer.append("&" + "MobileOS=" + "ETC");
 		urlBuffer.append("&" + "MobileApp=" + "AppTest");

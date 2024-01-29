@@ -242,7 +242,7 @@
                             <!-- Card item END -->
                             </c:forEach>
                         </div>
-                        ----
+                       
                         
                         </c:if>
                         </form>

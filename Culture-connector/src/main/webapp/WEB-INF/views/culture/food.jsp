@@ -40,7 +40,7 @@ Main Banner START -->
 
 
 	<form name="foodSearch" action="${pageContext.request.contextPath}/foodSearch" method="get">
-
+<input type="hidden" name="page" value="1">
 			
 			<!--서치바-->
 			<div div class="container mt-5">
@@ -57,7 +57,7 @@ Main Banner START -->
 						<div class="search">
 							<i class="fa fa-search"></i>
 						
-							<input type="hidden" name="page" value="1">
+<!-- 							<input type="hidden" name="page" value="1"> -->
 							<input type="text" class="form-control" style="font-size: large" name="searchValue" placeholder="맛집 이름을 검색하세요." value="${param.searchValue}">
 							<button class="btn btn-primary" style="font-size: x-large;">검색</button>
 						</div>
@@ -484,7 +484,6 @@ Main Banner START -->
 					</div>
 				</div>
 			</section>
-		</form>
 			<!-- =======================
 Near by END -->
 
@@ -501,6 +500,7 @@ Services START -->
 
 						</div> <!-- Row END -->
 					</div>
+				</div>
 			</section>
 			<!-- =======================
  =======================
@@ -513,7 +513,7 @@ Title and Tabs END -->
 			<div class="container">
 				<hr>
 					<div class="count">
-						총 <span class="count text-primary" style="text-align: left;">${size}</span>
+						총 <span class="count text-primary" style="text-align: left;">${foodCount}</span>
 					</div>
 					<br>
 					
@@ -1013,40 +1013,63 @@ Title and Tabs END -->
 <!-- 					</div> Row END -->
 
 	<!-- page부 시작 -->
-			<div align="center">
-				<!-- 가장 단순화된 버전 = 검색어가 없는 경우 -->
-<!-- 			처음 페이지로 이동하는 코드 -->
-<%-- 	 			<button onclick="location.href='${path}/board/list?page=1'">&lt;&lt;</button>  --%>
-<!-- 			이전 페이지로 이동하는 코드 -->
-<%-- 	 			<button onclick="location.href='${path}/board/list?page=${pageInfo.prevPage}'">&lt;</button>  --%>
+	 				<nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+                        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
+                                    </a>
+                                    <!-- 여기까지 이전페이지 버튼 -->
+                            </li>
+                             <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+                             <c:if test="${status.current == pageInfo.currentPage}">
+								<li class="page-item active"><a class="page-link" href=""><button style="border: none; background: none;">${status.current}</button></a></li>
+						    </c:if> 
+						    <c:if test="${status.current != pageInfo.currentPage}">
+							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
+							</c:if>
+                            </c:forEach>
+                            <!-- 여기는 이후 페이지 버튼 -->
+                             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                           		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
+                             	</a>
+                           	</li>
+                                        
+                      
+                        </ul>
+                    </nav>
+<!-- 			<div align="center"> -->
+<!-- 				가장 단순화된 버전 = 검색어가 없는 경우 -->
+<!-- <!-- 			처음 페이지로 이동하는 코드 --> 
+<%-- <%-- 	 			<button onclick="location.href='${path}/board/list?page=1'">&lt;&lt;</button>  --%> 
+<!-- <!-- 			이전 페이지로 이동하는 코드 --> 
+<%-- <%-- 	 			<button onclick="location.href='${path}/board/list?page=${pageInfo.prevPage}'">&lt;</button>  --%> 
 				
-				<!-- 처음 페이지 -->
-				<button onclick="movePage(1);">&lt;&lt;</button>
-				<!-- 이전 페이지 -->
-				<button onclick="movePage(${pageInfo.prevPage});">&lt;</button>
+<!-- 				처음 페이지 -->
+<!-- 				<button onclick="movePage(1);">&lt;&lt;</button> -->
+<!-- 				이전 페이지 -->
+<%-- 				<button onclick="movePage(${pageInfo.prevPage});">&lt;</button> --%>
 				
-				<!-- 10개의 페이지가 보이는 영역 -->
-				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
-					<!-- 현재 페이지 일때 button을 다르게 표기 하기 위한 영역 -->
-					<c:if test="${status.current == pageInfo.currentPage}">
-						<button disabled >
-							${status.current}
-						</button>
-					</c:if>
-					<c:if test="${status.current != pageInfo.currentPage}">
-						<button onclick="movePage(${status.current});">
-							${status.current}
-						</button>
-					</c:if>
-				</c:forEach>
+<!-- 				10개의 페이지가 보이는 영역 -->
+<%-- 				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" > --%>
+<!-- 					현재 페이지 일때 button을 다르게 표기 하기 위한 영역 -->
+<%-- 					<c:if test="${status.current == pageInfo.currentPage}"> --%>
+<!-- 						<button disabled > -->
+<%-- 							${status.current} --%>
+<!-- 						</button> -->
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${status.current != pageInfo.currentPage}"> --%>
+<%-- 						<button onclick="movePage(${status.current});"> --%>
+<%-- 							${status.current} --%>
+<!-- 						</button> -->
+<%-- 					</c:if> --%>
+<%-- 				</c:forEach> --%>
 				
-				<!-- 다음 페이지 -->
-				<button onclick="movePage(${pageInfo.nextPage});">&gt;</button>
-				<!-- 마지막 페이지 -->
-				<button onclick="movePage(${pageInfo.maxPage});">&gt;&gt;</button>
-			</div>
+<!-- 				다음 페이지 -->
+<%-- 				<button onclick="movePage(${pageInfo.nextPage});">&gt;</button> --%>
+<!-- 				마지막 페이지 -->
+<%-- 				<button onclick="movePage(${pageInfo.maxPage});">&gt;&gt;</button> --%>
+<!-- 			</div> -->
 		<!-- page부 끝 -->
-	</div>
 </section>
 
 <!-- 					Pagination -->
@@ -1119,7 +1142,6 @@ Footer START -->
 
 </body>
 </html>
-
 <script type="text/javascript">
 	function movePage(page){
 		searchForm.page.value = page;

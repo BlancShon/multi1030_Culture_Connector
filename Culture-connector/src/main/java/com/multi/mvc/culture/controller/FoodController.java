@@ -69,7 +69,7 @@ public class FoodController {
 		
 		int foodCount = service.getFoodCount(param);
 //			PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
-		PageInfo pageInfo = new PageInfo(param.getPage(), 10, foodCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 6, foodCount, 9); // page가 보여질 갯수 : 10, 게시글 목록은 12개
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Food> list = service.getFoodSearchList(param);
@@ -82,6 +82,7 @@ public class FoodController {
 		model.addAttribute("Randlist", Randlist);
 		model.addAttribute("size", list.size());		
 		model.addAttribute("Randlistsize", Randlist.size());		
+		model.addAttribute("foodCount", foodCount);		
 		model.addAttribute("param", param);
 		
 		return "/culture/food";
@@ -94,7 +95,7 @@ public class FoodController {
 		
 		int foodCount = service.getFoodCount(param);
 //			PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
-		PageInfo pageInfo = new PageInfo(param.getPage(), 10, foodCount, 12); // page가 보여질 갯수 : 10, 게시글 목록은 12개
+		PageInfo pageInfo = new PageInfo(param.getPage(), 6, foodCount, 9); // page가 보여질 갯수 : 10, 게시글 목록은 12개
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<Food> list = service.getFoodSearchList(param);
@@ -108,6 +109,7 @@ public class FoodController {
 		model.addAttribute("localtypeList", param.getLocaltypeList());
 		model.addAttribute("foodtypeList", param.getFoodtypeList());
 		model.addAttribute("size", list.size());		
+		model.addAttribute("foodCount", foodCount);		
 		model.addAttribute("Randlistsize", Randlist.size());
 		model.addAttribute("param", param);
 		
