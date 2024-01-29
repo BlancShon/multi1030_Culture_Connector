@@ -96,13 +96,24 @@
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <div class="form-check">
-                               
-                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="seoul" 
-											${param.checkBox == 'seoul' ? 'checked' : ''}  />서울</label>
-											
+                               	<c:forEach var="item" items="${areaList}">
+                                    <label class="form-check-label" style="margin-right: 50px;">
+                                    <input class="form-check-input" type="checkbox" name="localTypes" value="${item.code}" 
+											<c:forEach var="localType" items="${localTypeList}">
+												                <c:choose>
+												                    <c:when test="${localType eq item.code}">
+												                        
+												                        checked
+												                    </c:when>
+												                </c:choose>
+												            </c:forEach>  
+												            />
+												            ${item.name}
+												            </label>
+								</c:forEach>			
                                 </div>
                             </li>
-                            <li class="list-inline-item">
+                         <%--    <li class="list-inline-item">
                                 <div class="form-check">
                                     <label><input class="form-check-input" type="checkbox" name="checkBox" value="gyeonggi" 
 											${param.checkBox == 'gyeonggi' ? 'checked' : ''} />경기</label>
@@ -145,7 +156,7 @@
                                    <label><input class="form-check-input" type="checkbox" name="checkBox" value="jeju" 
 											${param.checkBox == 'jeju' ? 'checked' : ''} />제주</label>
                                 </div>
-                            </li>
+                            </li> --%>
                         </ul> 
                          
                     </div>
