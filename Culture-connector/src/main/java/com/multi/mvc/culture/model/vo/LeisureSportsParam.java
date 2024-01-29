@@ -2,7 +2,6 @@ package com.multi.mvc.culture.model.vo;
 
 import java.util.Arrays;
 import java.util.List;
-
 public class LeisureSportsParam {
 
 	// html - form의 name과 일치하는 파라메터
@@ -10,6 +9,8 @@ public class LeisureSportsParam {
 		private String searchValue;
 		private String[] locations;
 		private List<String> locationList;
+		private String[] leportsTypes;
+		private List<String> leportsTypeList;
 
 		// 페이징 인자
 		private int page;
@@ -21,16 +22,22 @@ public class LeisureSportsParam {
 			page = 1; 
 		}
 
-		public LeisureSportsParam(String searchType, String searchValue, String[] locations, List<String> locationList,
+		
+
+
+		public LeisureSportsParam(String searchType, String searchValue, String[] locations, String[] leportsTypes,
 				int page, int limit, int offset) {
 			super();
 			this.searchType = searchType;
 			this.searchValue = searchValue;
 			setLocations(locations);
+			setLeportsTypes(leportsTypes);
 			this.page = page;
 			this.limit = limit;
 			this.offset = offset;
 		}
+
+
 
 		public String getSearchType() {
 			return searchType;
@@ -54,7 +61,23 @@ public class LeisureSportsParam {
 
 		public void setLocations(String[] locations) {
 			this.locations = locations;
-			locationList = List.of(locations);
+			if(locations != null) {
+				locationList = List.of(locations);
+			}
+		}
+		public void setLeportsTypes(String[] leportsTypes) {
+			this.leportsTypes = leportsTypes;
+			if(leportsTypes != null) {
+				leportsTypeList = List.of(leportsTypes);
+			}
+		}
+
+		public List<String> getLeportsTypeList() {
+			return leportsTypeList;
+		}
+
+		public String[] getLeportsTypes() {
+			return leportsTypes;
 		}
 
 		public List<String> getLocationList() {

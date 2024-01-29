@@ -32,5 +32,7 @@ public interface EventMapper {
 	// 가장 근접한 이벤트 가져오기
 	Event getEventDetailsByAreacode(@Param("areacode") String areacode);
 	
+	List<Event> getListForMap();
+	
 	
 }

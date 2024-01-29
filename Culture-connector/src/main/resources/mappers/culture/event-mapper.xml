@@ -271,7 +271,7 @@
 	
 	<select id="selectEventByContentId" parameterType="int" resultMap="eventResultMap">
 		SELECT  
-			contentid, TITLE, ADDR1, firstimage, firstimage2, MAPX, MAPY, tel, INFOCENTERCULTURE, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
+			contentid, TITLE, ADDR1, firstimage, firstimage2, MAPX, MAPY, tel, sponsor1tel, overview, IMAGE0, IMAGE1, IMAGE2, IMAGE3, IMAGE4, IMAGE5
 			
 			FROM EVENT where contentid = #{contentid}
 	</select>
@@ -302,7 +302,18 @@
     LIMIT 1;
 	</select>
 	
-	
+	<select id="getListForMap" resultMap="eventResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	EVENT
+	</select>
 	
 
 </mapper>

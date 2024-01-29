@@ -26,4 +26,7 @@ public interface FestivalMapper {
 	List<Festival> selectFestivalList(FestivalParam param);
 	
 	int selectFestivalCount(FestivalParam param);
+
+	List<Festival> getListForMap();
+	
 }

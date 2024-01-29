@@ -274,6 +274,23 @@
 		SELECT * 
 		FROM FOOD
 		ORDER BY RAND() DESC LIMIT ${limit} OFFSET ${offset};
+		</select>
+
+	<select id="getListForMap" resultMap="FoodResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	food
+	</select>
+	
+	<select id="getListForDTO" resultMap="FoodResultMap">
+		SELECT * FROM FOOD
 	</select>
 	
 </mapper>

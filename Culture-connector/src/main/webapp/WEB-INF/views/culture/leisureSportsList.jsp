@@ -25,6 +25,8 @@
     </div>
 </section>
 
+
+
 <div class="container">
     <div class="container bg-mode shadow rounded-3 p-4">
         <div class="row g-4 align-items-center">
@@ -41,9 +43,10 @@
                     <input onkeyup="filter()" id="serchinput" type="text" name="searchValue" value="${param.searchValue}" class="form-control" placeholder="액티비티 제목을 입력하세요">
                     <div class="input-group-append">
                         <button class="btn btn-lg btn-dark mb-0" type="submit">검색</button>
+                         <button type="reset" class="btn btn-dark rounded-pill h-100 px-5 ">초기화</button>     
                     </div>
                 </div>
-                <div class="container mx-4 mt-n1">
+                <%-- <div class="container mx-4 mt-n1">
                     <div class="filter-block">
                         <h6 class="mb-3">지역</h6>
                         <ul class="list-inline mb-0">
@@ -91,23 +94,94 @@
                             </li>
                         </ul> 
                          
-                    </div>
-                    <br>
+                    </div> --%>
+                    
+                    <c:forEach var="item" items="${areaList}">
+					    <label class="form-check-label" style="margin-right: 10px;">
+					        <input class="form-check-input" type="checkbox" name=locations value="${item.code}"
+					            <c:forEach var="localType" items="${locationList}">
+					                <c:choose>
+					                    <c:when test="${localType eq item.code}">
+					                        checked
+					                    </c:when>
+					                </c:choose>
+					            </c:forEach>
+					        />  ${item.name}
+					    </label>
+					</c:forEach>
+                    
+                    <hr>
+                    
+                    <div class="filter-block">
+                    	<b style="font-weight: bold; margin-right: 20px; margin-bottom: 10px;">레포츠 소개</b> 
+						<c:forEach var="item" items="${categoryMap['레포츠소개']}">
+							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
+								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
+								${item.name}
+							</label>
+						</c:forEach>
+						<br> 
+						
+                    	<b style="font-weight: bold; margin-right: 20px; margin-bottom: 10px;">육상 레포츠</b> 
+						<c:forEach var="item" items="${categoryMap['육상레포츠']}">
+							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
+								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
+								${item.name}
+							</label>
+						</c:forEach>
+						<br>
+						
+                    	<b style="font-weight: bold; margin-right: 20px; margin-bottom: 10px;">수상 레포츠</b> 
+						<c:forEach var="item" items="${categoryMap['수상레포츠']}">
+							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
+								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
+								${item.name}
+							</label>
+						</c:forEach>
+						<br>
+						
+                    	<b style="font-weight: bold; margin-right: 20px; margin-bottom: 10px;">항공 레포츠</b> 
+						<c:forEach var="item" items="${categoryMap['항공레포츠']}">
+							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
+								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
+								${item.name}
+							</label>
+						</c:forEach>
+						<br>
+						
+                    	<b style="font-weight: bold; margin-right: 20px; margin-bottom: 10px;">복합 레포츠</b> 
+						<c:forEach var="item" items="${categoryMap['복합레포츠']}">
+							<label class="form-check-label"  style="margin-right: 10px; margin-bottom: 5px">
+								<input  class="form-check-input" type="checkbox" name="leportsTypes" value="${item.code}"
+									${fn:contains(leportsTypeList, item.code) ? 'checked' : ''} >
+								${item.name}
+							</label>
+						</c:forEach>
+						<br>
+						
+                    	
+						
+						
+					</div>
                  
                 </div>
             </form>
         </div>
         <!--서치바 끝-->
 
-</div>
+	</div>
 
 	<!-- Booking from END -->
 </div>
 
 
+
 <!-- Search END -->
-
-
+<br>
 
 
 
@@ -145,7 +219,7 @@
 					</tr>
 				</c:if>
                 				<c:if test="${not empty list}">
-                				 <h5>검색결과 54개</h5>
+                				 <h5>${ leisureCount} 개의 결과</h5>
     <c:forEach var="item" items="${list}">
         <!-- Your card structure goes here -->
         <div class="col-md-6 col-xl-4">
@@ -167,16 +241,18 @@
                 <!-- Card body START -->
                 <div class="card-body px-3">
                     <!-- Title -->
-                    <h5 class="card-title mb-0"><a href="${path}/leisureSports/detail?contentid=${item.contentid}"class="stretched-link">${item.title}</a></h5>
+                    <h5 class="card-title mb-2"><a href="${path}/leports/detail?contentid=${item.contentid}"class="stretched-link">${item.title}</a></h5>
+                    <h6><c:out value="${categoryCodeMap[item.cat3]}"></c:out></h6>
+                    <h7><c:out value="${item.addr1 }"/><br></h7>
                     <span class="small"><i class="far fa-calendar-alt me-2"></i>${item.restdateleports}</span>
-
+					
                 </div>
                 <!-- Card body END -->
                 <!-- Card footer START-->
                 <div class="card-footer pt-0">
                     <!-- Price -->
                     <div class="hstack gap-2">
-                         <div class="mt-2"><a href="${path}/leisureSports/detail?contentid=${item.contentid}" class="btn btn-sm btn-dark mb-0">자세히</a></div>
+                         <div class="mt-2"><a href="${path}/leports/detail?contentid=${item.contentid}" class="btn btn-sm btn-dark mb-0">자세히</a></div>
                     </div>
                 </div>
             </div>
@@ -234,7 +310,7 @@
                       
                         </ul>
                     </nav>
-
+			<br><br>
    
 
 

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.CourseService;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.Course;
-import com.multi.mvc.culture.model.vo.course.AreaCodes;
 import com.multi.mvc.culture.model.vo.course.CourseCategory;
 import com.multi.mvc.culture.model.vo.course.CourseParam;
 
@@ -29,6 +29,7 @@ public class CourseController {
 	
 	@Autowired
 	private CourseService service;
+	private Course course;
 	
 	private static Vector<CourseCategory> categoryList;
 	private static Vector<AreaCodes> areaList;
@@ -87,16 +88,26 @@ public class CourseController {
 		model.addAttribute("typeMap", typeMap);
 		model.addAttribute("typeList", param.getTypeList());
 		model.addAttribute("localTypeList", param.getLocalTypeList());
+		model.addAttribute("searchTypeList", param.getSearchTypeList());
 		model.addAttribute("param", param);
-		
 		model.addAttribute("courseCount", courseCount);
-		
+
+		log.info("여기 서치 타입리스트 정보다 {} ", param.getSearchTypeList());
 		return "/culture/cultureNews2";
 	}
 	
 	@GetMapping("/detail")
 	public String courseDetail(Model model, @RequestParam("contentid") int contentid) {
-		Course course = service.getCourse(contentid);
+		try {
+			course = service.getCourse(contentid);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    if (course == null) {
+	        return "redirect:error";
+	    }
+	
 		model.addAttribute("course", course);
 		return "/culture/courseDetail";
 	}

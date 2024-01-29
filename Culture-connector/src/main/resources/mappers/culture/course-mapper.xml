@@ -253,6 +253,21 @@
 			from course
 			where 
 				1=1
+				<if test="searchTypeList != null and searchTypeList.size() > 0">
+			        AND (
+			            <foreach collection="searchTypeList" item="searchType" separator=" OR ">
+			                <choose>
+			                    <when test="searchType == 'title'">
+			                        title LIKE CONCAT('%', #{searchValue}, '%')
+			                    </when>
+			                    <when test="searchType == 'address'">
+			                        SUBCONTENTADD10 LIKE CONCAT('%', #{searchValue}, '%')
+			                    </when>
+			                </choose>
+			            </foreach>
+			        )
+			    </if>
+
 				<if test="typeList != null">
 					and cat2 in 
 					<foreach item="item" collection="typeList" open="(" separator="," close=")">
@@ -265,18 +280,33 @@
 						#{item}
 					</foreach>
 				</if>
-				<if test="searchValue != null">
-					AND TITLE LIKE '%${searchValue}%' 
-				</if>
 			    
 		   ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
 	</select>
+       
        
 	<select id="selectCourseCount" parameterType="CourseParam" resultType="int">
 	 	select count(*)
 			from course
 			where 
 				1=1
+				<if test="searchTypeList != null and searchTypeList.size() > 0">
+			        AND (
+			            <foreach collection="searchTypeList" item="searchType" separator=" OR ">
+			                <choose>
+			                    <when test="searchType == 'title'">
+			                        title LIKE CONCAT('%', #{searchValue}, '%')
+			                    </when>
+			                    <when test="searchType == 'address'">
+			                        SUBCONTENTADD10 LIKE CONCAT('%', #{searchValue}, '%')
+			                    </when>
+			                </choose>
+			            </foreach>
+			        )
+			    </if>
+				
+				
+				
 				<if test="typeList != null">
 					and cat2 in 
 					<foreach item="item" collection="typeList" open="(" separator="," close=")">
@@ -288,9 +318,6 @@
 					<foreach item="item" collection="localTypeList" open="(" separator="," close=")">
 						#{item}
 					</foreach>
-				</if>
-				<if test="searchValue != null">
-					AND TITLE LIKE '%${searchValue}%' 
 				</if>
 	</select>
 	

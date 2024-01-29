@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.api.ApiParsing;
 import com.multi.mvc.culture.model.mapper.CourseMapper;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.Course;
-import com.multi.mvc.culture.model.vo.course.AreaCodes;
 import com.multi.mvc.culture.model.vo.course.CourseCategory;
 import com.multi.mvc.culture.model.vo.course.CourseParam;
 

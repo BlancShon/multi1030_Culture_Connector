@@ -184,7 +184,18 @@
 			<if test="searchType == 'address'">
 			   AND ADDR1 LIKE '%${searchValue}%' 
 			</if>
-			<if test="checkBox == 'seoul'">
+			
+			
+			<if test="localTypeList != null">
+				and areacode in 
+				<foreach item="item" collection="localTypeList" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			
+			
+			
+		<!-- 	<if test="checkBox == 'seoul'">
 			    AND ADDR1 LIKE '%서울%' 
 			</if>
 			<if test="checkBox == 'gyeonggi'">
@@ -207,7 +218,7 @@
 			</if>
 			<if test="checkBox == 'jeju'">
 			    AND ADDR1 LIKE '%제주%' 
-			</if>
+			</if> -->
 			
 		ORDER BY sigungucode LIMIT ${limit} OFFSET ${offset};
 	</select>
@@ -223,7 +234,15 @@
 			    AND ADDR1 LIKE '%${searchValue}%' 
 			</if>
 			
-			<if test="checkBox == 'seoul'">
+			
+			<if test="localTypeList != null">
+					and areacode in 
+					<foreach item="item" collection="localTypeList" open="(" separator="," close=")">
+						#{item}
+					</foreach>
+				</if>
+			
+	<!-- 		<if test="checkBox == 'seoul'">
 			    AND ADDR1 LIKE '%서울%' 
 			</if>
 			<if test="checkBox == 'gyeonggi'">
@@ -246,7 +265,7 @@
 			</if>
 			<if test="checkBox == 'jeju'">
 			    AND ADDR1 LIKE '%제주%' 
-			</if>
+			</if> -->
 	</select>
 	
 	<select id="selectCultureByContentId" parameterType="int" resultMap="cultureResultMap">
@@ -256,6 +275,19 @@
 			FROM culture where contentid = #{contentid}
 		
 		
+	</select>
+	
+	<select id="getListForMap" resultMap="cultureResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	culture
 	</select>
 	
 	

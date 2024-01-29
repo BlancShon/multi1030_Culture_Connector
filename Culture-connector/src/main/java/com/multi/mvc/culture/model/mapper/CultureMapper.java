@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
+import com.multi.mvc.culture.model.vo.Event;
 
 @Mapper
 public interface CultureMapper {
@@ -25,4 +26,5 @@ public interface CultureMapper {
 	
 	int selectCultureCount(CultureParam param);
 
+	List<Culture> getListForMap();
 }

@@ -158,7 +158,7 @@
 
           <!-- Nav item 문화(여행) 지도  -->
 					<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/clutureTourMap">문화(여행) 지도</a>
+            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/cultureTourMap">문화(여행) 지도</a>
           </li>
 
 

@@ -178,7 +178,7 @@
 	
 
 	<select id="selectLeportsList" parameterType="LeisureSportsParam" resultMap="leportsResultMap">
-		SELECT  *
+		SELECT  contentid, title, cat3, restdateleports, firstimage, addr1 
 		FROM LEPORTS
 		where 1=1
 		<if test="searchType == 'title'">
@@ -187,10 +187,22 @@
 		<if test="searchType == 'address'">
 		    and ADDR1 LIKE '%${searchValue}%' 
 		</if>
-		<if test="locationList != null">
+		<!-- <if test="locationList != null">
 			 AND  
 			<foreach  item="item" collection="locationList" open="(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
+			</foreach>
+		</if> -->
+		 <if test="locationList != null">
+			and areacode in 
+			<foreach item="item" collection="locationList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="leportsTypeList != null">
+			and cat3 in 
+			<foreach item="item" collection="leportsTypeList" open="(" separator="," close=")">
+				#{item}
 			</foreach>
 		</if>
 		ORDER BY contentid LIMIT ${limit} OFFSET ${offset};
@@ -207,10 +219,22 @@
 		<if test="searchType == 'address'">
 		   and  ADDR1 LIKE '%${searchValue}%' 
 		</if>
-		<if test="locationList != null">
+		<!-- <if test="locationList != null">
 			 AND  
 			<foreach  item="item" collection="locationList" open="(" separator="or" close=")">  
 			    ADDR1 LIKE '%${item}%'
+			</foreach>
+		</if> -->
+		 <if test="locationList != null">
+			and areacode in 
+			<foreach item="item" collection="locationList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="leportsTypeList != null">
+			and cat3 in 
+			<foreach item="item" collection="leportsTypeList" open="(" separator="," close=")">
+				#{item}
 			</foreach>
 		</if>
 	</select>
@@ -218,9 +242,21 @@
 <select id="selectLeportsByLeportsId" parameterType="int" resultMap="leportsResultMap">
     SELECT  
         *
-    FROM culture where contentid = #{contentid}
+    FROM leports where contentid = #{contentid}
 </select>
 
+	<select id="getListForMap" resultMap="leportsResultMap">
+		SELECT
+			contentid,
+	        TITLE,
+	        ADDR1,
+	        firstimage,
+	        tel,
+	        MAPX,
+	        MAPY
+        FROM
+        	leports
+	</select>
 	
 
 </mapper>

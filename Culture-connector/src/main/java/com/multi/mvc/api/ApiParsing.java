@@ -17,7 +17,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.multi.mvc.culture.model.vo.CultureParent;
-import com.multi.mvc.culture.model.vo.Event;
 
 import lombok.extern.slf4j.Slf4j;
 

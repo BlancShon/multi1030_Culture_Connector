@@ -77,6 +77,11 @@ public class FestivalService {
 	}
 
 
+	public List<Festival> getListForMap() {
+		return mapper.getListForMap();
+	}
+
+
 }
 
 

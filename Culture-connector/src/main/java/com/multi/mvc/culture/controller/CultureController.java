@@ -1,11 +1,14 @@
 package com.multi.mvc.culture.controller;
 
 import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.multi.mvc.common.util.PageInfo;
 //import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.CultureService;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.Culture;
 import com.multi.mvc.culture.model.vo.CultureParam;
+import com.multi.mvc.culture.model.vo.course.CourseCategory;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,13 +38,24 @@ public class CultureController {
 	private Culture culture;
 	
 	
-//	@Bean(initMethod = "init")
+	private static Vector<CourseCategory> categoryList;
+	private static Vector<AreaCodes> areaList;
+	private static ConcurrentHashMap<String, String> typeMap; 
+	private static ConcurrentHashMap<String, String> areaMap;
+	
+	
+	@Bean(initMethod = "init")
 	public void init() {
 		log.info("culture init 호출 확인");
 //		service.createTable();
 //		if(service.count() == 0) {
 //			service.save();
 //		}
+		areaList = service.getAreaList();
+		areaMap = new ConcurrentHashMap<String, String>();
+		for(AreaCodes item : areaList) {
+			areaMap.put(item.getName(), item.getCode());
+		}
 	}
 
 	// 아래 두개는 디비 주입 확인을 위한 메소드입니다
@@ -65,6 +81,13 @@ public class CultureController {
 	public String list(Model model, CultureParam param) {
 		log.debug("@@ culture list 요청 param : " + param);
 		
+		
+		
+		
+		
+		
+		
+	
 		int cultureCount = service.getCultureCount(param);
 //		PageInfo pageInfo = new PageInfo(param.getPage(), 10, boardCount, 15); // page가 보여질 갯수 : 10, 게시글 목록은 15개
 		PageInfo pageInfo = new PageInfo(param.getPage(), 6, cultureCount, 8); // page가 보여질 갯수 : 10, 게시글 목록은 12개
@@ -82,7 +105,10 @@ public class CultureController {
 		model.addAttribute("param", param);
 		model.addAttribute("cultureCount", cultureCount);
 		model.addAttribute("typeList", param.getTypeList());
-	
+		model.addAttribute("areaList", areaList);
+		model.addAttribute("areaMap", areaMap);
+		model.addAttribute("localTypeList", param.getLocalTypeList());
+		model.addAttribute("courseCount", cultureCount);
 //		String searchType = param.getSearchType();
 //		String checkBox = param.getCheckBox();
 //		

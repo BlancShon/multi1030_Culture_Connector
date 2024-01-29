@@ -1,20 +1,25 @@
 package com.multi.mvc.culture.controller;
 
 import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.culture.model.service.LeisureSportsService;
+import com.multi.mvc.culture.model.vo.AreaCodes;
 import com.multi.mvc.culture.model.vo.LeisureSports;
 import com.multi.mvc.culture.model.vo.LeisureSportsParam;
+import com.multi.mvc.culture.model.vo.leports.LeportsCategory;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,16 +29,18 @@ import lombok.extern.slf4j.Slf4j;
 public class LeisureSportsController {
 	@Autowired
 	private LeisureSportsService service;
-	
 	private LeisureSports leisure;
-//	@Bean(initMethod = "initLeports")
+	Vector<AreaCodes> areaList;
+	private ConcurrentHashMap<String, Vector<LeportsCategory>> categoryMap;
+	private ConcurrentHashMap<String, String> categoryCodeMap;
+	
+	@Bean(initMethod = "initLeports")
 	public void initLeports() {
 		log.debug("initLeports Controller 확인");
-
-//		service.createTable();
-//		if(service.count() == 0) {
-//			service.initLeports();
-//		}
+		
+		areaList = service.getAreaList();
+		categoryMap = service.getCategoryMap();
+		categoryCodeMap = service.getCategoryCodeMap();
 	}
 
 	// 아래 세개는 디비 주입 확인을 위한 메소드입니다
@@ -57,33 +64,35 @@ public class LeisureSportsController {
 	}
 
 	@GetMapping("/list")
-	public String leportsList(Model model, LeisureSportsParam param) {
-		log.debug("LeisureSports Controller list 확인 param : " + param);
+	public String leportsList(@ModelAttribute LeisureSportsParam param, Model model) {
 		int leisureCount = service.getLeportsCount(param);
 		PageInfo pageInfo = new PageInfo(param.getPage(), 6, leisureCount, 9);
 		param.setLimit(pageInfo.getListLimit());
 		param.setOffset(pageInfo.getStartList() - 1);
 		List<LeisureSports> list = service.getLeportsList(param);
-		for(LeisureSports item : list) {
-			System.out.println("@@@@ LeisureSports: " + item);
-		}
 		
+		model.addAttribute("categoryMap",categoryMap);
+		model.addAttribute("categoryCodeMap",categoryCodeMap);
+		model.addAttribute("leisureCount", leisureCount);
 		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("list", list);
+		model.addAttribute("areaList",areaList);
 		// model.addAttribute("typeMap", typeMap);
 		model.addAttribute("param", param);
 		model.addAttribute("locationList", param.getLocationList());
+		model.addAttribute("leportsTypeList", param.getLeportsTypeList());
+		
+		log.info("여기 맵 정보다여기 &&&&&&&&&&&&&&&&& {}", categoryCodeMap);
 
 		return "culture/leisureSportsList";
 	}
 	
 	
-	@RequestMapping("/leisureSports/detail")
+	@RequestMapping("/detail")
 	public String detailView(Model model, @RequestParam("contentid") int contentid) {
-	    
-	    try {
+
+		try {
 	        leisure = service.findLeportsByLeportsId(contentid);  
-	        System.out.println("leisure = " + leisure);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -91,13 +100,18 @@ public class LeisureSportsController {
 	    if (leisure == null) {
 	        return "redirect:error";
 	    }
-	    
+		List<String> imgList = service.getImgList(leisure);
+	    model.addAttribute("imgList", imgList);
 	    model.addAttribute("leisure", leisure);
-	    model.addAttribute("contentid", leisure.getContentid());
-	    model.addAttribute("overview", leisure.getOverview());
-	    
-	    return "culture/leisureDetail";
+	  
+//	    model.addAttribute("contentid", leisure.getContentid());
+//	    model.addAttribute("overview", leisure.getOverview());
+	  
+	    return "culture/leportsDetail";
+//	    return "culture/tourDetail";
 	}
+	
+	
 
 	
 	

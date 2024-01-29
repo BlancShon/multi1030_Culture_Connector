@@ -107,7 +107,7 @@ Content START -->
 										<a class="nav-link" href="account-delete.html"><i class="bi bi-trash fa-fw me-2"></i>회원 탈퇴</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>로그아웃</a>
+										<a class="nav-link text-danger bg-danger-soft-hover" href="${path}/logout"><i class="fas fa-sign-out-alt fa-fw me-2"></i>로그아웃</a>
 									</li>
 								</ul>
 								<!-- Sidebar menu item END -->
@@ -208,16 +208,7 @@ Content START -->
 										<!-- Title -->
 										<h5 class="card-title mb-1"><a href="${path}/culture/detail?contentid=${item.contentid}">${item.title}</a></h5>
 										<small><i class="bi bi-geo-alt me-2"></i>${item.addr1}</small>
-										
-										<!-- Price and Button -->
-										<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-											<!-- Button -->
-											<div class="d-flex align-items-center">
-												<h5 class="fw-bold mb-0 me-1">$980</h5>
-												<span class="mb-0 me-2">/day</span>
-											</div>
-										               
-										</div>
+									
 									</div>
 								</div>
 								
