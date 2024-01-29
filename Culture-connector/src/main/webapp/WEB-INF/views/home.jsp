@@ -557,7 +557,7 @@ Stories END-->
           현재 위치를 기반으로 맛집, 카페 및 다양한 정보를 제공해 드려요
         </p>
       <!-- Button -->
-<a href="${pageContext.request.contextPath}/clutureTourMap" class="btn btn-dark mb-4">더보기</a>
+<a href="${pageContext.request.contextPath}/cultureTourMap" class="btn btn-dark mb-4">더보기</a>
 
 <!-- Services -->
 <div class="row g-sm-4">

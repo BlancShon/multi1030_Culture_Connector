@@ -62,28 +62,36 @@
 
     <!-- 검색창 -->    
     <div class="search-container">
-        <label><input type="radio" name="searchType" value="title" 
-                    ${searchType == 'title' ? 'checked' : ''} />제목</label>
-        <label><input type="radio" name="searchType" value="content"
-                    ${searchType == 'content' ? 'checked' : ''} />내용</label>
-        <label><input type="radio" name="searchType" value="writer"
-                    ${searchType == 'writer' ? 'checked' : ''} />작성자</label>
+        <label>
+	        <select name="searchType" class="form-control mt-2">
+	            <option value="title" ${searchType == 'title' ? 'selected' : ''}>제목</option>
+	            <option value="content" ${searchType == 'content' ? 'selected' : ''}>내용</option>
+	            <option value="writer" ${searchType == 'writer' ? 'selected' : ''}>작성자</option>
+	        </select>
+	        
+	        
+	    </label>
+                    
 
         <div class="form-mix-icon-input form-size-lg">
             <input type="text" id="searchValue" name="searchValue" class="form-control" 
                     value="${param.searchValue}" />
         </div>
 
-        <button type="submit" class="btn btn-lg btn-info mb-0">검색</button>
-        <button type="reset" class="btn btn-lg btn-info mb-0">초기화</button>
+        <button type="submit" class="btn btn-lg btn-info mb-2">검색</button>
+        <button type="reset" class="btn btn-lg btn-info mb-2">초기화</button>
     </div>
 </form>
+
+
+
+
 <!-- 검색창 끝 -->
 		
 		<!-- 글쓰기 버튼 -->
 		<c:if test="${loginMember != null }">
 			<button type="button" id="btn-add" style="margin-bottom: 3px;" 
-							onclick="location.href='${path}/board/write'">글쓰기</button>
+							onclick="location.href='${path}/board/write'">글쓰기2123123</button>
 		</c:if>
 </div>
 </div>	
@@ -93,93 +101,98 @@
 	<c:set var="searchType" value="title" />
 </c:if>
 
-<section id="content">
-	<div id='board-list-container'>
 		
 		
 		
-		<!-- 게시판 목록 시작 -->
-		<h2>리뷰게시판</h2>
-		<table id="tbl-board">
+    <!-- 게시판 시작-->
+    <section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="mb-5 col-10">
+              
+              <div class="mb-3">
+                  <table class="table table-hover">
+                    <h2 style="text-align: center;">게시판<br></h2>
+                      <thead class="text-white">
+                      
+                          <tr class="border-0 text-center">
+                              <th class="center col-2">번호</th>
+                              <th class="col-5">제목</th>
+                              <th class="col-2">작성자</th>
+                              <th class="col-1">작성일</th>
+                              <th class="col-1">첨부파일</th>
+                              <th class="col-1">조회수</th>
+                          </tr>
+                      </thead>
+                      <tbody class="text-sm">
+                          <c:if test="${empty list}">
+								<tr>
+									<td colspan="6">조회된 글이 없습니다.</td>
+								</tr>
+							</c:if>
+							
+							<c:if test="${not empty list}">
+								<c:forEach var="item" items="${list}">
+									<tr>
+										<td class="text-center"><c:out value="${item.bno}"/></td>
+										<td class="fw-bold">
+											<a href="${path}/board/view?no=${item.bno}">
+												<c:out value="${item.title}"/>
+											</a>
+										</td>
+										<td class="text-center"><c:out value="${item.memberName}(${item.memberId})"/></td>
+										<td class="text-center"><fmt:formatDate type="date" value="${item.createDate}"/></td>
+										<td class="text-center">
+											<c:if test="${item.attachCount > 0}">
+												<img alt="" src="${path}/resources/images/file.png">					
+											</c:if>						
+											<c:if test="${item.attachCount == 0}">
+												<span>-</span>				
+											</c:if>						
+										</td>
+										<td class="text-center"><c:out value="${item.readCount}"/></td>
+									</tr>
+								</c:forEach>
+							</c:if>
+                      </tbody>
+                  </table>
+                  <div style="text-align: right;">
+                    <a href="${path}/board/write"><button type="button" class="btn btn-success col-2">글쓰기</button></a>
+                  </div>
+
+
+               
+                	 <nav class="d-flex justify-content-center mt-3" aria-label="navigation">
+                        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                                    <button style="border: none; background: none;" onclick="movePage(${pageInfo.prevPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-prev-svgrepo-com.svg" style="width: 25px"></button>
+                                    </a>
+                            </li>
+                             <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
+                             <c:if test="${status.current == pageInfo.currentPage}">
+								<li class="page-item active"><a class="page-link" href=""><button style="border: none; background: none;">${status.current}</button></a></li>
+						    </c:if> 
+						    <c:if test="${status.current != pageInfo.currentPage}">
+							<li class="page-item " aria-current="page"> <a class="page-link" href="#"><button style="border: none; background: none;" onclick="movePage(${status.current});"> ${status.current}</button></a></li>
+							</c:if>
+                            </c:forEach>
+                             <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1">
+                           		 <button style="border: none; background: none;" onclick="movePage(${pageInfo.nextPage});"><img src="${pageContext.request.contextPath}/resources/images/arrow-next.svg" style="width: 25px"></button>
+                             	</a>
+                           	</li>
+                                        
+                      
+                        </ul>
+                    </nav>
+                
+
+              </div>
+        </div>
+    </div>
+    <!-- 게시판 끝-->
 		
-			<tr>
-				<th>번호</th>
-				<th>타입</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>첨부파일</th>
-				<th>조회수</th>
-			</tr>
-			
-			<c:if test="${empty list}">
-				<tr>
-					<td colspan="6">조회된 글이 없습니다.</td>
-				</tr>
-			</c:if>
-			
-			<c:if test="${not empty list}">
-				<c:forEach var="item" items="${list}">
-					<tr>
-<%-- 					<td>${item.bno}</td> 이렇게 해도 되는데..... --%>
-						<td><c:out value="${item.bno}"/></td>
-						<td><c:out value="${typeMap[item.type]}"/></td>
-						<td>
-							<a href="${path}/board/view?no=${item.bno}">
-								<c:out value="${item.title}"/>
-							</a>
-						</td>
-						<td><c:out value="${item.memberName}(${item.memberId})"/></td>
-						<td><fmt:formatDate type="date" value="${item.createDate}"/></td>
-						<td>
-							<c:if test="${item.attachCount > 0}">
-								<img alt="" src="${path}/resources/images/file.png">					
-							</c:if>						
-							<c:if test="${item.attachCount == 0}">
-								<span>-</span>				
-							</c:if>						
-						</td>
-						<td><c:out value="${item.readCount}"/></td>
-					</tr>
-				</c:forEach>
-			</c:if>
-		</table>
-		<!-- 게시판 목록 끝 -->
 
 		<!-- page부 시작 -->
-			<div align="center">
-				<!-- 가장 단순화된 버전 = 검색어가 없는 경우 -->
-<!-- 			처음 페이지로 이동하는 코드 -->
-<%-- 	 			<button onclick="location.href='${path}/board/list?page=1'">&lt;&lt;</button>  --%>
-<!-- 			이전 페이지로 이동하는 코드 -->
-<%-- 	 			<button onclick="location.href='${path}/board/list?page=${pageInfo.prevPage}'">&lt;</button>  --%>
-				
-				<!-- 처음 페이지 -->
-				<button onclick="movePage(1);">&lt;&lt;</button>
-				<!-- 이전 페이지 -->
-				<button onclick="movePage(${pageInfo.prevPage});">&lt;</button>
-				
-				<!-- 10개의 페이지가 보이는 영역 -->
-				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" varStatus="status" step="1" >
-					<!-- 현재 페이지 일때 button을 다르게 표기 하기 위한 영역 -->
-					<c:if test="${status.current == pageInfo.currentPage}">
-						<button disabled >
-							${status.current}
-						</button>
-					</c:if>
-					<c:if test="${status.current != pageInfo.currentPage}">
-						<button onclick="movePage(${status.current});">
-							${status.current}
-						</button>
-					</c:if>
-				</c:forEach>
-				
-				<!-- 다음 페이지 -->
-				<button onclick="movePage(${pageInfo.nextPage});">&gt;</button>
-				<!-- 마지막 페이지 -->
-				<button onclick="movePage(${pageInfo.maxPage});">&gt;&gt;</button>
-			</div>
-		<!-- page부 끝 -->
 	</div>
 	
 

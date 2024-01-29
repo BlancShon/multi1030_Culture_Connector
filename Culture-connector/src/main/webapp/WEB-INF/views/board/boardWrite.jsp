@@ -13,7 +13,7 @@
     .input-text {width: 350px;}
 </style>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp">
+<jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="게시글 작성" name="title"/>
 </jsp:include>
 

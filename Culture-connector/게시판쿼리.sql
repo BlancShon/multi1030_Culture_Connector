@@ -1,0 +1,88 @@
+UPDATE BOARD SET TITLE='[여행후기] 도시의 아름다움에 빠지다.', CONTENT='서울 여행을 다녀왔어요. 도심 속에서 느낄 수 있는 자연의 아름다움에 감동받았습니다.' WHERE bNO=1;
+UPDATE BOARD SET TITLE='[여행소식] 신나는 해변에서의 여름 휴가', CONTENT='여름 휴가를 통해 해변에서 즐거운 시간을 보냈습니다. 파도 소리와 햇볕을 만끽하며 힐링했어요.' WHERE bNO=2;
+UPDATE BOARD SET TITLE='[여행Q&A] 여행 중에 꼭 가봐야 할 곳은 어디인가요?', CONTENT='여행 중에 꼭 방문해야 하는 추천 명소가 있을까요? 여러분의 의견을 기다립니다.' WHERE bNO=3;
+UPDATE BOARD SET TITLE='[여행후기] 현지 맛집 소개 - 로맨틱한 카페에서', CONTENT='여행 중 발견한 로컬 카페에서 맛있는 커피를 즐겼어요. 분위기도 좋아 추천합니다.' WHERE bNO=4;
+UPDATE BOARD SET TITLE='[여행후기] 도심 속 자연을 느낄 수 있는 숲 속 호캉스', CONTENT='도심 속에서도 자연 친화적인 숲 속 호캉스를 즐겼어요. 시끌벅적한 도시를 벗어나 신선한 경험을 했습니다.' WHERE bNO=5;
+UPDATE BOARD SET TITLE='[여행후기] 역사 속을 걷다 - 유럽의 성 이야기', CONTENT='유럽 여행에서 세계 역사 속으로 빠져들었어요. 아름다운 성과 그곳에서 펼쳐진 이야기들이 기억에 남습니다.' WHERE bNO=6;
+UPDATE BOARD SET TITLE='[여행후기] 이국적인 풍경과 맛 - 동남아 여행', CONTENT='동남아시아 여행에서는 다채로운 풍경과 특색 있는 음식을 즐겼습니다. 다양한 문화를 체험하는 멋진 시간이었어요.' WHERE bNO=7;
+UPDATE BOARD SET TITLE='[여행후기] 여유로운 산책과 절경 속에서의 시간', CONTENT='산책과 자연 속에서의 여유로운 시간이 최고에요. 마음이 편안해지고 새로운 에너지를 얻었습니다.' WHERE bNO=8;
+UPDATE BOARD SET TITLE='[여행후기] 일몰 속에서의 로맨틱한 순간', CONTENT='여행 중에 느낀 가장 아름다운 순간은 일몰이었습니다. 일몰 속에서의 로맨틱한 분위기는 잊지 못할 추억이 되었습니다.' WHERE bNO=9;
+UPDATE BOARD SET TITLE='[여행후기] 자유로운 마음으로 휴식하는 풍경', CONTENT='자연 속에서 마음을 정화하고 휴식하기에 안성맞춤인 여행지를 찾았습니다. 자유로운 마음으로 여행을 즐기세요!' WHERE bNO=10;
+UPDATE BOARD SET TITLE='[여행후기] 신비로운 도시 속에서의 모험', CONTENT='도시의 신비로운 골목을 떠돌며 새로운 경험과 모험을 즐겼어요. 여행은 항상 새로운 발견이 기다리고 있습니다.' WHERE bNO=11;
+UPDATE BOARD SET TITLE='[여행소식] 특별한 축제와 함께한 여행', CONTENT='특별한 축제에 참여하며 현지 문화를 경험했습니다. 다양한 이색 체험과 함께한 여행이었어요.' WHERE bNO=12;
+UPDATE BOARD SET TITLE='[여행Q&A] 여행 중 꼭 시도해보아야 할 활동은 무엇인가요?', CONTENT='여행 중 꼭 시도해보아야 할 추천 활동이 있을까요? 여행자들에게 자신의 경험을 나눠주세요.' WHERE bNO=13;
+UPDATE BOARD SET TITLE='[여행후기] 힐링과 모험의 조합 - 산악지대 여행', CONTENT='고산지대에서의 여행은 힐링과 모험이 만나는 곳입니다. 아름다운 풍경과 새롭게 발견한 경험이 기억에 남습니다.' WHERE bNO=14;
+UPDATE BOARD SET TITLE='[여행후기] 역동적인 도시 속에서의 문화 여행', CONTENT='도시의 다양한 문화를 즐기며 역동적인 여행을 즐겼습니다. 예술과 역사의 조화로운 만남이 특별한 순간이었어요.' WHERE bNO=15;
+UPDATE BOARD SET TITLE='[여행후기] 자연 속에서의 신선한 경험 - 글램핑 여행', CONTENT='캠핑의 즐거움과 호텔의 편안함이 결합된 글램핑 여행은 신선한 경험의 기회였습니다. 별빛과 자연 속에서 행복한 시간을 보냈습니다.' WHERE bNO=16;
+UPDATE BOARD SET TITLE='[여행후기] 미스터리한 섬 속 해변에서의 휴가', CONTENT='미스터리한 섬을 탐험하며 푸른 바다와 화려한 해변을 즐겼어요. 자연의 아름다움에 감탄하며 여행을 마무리했습니다.' WHERE bNO=17;
+UPDATE BOARD SET TITLE='[여행후기] 다양한 문화 속에서의 다채로운 맛 탐험', CONTENT='여행 중 다양한 문화를 경험하며 현지 음식을 즐겼습니다. 각국의 특색 있는 맛을 맛보는 여행은 언제나 즐거워요.' WHERE bNO=18;
+UPDATE BOARD SET TITLE='[여행후기] 역사의 숨결을 느끼다 - 세계 유적지 탐방', CONTENT='세계 유적지를 탐방하며 역사의 숨결을 느꼈습니다. 고대 문명의 흔적들이 남긴 이야기들이 여행을 더욱 풍성하게 만들었습니다.' WHERE bNO=19;
+UPDATE BOARD SET TITLE='[여행후기] 자유로운 정신으로 여유를 즐기다', CONTENT='자연과 문화를 만끽하며 자유로운 정신으로 여유를 즐겼습니다. 일상의 소란에서 벗어나 평온한 여행이었습니다.' WHERE bNO=20;
+UPDATE BOARD SET TITLE='[여행후기] 세계 각지의 자연 속에서의 모험', CONTENT='세계 각지의 자연 경관을 탐험하며 힐링과 모험을 만끽했습니다. 자연 속에서의 여행은 마음의 평화를 가져다줍니다.' WHERE bNO=21;
+UPDATE BOARD SET TITLE='[여행소식] 색다른 문화와의 만남 - 이색 여행기', CONTENT='다양한 문화와의 만남으로 특별한 여행기를 만들어보세요. 색다른 경험과 인상적인 순간이 기다리고 있습니다.' WHERE bNO=22;
+UPDATE BOARD SET TITLE='[여행Q&A] 여행자들이 주목하는 숨은 명소는 어디인가요?', CONTENT='여행자들이 선호하는 숨은 명소가 있을까요? 여행에 필요한 꿀팁을 주고받는 공간입니다.' WHERE bNO=23;
+UPDATE BOARD SET TITLE='[여행후기] 자연 속에서의 소소한 행복 - 캠핑 여행', CONTENT='자연 속에서의 캠핑 여행은 소소한 행복과 휴식을 제공합니다. 별빛과 자연 속에서의 특별한 순간을 공유해보세요.' WHERE bNO=24;
+UPDATE BOARD SET TITLE='[여행후기] 역사의 숨결을 느끼며 - 문화 유적지 여행', CONTENT='유적지를 탐험하며 역사의 숨결을 느꼈습니다. 문화의 아름다움과 역사적인 이야기를 만나보세요.' WHERE bNO=25;
+UPDATE BOARD SET TITLE='[여행후기] 푸른 바다 속에서의 낭만 - 섬 여행기', CONTENT='섬 여행은 푸른 바다와 햇살 속에서의 낭만을 즐기는 여정입니다. 해변에서의 휴식이 기억에 남을 것입니다.' WHERE bNO=26;
+UPDATE BOARD SET TITLE='[여행후기] 맛있는 여행 - 현지 음식 탐방', CONTENT='여행 중 현지 음식을 맛보며 다양한 맛을 경험했습니다. 각 지역의 특색 있는 음식에 대한 이야기를 나눠보세요.' WHERE bNO=27;
+UPDATE BOARD SET TITLE='[여행후기] 도시 속 자연 공원에서의 즐거운 시간', CONTENT='도시 속 자연 공원에서의 산책과 피크닉을 즐기며 도심 속에서의 여유로운 시간을 만끽했습니다.' WHERE bNO=28;
+UPDATE BOARD SET TITLE='[여행후기] 소소한 여유를 찾아 - 농촌 풍경 속 여행', CONTENT='농촌 풍경 속에서의 여행은 소소한 여유를 찾을 수 있는 곳입니다. 자연의 속삭임에 귀 기울여보세요.' WHERE bNO=29;
+UPDATE BOARD SET TITLE='[여행후기] 도심 속 힐링 스팟 - 도시 정원 여행', CONTENT='도시의 정원에서 힐링을 찾아보세요. 도심 속에서도 즐거운 자연과의 만남이 가능합니다.' WHERE bNO=30;
+UPDATE BOARD SET TITLE='[여행가이드] 미지의 세계로 - 새로운 여행 경로 소개', CONTENT='미지의 세계로 여행하는 새로운 경로를 소개합니다. 알려지지 않은 명소와 독특한 경험을 만나보세요.' WHERE bNO=31;
+UPDATE BOARD SET TITLE='[여행후기] 자연 속에서의 명상과 휴식 - 산악 여행', CONTENT='산악 지형에서의 여행은 명상과 휴식을 경험하는 좋은 방법입니다. 자연 속에서의 정취를 만끽해보세요.' WHERE bNO=32;
+UPDATE BOARD SET TITLE='[여행팁] 신혼부부를 위한 로맨틱 여행 계획', CONTENT='신혼부부를 위한 로맨틱 여행을 계획하는데 도움이 될만한 팁과 장소를 소개합니다. 특별한 순간을 만들어보세요.' WHERE bNO=33;
+UPDATE BOARD SET TITLE='[여행가이드] 도시 속 예술과 역사 - 미술관 투어', CONTENT='도시에서 예술과 역사를 만나는 특별한 여행이 가능한 미술관 투어를 소개합니다. 문화적인 여행을 즐겨보세요.' WHERE bNO=34;
+UPDATE BOARD SET TITLE='[여행후기] 황홀한 일몰과 일출 - 해변 풍경 여행', CONTENT='해변에서의 일몰과 일출은 황홀한 순간을 선사합니다. 해안가 여행의 아름다움을 느껴보세요.' WHERE bNO=35;
+UPDATE BOARD SET TITLE='[여행팁] 가벼운 짐과 함께 - 백패킹 여행', CONTENT='가벼운 짐을 메고 떠나는 백패킹 여행을 즐기는 팁을 공유합니다. 자유로운 여행의 매력을 느껴보세요.' WHERE bNO=36;
+UPDATE BOARD SET TITLE='[여행후기] 푸른 하늘 아래 - 열기구 여행기', CONTENT='열기구를 타고 푸른 하늘을 날아다니는 특별한 여행기를 공유합니다. 공중에서의 경치를 즐겨보세요.' WHERE bNO=37;
+UPDATE BOARD SET TITLE='[여행가이드] 도시 속 로컬 맛집 탐방', CONTENT='도시에서 로컬 맛집을 찾아다니며 다양한 음식을 즐기는 여행가이드를 소개합니다. 현지 맛을 만끽해보세요.' WHERE bNO=38;
+UPDATE BOARD SET TITLE='[여행후기] 자전거 여행의 매력 - 자연과 함께', CONTENT='자전거를 타고 자연 속을 돌아다니며 느끼는 여행의 매력을 소개합니다. 건강과 자연을 동시에 즐겨보세요.' WHERE bNO=39;
+UPDATE BOARD SET TITLE='[여행가이드] 문화와 예술을 만나는 도시 탐험', CONTENT='도시에서 문화와 예술을 만나는 특별한 여행가이드를 소개합니다. 다양한 문화를 체험해보세요.' WHERE bNO=40;
+
+UPDATE BOARD SET TITLE='[여행후기] 세계 각지의 자연 경관 탐험', CONTENT='세계 각국의 자연 경관을 탐험하며 느끼는 아름다움을 소개합니다. 다양한 자연 속에서의 여행 이야기를 즐겨보세요.' WHERE bNO=41;
+UPDATE BOARD SET TITLE='[여행가이드] 식도락 여행의 시작, 맛집 탐방', CONTENT='맛있는 음식을 찾아 세계 각지의 맛집을 소개하는 여행가이드를 제공합니다. 식도락 여행을 즐겨보세요.' WHERE bNO=42;
+UPDATE BOARD SET TITLE='[여행후기] 해변에서의 낭만, 해양 생물 체험', CONTENT='해변에서의 휴식과 다양한 해양 생물을 체험하는 여행후기를 공유합니다. 해변에서의 낭만을 느껴보세요.' WHERE bNO=43;
+UPDATE BOARD SET TITLE='[여행가이드] 역사 속의 오아시스, 문화 탐험', CONTENT='역사와 문화가 어우러진 오아시스를 탐험하는 여행가이드를 소개합니다. 역사적인 장소에서의 여행을 즐겨보세요.' WHERE bNO=44;
+UPDATE BOARD SET TITLE='[여행후기] 홀로 떠나는 자유로운 여행', CONTENT='홀로 여행하는 매력과 자유로움을 느끼는 여행후기를 공유합니다. 혼자 떠나는 여행의 매력을 경험해보세요.' WHERE bNO=45;
+UPDATE BOARD SET TITLE='[여행가이드] 레저 스포츠의 즐거움을 찾아서', CONTENT='다양한 레저 스포츠를 즐기며 여행하는 방법을 안내하는 여행가이드를 소개합니다. 스릴 넘치는 여행을 경험해보세요.' WHERE bNO=46;
+UPDATE BOARD SET TITLE='[여행후기] 명산 등반의 끝, 자연 속의 평화', CONTENT='세계 각지의 명산을 등반하며 느끼는 아름다운 풍경과 자연 속의 평화를 소개하는 여행후기를 공유합니다.' WHERE bNO=47;
+UPDATE BOARD SET TITLE='[여행가이드] 도심 속 자연, 도시 공원 탐방', CONTENT='도시 공원에서 도심 속 자연을 만나는 특별한 여행가이드를 제공합니다. 도심 속의 자연을 탐험해보세요.' WHERE bNO=48;
+UPDATE BOARD SET TITLE='[여행후기] 신비로운 동양의 아름다움을 찾아서', CONTENT='동양의 신비로운 아름다움을 느낄 수 있는 여행후기를 공유합니다. 동양의 문화와 자연을 만나보세요.' WHERE bNO=49;
+UPDATE BOARD SET TITLE='[여행가이드] 환상적인 국립공원 탐험', CONTENT='세계 각국의 환상적인 국립공원을 탐험하는 여행가이드를 소개합니다. 자연의 아름다움을 만끽해보세요.' WHERE bNO=50;
+UPDATE BOARD SET TITLE='[여행후기] 럭셔리 리조트에서의 힐링', CONTENT='럭셔리한 리조트에서의 힐링 여행후기를 공유합니다. 특별한 서비스와 편안한 휴식을 경험해보세요.' WHERE bNO=51;
+UPDATE BOARD SET TITLE='[여행가이드] 자연 속에서의 캠핑 여행', CONTENT='자연 속에서의 감성적인 캠핑 여행을 안내하는 여행가이드를 소개합니다. 별빛과 자연 속에서 특별한 경험을 즐겨보세요.' WHERE bNO=52;
+UPDATE BOARD SET TITLE='[여행후기] 역사의 숨결, 유럽 성지순례', CONTENT='유럽의 역사적인 성지를 순례하는 여행후기를 공유합니다. 예술과 역사가 어우러진 아름다운 여행을 즐겨보세요.' WHERE bNO=53;
+UPDATE BOARD SET TITLE='[여행가이드] 세계 자연유산 탐방', CONTENT='세계 각국의 자연유산을 탐방하는 여행가이드를 소개합니다. 자연의 보고를 만나며 여행을 떠나보세요.' WHERE bNO=54;
+UPDATE BOARD SET TITLE='[여행후기] 트렌디한 도심 속 거리 예술', CONTENT='도시의 거리 예술을 감상하며 느끼는 트렌디한 여행후기를 공유합니다. 도시의 예술과 문화를 만나보세요.' WHERE bNO=55;
+UPDATE BOARD SET TITLE='[여행가이드] 푸른 바다로 떠나는 크루즈 여행', CONTENT='푸른 바다를 투명한 크루즈에서 감상하는 여행가이드를 제공합니다. 바다 위의 특별한 여정을 즐겨보세요.' WHERE bNO=56;
+UPDATE BOARD SET TITLE='[여행후기] 세계 각지의 미식 여행', CONTENT='세계 각국의 다양한 미식을 즐기며 느끼는 미식 여행후기를 공유합니다. 다양한 음식을 맛보며 여행을 떠나보세요.' WHERE bNO=57;
+UPDATE BOARD SET TITLE='[여행가이드] 자연 속에서의 스포츠 체험', CONTENT='자연 속에서의 다양한 스포츠 체험을 안내하는 여행가이드를 소개합니다. 자연과 스포츠를 결합한 특별한 여행을 경험해보세요.' WHERE bNO=58;
+UPDATE BOARD SET TITLE='[여행후기] 동남아시아의 열대 우림 탐방', CONTENT='동남아시아의 아름다운 열대 우림을 탐방하는 여행후기를 공유합니다. 다양한 동식물과 푸른 자연을 만나보세요.' WHERE bNO=59;
+UPDATE BOARD SET TITLE='[여행가이드] 미스터리한 문화유적지 탐험', CONTENT='세계 각지의 미스터리한 문화유적지를 탐험하는 여행가이드를 제공합니다. 미지의 역사를 찾아보는 특별한 여행을 떠나보세요.' WHERE bNO=60;
+UPDATE BOARD SET TITLE='[문화체험] 전통공예의 아름다움 - 도예와 공예의 세계', CONTENT='전통적인 도예와 공예의 아름다움을 체험하는 문화체험기를 소개합니다. 손으로 만드는 공예의 특별한 감동을 느껴보세요.' WHERE bNO=61;
+UPDATE BOARD SET TITLE='[문화체험] 풍부한 향연, 음악과 무용의 세계 여행', CONTENT='세계 각지의 다양한 음악과 무용을 체험하는 문화체험기를 제공합니다. 음악과 무용의 아름다움에 푹 빠져보세요.' WHERE bNO=62;
+UPDATE BOARD SET TITLE='[문화체험] 미술의 신비, 아티스트의 창작 공간 탐방', CONTENT='아티스트의 창작 공간을 탐방하며 미술의 신비를 체험하는 문화체험기를 소개합니다. 예술의 창조과정을 직접 관찰해보세요.' WHERE bNO=63;
+UPDATE BOARD SET TITLE='[문화체험] 다양한 언어와 어휘, 언어교환의 즐거움', CONTENT='세계 각국의 다양한 언어와 어휘를 체험하는 문화체험기를 제공합니다. 언어교환을 통해 새로운 친구들과 소통해보세요.' WHERE bNO=64;
+UPDATE BOARD SET TITLE='[문화체험] 역사의 산책, 유적지에서의 역사 체험', CONTENT='다양한 유적지를 돌아다니며 역사의 산책을 즐기는 문화체험기를 소개합니다. 과거의 흔적들을 발견해보세요.' WHERE bNO=65;
+UPDATE BOARD SET TITLE='[문화체험] 다양한 풍속문화, 전통 축제의 아름다움', CONTENT='세계 각국의 다양한 풍속문화와 전통 축제를 체험하는 문화체험기를 제공합니다. 축제의 화려한 분위기를 느껴보세요.' WHERE bNO=66;
+UPDATE BOARD SET TITLE='[문화체험] 색다른 요리 수업, 세계 음식의 맛 탐험', CONTENT='세계 각지의 다양한 음식을 만들어보며 요리의 즐거움을 체험하는 문화체험기를 소개합니다. 다양한 맛을 즐겨보세요.' WHERE bNO=67;
+UPDATE BOARD SET TITLE='[문화체험] 전통 의상 체험, 역사 속으로의 판타지', CONTENT='다양한 전통 의상을 입어보며 역사 속으로의 판타지를 느끼는 문화체험기를 제공합니다. 다른 시대의 분위기를 체험해보세요.' WHERE bNO=68;
+UPDATE BOARD SET TITLE='[문화체험] 색다른 연극 경험, 세계의 무대 속으로', CONTENT='세계 각국의 연극을 감상하며 연극의 아름다움을 체험하는 문화체험기를 소개합니다. 무대의 감동을 느껴보세요.' WHERE bNO=69;
+UPDATE BOARD SET TITLE='[문화체험] 지식의 날개, 독서와 토론의 즐거움', CONTENT='다양한 도서를 읽고 토론하는 문화체험기를 제공합니다. 지식의 날개를 펼치며 다양한 이야기를 나눠보세요.' WHERE bNO=70;
+UPDATE BOARD SET TITLE='[문화체험] 전통 공연의 아름다움, 연극과 무용의 세계 여행', CONTENT='세계 각국의 다양한 연극과 무용을 감상하는 문화체험기를 소개합니다. 예술의 아름다움을 체험해보세요.' WHERE bNO=71;
+UPDATE BOARD SET TITLE='[문화체험] 미술과 예술의 향연, 아트 갤러리 탐방', CONTENT='세계 각지의 아트 갤러리를 돌아다니며 미술과 예술의 향연을 즐기는 문화체험기를 제공합니다. 예술의 다양성을 탐험해보세요.' WHERE bNO=72;
+UPDATE BOARD SET TITLE='[문화체험] 다양한 언어와 어휘, 언어교환의 즐거움', CONTENT='세계 각국의 다양한 언어와 어휘를 체험하는 문화체험기를 제공합니다. 언어교환을 통해 새로운 친구들과 소통해보세요.' WHERE bNO=73;
+UPDATE BOARD SET TITLE='[문화체험] 역사 속으로, 박물관 탐방의 즐거움', CONTENT='세계 각국의 다양한 박물관을 탐방하며 역사 속으로 여행하는 문화체험기를 소개합니다. 과거의 아름다움을 발견해보세요.' WHERE bNO=74;
+UPDATE BOARD SET TITLE='[문화체험] 다양한 축제의 매력, 축제 분위기 즐기기', CONTENT='세계 각국의 다양한 축제를 즐기는 문화체험기를 제공합니다. 축제 분위기와 활기를 느껴보세요.' WHERE bNO=75;
+UPDATE BOARD SET TITLE='[문화체험] 길거리 음식의 맛, 전 세계 길거리 요리 탐험', CONTENT='세계 각국의 다양한 길거리 음식을 즐기며 길거리 요리의 특별한 맛을 체험하는 문화체험기를 소개합니다. 맛의 여행을 떠나보세요.' WHERE bNO=76;
+UPDATE BOARD SET TITLE='[문화체험] 전통 예복의 아름다움, 한복 체험하기', CONTENT='다양한 전통 예복을 입어보며 전통의 아름다움을 느끼는 문화체험기를 제공합니다. 한복으로 변신했을 때의 감동을 체험해보세요.' WHERE bNO=77;
+UPDATE BOARD SET TITLE='[문화체험] 특별한 체험, 테마파크에서의 날', CONTENT='세계 각국의 다양한 테마파크를 체험하는 특별한 여행기를 소개합니다. 테마파크에서의 재미와 흥미를 만끽해보세요.' WHERE bNO=78;
+UPDATE BOARD SET TITLE='[문화체험] 세계적인 행사, 국제 페스티벌 참여기', CONTENT='세계적인 국제 페스티벌에 참여하는 문화체험기를 제공합니다. 다양한 문화의 만남과 경험을 즐겨보세요.' WHERE bNO=79;
+UPDATE BOARD SET TITLE='[문화체험] 세계 여행의 즐거움, 다양한 문화 체험', CONTENT='세계 각국의 다양한 문화를 체험하는 세계 여행기를 소개합니다. 다양성과 아름다움을 함께 느껴보세요.' WHERE bNO=80;
+
+select * from board;
+
+
+
+
+

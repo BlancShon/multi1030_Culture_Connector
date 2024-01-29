@@ -24,43 +24,57 @@
     table#tbl-comment sub.comment-date {color:tomato; font-size:10px}
 </style>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp">
+<jsp:include page="/WEB-INF/views/common/cultureheader.jsp">
 	<jsp:param value="게시글 상세조회" name="title"/>
 </jsp:include>
 
+<!-- 배경 화면 -->
+
+     <!-- 배경 -->
+<div class="rounded-3 p-4 p-sm-5" style="background-image: url(${pageContext.request.contextPath}/resources/images/grass.jpg); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 400px; position: relative; overflow: hidden;">
+        <!-- 배너 제목 -->
+        <div class="row justify-content-between pt-0 pb-5"> 
+            <div class="col-md-7 col-lg-8 col-xxl-7 pb-5 mb-0 mb-lg-5"> 
+                <h1 class="text-black">Community</h1>
+                
+                <p class="text-black mb-0">여행을 계획 중이신가요? 최고의 목적지로 오세요!</p>
+            </div>
+        </div>
+    
+    </div>
+    <!-- 배경 끝 -->
+
+<!--  배경 화면 끝 -->
+
+
 <section id="board-write-container">
-	<h2 align="center">게시글 상세조회</h2>
-	
-	<table id="tbl-board">
-		<tr>
-			<th>글번호</th>
-			<td><c:out value="${board.bno}"/></td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><c:out value="${board.title}"/></td>
-		</tr>
-		<tr>
-			<th>타입</th>
-			<td><c:out value="${typeMap[board.type]}"/></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><c:out value="${board.memberName}(${board.memberId})"/></td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td><c:out value="${board.readCount}"/></td>
-		</tr>
-		<tr>
-			<th>작성 시간</th>
-			<td><fmt:formatDate type="both" value="${board.createDate}"/> </td>
-		</tr>
-		<tr>
-			<th>수정 시간</th>
-			<td><fmt:formatDate type="both" value="${board.modifyDate}"/> </td>
-		</tr>
-		<tr>
+	<div class="container col-10 align-items-center mb-9 mt-5">
+	    <div class="col-12 p-4">
+	        <div class="bg-light p-4 align-items-center">
+	        
+	         <div class="card-header bg-light p-0 pb-3">
+                <h2 class="mb-0"  align="center">글 상세 조회</h3>
+            </div>
+            
+            
+            <!-- Card body START -->
+            <div class="card-body p-0 col-10 mx-auto">
+                <form class="row g-4">
+                    <!-- Name -->
+                    <table>
+                      <tbody><tr>
+                        <th class="col-sm-3 p-1 align-middle font-size150">제목 : <c:out value="${board.title}"/></th>
+                        <th class="col-4" rowspan="3">
+                        </th>
+                      </tr>
+                      <tr>
+                        <td class="p-1 text-custom-gray300">작성자 : <c:out value="${board.memberName}(${board.memberId})"/></td>
+                        <td class="text-end p-1 text-custom-gray300"><fmt:formatDate type="both" value="${board.createDate}"/> </td>
+                        <td class="text-end p-1 text-custom-gray300">조회수</td>
+                        <td class="text-start p-1 text-custom-gray300"><c:out value="${board.readCount}"/></td>
+                        <td class="text-end p-1 text-custom-gray300">댓글</td>
+                        <td class="text-start p-1 text-custom-gray300">2</td>
+                        <tr>
 			<th>첨부 파일</th>
 			<td>
 				<c:if test="${empty board.attachFiles}">
@@ -95,23 +109,137 @@
 				</c:if>
 			</td>
 		</tr>
-		<tr>
-			<th>내용</th>
-			<td>
-				<textarea rows="15" cols="50" readonly><c:out value="${board.content}"/></textarea>
-			</td>
-		</tr>
-		<!-- 수정 삭제 버튼 보이는 부분 -->
-		<c:if test="${not empty loginMember && (loginMember.id == board.memberId 
-														|| loginMember.role == 'ROLE_ADMIN')}">
+                      </tr>
+                    </tbody>
+                  </table>
+                   
+                   
+                    <!-- Message -->
+                    <div class="col-12">
+
+                        <div class="col-10  mx-auto">
+                            <textarea class="form-control" rows="25" disabled readonly>
+                            	<c:out value="${board.content}"/>
+                            </textarea>
+                        </div>
+                    </div>
+                   
+                    <!-- Button -->
+                    <div style="margin-left: 78%;">
+                      <button class="btn btn-success" type="button" id="btnUpdate">수정</button>
+                      <button class="btn btn-success" type="button" id="btnDelete">삭제</button>
+                    </div>
+                </form>
+            </div>
+            <br><hr>
+            
+            <!--  댓글 작성 -->
+                <form class="row g-4">
+						
+				<!-- Message -->
+				<div class="col-12">
+					<label class="form-label">Message *</label>
+					<textarea class="form-control" rows="3"></textarea>
+				</div>
+			
+				<!-- Button -->
+				<div class="col-12" style="margin-left: 78%;">
+					<button class="btn btn-success mb-0" type="button">등록</button>
+				</div>	
+			</form>
+			<!--  댓글 작성 끝 -->
+			
+			<c:if test="${not empty loginMember}">
+				<div id="comment-container">
+			    	<div class="comment-editor" align="center">
+			    		<form action="${path}/board/reply" method="post">
+			    			<input type="hidden" name="bno" value="${board.bno}" />
+			    			<input type="hidden" name="memberId" value="${loginMember.id}" />
+							<textarea name="content" id="replyContent" cols="55" rows="3"></textarea>
+							<button type="submit" id="btn-insert">등록</button>	  	
+			    		</form>
+			    	</div>
+			   	</div>
+			</c:if>
+			
+			 <br><hr>
+			 
+			 <!--  댓글 보기 -->
+			 
+			<!-- Review item -->
+				<div class="row g-3 g-lg-4">
+					<div class="col-md-4 col-xxl-3">
+						<!-- Avatar and info -->
+						<div class="d-flex align-items-center">
+							<!-- Info -->
+							<div class="ms-2">
+								<h5 class="mb-1">Dennis Barrett</h5>
+								<p class="mb-0">Stayed 18 Dec 2022</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-8 col-xxl-9">
+						<h6><span class="text-body fw-light">Review on:</span> Superior Room</h6>
+						<p>Delivered dejection necessary objection do Mr prevailed. Mr feeling chiefly cordial in doing. Water timed folly right aware if oh truth. Large above be to means. Dashwood does provide stronger is.</p>
+
+						<!-- Button -->
+						<div class="d-flex justify-content-between align-items-center">
+							<a href="#" class="text-primary-hover"><i class="bi bi-trash3 me-1"></i>Delete</a>
+						</div>
+					</div>
+				</div> 
+            
+            
+			 <!--  댓글 보기  끝-->
+			 
+			 <!-- 리플 리스트 출력 -->
+	<table id="tbl-comment">
+		<c:if test="${empty board.replies }">
 			<tr>
-				<th colspan="2">
-					<button type="button" id="btnUpdate">수정</button>
-					<button type="button" id="btnDelete">삭제</button>
-				</th>
+				<td style="text-align: center;">등록된 리플이 없습니다.</td>
 			</tr>
 		</c:if>
+		
+		
+		<c:if test="${not empty board.replies}">
+			<c:forEach var="reply" items="${board.replies}">
+				<tr>
+					<td>
+						<sub class="comment-writer"><c:out value="${reply.memberName}(${reply.memberId})"/> </sub>
+						<sub class="comment-date"><fmt:formatDate type="both" value="${reply.createDate}"/></sub>	
+						<br>
+						<c:out value="${reply.content}"/>
+					</td>
+					<td>
+						<!-- 삭제버튼 -->
+						<c:if test="${not empty loginMember && (loginMember.id == reply.memberId
+																|| loginMember.role == 'ROLE_ADMIN') }">
+							<button class="btn-delete" onclick="deleteReply('${reply.rno}','${board.bno}');" >삭제</button>
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+		</c:if>
 	</table>
+	
+            
+            
+	         </div>
+    </div>
+</div>
+	<!-- 게시글 -->
+	
+	
+
+      <!-- 내 댓글 작성-->
+            <br><hr>
+           
+        
+      <!-- 내 댓글 끝-->
+	
+	
+	
 	
 	<!-- 리플 작성 Form -->
 	<c:if test="${not empty loginMember}">

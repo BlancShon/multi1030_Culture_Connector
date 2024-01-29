@@ -30,32 +30,32 @@ Footer START -->
                       <h5 class="text-white mb-2 mb-md-4">페이지</h5>
                       <ul class="nav flex-column text-primary-hover">
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="main.html"
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/"
                               >홈</a
                               >
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cluture-theme1.html"
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/culture/list"
                               >문화 테마</a
                               >
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cuisine-tour.html"
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/food"
                               >음식 투어</a
                               >
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cluture-news1.html"
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/course/list"
                               >문화 소식</a
                               >
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="review-talk1.html"
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/board/list"
                               >리뷰(수다톡)</a
                               >
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="cluture-tour-map.html"
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/cultureTourMap"
                               >문화(여행) 지도</a
                               >
                           </li>
@@ -67,10 +67,10 @@ Footer START -->
                       <h5 class="text-white mb-2 mb-md-4">회원정보</h5>
                       <ul class="nav flex-column text-primary-hover">
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="#">가입하기</a>
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/member/enroll">가입하기</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link text-body-secondary" href="sign-in.html">로그인</a>
+                              <a class="nav-link text-body-secondary" href="${pageContext.request.contextPath}/loginForm">로그인</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link text-body-secondary" href="#"
@@ -129,7 +129,7 @@ Footer START -->
 <!-- ThemeFunctions -->
 <script src="${pageContext.request.contextPath}/resources/js/functions.js"></script>
 
-<!-- 페이지 상단에 아래 스크립트를 포함시킵니다. -->
+<!-- 페이지 상단에 아래 스크립트를 포함시킵니다.-->
 <script>
   // 페이지 로드 시 스크롤 위치를 가져와서 설정
   document.addEventListener("DOMContentLoaded", function () {
