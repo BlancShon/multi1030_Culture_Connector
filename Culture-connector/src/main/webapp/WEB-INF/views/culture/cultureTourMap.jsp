@@ -78,7 +78,7 @@
                                         <input type="radio" id="foodRadio" name="category" value="food">
                                         <label for="foodRadio">음식점</label>
                                         
-                                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 									</div>
 									<!-- 시설별 선택 END -->
 								</form><!-- Form End -->
@@ -133,8 +133,8 @@
     // Initialize the Map
     var mapContainer = document.getElementById('map'),
         mapOptions = {
-            center: new kakao.maps.LatLng(37.5665, 126.9780),
-            level: 3
+            center: new kakao.maps.LatLng(36.38, 127.51),
+            level: 12
         };      
 
     var map = new kakao.maps.Map(mapContainer, mapOptions);
@@ -198,13 +198,6 @@
         if (data.festivals) items = items.concat(data.festivals);
         if (data.leisureSports) items = items.concat(data.leisureSports);
         if (data.foods) items = items.concat(data.foods);
-
-
-
-
-
-
-        
         // 여기에 더 많은 데이터 집합을 추가할 수 있습니다.
 
         if (items.length === 0) {

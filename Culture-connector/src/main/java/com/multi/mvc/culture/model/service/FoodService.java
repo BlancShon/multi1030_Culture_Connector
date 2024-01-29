@@ -1,6 +1,7 @@
 package com.multi.mvc.culture.model.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.multi.mvc.api.OpenApiManagerForXml_food;
 import com.multi.mvc.culture.model.mapper.FoodMapper;
 import com.multi.mvc.culture.model.vo.Food;
+import com.multi.mvc.culture.model.vo.FoodDTO;
 import com.multi.mvc.culture.model.vo.FoodParam;
 
 
@@ -94,10 +96,22 @@ public class FoodService {
 		return food;
 	}
 
-
-	public List<Food> getListForMap() {
-		return mapper.getListForMap();
+	
+	public List<FoodDTO> getListForMap() {
+	    List<Food> foods = mapper.getListForDTO(); // 혹은 필요한 조회 로직
+	    return foods.stream().map(food -> new FoodDTO(	        
+    		food.getContentId(), // 예시 필드
+    		food.getAddr1(), // 예시 필드
+	        food.getTitle(), // 'mapy'에 해당하는 값
+	        food.getTel(), // 'mapx'에 해당하는 값
+	        food.getFirstImage(), // 'mapx'에 해당하는 값
+	        food.getMapX(), // 'mapx'에 해당하는 값
+	        food.getMapY() // 'mapx'에 해당하는 값
+	        // 기타 필요한 변환들
+	    )).collect(Collectors.toList());
 	}
+	
+	
 	
 //	@Transactional(rollbackFor = Exception.class)
 //	public Food findFoodByAddr1(Food addr1) {

@@ -283,5 +283,8 @@
         	food
 	</select>
 	
+	<select id="getListForDTO" resultMap="FoodResultMap">
+		SELECT * FROM FOOD
+	</select>
 	
 </mapper>

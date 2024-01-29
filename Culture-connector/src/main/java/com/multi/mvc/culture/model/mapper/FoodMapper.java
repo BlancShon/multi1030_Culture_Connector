@@ -30,5 +30,5 @@ public interface FoodMapper {
 
 //	List<Food> selectFoodSample(FoodParam param);
 	
-
+	List<Food> getListForDTO();
 }
