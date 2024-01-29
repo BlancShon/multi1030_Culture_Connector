@@ -587,8 +587,26 @@ for (var i = 0; i < positions.length; i ++) {
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage // 마커 이미지 
     });
+    // ---------------------------------------------
+    // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var content = '<div class="customoverlay">' +
+	    '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+	    '    <span class="title">'+ (i + 1) + '번째 코스<br>' + positions[i].title + '</span>' +
+	    '  </a>' +
+	    '</div>';
+	
+	// 커스텀 오버레이가 표시될 위치입니다 
+	var position = positions[i].latlng;
+	
+	// 커스텀 오버레이를 생성합니다
+	var customOverlay = new kakao.maps.CustomOverlay({
+	    map: map,
+	    position: position,
+	    content: content,
+	    yAnchor: 1 
+	});
     
-
+	// ---------------------------------------------
 }
 </script>
 
