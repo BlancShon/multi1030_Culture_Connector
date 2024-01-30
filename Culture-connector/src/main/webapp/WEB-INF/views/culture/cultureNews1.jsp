@@ -24,9 +24,10 @@
             <!-- Images -->
             <div class="row g-xl-7 align-items-center">
                 <div class="col-6 d-none d-md-block">
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/87/3080387_image2_1.jpg">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=1754946">
                         <div class="card card-element-hover card-overlay-hover overflow-hidden">
                             <!-- Image -->
+                           
                             <img src="http://tong.visitkorea.or.kr/cms/resource/87/3080387_image2_1.jpg" class="rounded-3 image-title" alt=""><h6>허브아일랜드 불빛동화축제</h6>
                             <!-- Full screen button -->
                             <div class="hover-element w-100 h-100">
@@ -37,7 +38,7 @@
                 </div>
                 <div class="col-md-6 mt-lg-8">
                     <!-- Image item -->
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/74/2674674_image2_1.jpg">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=2674675">
                         <div class="card card-element-hover card-overlay-hover overflow-hidden mb-4 mb-xl-7">
                             <!-- Image -->
                             <img src="http://tong.visitkorea.or.kr/cms/resource/74/2674674_image2_1.jpg" class="rounded-3" alt=""><h6>수원화성의 비밀</h6>
@@ -49,7 +50,7 @@
                     </a>
 
                     <!-- Image item -->
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/48/2597548_image2_1.jpg">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=1957556">
                         <div class="card card-element-hover card-overlay-hover overflow-hidden">
                             <!-- Image -->
                             <img src="http://tong.visitkorea.or.kr/cms/resource/48/2597548_image2_1.jpg" class="rounded-3" alt=""><h6>창경궁 야간 상시관람</h6>
@@ -66,7 +67,7 @@
         <!-- Image -->
         <div class="col-sm-4 position-relative order-2 order-sm-1 z-index-9">
             <!-- Image item -->
-            <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/01/3023401_image2_1.jpg">
+            <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=2630385">
                 <div class="card card-element-hover card-overlay-hover overflow-hidden">
                     <!-- Image -->
                     <img src="http://tong.visitkorea.or.kr/cms/resource/01/3023401_image2_1.jpg" class="rounded-3" alt=""><h6>2024 코리아그랜드세일</h6>
@@ -313,7 +314,7 @@
             <div class="row g-xl-7 position-relative">
                 <div class="col-md-6 mt-lg-8">
                     <!-- Image with play button -->
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/55/3080355_image2_1.jpg">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=3076610">
                         <div class="card overflow-hidden mb-4 mb-xl-7">
                             <!-- Image -->
                             <img src="http://tong.visitkorea.or.kr/cms/resource/55/3080355_image2_1.jpg" class="rounded-3" alt=""><h6>제1회 이차전지 특화 기업 취업 매칭데이</h6>
@@ -322,7 +323,7 @@
                     </a>
 
                     <!-- Image item -->
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/45/3073145_image2_1.JPG">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=2938676">
                         <div class="card card-element-hover card-overlay-hover overflow-hidden">
                             <!-- Image -->
                             <img src="http://tong.visitkorea.or.kr/cms/resource/45/3073145_image2_1.JPG" class="rounded-3" alt=""><h6>안동 암산얼음축제</h6>
@@ -335,7 +336,7 @@
                 </div>
                 <div class="col-6 d-none d-md-block">
                     <!-- Image item -->
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/17/3017817_image2_1.jpg">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=574285">
                         <div class="card card-element-hover card-overlay-hover overflow-hidden mb-4 mb-xl-7">
                             <!-- Image -->
                             <img src="http://tong.visitkorea.or.kr/cms/resource/17/3017817_image2_1.jpg" class="rounded-3" alt=""><h6>김제지평선축제</h6>
@@ -347,7 +348,7 @@
                     </a>
 
                     <!-- Image item -->
-                    <a data-glightbox="" data-gallery="gallery" href="http://tong.visitkorea.or.kr/cms/resource/78/2951678_image2_1.jpg">
+                    <a data-glightbox="" data-gallery="gallery" href="${path}/mvc/cultureTheme3/detail?contentid=523079">
                         <div class="card card-element-hover card-overlay-hover overflow-hidden">
                             <!-- Image -->
                             <img src="http://tong.visitkorea.or.kr/cms/resource/78/2951678_image2_1.jpg" class="rounded-3" alt=""><h6>진해군항제</h6>
@@ -389,7 +390,7 @@
 
                     <!-- Card body -->
                     <div class="card-body px-3">
-                        <h4><a href="blog-detail.html" class="stretched-link">오크밸리 3D 라이팅쇼 '소나타오브라이트'</a></h4>
+                        <h4><a href="${path}/mvc/cultureTheme3/detail?contentid=2588321" class="stretched-link">오크밸리 3D 라이팅쇼 '소나타오브라이트'</a></h4>
                         <p class="mb-0">내 발걸음만이 소리가 되어 메아리처럼 되돌아오는 자연 그대로의 숨길에 밤이 내리면 아름다운 조명과 신비한 이야기가 있는 환상적인 세계가 펼쳐진다.
                             아름다운 빛의 연주가 겨울의 낭만으로 이끄는 오크밸리의 Sonata Of Light(빛의 소나타)를 걸어보자.
                             빛나는 발자국으로 밤의 숨길을 걷다.</p>
@@ -402,17 +403,21 @@
                 <!-- Card START -->
                 <div class="card bg-transparent mb-4 mb-md-5">
                     <div class="row align-items-center">
+                
                         <!-- Images -->
                         <div class="col-sm-4">
                             <img src="http://tong.visitkorea.or.kr/cms/resource/33/3079533_image2_1.png" class="card-img" alt="">
                         </div>
                         <div class="col-sm-8">
+                      
                             <!-- card body -->
                             <div class="card-body p-sm-0">
-                                <h5 class="card-title"><a href="blog-detail.html" class="stretched-link">북촌의날</a></h5>
+                                <h5 class="card-title"><a href="${path}/mvc/cultureTheme3/detail?contentid=2753551" class="stretched-link">북촌의날</a></h5>
                                 <p class="mb-0">북촌의날은 북촌의 이웃과 문화자원을 연계한 지역문화축제의 활기를 되찾고 엔데믹 시대의 역동성을 담고자 한다. 서울공공한옥 북촌문화센터는 한옥과 전통, 북촌의 문화 속에서 또 다른 확장 가능성이 발아될 수 있도록 축제를 연다.</p>
                             </div>
+                            
                         </div>
+                      
                     </div>
                 </div>
                 <!-- Card END -->
@@ -427,7 +432,7 @@
                         <div class="col-sm-8">
                             <!-- card body -->
                             <div class="card-body p-sm-0">
-                                <h5 class="card-title"><a href="blog-detail.html" class="stretched-link">태백산 눈축제</a></h5>
+                                <h5 class="card-title"><a href="${path}/mvc/cultureTheme3/detail?contentid=406912" class="stretched-link">태백산 눈축제</a></h5>
                                 <p class="mb-0">1994년 제1회를 시작으로 개최되어 31회를 맞이하는 태백산 눈축제는 해마다 다른 주제로 웅장하고 섬세한 눈조각들을 만나볼 수 있다. 대학생들의 창의력을 눈 조각에 담아낸 '대학생 눈조각 경연대회' 와 아름다운 눈으로 뒤덮인 태백산의 설경을 체험할 수 있는 '태백산 눈꽃 전국등반대회'가 개최된다. </p>
                             </div>
                         </div>
@@ -445,7 +450,7 @@
                         <div class="col-sm-8">
                             <!-- card body -->
                             <div class="card-body p-sm-0">
-                                <h5 class="card-title"><a href="blog-detail.html" class="stretched-link">홍성남당항 새조개축제</a></h5>
+                                <h5 class="card-title"><a href="${path}/mvc/cultureTheme3/detail?contentid=409187" class="stretched-link">홍성남당항 새조개축제</a></h5>
                                 <p class="mb-0">남당항과 천수만 일원에서 12월부터 이듬해 3월 사이에 주로 잡히는 새조개는 살이 매우 통통하고 커서 제철을 이루고 있다. 새조개는 쫄깃하고 담백한 감칠맛이 특징이며, 단백질과 철분, 타우린 및 필수 아미노산 등의 영양소가 풍부하며 많은 이들의 사랑을 받고 있다. 새조개축제는 한 겨울 동안 열리고 있으며, 많은 관광객이 찾고 있다.</p>
                             </div>
                         </div>
@@ -495,7 +500,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">타조와 동식물을 모두 체험할 수 있는 코스</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/cultureTheme3/detail?contentid=128588" class="stretched-link">타조와 동식물을 모두 체험할 수 있는 코스</a></h6>
                         
                     </div>
                 </div>
@@ -517,7 +522,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">아이와 함께하는 파주의 체험코스</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/course/detail?contentid=1967424" class="stretched-link">아이와 함께하는 파주의 체험코스</a></h6>
                     </div>
                 </div>
             </div>
@@ -539,7 +544,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">책과 함께하는 특별한 체험여행</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/course/detail?contentid=1967424" class="stretched-link">책과 함께하는 특별한 체험여행</a></h6>
                     </div>
                 </div>
             </div>
@@ -560,7 +565,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">태양의 후예' 촬영지 여행 코스</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/course/detail?contentid=2484830" class="stretched-link">태양의 후예' 촬영지 여행 코스</a></h6>
                     </div>
                 </div>
             </div>
@@ -579,7 +584,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="card-title"><a href="flight-list.html" class="stretched-link">예술과 역사를 모두 만나는 광주 전남 여행 코스</a></h5>
+                        <h5 class="card-title"><a href="${path}/mvc/course/detail?contentid=2823349" class="stretched-link">예술과 역사를 모두 만나는 광주 전남 여행 코스</a></h5>
                     </div>
                 </div>
             </div>
@@ -600,7 +605,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">낮에 보아도 밤에 보아도 아름다운 남원 1박2일 코스</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/course/detail?contentid=2822525" class="stretched-link">낮에 보아도 밤에 보아도 아름다운 남원 1박2일 코스</a></h6>
                     </div>
                 </div>
             </div>
@@ -622,7 +627,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">거제도 일상 회복 청춘 투어, 지친 나를 위로하고 치유하는 여행</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/course/detail?contentid=2821974" class="stretched-link">거제도 일상 회복 청춘 투어, 지친 나를 위로하고 치유하는 여행</a></h6>
                     </div>
                 </div>
             </div>
@@ -643,7 +648,7 @@
                 <div class="card-body px-2">
                     <!-- Title -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="card-title"><a href="flight-list.html" class="stretched-link">남파랑길(남해 구간)</a></h6>
+                        <h6 class="card-title"><a href="${path}/mvc/course/detail?contentid=2807090" class="stretched-link">남파랑길(남해 구간)</a></h6>
                     </div>
                 </div>
             </div>
@@ -652,19 +657,6 @@
         
         
     </div> <!-- Row END -->
-</div>
-<div class="row mx-9">
-<div class="col-12">
-    <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-        <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-            <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-            <li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-            <li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
-            <li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
-            <li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-        </ul>
-    </nav>
 </div>
 </section>
 <!-- 검색결과 뿌리기 끝-->

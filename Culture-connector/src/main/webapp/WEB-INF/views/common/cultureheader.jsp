@@ -136,8 +136,8 @@
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">문화 소식</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
-							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews1">문화 기사</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/course/list">문화 코스</a></li>
+							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews1">문화 기사</a></li>
 							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/cultureNews3">쿠폰/혜택</a></li>
 
 						</ul>
@@ -149,9 +149,8 @@
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 
 							<li> <a class="dropdown-item" href="${path}/board/list">리뷰 게시판</a></li>
-							<li> <a class="dropdown-item" href="${pageContext.request.contextPath}/reviewTalk2.html">리뷰 참여하기</a></li>
-							<li> <a class="dropdown-item" href="${path}/festival/searchTestList">검색 테스트</a></li>
-							<li> <a class="dropdown-item" href="${path}/dbsave">데이터베이스 저장</a></li>
+							<%-- <li> <a class="dropdown-item" href="${path}/festival/searchTestList">검색 테스트</a></li>
+							<li> <a class="dropdown-item" href="${path}/dbsave">데이터베이스 저장</a></li> --%>
 							<!--  검색 테스트는 테스트 끝나면 지울겁니다 데베저장도 마찬가지 -->
 						</ul>
 					</li>
